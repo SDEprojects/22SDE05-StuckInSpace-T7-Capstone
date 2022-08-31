@@ -1,0 +1,30 @@
+[
+  {
+    "structure": {
+      "Start_name": "Alien Outpost",
+      "Start_position": "start",
+      "Start_exit": "Hallway",
+      "Start_description": "Intro to Alien Outpost",
+      "Basement_position": "basement",
+      "Basement_exit1": "Hallway",
+      "Basement_exit2": "Engine Room",
+      "Basement_description": "Intro to Alien Outpost",
+      "EngineRoom_position": "engine room",
+      "EngineRoom_exit": "Basement",
+      "EngineRoom_description": "Intro to Alien Outpost",
+      "ControlStation_position": "control station",
+      "ControlStation_exit": "Hallway",
+      "ControlStation_description": "Intro to Alien Outpost",
+      "MessHall_position": "mess hall",
+      "MessHall_exit": "Hallway",
+      "MessHall_description": "Intro to Alien Outpost",
+      "Hallway_position": "hallway",
+      "Hallway_exit1": "start",
+      "Hallway_exit2": "basement",
+      "Hallway_exit3": "hallway",
+      "Hallway_exit4": "control station",
+      "Hallway_exit5": "mess hall",
+      "Hallway_description": "Intro to Alien Outpost"
+    }
+  }
+]
