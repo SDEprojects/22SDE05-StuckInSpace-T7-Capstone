@@ -1,10 +1,10 @@
-{
-    "npc" : [
-        {
-            "name":"Bruce",
-            "description": "friendly merchant",
-            "location": "TBD",
-            "items": "TBD"
-        }
-        ]
-}
+[
+    {
+        "npc" : {
+                "name":"Bruce",
+                "description": "friendly merchant",
+                "location": "TBD",
+                "items": "TBD"
+            }
+    }
+]
