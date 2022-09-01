@@ -1,73 +1,105 @@
-{
-    "fuel_name" : "Fuel",
-    "fuel_description" : "A can of fuel, should be able to used on the spacecraft.",
-    "fuel_location" : "***TBD***",
-    "fuel_store" : "Inventory",
-    "engine_name" : "Engine",
-    "engine_description" : "The engine fell off from the spacecraft during the crash.",
-    "engine_location" : "***TBD***",
-    "engine_store" : "Inventory",
-    "bio_suit_name" : "Bio Suit",
-    "bio_suit" : "A hazmat suit, consists of an impermeable whole-body garment worn as protection against hazardous materials.",
-    "bio_suit_location" : "***Required to enter Chap 4***",
-    "bio_suit_defense" : 1,
-    "bio_suit_store" : "Wear",
-    "TM_name" : "TM 11-2F-35AV3",
-    "TM_description" : "This is the Technical Manual of the spacecraft, maybe I could use it to find out how to fix the spacecraft.",
-    "TM_location" : "***TBD, should be in the same place when player start***",
-    "TM_store" : "Inventory",
-    "keycard_name" : "Keycard",
-    "keycard_description" : "A key card, it has a symbol look the same with the one on the door of the server room.",
-    "keycard_location" : "***TBD***",
-    "keycard_store" : "Inventory",
-    "basement_key_name" : "Metal Key",
-    "basement_key_description" : "An old metal key, covered with dust.",
-    "basement_key_location" : "***TBD***",
-    "basement_key_store" : "Inventory",
-    "toolkit_name" : "Toolkit",
-    "toolkit_description" : "It is an OEM \"QuickFix\" toolkit, it fell off from the spacecraft.",
-    "toolkit_location" : "***TBD***",
-    "toolkit_store" : "Inventory",
-    "GPS_name" : "GPS",
-    "GPS_description" : "This thing looks like a GPS, let's see what it does",
-    "GPS_location" : "***TBD***",
-    "GPS_store" : "Inventory",
-    "knife_name" : "Knife",
-    "knife_description" : "A cooking knife.",
-    "knife_location" : "***TBD should be at the first location***",
-    "knife_power" : 1,
-    "knife_defense" : 0,
-    "knife_store" : "Carry",
-    "rifle_name" : "Rifle",
-    "rifle_description" : "A rifle with an empty magazine. Fairly new condition.",
-    "rifle_power" : 2,
-    "rifle_defense" : 1,
-    "rifle_location" : "***TBD***",
-    "rifle_store" : "Carry",
-    "laser_gun_name" : "Laser Gun",
-    "laser_gun_description" : "A laser gun, nothing in the magazine well, looks like a battery pack could fit in there.",
-    "laser_gun_power" : 3,
-    "laser_gun_defense" : 1,
-    "laser_gun_location" : "***TBD***",
-    "laser_gun_store" : "Carry",
-    "IMTV_name" : "IMTV",
-    "IMTV_description" : "Improved Modular Tactical Vest, it's always good to have a body armor on.",
-    "IMTV_defense" : 10,
-    "IMTV_location" : "***TBD***",
-    "IMTV_store" : "Wear",
-    "ACH_name" : "ACH",
-    "ACH_description" : "It's not just a helmet, it is an Advanced Combat Helmet, made of Kevlar.",
-    "ACH_defense" : 5,
-    "ACH_location" : "***TBD***",
-    "ACH_store" : "Wear",
-    "gloves_name" : "Gloves",
-    "gloves_description" : "A pair of tactical gloves.",
-    "gloves_defense" : 1,
-    "gloves_location" : "***TBD***",
-    "gloves_store" : "Wear",
-    "boots_name" : "Boots",
-    "boots_description" : "A pair of tactical boots, brand new.",
-    "boots_defense" : 1,
-    "boots_location" : "***TBD***",
-    "boots_store" : "Wear"
+[
+    {
+    "fuel" : {
+        "name" : "Fuel",
+        "description" : "A can of fuel, should be able to used on the spacecraft.",
+        "location" : "***TBD***",
+        "store" : "Inventory"
+    },
+    "engine" : {
+        "name" : "Engine",
+        "description" : "The engine fell off from the spacecraft during the crash.",
+        "location" : "***TBD***",
+        "store" : "Inventory"
+    },
+    "bio_suit" : {
+        "name" : "Bio Suit",
+        "description" : "A hazmat suit, consists of an impermeable whole-body garment worn as protection against hazardous materials.",
+        "location" : "***Required to enter Chap 4***",
+        "defense" : 1,
+        "store" : "Wear"
+    },
+    "TM" : {
+        "name" : "TM 11-2F-35AV3",
+        "description" : "This is the Technical Manual of the spacecraft, maybe I could use it to find out how to fix the spacecraft.",
+        "location" : "***TBD, should be in the same place when player start***",
+        "store" : "Inventory"
+    },
+    "keycard" : {
+        "name" : "Keycard",
+        "description" : "A key card, it has a symbol look the same with the one on the door of the server room.",
+        "location" : "***TBD***",
+        "store" : "Inventory"
+    },
+    "basement_key" : {
+        "name" : "Metal Key",
+        "description" : "An old metal key, covered with dust.",
+        "location" : "***TBD***",
+        "store" : "Inventory"
+    },
+    "toolkit" : {
+        "name" : "Toolkit",
+        "description" : "It is an OEM \"QuickFix\" toolkit, it fell off from the spacecraft.",
+        "location" : "***TBD***",
+        "store" : "Inventory"
+    },
+    "GPS" : {
+        "name" : "GPS",
+        "description" : "This thing looks like a GPS, let's see what it does",
+        "location" : "***TBD***",
+        "store" : "Inventory"
+    },
+    "knife" : {
+        "name" : "Knife",
+        "description" : "A cooking knife.",
+        "location" : "***TBD should be at the first location***",
+        "power" : 1,
+        "defense" : 0,
+        "store" : "Carry"
+    },
+    "rifle" : {
+        "name" : "Rifle",
+        "description" : "A rifle with an empty magazine. Fairly new condition.",
+        "power" : 2,
+        "defense" : 1,
+        "location" : "***TBD***",
+        "store" : "Carry"
+    },
+    "laser_gun" : {
+        "name" : "Laser Gun",
+        "description" : "A laser gun, nothing in the magazine well, looks like a battery pack could fit in there.",
+        "power" : 3,
+        "defense" : 1,
+        "location" : "***TBD***",
+        "store" : "Carry"
+    },
+    "IMTV" : {
+        "name" : "IMTV",
+        "description" : "Improved Modular Tactical Vest, it's always good to have a body armor on.",
+        "defense" : 10,
+        "location" : "***TBD***",
+        "store" : "Wear"
+    },
+    "ACH" : {
+        "name" : "ACH",
+        "description" : "It's not just a helmet, it is an Advanced Combat Helmet, made of Kevlar.",
+        "defense" : 5,
+        "location" : "***TBD***",
+        "store" : "Wear"
+    },
+    "gloves" : {
+        "name" : "Gloves",
+        "description" : "A pair of tactical gloves.",
+        "defense" : 1,
+        "location" : "***TBD***",
+        "store" : "Wear"
+    },
+    "boots" : {
+        "name" : "Boots",
+        "description" : "A pair of tactical boots, brand new.",
+        "defense" : 1,
+        "location" : "***TBD***",
+        "store" : "Wear"
+    }
 }
+]
