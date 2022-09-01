@@ -4,7 +4,7 @@
       "Start_name": "Alien Outpost",
       "Start_position": "start",
       "Start_exit": "Hallway",
-      "Start_description": "Intro to Alien Outpost",
+      "Start_description": "The dust settles...",
       "Basement_position": "basement",
       "Basement_exit1": "Hallway",
       "Basement_exit2": "Engine Room",
