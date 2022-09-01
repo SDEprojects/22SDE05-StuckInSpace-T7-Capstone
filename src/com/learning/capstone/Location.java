@@ -5,7 +5,10 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import javax.swing.text.html.HTMLDocument;
 import java.io.*;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Location {
     private final JSONArray locDict;
@@ -23,9 +26,8 @@ public class Location {
             Object obj = jsonParser.parse(reader);
 
             JSONArray locDict = (JSONArray) obj;
+            //locDict.forEach((loc) -> parseLocationObject((JSONObject) loc, "chapter 1"));
             //System.out.println(locDict);
-
-            locDict.forEach((loc) -> parseLocationObject((JSONObject) loc));
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
@@ -37,14 +39,15 @@ public class Location {
         return locDict;
     }
 
-    private static void parseLocationObject(JSONObject location)
+    public void parseLocationObject(JSONObject location, String chapter, String start)
     {
         //Get location object within list
-        JSONObject locationObject = (JSONObject) location.get("structure");
+        JSONObject locationObject = (JSONObject) location.get(chapter);
+        System.out.println(locationObject);
 
-        //Get description of location
-        String description = (String) locationObject.get("Start_description");
-        System.out.println(description);
+        String description = (String) locationObject.get(start);
+        //System.out.println(description);
+
     }
 
     public JSONArray getLocDict() {
