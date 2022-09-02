@@ -8,18 +8,22 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Iterator;
 
 public class Item {
-    // Define variables to be used to invoke JSON file.
+    // Define variable to parse JSON file.
     private final JSONArray itemDict;
-    private String item;
-    private String name;
-    private String description;
-    private String location;
-    private String store;
-    private int power;
-    private int defense;
+    // This is the variable when game called out an item.
+    private String itemCalledOut = "boots";
+
+    // Define variables from JSON file, so they could be used to create getters.
+    private String itemName;
+    private String itemDescription;
+    private String itemLocation;
+    private String itemStore;
+    private String itemPower;
+    private String itemDefense;
 
     // Multiple layers JSON call starts here.
     public Item() {
@@ -35,7 +39,7 @@ public class Item {
             Object item_obj = jsonParser.parse(reader);
 
             JSONArray itemList = (JSONArray) item_obj;
-            System.out.println(itemList); // **** for dev process only, need to Delete.
+//            System.out.println(itemList); // **** for dev process only, need to Delete.
 
             //Iterator over item array
             itemList.forEach(item -> parseItemObject((JSONObject) item));
@@ -49,56 +53,75 @@ public class Item {
         }
         return itemDict;
     }
+    private void parseItemObject(JSONObject item) {
 
-    private static void parseItemObject(JSONObject item) {
         //Get single object within list
-        JSONObject itemObject = (JSONObject) item.get("fuel");
+        JSONObject itemObject = (JSONObject) item.get(itemCalledOut);
 
-        //Get item name
-        String itemName = (String) itemObject.get("name");
-        System.out.println("The item is: " + itemName + ".");
-
-        //Get item description
-        String itemDescription = (String) itemObject.get("description");
-        System.out.println("Description: " + itemDescription + ".");
-
-        //Get item location
-        String itemLocation = (String) itemObject.get("location");
-        System.out.println("It is at " + itemLocation + ".");
-
-        //Get item store
-        String itemStore = (String) itemObject.get("store");
-        System.out.println("It is in " + itemStore + ".");
-
-        //Get item power
-        String itemPower = (String) itemObject.get("power");
-        System.out.println("It has " + itemPower + " power.");
-
-        //Get item defense
-        String itemDefense = (String) itemObject.get("defense");
-        System.out.println("It has " + itemDefense + " defense.");
+        //Get item name, description, location, store, power, defense.
+        itemName = (String) itemObject.get("name");
+        itemDescription = (String) itemObject.get("description");
+        itemLocation = (String) itemObject.get("location");
+        itemStore = (String) itemObject.get("store");
+        itemPower = (String) itemObject.get("power");
+        itemDefense = (String) itemObject.get("defense");
 
     }
 
     public JSONArray getItemDict() {
         return itemDict;
     }
-
     // Multiple layers JSON call ends here.
 
+    // Display item details.
+    public void showItemCard(){
+        System.out.println(
+         "\n" + itemName +
+         "\n" + itemDescription +
+         "\nIt has " + itemPower
+         + " Power and " + itemDefense
+         + " Defense."
+        );
+    }
 
-//    // Single layer JSON call function starts here.
-//    public static void main(String[] args) {
-//        JSONParser parser = new JSONParser();
-//        try {
-//            Object item = parser.parse(new FileReader("./item_dictionary.json"));
-//            JSONObject jsonObject = (JSONObject)item;
-//            String Test = (String)jsonObject.get("fuel_name");
-//            System.out.println("You found some: " + Test);
-//        } catch(Exception e) {
-//            e.printStackTrace();
-//        }
-//    }
-//    // Single layer JSON call function ends here.
+    // Getters for each attribute of the item.
+
+    public String getItemName() {
+        return itemName;
+    }
+    public String getItemDescription() {
+        return itemDescription;
+    }
+    public String getItemLocation() {
+        return itemLocation;
+    }
+    public String getItemStore() {
+        return itemStore;
+    }
+    public String getItemPower() {
+        return itemPower;
+    }
+    public String getItemDefense() {
+        return itemDefense;
+    }
+
+    public void addToBackpack(){
+        //TODO This is the function to create a list to keep items with player,
+        // if the getItemStore == "inventory" add to this list
+        // after list is created, generate a getter so the player could check their backpack.
+    }
+
+    public void addToCarry(){
+        // TODO This is the function to create a list to store what items are in hand,
+        // if the getItemStore == "carry" add to this list.
+        // after list is created, generate a getter.
+    }
+
+    public void addToWear(){
+        // TODO This is the function to create a list to store the items wearing by the player.
+        // if the getItemStore == "wear" add to this list.
+        // after list is created, generate a getter.
+    }
+
 
 }
