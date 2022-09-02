@@ -24,8 +24,8 @@ public class Hero {
             try (FileReader reader = new FileReader("hero_dictionary.json")) {
                 Object obj = jsonParser.parse(reader);
                 JSONArray heroDict = (JSONArray) obj;
-                System.out.println("this is my hero" + heroDict);
-                heroDict.forEach((hero) -> parseHeroObject((JSONObject) hero));
+//                System.out.println("this is my hero" + heroDict);
+//                heroDict.forEach((hero) -> parseHeroObject((JSONObject) hero));
             } catch (IOException | ParseException e) {
                 e.printStackTrace();
             }

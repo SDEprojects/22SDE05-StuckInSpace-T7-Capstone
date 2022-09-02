@@ -22,8 +22,8 @@ public class NPC {
         try (FileReader reader = new FileReader("npc_dictionary.json")) {
             Object obj = jsonParser.parse(reader);
             JSONArray npcDict = (JSONArray) obj;
-            System.out.println("This is my NPC" + npcDict);
-            npcDict.forEach((npc) -> parseNpcObject((JSONObject) npc));
+//            System.out.println("This is my NPC" + npcDict);
+//            npcDict.forEach((npc) -> parseNpcObject((JSONObject) npc));
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }

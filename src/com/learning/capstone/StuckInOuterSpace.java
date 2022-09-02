@@ -22,7 +22,7 @@ public class StuckInOuterSpace {
         Scanner scanner = new Scanner(System.in);
         String input = "welcome";
         // display Hero and some attributes
-        System.out.println("Pick a Hero? ");
+        System.out.println("Pick a Hero?");
         String hero = scanner.nextLine();
         System.out.println("Output: " + hero );
         Story.chapterOne();
@@ -42,28 +42,29 @@ public class StuckInOuterSpace {
                  *         1d. PROMPT USER
                  */
                 System.out.println("THIS IS WHERE WE PRINT THE MENU");
+                Menu.mainMenu();
                 System.out.println("---------------------------------------------------------");
                 System.out.println("You find yourself sitting in the bay of the ship, what's the next move? ");
                 String heroInput = scanner.nextLine();
 
-                if(heroInput.equals("inventory")){
+                if(heroInput.equalsIgnoreCase("inventory")){
                     System.out.println("THIS IS WHERE WE PRINT OUT THE LIST OF ITEMS ON THE HERO");
                     System.out.println("Which item would you like to look at? ");
                     String itemInput = scanner.nextLine();
                     // itemDict.forEach((name) -> items.parseItemObject((JSONObject) name, item))
-                } else if (heroInput.equals("missions")) {
+                } else if (heroInput.equalsIgnoreCase("missions")) {
                     System.out.println("THIS IS WHERE WE PRINT OUT THE LIST OF AVAILABLE MISSIONS");
                     System.out.println("Which mission would you like to try? ");
                     String missionInput = scanner.nextLine();
-                    if((missionInput.equals("alien outpost")) || missionInput.equals("chapter 1")){
-                        Story.alienOutpost();
+                    if((missionInput.equalsIgnoreCase("alien outpost")) || missionInput.equalsIgnoreCase("chapter 1")){
+//                        Story.alienOutpost();
                         StuckInOuterSpace.activateMission(missions,"chapter 1");
                     } else {
                         break;
                     }
-                } else if (heroInput.equals("help")) {
+                } else if (heroInput.equalsIgnoreCase("help")) {
                     Story.hubHelp();
-                } else if (heroInput.equals("quit")) {
+                } else if (heroInput.equalsIgnoreCase("quit")) {
                     input = heroInput;
                 }
                 /**
@@ -87,19 +88,19 @@ public class StuckInOuterSpace {
         String heroInput = "null";
         Story.alienOutpost();
         
-        while(!heroInput.equals("quit")){
+        while(!heroInput.equalsIgnoreCase("quit")){
             System.out.println("SHOW THE MISSION MENU ---[MOVE     INVENTORY       HELP        QUIT_MISSION]---");
             System.out.println("What would you like to do? ");
             heroInput = scanner.nextLine();
             System.out.println(heroInput);
-            if(heroInput.equals("move")){
+            if(heroInput.equalsIgnoreCase("move")){
                 System.out.println("Your Current Location (currentLocation)");
                 StuckInOuterSpace.move(mission);
-            } else if (heroInput.equals("inventory")) {
+            } else if (heroInput.equalsIgnoreCase("inventory")) {
                 System.out.println("THIS IS WHERE WE PRINT OUT THE LIST OF ITEMS ON THE HERO, including the work BACK");
                 System.out.println("Which item would you like to look at? ");
                 String itemInput = scanner.nextLine();
-            }  else if (heroInput.equals("help")) {
+            }  else if (heroInput.equalsIgnoreCase("help")) {
                 Story.missionHelp();
             }
         }
@@ -116,17 +117,17 @@ public class StuckInOuterSpace {
             System.out.println("Where would you like to move to? ");
             System.out.println("---[EXIT     EXIT1      EXIT2      LOOK[PHRASE]    LEAVE]---");
             heroInput = scanner.nextLine();
-            if (heroInput.equals("look")){
+            if (heroInput.equalsIgnoreCase("look")){
                 System.out.println("Your hero takes the time to investigate his surroundings.");
                 // call to check and see if there are items in this section of our locations.
                 // if there is an item, give it to the player and add it to their inventory.
-            } else if (!heroInput.equals("leave")) {
+            } else if (!heroInput.equalsIgnoreCase("leave")) {
                 if(mission.getLocations().isExitAvailable(heroInput)){
                     position = heroInput;
 
                 }
             }
-        }while(!heroInput.equals("leave"));
+        }while(!heroInput.equalsIgnoreCase("leave"));
     }
 
 }
