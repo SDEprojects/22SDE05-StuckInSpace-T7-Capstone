@@ -44,8 +44,9 @@ public class Location {
         //Get location object within list
         JSONObject locationObject = (JSONObject) location.get(chapter);
         System.out.println(locationObject);
+        // position = start + "_exit";
 
-        String description = (String) locationObject.get(start);
+        // String description = (String) locationObject.get(position);
         //System.out.println(description);
 
     }
@@ -53,4 +54,10 @@ public class Location {
     public JSONArray getLocDict() {
         return locDict;
     }
+
+    public boolean isExitAvailable(String exit){
+        boolean isExit = false;
+        return isExit;
+    }
 }
+
