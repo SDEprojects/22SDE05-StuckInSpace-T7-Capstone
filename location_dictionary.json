@@ -1,0 +1,30 @@
+[
+  {
+    "chapter 1": {
+      "Start_name": "Alien Outpost",
+      "Start_position": "start",
+      "Start_exit_0": "Hallway",
+      "Start_description": "The dust settles...",
+      "Basement_position": "basement",
+      "Basement_exit_0": "Hallway",
+      "Basement_exit_1": "Engine Room",
+      "Basement_description": "Intro to Alien Outpost",
+      "EngineRoom_position": "engine room",
+      "EngineRoom_exit_0": "Basement",
+      "EngineRoom_description": "Intro to Alien Outpost",
+      "ControlStation_position": "control station",
+      "ControlStation_exit_0": "Hallway",
+      "ControlStation_description": "Intro to Alien Outpost",
+      "MessHall_position": "mess hall",
+      "MessHall_exit_0": "Hallway",
+      "MessHall_description": "Intro to Alien Outpost",
+      "Hallway_position": "hallway",
+      "Hallway_exit_0": "start",
+      "Hallway_exit_1": "basement",
+      "Hallway_exit_2": "hallway",
+      "Hallway_exit_3": "control station",
+      "Hallway_exit_4": "mess hall",
+      "Hallway_description": "Intro to Alien Outpost"
+    }
+  }
+]
