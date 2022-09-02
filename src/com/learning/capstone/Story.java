@@ -27,4 +27,9 @@ public class Story {
         System.out.println("-Items: Check to see what your hero has on their person. Items can be found in missions.");
         System.out.println("-Missions: A list of available missions you can go on to help find new items and unlock storyline.");
     }
+
+    public static void exploreOutpost(){
+        System.out.println("You have decided to move and explore the surrounding area.");
+        System.out.println("You can LOOK around or move to an EXIT location.");
+    }
 }
