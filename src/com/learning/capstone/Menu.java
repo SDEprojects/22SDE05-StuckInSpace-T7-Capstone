@@ -6,16 +6,16 @@ import java.util.*;
 public class Menu {
 
 
-    private ArrayList<Item> currentItems = new ArrayList<>();
+   // private ArrayList<Item> currentItems = new ArrayList<>();
     private ArrayList<String> missionNames = new ArrayList<>();
 
     public void addMissionNames() {
         this.missionNames.add("Alien Outpost");
     }
 
-    public void addCurrentItems() {
+    //public void addCurrentItems() {
        // this.currentItems.add(); JSONObject?
-    }
+    //}
 
     public ArrayList<String> getMissionNames() {
         return missionNames;
@@ -24,8 +24,6 @@ public class Menu {
         this.missionNames = missionNames;
     }
 
-    //public function that populates current items/ setter function
-// TODO ctor that  will call populate function
 
     public void mainMenu() {
         System.out.println("              |   Stuck in Outer Space   |                 ");
@@ -38,8 +36,23 @@ public class Menu {
     public void inventoryMenu() {
         System.out.println("------------------------------------------------------------");
         System.out.println("             |          Inventory:         |                ");
-        System.out.println(currentItems);
     }
+
+    public void missionsMenu() {
+        System.out.println("------------------------------------------------------------");
+        System.out.println("              |          Missions:         |                ");
+        System.out.println("------------------------------------------------------------");
+        System.out.println("             |         1.Alien Outpost      |                ");
+
+    }
+
+    public void helpMenu() {
+        System.out.println("--------------------------------------------------------");
+        System.out.println("              |          Help:         |                ");
+        System.out.println("     Some useful tips about game play will go here      ");
+    }
+
+
 
 
 
