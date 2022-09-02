@@ -25,12 +25,12 @@ public class Menu {
     }
 
 
-    public void mainMenu() {
+    public static void mainMenu() {
         System.out.println("              |   Stuck in Outer Space   |                 ");
         System.out.println("              |     Make a Selection:    |                 ");
         System.out.println("------------------------------------------------------------");
         System.out.println("|     1. Inventory          |--------|     2. Missions     |");
-        System.out.println("|     3. Help               |--------|     4. Exit         |");
+        System.out.println("|     3. Help               |--------|     4. Quit         |");
     }
 
     public void inventoryMenu() {
