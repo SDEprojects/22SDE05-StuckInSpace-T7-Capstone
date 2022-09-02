@@ -84,31 +84,49 @@ public class StuckInOuterSpace {
         // getters for items, locations, people save them to local variables.
 
         Scanner scanner = new Scanner(System.in);
-        String heroInput = "nothing";
-        System.out.println("SHOW THE MISSION MENU ---[MOVE     INVENTORY       SEARCH       HELP        QUIT_MISSION]---");
+        String heroInput = "null";
         Story.alienOutpost();
         
         while(!heroInput.equals("quit")){
+            System.out.println("SHOW THE MISSION MENU ---[MOVE     INVENTORY       HELP        QUIT_MISSION]---");
             System.out.println("What would you like to do? ");
             heroInput = scanner.nextLine();
             System.out.println(heroInput);
             if(heroInput.equals("move")){
                 System.out.println("Your Current Location (currentLocation)");
-                System.out.println("Where would you like to move to? ");
-                System.out.println("---[EXIT     EXIT1       EXIT2      LEAVE]---");
-                heroInput = scanner.nextLine();
+                StuckInOuterSpace.move(mission);
             } else if (heroInput.equals("inventory")) {
-                System.out.println("THIS IS WHERE WE PRINT OUT THE LIST OF ITEMS ON THE HERO");
+                System.out.println("THIS IS WHERE WE PRINT OUT THE LIST OF ITEMS ON THE HERO, including the work BACK");
                 System.out.println("Which item would you like to look at? ");
                 String itemInput = scanner.nextLine();
-            } else if (heroInput.equals("search")) {
-                System.out.println("Your hero takes the time to investigate his surroundings.");
-                // call to check and see if there are items in this section of our locations.
-                // if there is an item, give it to the player and add it to their inventory.
-            } else if (heroInput.equals("help")) {
+            }  else if (heroInput.equals("help")) {
                 Story.missionHelp();
             }
         }
+    }
+
+    private static void move(Mission mission){
+        Scanner scanner = new Scanner(System.in);
+        String heroInput;
+        //================================ Setting up Hero Position ======================//
+        String position = "start";
+        Story.exploreOutpost();
+        do {
+            //mission.setMoveMenu(position);
+            System.out.println("Where would you like to move to? ");
+            System.out.println("---[EXIT     EXIT1      EXIT2      LOOK[PHRASE]    LEAVE]---");
+            heroInput = scanner.nextLine();
+            if (heroInput.equals("look")){
+                System.out.println("Your hero takes the time to investigate his surroundings.");
+                // call to check and see if there are items in this section of our locations.
+                // if there is an item, give it to the player and add it to their inventory.
+            } else if (!heroInput.equals("leave")) {
+                if(mission.getLocations().isExitAvailable(heroInput)){
+                    position = heroInput;
+
+                }
+            }
+        }while(!heroInput.equals("leave"));
     }
 
 }
