@@ -9,6 +9,8 @@ import java.io.IOException;
 
 public class Hero {
 
+    //TODO heroesCurrentItems - to add items to heroes item list
+
     private final JSONArray heroDict;
 
     public Hero() {
