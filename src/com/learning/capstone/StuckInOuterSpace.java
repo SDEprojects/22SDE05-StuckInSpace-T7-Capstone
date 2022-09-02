@@ -17,14 +17,14 @@ public class StuckInOuterSpace {
          * 3. set character attributes (currentChapter, currentItems, currentPosition, etc.)
          * 4. create Hub object and instantiate its values. HubSpot hub = new Hubspot()
         * */
-        Location locations = new Location();
+        Mission missions = new Mission();
+        HubSpot hub = new HubSpot();
         Scanner scanner = new Scanner(System.in);
         String input = "welcome";
         // display Hero and some attributes
         System.out.println("Pick a Hero? ");
         String hero = scanner.nextLine();
         System.out.println("Output: " + hero );
-        HubSpot hub = new HubSpot();
         Story.chapterOne();
 
         //================================== STARTING THE GAME ===========================================//
@@ -46,7 +46,7 @@ public class StuckInOuterSpace {
                 System.out.println("You find yourself sitting in the bay of the ship, what's the next move? ");
                 String heroInput = scanner.nextLine();
 
-                if(heroInput.equals("items")){
+                if(heroInput.equals("inventory")){
                     System.out.println("THIS IS WHERE WE PRINT OUT THE LIST OF ITEMS ON THE HERO");
                     System.out.println("Which item would you like to look at? ");
                     String itemInput = scanner.nextLine();
@@ -55,14 +55,16 @@ public class StuckInOuterSpace {
                     System.out.println("THIS IS WHERE WE PRINT OUT THE LIST OF AVAILABLE MISSIONS");
                     System.out.println("Which mission would you like to try? ");
                     String missionInput = scanner.nextLine();
-                    if(missionInput.equals("alien outpost")){
+                    if((missionInput.equals("alien outpost")) || missionInput.equals("chapter 1")){
                         Story.alienOutpost();
-                        StuckInOuterSpace.activateMission(locations,"chapter 1");
+                        StuckInOuterSpace.activateMission(missions,"chapter 1");
                     } else {
                         break;
                     }
+                } else if (heroInput.equals("help")) {
+                    Story.hubHelp();
                 } else if (heroInput.equals("quit")) {
-
+                    input = heroInput;
                 }
                 /**
                  * Item menu - Hub.showItemMenu();
@@ -71,7 +73,6 @@ public class StuckInOuterSpace {
                  * missions - Hub.showMissionsMenu();
                  * npcs - Hub.showNpcs();
                  */
-                input = "quit";
             }
 
 
@@ -79,26 +80,35 @@ public class StuckInOuterSpace {
 
     }
 
-    private static void activateMission(Location mission, String chapter){
+    private static void activateMission(Mission mission, String chapter){
         // getters for items, locations, people save them to local variables.
-        mission.getLocDict().forEach((loc) -> mission.parseLocationObject((JSONObject) loc, chapter, "start_position"));
+
         Scanner scanner = new Scanner(System.in);
-        String itemInput = "nothing";
-        System.out.println("SHOW THE MISSION MENU ---[MOVE     INVENTORY       SEARCH]---");
+        String heroInput = "nothing";
+        System.out.println("SHOW THE MISSION MENU ---[MOVE     INVENTORY       SEARCH       HELP        QUIT_MISSION]---");
         Story.alienOutpost();
-        while(true){
+        
+        while(!heroInput.equals("quit")){
             System.out.println("What would you like to do? ");
-            itemInput = scanner.nextLine();
-            System.out.println(itemInput);
-            if(itemInput.equals("move")){
+            heroInput = scanner.nextLine();
+            System.out.println(heroInput);
+            if(heroInput.equals("move")){
                 System.out.println("Your Current Location (currentLocation)");
                 System.out.println("Where would you like to move to? ");
                 System.out.println("---[EXIT     EXIT1       EXIT2      LEAVE]---");
-                itemInput = scanner.nextLine();
+                heroInput = scanner.nextLine();
+            } else if (heroInput.equals("inventory")) {
+                System.out.println("THIS IS WHERE WE PRINT OUT THE LIST OF ITEMS ON THE HERO");
+                System.out.println("Which item would you like to look at? ");
+                String itemInput = scanner.nextLine();
+            } else if (heroInput.equals("search")) {
+                System.out.println("Your hero takes the time to investigate his surroundings.");
+                // call to check and see if there are items in this section of our locations.
+                // if there is an item, give it to the player and add it to their inventory.
+            } else if (heroInput.equals("help")) {
+                Story.missionHelp();
             }
-            break;
         }
-        System.out.println("Something said");
     }
 
 }
