@@ -1,105 +1,136 @@
 [
     {
     "fuel" : {
-        "name" : "Fuel",
+        "name" : "\uD83D\uDEE2 Fuel \uD83D\uDEE2",
         "description" : "A can of fuel, should be able to used on the spacecraft.",
         "location" : "***TBD***",
-        "store" : "Inventory"
+        "store" : "Inventory",
+        "power" : "0",
+        "defense" : "0"
     },
     "engine" : {
-        "name" : "Engine",
+        "name" : "\uD83D\uDE80Engine\uD83D\uDE80",
         "description" : "The engine fell off from the spacecraft during the crash.",
         "location" : "***TBD***",
-        "store" : "Inventory"
+        "store" : "Inventory",
+        "power" : "0",
+        "defense" : "0"
     },
     "bio_suit" : {
-        "name" : "Bio Suit",
+        "name" : "\uD83E\uDD7C Bio Suit \uD83E\uDD7C",
         "description" : "A hazmat suit, consists of an impermeable whole-body garment worn as protection against hazardous materials.",
         "location" : "***Required to enter Chap 4***",
-        "defense" : 1,
-        "store" : "Wear"
+        "store" : "Wear",
+        "power" : "0",
+        "defense" : "1"
     },
     "TM" : {
-        "name" : "TM 11-2F-35AV3",
+        "name" : "\uD83D\uDCD8 TM 11-2F-35AV3 \uD83D\uDCD8",
         "description" : "This is the Technical Manual of the spacecraft, maybe I could use it to find out how to fix the spacecraft.",
         "location" : "***TBD, should be in the same place when player start***",
-        "store" : "Inventory"
+        "store" : "Inventory",
+        "power" : "0",
+        "defense" : "0"
     },
     "keycard" : {
-        "name" : "Keycard",
+        "name" : "\uD83D\uDCB3 Keycard \uD83D\uDCB3",
         "description" : "A key card, it has a symbol look the same with the one on the door of the server room.",
         "location" : "***TBD***",
-        "store" : "Inventory"
+        "store" : "Inventory",
+        "power" : "0",
+        "defense" : "0"
     },
     "basement_key" : {
-        "name" : "Metal Key",
+        "name" : "\uD83D\uDD11 Metal Key \uD83D\uDD11",
         "description" : "An old metal key, covered with dust.",
         "location" : "***TBD***",
-        "store" : "Inventory"
+        "store" : "Inventory",
+        "power" : "0",
+        "defense" : "0"
     },
     "toolkit" : {
-        "name" : "Toolkit",
+        "name" : "\uD83E\uDDF0 Toolkit \uD83E\uDDF0",
         "description" : "It is an OEM \"QuickFix\" toolkit, it fell off from the spacecraft.",
         "location" : "***TBD***",
-        "store" : "Inventory"
+        "store" : "Inventory",
+        "power" : "0",
+        "defense" : "0"
     },
     "GPS" : {
-        "name" : "GPS",
+        "name" : "\uD83D\uDDFA GPS \uD83D\uDDFA",
         "description" : "This thing looks like a GPS, let's see what it does",
         "location" : "***TBD***",
-        "store" : "Inventory"
+        "store" : "Inventory",
+        "power" : "0",
+        "defense" : "0"
     },
     "knife" : {
-        "name" : "Knife",
+        "name" : "\uD83D\uDDE1 Knife \uD83D\uDDE1",
         "description" : "A cooking knife.",
         "location" : "***TBD should be at the first location***",
-        "power" : 1,
-        "defense" : 0,
-        "store" : "Carry"
+        "store" : "Carry",
+        "power" : "1",
+        "defense" : "0"
     },
     "rifle" : {
-        "name" : "Rifle",
-        "description" : "A rifle with an empty magazine. Fairly new condition.",
-        "power" : 2,
-        "defense" : 1,
+        "name" : "╾━╤デ╦︻ Rifle ︻╦̵̵̿╤──",
+        "description" : "A rifle. Fairly new condition.",
         "location" : "***TBD***",
-        "store" : "Carry"
+        "store" : "Carry",
+        "power" : "3",
+        "defense" : "1"
+    },
+    "pistol" : {
+        "name" : "\uD83D\uDD2B Pistol \uD83D\uDD2B",
+        "description" : "1911A1. Gold color body with walnut grips.",
+        "location" : "***TBD***",
+        "store" : "Carry",
+        "power" : "2",
+        "defense" : "1"
+
     },
     "laser_gun" : {
-        "name" : "Laser Gun",
-        "description" : "A laser gun, nothing in the magazine well, looks like a battery pack could fit in there.",
-        "power" : 3,
-        "defense" : 1,
+        "name" : "-一━═╤══╦̵̵͇̿̿̿̿︻ Laser Gun ︻╦̵̵͇̿̿̿̿══╤═━一-",
+        "description" : "A laser gun, should be super powerful.",
         "location" : "***TBD***",
-        "store" : "Carry"
+        "store" : "Carry",
+        "power" : "5",
+        "defense" : "1"
     },
     "IMTV" : {
-        "name" : "IMTV",
+        "name" : "\uD83E\uDDBA IMTV \uD83E\uDDBA",
         "description" : "Improved Modular Tactical Vest, it's always good to have a body armor on.",
-        "defense" : 10,
         "location" : "***TBD***",
-        "store" : "Wear"
+        "store" : "Wear",
+        "power" : "0",
+        "defense" : "1"
+
     },
     "ACH" : {
-        "name" : "ACH",
+        "name" : "\uD83E\uDE96 ACH \uD83E\uDE96",
         "description" : "It's not just a helmet, it is an Advanced Combat Helmet, made of Kevlar.",
-        "defense" : 5,
         "location" : "***TBD***",
-        "store" : "Wear"
+        "store" : "Wear",
+        "power" : "0",
+        "defense" : "5"
+
     },
     "gloves" : {
-        "name" : "Gloves",
+        "name" : "\uD83E\uDDE4 Gloves \uD83E\uDDE4",
         "description" : "A pair of tactical gloves.",
-        "defense" : 1,
         "location" : "***TBD***",
-        "store" : "Wear"
+        "store" : "Wear",
+        "power" : "0",
+        "defense" : "1"
+
     },
     "boots" : {
-        "name" : "Boots",
+        "name" : "\uD83E\uDD7E Boots \uD83E\uDD7E",
         "description" : "A pair of tactical boots, brand new.",
-        "defense" : 1,
         "location" : "***TBD***",
-        "store" : "Wear"
+        "store" : "Wear",
+        "power" : "0",
+        "defense" : "1"
     }
-}
+    }
 ]
