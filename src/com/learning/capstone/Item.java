@@ -9,13 +9,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Iterator;
+
 
 public class Item {
     // Define variable to parse JSON file.
     private final JSONArray itemDict;
     // This is the variable when game called out an item.
-    private String itemCalledOut = "toolkit";
+    public String itemCalledOut;
 
     // Define variables from JSON file, so they could be used to create getters.
     private String itemName;
@@ -25,6 +25,10 @@ public class Item {
     private String itemPower;
     private String itemDefense;
 
+    // Define variables for inventory lists.
+    public ArrayList<String> backpackList;
+    public ArrayList<String> carryList;
+    public ArrayList<String> wearList;
     // Multiple layers JSON call starts here.
     public Item() {
         this.itemDict = readItemFile();
@@ -85,7 +89,6 @@ public class Item {
     }
 
     // Getters for each attribute of the item.
-
     public String getItemName() {
         return itemName;
     }
@@ -105,23 +108,8 @@ public class Item {
         return itemDefense;
     }
 
-    public void addToBackpack(){
-        //TODO This is the function to create a list to keep items with player,
-        // if the getItemStore == "inventory" add to this list
-        // after list is created, generate a getter so the player could check their backpack.
-    }
 
-    public void addToCarry(){
-        // TODO This is the function to create a list to store what items are in hand,
-        // if the getItemStore == "carry" add to this list.
-        // after list is created, generate a getter.
-    }
 
-    public void addToWear(){
-        // TODO This is the function to create a list to store the items wearing by the player.
-        // if the getItemStore == "wear" add to this list.
-        // after list is created, generate a getter.
-    }
 
 
 }
