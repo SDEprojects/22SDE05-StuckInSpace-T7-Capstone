@@ -12,11 +12,9 @@ public class HubSpot {
     JSONObject heroPosition = new JSONObject();
 
     public HubSpot(){
-        List<String> saveCharInventory = Arrays.asList("basement_key", "TM");
         this.savegame = new SaveGame();
         this.heroPosition.put("Current_position", "start");
         this.heroPosition.put("Previous_position", "hub");
-        this.heroPosition.put("current_exits", saveCharInventory);
     }
 
     public void autoSaveGame(){
@@ -29,6 +27,10 @@ public class HubSpot {
 
     public String getHeroPosition(){
         return (String) this.heroPosition.get("Current_position");
+    }
+
+    public String getHeroPrevPosition(){
+        return (String) this.heroPosition.get("Previous_position");
     }
 
 
