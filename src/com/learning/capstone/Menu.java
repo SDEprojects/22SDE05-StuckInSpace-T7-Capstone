@@ -25,7 +25,7 @@ public class Menu {
     }
 
 
-    public static void mainMenu() {
+    public void mainMenu() {
         System.out.println("              |   Stuck in Outer Space   |                 ");
         System.out.println("              |     Make a Selection:    |                 ");
         System.out.println("------------------------------------------------------------");
@@ -53,8 +53,9 @@ public class Menu {
     }
 
 
+    public void moveMenu(){
 
-
+    }
 
 }
 

@@ -1,16 +1,19 @@
 package com.learning.capstone;
 
+import org.json.simple.JSONObject;
+import org.json.simple.JSONArray;
+
 public class Mission {
     private Location locations;
-    private Item items = new Item();;
-    private NPC npcs = new NPC();
-    private Hero hero = new Hero();
+    private Item items;
+    private NPC npcs;
+    private Menu menus;
 
     public Mission(){
         this.locations = new Location();
         this.items = new Item();
         this.npcs = new NPC();
-        this.hero = new Hero();
+        this.menus = new Menu();
     }
 
     public Location getLocations() {
@@ -25,6 +28,14 @@ public class Mission {
         return items;
     }
 
+    public Menu getMenus() {
+        return menus;
+    }
+
+    public void setMenus(Menu menus) {
+        this.menus = menus;
+    }
+
     public void setItems(Item items) {
         this.items = items;
     }
@@ -37,11 +48,29 @@ public class Mission {
         this.npcs = npcs;
     }
 
-    public Hero getHero() {
-        return hero;
+    public void getMainMenu(){
+        getMenus().mainMenu();
     }
 
-    public void setHero(Hero hero) {
-        this.hero = hero;
+    public void getInventoryMenu(){
+        getMenus().inventoryMenu();
+    }
+
+    public void getMissionsMenu(){
+        getMenus().missionsMenu();
+    }
+
+    public void getHelpMenu(){
+        getMenus().helpMenu();
+    }
+
+    public boolean isExitAvailable(String start, String exit){
+        boolean isExit = false;
+        String exitRequest = start + "_exit";
+        for (Object obj : this.locations.getLocDict()) {
+            JSONObject mission = (JSONObject) obj;
+            System.out.println(mission);
+        }
+        return isExit;
     }
 }
