@@ -1,4 +1,5 @@
 package com.learning.capstone;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.*;
@@ -53,8 +54,11 @@ public class Menu {
     }
 
 
-    public void moveMenu(){
-
+    public void moveMenu(JSONArray exits){
+        for (Object value: exits) {
+            System.out.printf(value.toString().toUpperCase());
+            System.out.printf("              |");
+        }
     }
 
 }

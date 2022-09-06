@@ -21,9 +21,7 @@ public class Location {
         JSONArray locationDict = null;
         try (FileReader reader = new FileReader("location_dictionary.json")) {
             Object obj = jsonParser.parse(reader);
-
             locationDict = (JSONArray) obj;
-
         } catch (FileNotFoundException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -32,18 +30,6 @@ public class Location {
             e.printStackTrace();
         }
         return locationDict;
-    }
-
-    public void parseLocationObject(JSONObject location, String chapter, String start)
-    {
-        //Get location object within list
-        JSONObject locationObject = (JSONObject) location.get(chapter);
-        System.out.println(locationObject);
-        // position = start + "_exit";
-
-        // String description = (String) locationObject.get(position);
-        //System.out.println(description);
-
     }
 
     public JSONArray getLocDict() {
