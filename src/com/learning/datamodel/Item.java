@@ -9,15 +9,13 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-
+import java.util.Iterator;
 
 public class Item {
     // Define variable to parse JSON file.
     private final JSONArray itemDict;
     // This is the variable when game called out an item.
-    public String itemCalledOut = "boots";
+    private String itemCalledOut = "toolkit";
 
     // Define variables from JSON file, so they could be used to create getters.
     private String itemName;
@@ -56,7 +54,8 @@ public class Item {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("./item_dictionary.json")) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        try (FileReader reader = new FileReader(classLoader.getResource("item_dictionary.json").getFile())) {
             //Read JSON file
             Object item_obj = jsonParser.parse(reader);
 
@@ -75,6 +74,20 @@ public class Item {
         }
         return itemDict;
     }
+    private void parseItemObject(JSONObject item) {
+
+        //Get single object within list
+        JSONObject itemObject = (JSONObject) item.get(itemCalledOut);
+
+        //Get item name, description, location, store, power, defense.
+        itemName = (String) itemObject.get("name");
+        itemDescription = (String) itemObject.get("description");
+        itemLocation = (String) itemObject.get("location");
+        itemStore = (String) itemObject.get("store");
+        itemPower = (String) itemObject.get("power");
+        itemDefense = (String) itemObject.get("defense");
+
+    }
 
     public JSONArray getItemDict() {
         return itemDict;
@@ -92,17 +105,8 @@ public class Item {
         );
     }
 
-    // TODO Couldn't get data from two layers JSON, hard code into Map for now.
-
-//    private Map<String, ArrayList<String>> itemLocationList(){
-//
-//    return itemLocationList;
-//    }
-
-
-
-
     // Getters for each attribute of the item.
+
     public String getItemName() {
         return itemName;
     }
@@ -162,10 +166,6 @@ public class Item {
     public String getItemCalledOut() {
         return itemCalledOut;
     }
-
-
-
-
 
 
 }

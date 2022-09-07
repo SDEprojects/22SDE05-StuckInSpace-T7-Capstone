@@ -1,7 +1,6 @@
-package com.learning.capstone;
+package com.learning.datamodel;
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -19,7 +18,8 @@ public class Location {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
         JSONArray locationDict = null;
-        try (FileReader reader = new FileReader("location_dictionary.json")) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        try (FileReader reader = new FileReader(classLoader.getResource("location_dictionary.json").getFile())) {
             Object obj = jsonParser.parse(reader);
             locationDict = (JSONArray) obj;
         } catch (FileNotFoundException e) {

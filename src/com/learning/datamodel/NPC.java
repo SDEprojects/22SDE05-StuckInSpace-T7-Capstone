@@ -1,4 +1,4 @@
-package com.learning.capstone;
+package com.learning.datamodel;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -18,16 +18,15 @@ public class NPC {
     @SuppressWarnings("unchecked")
     private JSONArray readNpcFile() {
         JSONParser jsonParser = new JSONParser();
-        JSONArray array = new JSONArray();
-        try (FileReader reader = new FileReader("npc_dictionary.json")) {
+        JSONArray npcDictionary = null;
+        ClassLoader classLoader = getClass().getClassLoader();
+        try (FileReader reader = new FileReader(classLoader.getResource("npc_dictionary.json").getFile())) {
             Object obj = jsonParser.parse(reader);
-            JSONArray npcDict = (JSONArray) obj;
-//            System.out.println("This is my NPC" + npcDict);
-//            npcDict.forEach((npc) -> parseNpcObject((JSONObject) npc));
+            npcDictionary = (JSONArray) obj;
         } catch (IOException | ParseException e) {
             e.printStackTrace();
         }
-        return npcDict;
+        return npcDictionary;
     }
 
     private static void parseNpcObject(JSONObject npc) {
