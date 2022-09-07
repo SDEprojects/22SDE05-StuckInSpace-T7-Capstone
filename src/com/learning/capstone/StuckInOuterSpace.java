@@ -1,6 +1,7 @@
 package com.learning.capstone;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class StuckInOuterSpace {
@@ -116,10 +117,28 @@ public class StuckInOuterSpace {
             System.out.println("Where would you like to move to? ");
             mission.getMoveMenu(hub.getHeroPosition());
             heroInput = scanner.nextLine();
-            if (heroInput.equalsIgnoreCase("look")){
+            if (heroInput.equalsIgnoreCase("look")) {
                 System.out.println("Your hero takes the time to investigate his surroundings.");
                 // call to check and see if there are items in this section of our locations.
                 // if there is an item, give it to the player and add it to their inventory.
+                // TODO Henry added some functions starts here.
+                // TODO Look function needs to be moved up a level.
+                ArrayList<String> itemFound = mission.getItems().getItemLocationList().get(hub.getHeroPosition());
+                System.out.println("The hero found these items here.");
+                System.out.println(itemFound);
+                System.out.println("Enter \"Pick\" to grab the items");
+
+                // Adding pick function.
+                if (heroInput.equalsIgnoreCase("pick")){
+                    System.out.println("You have added them to your inventory");
+                    ArrayList<String> currentInventory = new ArrayList<String>();
+                    currentInventory.addAll(itemFound);
+                    System.out.println(currentInventory);
+
+                }
+
+                // TODO Henry added functions ends here.
+
             } else if (!heroInput.equalsIgnoreCase("leave")) {
                 if(mission.isExitAvailable(hub.getHeroPosition(), heroInput)){
                     hub.setHeroPosition(heroInput);
@@ -129,5 +148,8 @@ public class StuckInOuterSpace {
             }
         }while(!heroInput.equalsIgnoreCase("leave"));
     }
+
+    // TODO Henry added some functions starts here.
+    // TODO Henry added functions ends here.
 
 }

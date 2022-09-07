@@ -2,8 +2,6 @@ package com.learning.capstone;
 
 import org.json.simple.JSONObject;
 
-import java.util.Arrays;
-import java.util.List;
 
 public class HubSpot {
     SaveGame savegame;
