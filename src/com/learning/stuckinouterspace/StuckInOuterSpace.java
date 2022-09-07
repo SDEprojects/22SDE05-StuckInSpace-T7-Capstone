@@ -22,9 +22,15 @@ public class StuckInOuterSpace {
         Scanner scanner = new Scanner(System.in);
         String input = "welcome";
         // display Hero and some attributes
-        System.out.println("Pick a Hero?");
+        System.out.println("  ___ _           _     _         ___       _             ___                  \n" +
+                    " / __| |_ _  _ __| |__ (_)_ _    / _ \\ _  _| |_ ___ _ _  / __|_ __ __ _ __ ___ \n" +
+                    " \\__ |  _| || / _| / / | | ' \\  | (_) | || |  _/ -_| '_| \\__ | '_ / _` / _/ -_)\n" +
+                    " |___/\\__|\\_,_\\__|_\\_\\ |_|_||_|  \\___/ \\_,_|\\__\\___|_|   |___| .__\\__,_\\__\\___|\n" +
+                    "                                                             |_|               ");
+        System.out.println("Name your hero: ");
         String hero = scanner.nextLine();
-        System.out.println("Output: " + hero );
+        System.out.println("Welcome " + hero + "!");
+        Story.gameIntro();
         Story.hub();
 
         //================================== STARTING THE GAME ===========================================//
