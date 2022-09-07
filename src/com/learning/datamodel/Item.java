@@ -1,4 +1,4 @@
-package com.learning.capstone;
+package com.learning.datamodel;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -8,8 +8,6 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Item {
     // Define variable to parse JSON file.
@@ -34,7 +32,8 @@ public class Item {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
 
-        try (FileReader reader = new FileReader("./item_dictionary.json")) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        try (FileReader reader = new FileReader(classLoader.getResource("item_dictionary.json").getFile())) {
             //Read JSON file
             Object item_obj = jsonParser.parse(reader);
 

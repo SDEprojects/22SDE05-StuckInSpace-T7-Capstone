@@ -1,4 +1,4 @@
-package com.learning.capstone;
+package com.learning.stuckinouterspace;
 
 public class Story {
     private String currentChapter;

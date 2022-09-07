@@ -1,6 +1,5 @@
-package com.learning.capstone;
+package com.learning.stuckinouterspace;
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 
 import java.util.*;
 
@@ -13,10 +12,6 @@ public class Menu {
     public void addMissionNames() {
         this.missionNames.add("Alien Outpost");
     }
-
-    //public void addCurrentItems() {
-       // this.currentItems.add(); JSONObject?
-    //}
 
     public ArrayList<String> getMissionNames() {
         return missionNames;
@@ -53,12 +48,24 @@ public class Menu {
         System.out.println("     Some useful tips about game play will go here      ");
     }
 
+    public void activeMissionMenu() {
+        System.out.println("              |   Stuck in Outer Space   |                 ");
+        System.out.println("              |     Make a Selection:    |                 ");
+        System.out.println("------------------------------------------------------------");
+        System.out.println("|     1. Move               |--------|     2. Inventory     |");
+        System.out.println("|     3. Help               |--------|     4. Quit         |");
+    }
+
 
     public void moveMenu(JSONArray exits){
+        System.out.println("--------------------------------------------------------------");
         for (Object value: exits) {
+            System.out.printf("|  ");
             System.out.printf(value.toString().toUpperCase());
-            System.out.printf("              |");
+            System.out.printf("  |");
         }
+        System.out.println();
+        System.out.println("--------------------------------------------------------------");
     }
 
 }

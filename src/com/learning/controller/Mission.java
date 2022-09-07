@@ -1,18 +1,19 @@
-package com.learning.capstone;
+package com.learning.controller;
 
+import com.learning.datamodel.Item;
+import com.learning.datamodel.Location;
+import com.learning.stuckinouterspace.Menu;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class Mission {
     private Location locations;
     private Item items;
-    private NPC npcs;
     private Menu menus;
 
     public Mission(){
         this.locations = new Location();
         this.items = new Item();
-        this.npcs = new NPC();
         this.menus = new Menu();
     }
 
@@ -40,14 +41,6 @@ public class Mission {
         this.items = items;
     }
 
-    public NPC getNpcs() {
-        return npcs;
-    }
-
-    public void setNpcs(NPC npcs) {
-        this.npcs = npcs;
-    }
-
     public void getMainMenu(){
         getMenus().mainMenu();
     }
@@ -68,6 +61,10 @@ public class Mission {
         getMenus().moveMenu(availableExits(start));
     }
 
+    public void getActiveMissionMenu(){
+        getMenus().activeMissionMenu();
+    }
+
     public boolean isExitAvailable(String start, String exit){
         boolean isExit = false;
         String exitRequest = start + "_exit";
@@ -83,7 +80,7 @@ public class Mission {
         }
         return isExit;
     }
-    public JSONArray availableExits(String start){
+    private JSONArray availableExits(String start){
         JSONArray exits = null;
         String exitRequest = start + "_exit";
         for (Object obj : this.locations.getLocDict()) {

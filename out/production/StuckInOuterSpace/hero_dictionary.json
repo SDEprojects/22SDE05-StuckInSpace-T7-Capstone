@@ -1,0 +1,13 @@
+[
+    {
+        "hero": {
+            "name": "Charlie",
+            "description": "Charlie is an ex-Army, introverted, solo space traveler with a very particular set of skills. He is currently on a journey to the deserted planet Surt, to find the ultimate solitude ",
+            "skills": "9th degree red belt, sharp shooter, superb engineer",
+            "equipped items": "Compass, TBD, TBD ",
+            "healthMin": 0,
+            "healthMax": 100,
+            "initialHealth": 100
+        }
+    }
+]

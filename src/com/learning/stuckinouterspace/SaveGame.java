@@ -1,7 +1,9 @@
-package com.learning.capstone;
+package com.learning.stuckinouterspace;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
+
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 
@@ -28,7 +30,8 @@ public class SaveGame {
         System.out.println(saveList);
 
         // Write to JSON file
-        try (FileWriter file = new FileWriter("player_save.json")) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        try (FileWriter file = new FileWriter(classLoader.getResource("player_save.json").getFile())) {
             file.write(saveList.toJSONString());
             file.flush();
         } catch (IOException e) {
