@@ -2,7 +2,7 @@ package com.learning.controller;
 
 import com.learning.datamodel.Item;
 import com.learning.datamodel.Location;
-import com.learning.stuckinouterspace.Menu;
+import com.learning.view.Menu;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
