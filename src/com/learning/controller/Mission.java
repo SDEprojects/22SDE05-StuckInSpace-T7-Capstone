@@ -65,6 +65,10 @@ public class Mission {
         getMenus().activeMissionMenu();
     }
 
+    public void getMoveHelpMenu(String start){
+        getMenus().helpMap(start, availableExits(start), this.items.getItemDict());
+    }
+
     public boolean isExitAvailable(String start, String exit){
         boolean isExit = false;
         String exitRequest = start + "_exit";
