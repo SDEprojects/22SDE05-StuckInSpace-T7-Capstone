@@ -1,4 +1,4 @@
-package com.learning.capstone;
+package com.learning.datamodel;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -8,6 +8,9 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -35,22 +38,8 @@ public class Item {
     public Item() {
         this.itemDict = readItemFile();
     }
-    public void parseItemObject(JSONObject item) {
 
-        //Get single object within list
-        JSONObject itemObject = (JSONObject) item.get(itemCalledOut);
-
-        //Get item name, description, location, store, power, defense.
-        itemName = (String) itemObject.get("name");
-        itemDescription = (String) itemObject.get("description");
-        itemLocation = (String) itemObject.get("location");
-        itemStore = (String) itemObject.get("store");
-        itemPower = (String) itemObject.get("power");
-        itemDefense = (String) itemObject.get("defense");
-
-    }
-
-    public JSONArray readItemFile() {
+    private JSONArray readItemFile() {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
 
