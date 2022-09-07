@@ -1,7 +1,8 @@
-package com.learning.stuckinouterspace;
+package com.learning.client;
 
 import com.learning.controller.HubSpot;
 import com.learning.controller.Mission;
+import com.learning.view.Story;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -11,11 +12,6 @@ public class StuckInOuterSpace {
     public static void main(String[] args) throws IOException {
         /**
          * Introduction to the game
-         * TODO:
-         * 1. game story intro printed out on terminal, story.gameIntro()
-         * 2. PROMPT USER to put the hero name the would like to use
-         * 3. set character attributes (currentChapter, currentItems, currentPosition, etc.)
-         * 4. create Hub object and instantiate its values. HubSpot hub = new Hubspot()
         * */
         Mission missions = new Mission();
         HubSpot hub = new HubSpot();
