@@ -92,15 +92,19 @@ public class StuckInOuterSpace {
 
         Story.exploreOutpost();
         do {
-            System.out.println("Your position: " + hub.getHeroPosition());
             System.out.println("Where would you like to move to? ");
             mission.getMoveMenu(hub.getHeroPosition());
             heroInput = scanner.nextLine();
             if (heroInput.equalsIgnoreCase("look")){
                 System.out.println("Your hero takes the time to investigate his surroundings.");
+            } else if (heroInput.equalsIgnoreCase("help")) {
+                mission.getMoveHelpMenu(hub.getHeroPosition());
             } else if (!heroInput.equalsIgnoreCase("leave")) {
                 if(mission.isExitAvailable(hub.getHeroPosition(), heroInput)){
                     hub.setHeroPosition(heroInput);
+                }
+                else{
+
                 }
             }
         }while(!heroInput.equalsIgnoreCase("leave"));
