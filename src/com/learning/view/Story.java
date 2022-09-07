@@ -1,4 +1,4 @@
-package com.learning.stuckinouterspace;
+package com.learning.view;
 
 public class Story {
     private String currentChapter;
