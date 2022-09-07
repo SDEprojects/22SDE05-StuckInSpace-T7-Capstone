@@ -18,7 +18,7 @@ public class Item {
     // Define variable to parse JSON file.
     private final JSONArray itemDict;
     // This is the variable when game called out an item.
-    private String itemCalledOut = "toolkit";
+    public String itemCalledOut = "toolkit";
 
     // Define variables from JSON file, so they could be used to create getters.
     private String itemName;
