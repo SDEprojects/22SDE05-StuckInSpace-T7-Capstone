@@ -2,7 +2,7 @@ package com.learning.controller;
 
 import com.learning.datamodel.Hero;
 import com.learning.datamodel.NPC;
-import com.learning.stuckinouterspace.SaveGame;
+import com.learning.view.SaveGame;
 import org.json.simple.JSONObject;
 
 public class HubSpot {
