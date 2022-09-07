@@ -1,7 +1,6 @@
-package com.learning.capstone;
+package com.learning.datamodel;
 
 import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
@@ -21,7 +20,8 @@ public class Hero {
     private JSONArray readHeroFile() {
         JSONParser jsonParser = new JSONParser();
         JSONArray heroDictionary = null;
-        try (FileReader reader = new FileReader("hero_dictionary.json")) {
+        ClassLoader classLoader = getClass().getClassLoader();
+        try (FileReader reader = new FileReader(classLoader.getResource("hero_dictionary.json").getFile())) {
             Object obj = jsonParser.parse(reader);
             heroDictionary = (JSONArray) obj;
         } catch (FileNotFoundException e) {

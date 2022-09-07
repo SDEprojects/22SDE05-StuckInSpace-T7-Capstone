@@ -1,4 +1,7 @@
-package com.learning.capstone;
+package com.learning.stuckinouterspace;
+
+import com.learning.controller.HubSpot;
+import com.learning.controller.Mission;
 
 import java.io.IOException;
 import java.util.Scanner;
@@ -29,34 +32,22 @@ public class StuckInOuterSpace {
 
             //=============================== ENTERING THE HUB ===========================================//
             while(!input.equals("quit")){
-                /**
-                 * TODO:
-                 * 1. check if currentChapter is equal to chapter 1
-                 *     1a. create Mission Object and instantiate its values
-                 *     1b. Welcome user to the Hub (crash landing site?) explain
-                 *          their surroundings, near by npc's, and to check for new missions.
-                 *     1c. Hub.showAllMenus()
-                 *         1d. PROMPT USER
-                 */
-
                 // printing the main menu
                 missions.getMainMenu();
-                System.out.println("---------------------------------------------------------");
-                System.out.println("TODO: IMPROVE INTRO");
                 System.out.println("You find yourself sitting in the bay of the ship, what's the next move? ");
                 String heroInput = scanner.nextLine();
 
+                //============================ ACTIONS ITEMS FROM MENU ===================================//
+                //------------------------ inventory, missions, help, quit ------------------------------
                 if(heroInput.equalsIgnoreCase("inventory")){
                     missions.getInventoryMenu();
                     System.out.println("Which item would you like to look at? ");
                     String itemInput = scanner.nextLine();
-                    // itemDict.forEach((name) -> items.parseItemObject((JSONObject) name, item))
                 } else if (heroInput.equalsIgnoreCase("missions")) {
                     missions.getMissionsMenu();
                     System.out.println("Which mission would you like to try? ");
                     String missionInput = scanner.nextLine();
                     if((missionInput.equalsIgnoreCase("alien outpost")) || missionInput.equalsIgnoreCase("1")){
-//                        Story.alienOutpost();
                         StuckInOuterSpace.activateMission(missions, hub,"1");
                     } else {
                         break;
@@ -68,13 +59,6 @@ public class StuckInOuterSpace {
                     // save the game before closing out.
                     hub.autoSaveGame();
                 }
-                /**
-                 * Item menu - Hub.showItemMenu();
-                 *       prompt user - gun
-                 *       Hub.checkItem(gun); -> parseItemObject (Item.get(gun); gun.get(description));
-                 * missions - Hub.showMissionsMenu();
-                 * npcs - Hub.showNpcs();
-                 */
             }
 
 
@@ -90,7 +74,7 @@ public class StuckInOuterSpace {
         Story.alienOutpost();
         
         while(!heroInput.equalsIgnoreCase("quit")){
-            System.out.println("SHOW THE MISSION MENU ---[MOVE     INVENTORY       HELP        QUIT_MISSION]---");
+            mission.getActiveMissionMenu();
             System.out.println("What would you like to do? ");
             heroInput = scanner.nextLine();
             System.out.println(heroInput);
@@ -118,13 +102,9 @@ public class StuckInOuterSpace {
             heroInput = scanner.nextLine();
             if (heroInput.equalsIgnoreCase("look")){
                 System.out.println("Your hero takes the time to investigate his surroundings.");
-                // call to check and see if there are items in this section of our locations.
-                // if there is an item, give it to the player and add it to their inventory.
             } else if (!heroInput.equalsIgnoreCase("leave")) {
                 if(mission.isExitAvailable(hub.getHeroPosition(), heroInput)){
                     hub.setHeroPosition(heroInput);
-
-                    System.out.println("hero previous position: " + hub.getHeroPrevPosition());
                 }
             }
         }while(!heroInput.equalsIgnoreCase("leave"));
