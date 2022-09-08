@@ -1,13 +1,15 @@
 package com.learning.utility;
 
 import org.json.simple.JSONArray;
+import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.FileNotFoundException;
+import java.io.FileWriter;
 import java.io.IOException;
 
-public class FileReader {
+public class FileHandler {
 
     @SuppressWarnings("unchecked")
     public JSONArray readJsonFile(String fileName) {
@@ -26,5 +28,21 @@ public class FileReader {
             e.printStackTrace();
         }
         return dictionary;
+    }
+
+    public void writeJsonFile(JSONObject playerSave){
+
+        // Add saved info to json array
+        JSONArray saveList = new JSONArray();
+        saveList.add(playerSave);
+
+        // Write to JSON file
+        ClassLoader classLoader = getClass().getClassLoader();
+        try (FileWriter file = new FileWriter(classLoader.getResource("player_save.json").getFile())) {
+            file.write(saveList.toJSONString());
+            file.flush();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -7,7 +7,6 @@ import org.json.simple.JSONObject;
 
 public class HubSpot {
     SaveGame savegame;
-
     private Hero hero;
     private NPC npcs;
     JSONObject heroPosition;

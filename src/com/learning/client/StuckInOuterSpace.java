@@ -65,7 +65,7 @@ public class StuckInOuterSpace {
                 } else if (heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4")) {
                     input = heroInput;
                     // save the game before closing out.
-                    hub.autoSaveGame();
+                    // hub.autoSaveGame();
                 }
             }
 
@@ -86,7 +86,7 @@ public class StuckInOuterSpace {
             System.out.println("What would you like to do? ");
             heroInput = scanner.nextLine();
             System.out.println(heroInput);
-            if(heroInput.equalsIgnoreCase("move") || heroInput.equalsIgnoreCase("1")){
+            if(heroInput.equalsIgnoreCase("explore") || heroInput.equalsIgnoreCase("1")){
                 StuckInOuterSpace.move(mission, hub);
             } else if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("2")) {
                 mission.getInventoryMenu();

@@ -1,6 +1,6 @@
 package com.learning.datamodel;
 
-import com.learning.utility.FileReader;
+import com.learning.utility.FileHandler;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -21,7 +21,7 @@ public class Hero {
     private JSONObject currentPosition;
 
     public Hero(){
-        this.heroDict = new FileReader().readJsonFile("hero_dictionary.json");
+        this.heroDict = new FileHandler().readJsonFile("hero_dictionary.json");
         buildHero("default");
     }
 
@@ -110,12 +110,8 @@ public class Hero {
          */
         System.out.println("==============================================================");
         System.out.println("| Name:  " + getHeroName().toUpperCase());
-        System.out.println("==============================================================");
-        System.out.println();
-        System.out.println("**************************************************************");
         System.out.println("**************************************************************");
         System.out.println();
-        System.out.println("==============================================================");
         System.out.println("| Background:  " + getDescription());
         System.out.println("| Skills:      " + getSkills());
         System.out.println("| Items:       " + getItems());
