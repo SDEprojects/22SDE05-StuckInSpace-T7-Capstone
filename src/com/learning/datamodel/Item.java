@@ -18,7 +18,7 @@ public class Item {
     // Define variable to parse JSON file.
     private JSONArray itemDict;
     // This is the variable when game called out an item.
-    private String itemCalledOut = "toolkit";
+    private String itemCalledOut = "fuel";
 
     // Define variables from JSON file, so they could be used to create getters.
     private String itemName;
@@ -29,7 +29,7 @@ public class Item {
     private String itemDefense;
 
     // Define variables for inventory lists.
-    public ArrayList<String> backpackList;
+    public ArrayList<String> backpackList = new ArrayList<>();
     public ArrayList<String> carryList;
     public ArrayList<String> wearList;
     private Map<String, ArrayList<String>> itemLocationList;
@@ -41,16 +41,16 @@ public class Item {
 
     // create a function to get data from JSON
 
+
     public JSONArray readItemFile() {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
-
+        JSONArray itemList = null;
         ClassLoader classLoader = getClass().getClassLoader();
         try (FileReader reader = new FileReader(classLoader.getResource("item_dictionary.json").getFile())) {
             //Read JSON file
             Object item_obj = jsonParser.parse(reader);
-
-            JSONArray itemList = (JSONArray) item_obj;
+            itemList = (JSONArray) item_obj;
 //            System.out.println(itemList); // **** for dev process only, need to Delete.
 
             //Iterator over item array
@@ -63,7 +63,7 @@ public class Item {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return itemDict;
+        return itemList;
     }
     public void parseItemObject(JSONObject item) {
 
@@ -83,6 +83,9 @@ public class Item {
     public JSONArray getItemDict() {
         return itemDict;
     }
+//    public JSONArray getItemDict() {
+//        return itemDict;
+//    }
     // Multiple layers JSON call ends here.
 
     // Display item details.
@@ -151,6 +154,14 @@ public class Item {
 
     // Setter for item called by the player.
 
+
+    public ArrayList<String> getBackpackList() {
+        return backpackList;
+    }
+
+    public void setBackpackList(ArrayList<String> backpackList) {
+        this.backpackList = backpackList;
+    }
 
     public void setItemCalledOut(String itemCalledOut) {
         this.itemCalledOut = itemCalledOut;

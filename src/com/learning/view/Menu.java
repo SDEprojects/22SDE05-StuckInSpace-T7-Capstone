@@ -28,11 +28,28 @@ public class Menu {
         System.out.println("|       Help             |--------|       Quit       |");
     }
 
+    // TODO Henry added some functions starts here.
     public void inventoryMenu() {
         System.out.println("------------------------------------------------------------");
         System.out.println("             |          Inventory:         |                ");
+        System.out.println("------------------------------------------------------------");
+
     }
 
+    public void itemFoundMenu(){
+        System.out.println("------------------------------------------------------------");
+        System.out.println("             |      Item in this area:     |                ");
+        System.out.println("------------------------------------------------------------");
+    }
+
+    public void pickItemMenu(){
+        System.out.println("------------------------------------------------------------");
+        System.out.println("      |   Enter PICK to add the items in backpack  |        ");
+        System.out.println("------------------------------------------------------------");
+    };
+
+
+    // TODO Henry added some functions ends here.
     public void missionsMenu() {
         System.out.println("------------------------------------------------------------");
         System.out.println("              |          Missions:         |                ");

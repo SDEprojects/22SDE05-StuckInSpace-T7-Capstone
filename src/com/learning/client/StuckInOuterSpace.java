@@ -103,29 +103,25 @@ public class StuckInOuterSpace {
             mission.getMoveMenu(hub.getHeroPosition());
             heroInput = scanner.nextLine();
             if (heroInput.equalsIgnoreCase("look")){
-                System.out.println("Your hero takes the time to investigate his surroundings.");
-            } else if (heroInput.equalsIgnoreCase("help")) {
-                mission.getMoveHelpMenu(hub.getHeroPosition());
+
+                // TODO Henry added some functions starts here.
                 // call to check and see if there are items in this section of our locations.
                 // if there is an item, give it to the player and add it to their inventory.
-                // TODO Henry added some functions starts here.
-                // TODO Look function needs to be moved up a level.
-                mission.lookAround();
-//                ArrayList<String> itemFound = mission.getItems().getItemLocationList().get(hub.getHeroPosition());
-//                System.out.println("The hero found these items here.");
-//                System.out.println(itemFound);
-//                System.out.println("Enter \"Pick\" to grab the items");
-//
-//                // Adding pick function.
-//                if (heroInput.equalsIgnoreCase("pick")){
-//                    System.out.println("You have added them to your inventory");
-//                    ArrayList<String> currentInventory = new ArrayList<String>();
-//                    currentInventory.addAll(itemFound);
-//                    System.out.println(currentInventory);
-//
-//                }
+
+                mission.getLookMenu();
+                hub.getLookAround();
+
+                mission.getPickMenu();
+                heroInput = scanner.nextLine();
+                if (heroInput.equalsIgnoreCase("pick")){
+                    hub.addToInventory();
+
+                }
 
                 // TODO Henry added functions ends here.
+            } else if (heroInput.equalsIgnoreCase("help")) {
+                mission.getMoveHelpMenu(hub.getHeroPosition());
+
 
             } else if (!heroInput.equalsIgnoreCase("leave")) {
                 if(mission.isExitAvailable(hub.getHeroPosition(), heroInput)){

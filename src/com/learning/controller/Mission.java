@@ -99,33 +99,23 @@ public class Mission {
 
 
     // TODO Henry added some functions starts here.
-    // TODO Look function needs to be moved up a level.
 
-    public void lookAround(){
-        for (Object obj : this.items.getItemDict()) {
-            JSONObject items = (JSONObject) obj;
-            JSONObject itemName = (JSONObject) items.get("fuel");
-            JSONArray itemLocation = (JSONArray) itemName.get("location");
-            System.out.println(items);
-            System.out.println(itemName);
-            System.out.println(itemLocation);
-        }
+    // for look around menu.
+    public void getLookMenu(){
+        getMenus().itemFoundMenu();
+    };
+    public void getPickMenu(){
+        getMenus().pickItemMenu();
+    };
 
-    }
+
+
 
     public void pickItem(){
 
     }
 
-    public void inspectItem(){
-//        System.out.println(
-//                "\n" + itemName +
-//                        "\n" + itemDescription +
-//                        "\nIt has " + itemPower
-//                        + " \uD83E\uDD4APower  and " + itemDefense
-//                        + " \uD83D\uDEE1Defense ."
-//        );
-    }
+
 
 
 //    ArrayList<String> itemFound = mission.getItems().getItemLocationList().get(hub.getHeroPosition());

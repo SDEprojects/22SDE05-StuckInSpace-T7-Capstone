@@ -11,7 +11,7 @@
     "engine" : {
         "name" : "\uD83D\uDE80Engine\uD83D\uDE80",
         "description" : "The engine fell off from the spacecraft during the crash.",
-        "location" : "***TBD***",
+        "location" : "engineRoom",
         "store" : "Inventory",
         "power" : "0",
         "defense" : "0"
@@ -27,7 +27,7 @@
     "TM" : {
         "name" : "\uD83D\uDCD8 TM 11-2F-35AV3 \uD83D\uDCD8",
         "description" : "This is the Technical Manual of the spacecraft, maybe I could use it to find out how to fix the spacecraft.",
-        "location" : "Alien Outpost",
+        "location" : "start",
         "store" : "Inventory",
         "power" : "0",
         "defense" : "0"
@@ -35,7 +35,7 @@
     "keycard" : {
         "name" : "\uD83D\uDCB3 Keycard \uD83D\uDCB3",
         "description" : "A key card, it has a symbol look the same with the one on the door of the server room.",
-        "location" : "***TBD***",
+        "location" : "basement",
         "store" : "Inventory",
         "power" : "0",
         "defense" : "0"
@@ -43,7 +43,7 @@
     "basement_key" : {
         "name" : "\uD83D\uDD11 Metal Key \uD83D\uDD11",
         "description" : "An old metal key, covered with dust.",
-        "location" : "Alien Outpost",
+        "location" : "hallway",
         "store" : "Inventory",
         "power" : "0",
         "defense" : "0"
@@ -59,7 +59,7 @@
     "GPS" : {
         "name" : "\uD83D\uDDFA GPS \uD83D\uDDFA",
         "description" : "This thing looks like a GPS, let's see what it does",
-        "location" : "***TBD***",
+        "location" : "controlStation",
         "store" : "Inventory",
         "power" : "0",
         "defense" : "0"
@@ -67,7 +67,7 @@
     "knife" : {
         "name" : "\uD83D\uDDE1 Knife \uD83D\uDDE1",
         "description" : "A cooking knife.",
-        "location" : "***TBD should be at the first location***",
+        "location" : "start",
         "store" : "Carry",
         "power" : "1",
         "defense" : "0"
@@ -75,7 +75,7 @@
     "rifle" : {
         "name" : "╾━╤デ╦︻ Rifle ︻╦̵̵̿╤──",
         "description" : "A rifle. Fairly new condition.",
-        "location" : "***TBD***",
+        "location" : "messHall",
         "store" : "Carry",
         "power" : "3",
         "defense" : "1"
@@ -83,7 +83,7 @@
     "pistol" : {
         "name" : "\uD83D\uDD2B Pistol \uD83D\uDD2B",
         "description" : "1911A1. Gold color body with walnut grips.",
-        "location" : "***TBD***",
+        "location" : "controlStation",
         "store" : "Carry",
         "power" : "2",
         "defense" : "1"
@@ -100,7 +100,7 @@
     "IMTV" : {
         "name" : "\uD83E\uDDBA IMTV \uD83E\uDDBA",
         "description" : "Improved Modular Tactical Vest, it's always good to have a body armor on.",
-        "location" : "***TBD***",
+        "location" : "messHall",
         "store" : "Wear",
         "power" : "0",
         "defense" : "1"
@@ -109,7 +109,7 @@
     "ACH" : {
         "name" : "\uD83E\uDE96 ACH \uD83E\uDE96",
         "description" : "It's not just a helmet, it is an Advanced Combat Helmet, made of Kevlar.",
-        "location" : "***TBD***",
+        "location" : "messHall",
         "store" : "Wear",
         "power" : "0",
         "defense" : "5"
@@ -118,7 +118,7 @@
     "gloves" : {
         "name" : "\uD83E\uDDE4 Gloves \uD83E\uDDE4",
         "description" : "A pair of tactical gloves.",
-        "location" : "***TBD***",
+        "location" : "engineRoom",
         "store" : "Wear",
         "power" : "0",
         "defense" : "1"
@@ -127,7 +127,7 @@
     "boots" : {
         "name" : "\uD83E\uDD7E Boots \uD83E\uDD7E",
         "description" : "A pair of tactical boots, brand new.",
-        "location" : "***TBD***",
+        "location" : "hallway",
         "store" : "Wear",
         "power" : "0",
         "defense" : "1"
