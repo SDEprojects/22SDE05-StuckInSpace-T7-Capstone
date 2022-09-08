@@ -20,17 +20,21 @@ public class StuckInOuterSpace {
         Scanner scanner = new Scanner(System.in);
         String input = "not-exit";
         // display Hero and some attributes
-        System.out.println("  ___ _           _     _         ___       _             ___                  \n" +
-                    " / __| |_ _  _ __| |__ (_)_ _    / _ \\ _  _| |_ ___ _ _  / __|_ __ __ _ __ ___ \n" +
-                    " \\__ |  _| || / _| / / | | ' \\  | (_) | || |  _/ -_| '_| \\__ | '_ / _` / _/ -_)\n" +
-                    " |___/\\__|\\_,_\\__|_\\_\\ |_|_||_|  \\___/ \\_,_|\\__\\___|_|   |___| .__\\__,_\\__\\___|\n" +
+        System.out.println("          ___ _           _     _         ___       _             ___                  \n" +
+                    "         / __| |_ _  _ __| |__ (_)_ _    / _ \\ _  _| |_ ___ _ _  / __|_ __ __ _ __ ___ \n" +
+                    "         \\__ |  _| || / _| / / | | ' \\  | (_) | || |  _/ -_| '_| \\__ | '_ / _` / _/ -_)\n" +
+                    "         |___/\\__|\\_,_\\__|_\\_\\ |_|_||_|  \\___/ \\_,_|\\__\\___|_|   |___| .__\\__,_\\__\\___|\n" +
                     "                                                             |_|               ");
         System.out.println("Name your hero: ");
         String name = scanner.nextLine();
         hub.setPlayerName(name);
         hub.showPlayerProfile();
         Story.gameIntro();
+        System.out.println("Type next to continue");
+        String next = scanner.nextLine();
         Story.hub();
+
+
 
         //================================== STARTING THE GAME ===========================================//
         while(!(input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("4"))){
@@ -39,7 +43,7 @@ public class StuckInOuterSpace {
             while(!(input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("4"))){
                 // printing the main menu
                 missions.getMainMenu();
-                System.out.println("You find yourself sitting in the bay of the ship, what's the next move? ");
+                System.out.println("YWhat would you like to do next? ");
                 String heroInput = scanner.nextLine();
 
                 //============================ ACTIONS ITEMS FROM MENU ===================================//

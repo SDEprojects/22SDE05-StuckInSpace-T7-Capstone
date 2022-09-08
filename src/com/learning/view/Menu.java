@@ -21,14 +21,13 @@ public class Menu {
     }
 
     public void mainMenu() {
-        System.out.println("                                                            ");
-        System.out.println("                 |     Make a Selection:    |               ");
-        System.out.println("-----------------------------------------------------------------------------------------");
-        System.out.println("|     Inventory          |--------|     Missions     |");
-        System.out.println("|       Help             |--------|       Quit       |");
+        System.out.println("----------------------------------------------------------------------------------------- \n" +
+                "                          |     Type Your Selection:    |               \n" +
+                "-----------------------------------------------------------------------------------------\n" +
+                "             |     Missions           |--------|     Inventory    |\n" +
+                "             |       Help             |--------|       Quit       |\n");
     }
 
-    // TODO Henry added some functions starts here.
     public void inventoryMenu() {
         System.out.println("------------------------------------------------------------");
         System.out.println("             |          Inventory:         |                ");
@@ -52,19 +51,28 @@ public class Menu {
 
     // TODO Henry added some functions ends here.
     public void missionsMenu() {
-        System.out.println("------------------------------------------------------------");
-        System.out.println("              |          Missions:         |                ");
-        System.out.println("------------------------------------------------------------");
-        System.out.println("             |         1.Alien Outpost      |                ");
+        System.out.println("----------------------------------------------------------------------------------------- \n" +
+                "                                 |     Missions:    |               \n" +
+                        "-----------------------------------------------------------------------------------------\n" +
+                        "                             |      Alien Outpost     |\n");
 
     }
 
+    /*public void alienoutpostMenu() {
+        System.out.println("----------------------------------------------------------------------------------------- \n" +
+                "                          |     What would you like to do?    |               \n" +
+                "-----------------------------------------------------------------------------------------\n" +
+                "             |      Enter           |--------|     Inventory    |\n" +
+                "             |       Help           |--------|       Quit       |\n");
+
+    } */
+
     public void activeMissionMenu() {
-        System.out.println("--------------------------------------------------------");
-        System.out.println("                  |     Missions:    |                  ");
-        System.out.println("--------------------------------------------------------");
-        System.out.println("|     1. Move          |--------|     2. Inventory     |");
-        System.out.println("|     3. Help          |--------|     4. Quit          |");
+        System.out.println("----------------------------------------------------------------------------------------- \n" +
+                "                          |     Type Your Selection:    |               \n" +
+                        "-----------------------------------------------------------------------------------------\n" +
+                        "             |     Missions           |--------|     Inventory    |\n" +
+                        "             |       Help             |--------|       Quit       |\n");
     }
 
 
