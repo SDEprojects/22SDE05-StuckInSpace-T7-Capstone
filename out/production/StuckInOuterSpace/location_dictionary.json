@@ -18,7 +18,7 @@
       "messHall_exit": ["hallway"],
       "messHall_description": "Intro to Alien Outpost",
       "hallway_position": "hallway",
-      "hallway_exit": ["start", "basement", "hallway", "controlStation", "messHall"],
+      "hallway_exit": ["start", "basement", "controlStation", "messHall"],
       "hallway_description": "Intro to Alien Outpost"
     }
   }
