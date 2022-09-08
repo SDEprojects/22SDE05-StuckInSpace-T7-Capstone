@@ -18,11 +18,16 @@ public class Story {
         System.out.println("\n" +
                 "                       ▀█▀ █░█ █▀▀   █░█ █░█ █▄▄\n" +
                 "                       ░█░ █▀█ ██▄   █▀█ █▄█ █▄█ \n");
-        System.out.println("      You are at the hub. Here you may choose the mission you'd like to play. ");
+        System.out.println("      You are at the hub. Here you may choose the mission you'd like to play, \n" +
+                "                  check your inventory, get help, or exit the game. ");
     }
 
     public static void alienOutpost(){
-        System.out.println("You find yourself in a strange field. everything has been cleared out and all that stands before you is an unknown tower");
+        System.out.println("\n" +
+                "        ▄▀█ █░░ █ █▀▀ █▄░█   █▀█ █░█ ▀█▀ █▀█ █▀█ █▀ ▀█▀\n" +
+                "        █▀█ █▄▄ █ ██▄ █░▀█   █▄█ █▄█ ░█░ █▀▀ █▄█ ▄█ ░█░\n");
+        System.out.println("You find yourself in a strange field. everything has been cleared out and all that \n " +
+                "stands before you is an unknown tower");
     }
 
 
