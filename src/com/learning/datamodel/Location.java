@@ -1,6 +1,6 @@
 package com.learning.datamodel;
 
-import com.learning.utility.FileReader;
+import com.learning.utility.FileHandler;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -10,7 +10,7 @@ public class Location {
     private String startPosition;
 
     public Location(){
-        this.locDict = new FileReader().readJsonFile("location_dictionary.json");
+        this.locDict = new FileHandler().readJsonFile("location_dictionary.json");
         buildMap("mission_01");
     }
 

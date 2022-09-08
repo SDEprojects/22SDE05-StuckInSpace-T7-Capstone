@@ -1,5 +1,6 @@
 package com.learning.view;
 
+import com.learning.utility.FileHandler;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
@@ -11,30 +12,35 @@ import java.util.List;
 
 public class SaveGame {
     // TODO The following variables should read from current game status.
-    String saveCharName = "Nina";
-    String saveCharLocation = "Alien Outpost";
-    List<String> saveCharInventory = Arrays.asList("basement_key", "TM");
+    String saveCharName;
+    String saveCharLocation;
+    JSONArray saveCharInventory;
 
     public void saveGame(){
         // Add saved info
-        JSONObject saveOBJ = new JSONObject();
-        saveOBJ.put("playerName", saveCharName);
-        saveOBJ.put("playerLocation", saveCharLocation);
-        saveOBJ.put("playerInventory", saveCharInventory);
-        System.out.println(saveOBJ); // Test
+    }
 
-        // Add saved info to list
-        JSONArray saveList = new JSONArray();
-        saveList.add(saveOBJ);
-        System.out.println(saveList);
+    public String getSaveCharName() {
+        return saveCharName;
+    }
 
-        // Write to JSON file
-        ClassLoader classLoader = getClass().getClassLoader();
-        try (FileWriter file = new FileWriter(classLoader.getResource("player_save.json").getFile())) {
-            file.write(saveList.toJSONString());
-            file.flush();
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+    public void setSaveCharName(String saveCharName) {
+        this.saveCharName = saveCharName;
+    }
+
+    public String getSaveCharLocation() {
+        return saveCharLocation;
+    }
+
+    public void setSaveCharLocation(String saveCharLocation) {
+        this.saveCharLocation = saveCharLocation;
+    }
+
+    public JSONArray getSaveCharInventory() {
+        return saveCharInventory;
+    }
+
+    public void setSaveCharInventory(JSONArray saveCharInventory) {
+        this.saveCharInventory = saveCharInventory;
     }
 }
