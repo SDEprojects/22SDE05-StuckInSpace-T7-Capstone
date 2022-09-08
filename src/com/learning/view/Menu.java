@@ -32,8 +32,9 @@ public class Menu {
     public void inventoryMenu() {
         System.out.println("------------------------------------------------------------");
         System.out.println("             |          Inventory:         |                ");
+        System.out.println("      |     Enter item name to inspect the item    |        ");
+        System.out.println("       |       These are the items you have:      |         ");
         System.out.println("------------------------------------------------------------");
-
     }
 
     public void itemFoundMenu(){

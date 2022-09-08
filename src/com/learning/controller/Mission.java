@@ -111,27 +111,6 @@ public class Mission {
 
 
 
-    public void pickItem(){
-
-    }
-
-
-
-
-//    ArrayList<String> itemFound = mission.getItems().getItemLocationList().get(hub.getHeroPosition());
-//                System.out.println("The hero found these items here.");
-//                System.out.println(itemFound);
-//                System.out.println("Enter \"Pick\" to grab the items");
-//
-//    // Adding pick function.
-//                if (heroInput.equalsIgnoreCase("pick")){
-//        System.out.println("You have added them to your inventory");
-//        ArrayList<String> currentInventory = new ArrayList<String>();
-//        currentInventory.addAll(itemFound);
-//        System.out.println(currentInventory);
-
-//    }
-
     // TODO Henry added functions ends here.
 
 }

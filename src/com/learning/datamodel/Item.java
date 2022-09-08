@@ -89,15 +89,7 @@ public class Item {
     // Multiple layers JSON call ends here.
 
     // Display item details.
-    public void showItemCard(){
-        System.out.println(
-         "\n" + itemName +
-         "\n" + itemDescription +
-         "\nIt has " + itemPower
-         + " \uD83E\uDD4APower  and " + itemDefense
-         + " \uD83D\uDEE1Defense ."
-        );
-    }
+
 
     // Getters for each attribute of the item.
 

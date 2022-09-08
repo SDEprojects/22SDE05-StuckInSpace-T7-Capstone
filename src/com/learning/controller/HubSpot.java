@@ -16,11 +16,13 @@ public class HubSpot {
     SaveGame savegame;
 
     private Hero hero;
+    private Item item;
     private NPC npcs;
     JSONObject heroPosition = new JSONObject();
 
     public HubSpot(){
         this.savegame = new SaveGame();
+        this.item = new Item();
         this.heroPosition.put("Current_position", "start");
         this.heroPosition.put("Previous_position", "hub");
     }
@@ -69,16 +71,16 @@ public class HubSpot {
 
     // TODO Henry added some functions starts here.
     ArrayList<String> itemFound = new ArrayList<>();
-    public void getLookAround(){
+    public void getLookAround(String position){
         // This will print a list of items based on hero current location.
         Mission mission = new Mission();
         Item item = new Item();
         HubSpot hub = new HubSpot();
 
-        itemFound.clear();
+//        itemFound.clear();
         itemFound = mission.getItems().getItemLocationList().get(hub.getHeroPosition());
-//        System.out.println(hub.heroPosition);
-//        System.out.println(hub.getHeroPosition()); // TODO hero location locked at start
+        System.out.println(hub.heroPosition);
+        System.out.println(hub.getHeroPosition()); // TODO hero location locked at start
         if (itemFound.size() > 0){
 
             for (int i = 0; i < itemFound.size(); i++){
@@ -98,8 +100,8 @@ public class HubSpot {
     public void addToInventory(){
         Mission mission = new Mission();
         Item item = new Item();
-        HubSpot hub = new HubSpot();
         Map itemFoundMap = mission.getItems().getItemLocationList();
+//        System.out.println(itemFound);
 //        System.out.println(itemFoundMap.size());
         if (itemFound.size() > 0){
             for (int i = 0; i < itemFound.size(); i++){
@@ -108,13 +110,33 @@ public class HubSpot {
                 item.readItemFile();
                 System.out.println(item.getItemName() + " is added to your backpack \uD83C\uDF92" );
             }
-            itemFoundMap.remove(hub.getHeroPosition());
-
+            itemFound.remove(this.getHeroPosition());
+//            System.out.println(item.backpackList);
+//            System.out.println(itemFound);
         }
 
     }
+    // Show inventory function.
+    public void showInventory(){
+        Item item = new Item();
+        ArrayList itemInInv = item.backpackList;
+        for (int i = 0; i < itemInInv.size(); i++){
+            System.out.println(itemInInv.get(i));
+        }
+    }
 
+    // Generate item card function.
+    public void showItemCard(){
+        Item item = new Item();
 
+        System.out.println(
+                "\n" + item.getItemName() +
+                        "\n" + item.getItemDescription() +
+                        "\nIt has " + item.getItemPower()
+                        + " \uD83E\uDD4APower  and " + item.getItemDefense()
+                        + " \uD83D\uDEE1Defense ."
+        );
+    }
 
     // TODO Henry added some functions ends here.
 

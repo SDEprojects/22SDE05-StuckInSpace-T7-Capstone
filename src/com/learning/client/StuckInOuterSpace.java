@@ -2,6 +2,7 @@ package com.learning.client;
 
 import com.learning.controller.HubSpot;
 import com.learning.controller.Mission;
+import com.learning.datamodel.Item;
 import com.learning.view.Story;
 
 import java.io.IOException;
@@ -42,10 +43,20 @@ public class StuckInOuterSpace {
 
                 //============================ ACTIONS ITEMS FROM MENU ===================================//
                 //------------------------ inventory, missions, help, quit ------------------------------
+                // TODO Henry added some functions starts here.
                 if(heroInput.equalsIgnoreCase("inventory")){
-                    missions.getInventoryMenu();
-                    System.out.println("Which item would you like to look at? ");
-                    String itemInput = scanner.nextLine();
+                    Item item = new Item();
+                    if (item.backpackList.size() > 0) {
+                        missions.getInventoryMenu();
+                        hub.showInventory();
+                        String itemInput = scanner.nextLine();
+                        item.setItemCalledOut(itemInput);
+                        item.readItemFile();
+                        hub.showItemCard();
+                    };
+                    System.out.println("You don't have anything in your backpack yet.");
+
+                    // TODO Henry added some functions ends here.
                 } else if (heroInput.equalsIgnoreCase("missions")) {
                     missions.getMissionsMenu();
                     System.out.println("Which mission would you like to try? ");
