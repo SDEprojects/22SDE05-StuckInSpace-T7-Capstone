@@ -5,12 +5,20 @@ public class Story {
     private String heroName;
 
     public static void gameIntro(){
-        System.out.println("something");
-        System.out.println("something");
+        System.out.println(" You are a space traveler and you have crash landed on an unknown planet.\n In order to leave" +
+                " and continue on your journey, you need to collect fuel and engine \n" +
+                " to repair your craft." );
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println("     ||||        Read and use the menu to navigate through the game        ||||    ");
+        System.out.println("----------------------------------------------------------------------------------------- \n");
+
     }
 
     public static void hub(){
-        System.out.println("Crash landed on an unknown planet. We find our hero in the crash site checking repairs. ");
+        System.out.println("\n" +
+                "                       ▀█▀ █░█ █▀▀   █░█ █░█ █▄▄\n" +
+                "                       ░█░ █▀█ ██▄   █▀█ █▄█ █▄█ \n");
+        System.out.println("      You are at the hub. Here you may choose the mission you'd like to play. ");
     }
 
     public static void alienOutpost(){
