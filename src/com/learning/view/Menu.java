@@ -29,13 +29,27 @@ public class Menu {
     }
 
     public void inventoryMenu() {
-        //TODO is there a way for this to call JSON object for inventory items? look at moveMenu
-        System.out.println("----------------------------------------------------------------------------------------- \n" +
-                "                            |     Inventory:    |               \n" +
-                        "-----------------------------------------------------------------------------------------\n" +
-                        "                     |     display inventory here     |\n");
+        System.out.println("------------------------------------------------------------");
+        System.out.println("             |          Inventory:         |                ");
+        System.out.println("      |     Enter item name to inspect the item    |        ");
+        System.out.println("       |       These are the items you have:      |         ");
+        System.out.println("------------------------------------------------------------");
     }
 
+    public void itemFoundMenu(){
+        System.out.println("------------------------------------------------------------");
+        System.out.println("             |      Item in this area:     |                ");
+        System.out.println("------------------------------------------------------------");
+    }
+
+    public void pickItemMenu(){
+        System.out.println("------------------------------------------------------------");
+        System.out.println("      |   Enter PICK to add the items in backpack  |        ");
+        System.out.println("------------------------------------------------------------");
+    };
+
+
+    // TODO Henry added some functions ends here.
     public void missionsMenu() {
         System.out.println("----------------------------------------------------------------------------------------- \n" +
                 "                                 |     Missions:    |               \n" +

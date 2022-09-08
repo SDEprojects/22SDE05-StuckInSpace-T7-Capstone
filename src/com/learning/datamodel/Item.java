@@ -8,12 +8,17 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.ArrayList;
+import java.util.Iterator;
 
 public class Item {
     // Define variable to parse JSON file.
-    private final JSONArray itemDict;
+    private JSONArray itemDict;
     // This is the variable when game called out an item.
-    private String itemCalledOut = "toolkit";
+    private String itemCalledOut = "fuel";
 
     // Define variables from JSON file, so they could be used to create getters.
     private String itemName;
@@ -23,21 +28,29 @@ public class Item {
     private String itemPower;
     private String itemDefense;
 
+    // Define variables for inventory lists.
+    public ArrayList<String> backpackList = new ArrayList<>();
+    public ArrayList<String> carryList;
+    public ArrayList<String> wearList;
+    private Map<String, ArrayList<String>> itemLocationList;
+
     // Multiple layers JSON call starts here.
     public Item() {
         this.itemDict = readItemFile();
     }
 
-    private JSONArray readItemFile() {
+    // create a function to get data from JSON
+
+
+    public JSONArray readItemFile() {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
-
+        JSONArray itemList = null;
         ClassLoader classLoader = getClass().getClassLoader();
         try (FileReader reader = new FileReader(classLoader.getResource("item_dictionary.json").getFile())) {
             //Read JSON file
             Object item_obj = jsonParser.parse(reader);
-
-            JSONArray itemList = (JSONArray) item_obj;
+            itemList = (JSONArray) item_obj;
 //            System.out.println(itemList); // **** for dev process only, need to Delete.
 
             //Iterator over item array
@@ -50,9 +63,9 @@ public class Item {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-        return itemDict;
+        return itemList;
     }
-    private void parseItemObject(JSONObject item) {
+    public void parseItemObject(JSONObject item) {
 
         //Get single object within list
         JSONObject itemObject = (JSONObject) item.get(itemCalledOut);
@@ -70,18 +83,13 @@ public class Item {
     public JSONArray getItemDict() {
         return itemDict;
     }
+//    public JSONArray getItemDict() {
+//        return itemDict;
+//    }
     // Multiple layers JSON call ends here.
 
     // Display item details.
-    public void showItemCard(){
-        System.out.println(
-         "\n" + itemName +
-         "\n" + itemDescription +
-         "\nIt has " + itemPower
-         + " \uD83E\uDD4APower  and " + itemDefense
-         + " \uD83D\uDEE1Defense ."
-        );
-    }
+
 
     // Getters for each attribute of the item.
 
@@ -104,22 +112,55 @@ public class Item {
         return itemDefense;
     }
 
-    public void addToBackpack(){
-        //TODO This is the function to create a list to keep items with player,
-        // if the getItemStore == "inventory" add to this list
-        // after list is created, generate a getter so the player could check their backpack.
+    // Getter that generate an items list based on location.
+    public Map<String, ArrayList<String>> getItemLocationList() {
+        Map<String, ArrayList<String>> itemLocationList = new HashMap<String, ArrayList<String>>();
+        itemLocationList.put("start", new ArrayList<String>());
+        itemLocationList.put("basement", new ArrayList<String>());
+        itemLocationList.put("engineRoom", new ArrayList<String>());
+        itemLocationList.put("controlStation", new ArrayList<String>());
+        itemLocationList.put("messHall", new ArrayList<String>());
+        itemLocationList.put("hallway", new ArrayList<String>());
+        // Items found at start location.
+        itemLocationList.get("start").add("TM");
+        itemLocationList.get("start").add("knife");
+        // Items found at hallway.
+        itemLocationList.get("hallway").add("basement_key");
+        itemLocationList.get("hallway").add("boots");
+        // Items found at basement.
+        itemLocationList.get("basement").add("keycard");
+        itemLocationList.get("basement").add("toolkit");
+        // Items found at engineRoom.
+        itemLocationList.get("engineRoom").add("engine");
+        itemLocationList.get("engineRoom").add("gloves");
+        // Items found at controlStation.
+        itemLocationList.get("controlStation").add("pistol");
+        itemLocationList.get("controlStation").add("GPS");
+        // Items found at messHall.
+        itemLocationList.get("messHall").add("rifle");
+        itemLocationList.get("messHall").add("ACH");
+        itemLocationList.get("messHall").add("IMTV");
+
+        return itemLocationList;
     }
 
-    public void addToCarry(){
-        // TODO This is the function to create a list to store what items are in hand,
-        // if the getItemStore == "carry" add to this list.
-        // after list is created, generate a getter.
+    // Setter for item called by the player.
+
+
+    public ArrayList<String> getBackpackList() {
+        return backpackList;
     }
 
-    public void addToWear(){
-        // TODO This is the function to create a list to store the items wearing by the player.
-        // if the getItemStore == "wear" add to this list.
-        // after list is created, generate a getter.
+    public void setBackpackList(ArrayList<String> backpackList) {
+        this.backpackList = backpackList;
+    }
+
+    public void setItemCalledOut(String itemCalledOut) {
+        this.itemCalledOut = itemCalledOut;
+    }
+
+    public String getItemCalledOut() {
+        return itemCalledOut;
     }
 
 

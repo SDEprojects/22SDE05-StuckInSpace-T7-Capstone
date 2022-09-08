@@ -6,6 +6,8 @@ import com.learning.view.Menu;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
+
 public class Mission {
     private Location locations;
     private Item items;
@@ -98,5 +100,21 @@ public class Mission {
         }
         return exits;
     }
+
+
+    // TODO Henry added some functions starts here.
+
+    // for look around menu.
+    public void getLookMenu(){
+        getMenus().itemFoundMenu();
+    };
+    public void getPickMenu(){
+        getMenus().pickItemMenu();
+    };
+
+
+
+
+    // TODO Henry added functions ends here.
 
 }
