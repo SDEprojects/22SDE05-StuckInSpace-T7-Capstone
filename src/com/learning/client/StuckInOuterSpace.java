@@ -16,7 +16,7 @@ public class StuckInOuterSpace {
         Mission missions = new Mission();
         HubSpot hub = new HubSpot();
         Scanner scanner = new Scanner(System.in);
-        String input = "welcome";
+        String input = "not-exit";
         // display Hero and some attributes
         System.out.println("  ___ _           _     _         ___       _             ___                  \n" +
                     " / __| |_ _  _ __| |__ (_)_ _    / _ \\ _  _| |_ ___ _ _  / __|_ __ __ _ __ ___ \n" +
@@ -24,16 +24,17 @@ public class StuckInOuterSpace {
                     " |___/\\__|\\_,_\\__|_\\_\\ |_|_||_|  \\___/ \\_,_|\\__\\___|_|   |___| .__\\__,_\\__\\___|\n" +
                     "                                                             |_|               ");
         System.out.println("Name your hero: ");
-        String hero = scanner.nextLine();
-        System.out.println("Welcome " + hero + "!");
+        String name = scanner.nextLine();
+        hub.setPlayerName(name);
+        hub.showPlayerProfile();
         Story.gameIntro();
         Story.hub();
 
         //================================== STARTING THE GAME ===========================================//
-        while(!input.equals("quit")){
+        while(!(input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("4"))){
 
             //=============================== ENTERING THE HUB ===========================================//
-            while(!input.equals("quit")){
+            while(!(input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("4"))){
                 // printing the main menu
                 missions.getMainMenu();
                 System.out.println("You find yourself sitting in the bay of the ship, what's the next move? ");
@@ -41,22 +42,23 @@ public class StuckInOuterSpace {
 
                 //============================ ACTIONS ITEMS FROM MENU ===================================//
                 //------------------------ inventory, missions, help, quit ------------------------------
-                if(heroInput.equalsIgnoreCase("inventory")){
+                if(heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("1")){
                     missions.getInventoryMenu();
                     System.out.println("Which item would you like to look at? ");
                     String itemInput = scanner.nextLine();
-                } else if (heroInput.equalsIgnoreCase("missions")) {
+                } else if (heroInput.equalsIgnoreCase("missions") || heroInput.equalsIgnoreCase("2")) {
                     missions.getMissionsMenu();
                     System.out.println("Which mission would you like to try? ");
                     String missionInput = scanner.nextLine();
                     if((missionInput.equalsIgnoreCase("alien outpost")) || missionInput.equalsIgnoreCase("1")){
-                        StuckInOuterSpace.activateMission(missions, hub,"1");
+                        missions.buildLocationMap("alien outpost");
+                        StuckInOuterSpace.activateMission(missions, hub);
                     } else {
                         break;
                     }
-                } else if (heroInput.equalsIgnoreCase("help")) {
+                } else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
                     missions.getHelpMenu();
-                } else if (heroInput.equalsIgnoreCase("quit")) {
+                } else if (heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4")) {
                     input = heroInput;
                     // save the game before closing out.
                     hub.autoSaveGame();
@@ -68,25 +70,25 @@ public class StuckInOuterSpace {
 
     }
 
-    private static void activateMission(Mission mission, HubSpot hub, String chapter){
+    private static void activateMission(Mission mission, HubSpot hub){
         // getters for items, locations, people save them to local variables.
 
         Scanner scanner = new Scanner(System.in);
         String heroInput = "null";
         Story.alienOutpost();
         
-        while(!heroInput.equalsIgnoreCase("quit")){
+        while(!(heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4"))){
             mission.getActiveMissionMenu();
             System.out.println("What would you like to do? ");
             heroInput = scanner.nextLine();
             System.out.println(heroInput);
-            if(heroInput.equalsIgnoreCase("move")){
+            if(heroInput.equalsIgnoreCase("move") || heroInput.equalsIgnoreCase("1")){
                 StuckInOuterSpace.move(mission, hub);
-            } else if (heroInput.equalsIgnoreCase("inventory")) {
+            } else if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("2")) {
                 mission.getInventoryMenu();
                 System.out.println("Which item would you like to look at? ");
                 String itemInput = scanner.nextLine();
-            }  else if (heroInput.equalsIgnoreCase("help")) {
+            }  else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
                 mission.getHelpMenu();
             }
         }
@@ -115,5 +117,7 @@ public class StuckInOuterSpace {
             }
         }while(!heroInput.equalsIgnoreCase("leave"));
     }
+
+
 
 }

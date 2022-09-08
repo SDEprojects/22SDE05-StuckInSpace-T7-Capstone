@@ -10,12 +10,14 @@ public class HubSpot {
 
     private Hero hero;
     private NPC npcs;
-    JSONObject heroPosition = new JSONObject();
+    JSONObject heroPosition;
 
     public HubSpot(){
         this.savegame = new SaveGame();
+        this.heroPosition = new JSONObject();
         this.heroPosition.put("Current_position", "start");
         this.heroPosition.put("Previous_position", "hub");
+        this.hero = new Hero();
     }
 
     public Hero getHero() {
@@ -37,6 +39,19 @@ public class HubSpot {
     public void autoSaveGame(){
         this.savegame.saveGame();
     }
+
+    public void setPlayerName(String name){
+        this.hero.setHeroName(name);
+    }
+
+    public String getPlayerName(){
+        return this.hero.getHeroName();
+    }
+
+    public void showPlayerProfile(){
+        getHero().displayHeroProfile();
+    }
+
 
     public void setHeroPosition(String position){
         updatePositions((String) this.heroPosition.get("Current_position"), position);

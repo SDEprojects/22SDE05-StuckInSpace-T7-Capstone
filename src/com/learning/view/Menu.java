@@ -52,13 +52,17 @@ public class Menu {
 
     public void moveMenu(JSONArray exits){
         System.out.println("--------------------------------------------------------------");
+        System.out.printf("| EXITS:  |");
         for (Object value: exits) {
             System.out.printf("|  ");
             System.out.printf(value.toString().toUpperCase());
             System.out.printf("  |");
         }
+        System.out.println();
+        System.out.println("--------------------------------------------------------------");
         System.out.printf("|  LOOK  |");
-        System.out.println("|  HELP");
+        System.out.printf("|  HELP  |");
+        System.out.println("|  LEAVE |");
         System.out.println("--------------------------------------------------------------");
     }
 
