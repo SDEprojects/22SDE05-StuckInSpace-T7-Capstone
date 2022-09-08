@@ -19,7 +19,7 @@ public class HubSpot {
     private NPC npcs;
     JSONObject heroPosition;
 
-    public HubSpot(){
+    public HubSpot() {
         this.savegame = new SaveGame();
         this.heroPosition = new JSONObject();
         this.item = new Item();
@@ -44,60 +44,61 @@ public class HubSpot {
         this.npcs = npcs;
     }
 
-    public void autoSaveGame(){
+    public void autoSaveGame() {
         this.savegame.saveGame();
     }
 
-    public void setPlayerName(String name){
+    public void setPlayerName(String name) {
         this.hero.setHeroName(name);
     }
 
-    public String getPlayerName(){
+    public String getPlayerName() {
         return this.hero.getHeroName();
     }
 
-    public void showPlayerProfile(){
+    public void showPlayerProfile() {
         getHero().displayHeroProfile();
     }
 
 
-    public void setHeroPosition(String position){
+    public void setHeroPosition(String position) {
         updatePositions((String) this.heroPosition.get("Current_position"), position);
     }
 
-    public String getHeroPosition(){
+    public String getHeroPosition() {
         return (String) this.heroPosition.get("Current_position");
     }
 
-    public String getHeroPrevPosition(){
+    public String getHeroPrevPosition() {
         return (String) this.heroPosition.get("Previous_position");
     }
 
 
-    private void updatePositions(String oldPosition, String newPosition){
+    private void updatePositions(String oldPosition, String newPosition) {
         this.heroPosition.put("Previous_position", oldPosition);
         this.heroPosition.put("Current_position", newPosition);
     }
 
-    public void getHeroStatus(){
+    public void getHeroStatus() {
 
     }
 
     // TODO Henry added some functions starts here.
     ArrayList<String> itemFound = new ArrayList<>();
-    public void getLookAround(String position){
+
+    public void getLookAround() {
         // This will print a list of items based on hero current location.
-        Mission mission = new Mission();
-        Item item = new Item();
-        HubSpot hub = new HubSpot();
+        Mission mission = new Mission(); // TODO Henry needs to fix this.
+        HubSpot hub = new HubSpot();// TODO Henry needs to fix this.
 
-//        itemFound.clear();
+        itemFound.clear();
         itemFound = mission.getItems().getItemLocationList().get(hub.getHeroPosition());
-        System.out.println(hub.heroPosition);
-        System.out.println(hub.getHeroPosition()); // TODO hero location locked at start
-        if (itemFound.size() > 0){
+//        System.out.println(hub.heroPosition);
+//        System.out.println(hub.getHeroPosition());
 
-            for (int i = 0; i < itemFound.size(); i++){
+        if (itemFound.size() > 0) {
+
+            for (int i = 0; i < itemFound.size(); i++) {
                 item.setItemCalledOut(itemFound.get(i));
                 item.readItemFile();
                 String itemFoundName = item.getItemName();
@@ -111,38 +112,36 @@ public class HubSpot {
     }
 
     // Pick function.
-    public void addToInventory(){
-        Mission mission = new Mission();
-        Item item = new Item();
+    public void addToInventory() {
+        Mission mission = new Mission();// TODO Henry needs to fix this.
         Map itemFoundMap = mission.getItems().getItemLocationList();
-//        System.out.println(itemFound);
-//        System.out.println(itemFoundMap.size());
-        if (itemFound.size() > 0){
-            for (int i = 0; i < itemFound.size(); i++){
+//        System.out.println("itemFound= " + itemFound);
+//        System.out.println("itemFoundMap = " + itemFoundMap);
+        if (itemFoundMap.size() > 0) {
+            for (int i = 0; i < itemFound.size(); i++) {
                 item.backpackList.add(itemFound.get(i));
                 item.setItemCalledOut(itemFound.get(i));
                 item.readItemFile();
-                System.out.println(item.getItemName() + " is added to your backpack \uD83C\uDF92" );
+                System.out.println(item.getItemName() + " is added to your backpack \uD83C\uDF92");
             }
-            itemFound.remove(this.getHeroPosition());
-//            System.out.println(item.backpackList);
-//            System.out.println(itemFound);
+            itemFoundMap.remove(getHeroPosition());
+//            System.out.println("backpack = " + item.backpackList);
+//            System.out.println("itemFound= " + itemFound);
+//            System.out.println("itemFoundMap = " + itemFoundMap);
         }
 
     }
+
     // Show inventory function.
-    public void showInventory(){
-        Item item = new Item();
+    public void showInventory() {
         ArrayList itemInInv = item.backpackList;
-        for (int i = 0; i < itemInInv.size(); i++){
+        for (int i = 0; i < itemInInv.size(); i++) {
             System.out.println(itemInInv.get(i));
         }
     }
 
     // Generate item card function.
-    public void showItemCard(){
-        Item item = new Item();
-
+    public void showItemCard() {
         System.out.println(
                 "\n" + item.getItemName() +
                         "\n" + item.getItemDescription() +
@@ -151,3 +150,5 @@ public class HubSpot {
                         + " \uD83D\uDEE1Defense ."
         );
     }
+
+}
