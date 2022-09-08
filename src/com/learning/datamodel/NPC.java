@@ -1,11 +1,8 @@
 package com.learning.datamodel;
-import com.learning.utility.FileReader;
+import com.learning.utility.FileHandler;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
 
-import java.io.IOException;
 import java.util.List;
 
 public class NPC {
@@ -17,7 +14,7 @@ public class NPC {
     private List<String> items;
 
     public NPC(){
-        this.npcDict = new FileReader().readJsonFile("npc_dictionary.json");
+        this.npcDict = new FileHandler().readJsonFile("npc_dictionary.json");
         buildnpc("default");
     }
 

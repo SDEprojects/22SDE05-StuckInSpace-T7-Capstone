@@ -14,7 +14,6 @@ import java.util.Map;
 
 public class HubSpot {
     SaveGame savegame;
-
     private Hero hero;
     private Item item;
     private NPC npcs;
