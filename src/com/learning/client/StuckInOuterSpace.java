@@ -43,7 +43,7 @@ public class StuckInOuterSpace {
             while (!(input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("4"))) {
                 // printing the main menu
                 missions.getMainMenu();
-                System.out.println("YWhat would you like to do next? ");
+                System.out.println("What would you like to do next? ");
                 String heroInput = scanner.nextLine();
 
                 //============================ ACTIONS ITEMS FROM MENU ===================================//
