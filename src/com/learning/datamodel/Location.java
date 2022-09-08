@@ -1,40 +1,48 @@
 package com.learning.datamodel;
 
+import com.learning.utility.FileReader;
 import org.json.simple.JSONArray;
-import org.json.simple.parser.JSONParser;
-import org.json.simple.parser.ParseException;
-
-import java.io.*;
+import org.json.simple.JSONObject;
 
 public class Location {
     private final JSONArray locDict;
+    private String missionName;
+    private String startPosition;
 
-    public Location() {
-        this.locDict = readLocationFile();
+    public Location(){
+        this.locDict = new FileReader().readJsonFile("location_dictionary.json");
+        buildMap("mission_01");
     }
 
-    @SuppressWarnings("unchecked")
-    private JSONArray readLocationFile() {
-        //JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser();
-        JSONArray locationDict = null;
-        ClassLoader classLoader = getClass().getClassLoader();
-        try (FileReader reader = new FileReader(classLoader.getResource("location_dictionary.json").getFile())) {
-            Object obj = jsonParser.parse(reader);
-            locationDict = (JSONArray) obj;
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
+    public void buildMap(String missionName){
+        for (Object obj : this.locDict){
+            JSONObject mission = (JSONObject) obj;
+            JSONObject attributes = (JSONObject) mission.get(missionName);
+
+            setMissionName((String) attributes.get("name"));
+            setStartPosition((String) attributes.get("start_position"));
+
         }
-        return locationDict;
+    }
+
+    public String getMissionName() {
+        return missionName;
+    }
+
+    public void setMissionName(String missionName) {
+        this.missionName = missionName;
+    }
+
+    public String getStartPosition() {
+        return startPosition;
+    }
+
+    public void setStartPosition(String startPosition) {
+        this.startPosition = startPosition;
     }
 
     public JSONArray getLocDict() {
         return locDict;
     }
-
 }
 
