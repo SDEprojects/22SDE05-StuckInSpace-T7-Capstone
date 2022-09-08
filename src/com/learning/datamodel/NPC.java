@@ -1,32 +1,39 @@
 package com.learning.datamodel;
+import com.learning.utility.FileReader;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
-import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 public class NPC {
 
     private final JSONArray npcDict;
+    private String name;
+    private String description;
+    private String location;
+    private List<String> items;
 
-    public NPC() {
-        this.npcDict = readNpcFile();
+    public NPC(){
+        this.npcDict = new FileReader().readJsonFile("npc_dictionary.json");
+        buildnpc("default");
     }
 
-    @SuppressWarnings("unchecked")
-    private JSONArray readNpcFile() {
-        JSONParser jsonParser = new JSONParser();
-        JSONArray npcDictionary = null;
-        ClassLoader classLoader = getClass().getClassLoader();
-        try (FileReader reader = new FileReader(classLoader.getResource("npc_dictionary.json").getFile())) {
-            Object obj = jsonParser.parse(reader);
-            npcDictionary = (JSONArray) obj;
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
+    public void buildnpc(String name){
+        for (Object obj : this.npcDict){
+            JSONObject npc = (JSONObject) obj;
+            JSONObject attributes = (JSONObject) npc.get(name);
+            setName((String) attributes.get("name"));
+            setDescription((String) attributes.get("description"));
+            setLocation((String) attributes.get("location"));
+            JSONArray npcitems = (JSONArray) attributes.get("equipped items");
+            for (Object item : npcitems) {
+                this.items.add((String) item);
+            }
+
         }
-        return npcDictionary;
     }
 
     private static void parseNpcObject(JSONObject npc) {
@@ -35,5 +42,37 @@ public class NPC {
 
         String description = (String) npcObject.get("description");
         System.out.println(description);
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getLocation() {
+        return location;
+    }
+
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public List<String> getItems() {
+        return items;
+    }
+
+    public void setItems(List<String> items) {
+        this.items = items;
     }
 }
