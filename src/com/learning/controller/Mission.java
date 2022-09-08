@@ -6,6 +6,8 @@ import com.learning.view.Menu;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
+import java.util.ArrayList;
+
 public class Mission {
     private Location locations;
     private Item items;
@@ -90,5 +92,52 @@ public class Mission {
         }
         return exits;
     }
+
+
+    // TODO Henry added some functions starts here.
+    // TODO Look function needs to be moved up a level.
+
+    public void lookAround(){
+        for (Object obj : this.items.getItemDict()) {
+            JSONObject items = (JSONObject) obj;
+            JSONObject itemName = (JSONObject) items.get("fuel");
+            JSONArray itemLocation = (JSONArray) itemName.get("location");
+            System.out.println(items);
+            System.out.println(itemName);
+            System.out.println(itemLocation);
+        }
+
+    }
+
+    public void pickItem(){
+
+    }
+
+    public void inspectItem(){
+//        System.out.println(
+//                "\n" + itemName +
+//                        "\n" + itemDescription +
+//                        "\nIt has " + itemPower
+//                        + " \uD83E\uDD4APower  and " + itemDefense
+//                        + " \uD83D\uDEE1Defense ."
+//        );
+    }
+
+
+//    ArrayList<String> itemFound = mission.getItems().getItemLocationList().get(hub.getHeroPosition());
+//                System.out.println("The hero found these items here.");
+//                System.out.println(itemFound);
+//                System.out.println("Enter \"Pick\" to grab the items");
+//
+//    // Adding pick function.
+//                if (heroInput.equalsIgnoreCase("pick")){
+//        System.out.println("You have added them to your inventory");
+//        ArrayList<String> currentInventory = new ArrayList<String>();
+//        currentInventory.addAll(itemFound);
+//        System.out.println(currentInventory);
+
+//    }
+
+    // TODO Henry added functions ends here.
 
 }

@@ -16,9 +16,9 @@ import java.util.Iterator;
 
 public class Item {
     // Define variable to parse JSON file.
-    private final JSONArray itemDict;
+    private JSONArray itemDict;
     // This is the variable when game called out an item.
-    public String itemCalledOut = "toolkit";
+    private String itemCalledOut = "toolkit";
 
     // Define variables from JSON file, so they could be used to create getters.
     private String itemName;
@@ -39,7 +39,9 @@ public class Item {
         this.itemDict = readItemFile();
     }
 
-    private JSONArray readItemFile() {
+    // create a function to get data from JSON
+
+    public JSONArray readItemFile() {
         //JSON parser object to parse read file
         JSONParser jsonParser = new JSONParser();
 
@@ -63,7 +65,7 @@ public class Item {
         }
         return itemDict;
     }
-    private void parseItemObject(JSONObject item) {
+    public void parseItemObject(JSONObject item) {
 
         //Get single object within list
         JSONObject itemObject = (JSONObject) item.get(itemCalledOut);
@@ -148,6 +150,8 @@ public class Item {
     }
 
     // Setter for item called by the player.
+
+
     public void setItemCalledOut(String itemCalledOut) {
         this.itemCalledOut = itemCalledOut;
     }
