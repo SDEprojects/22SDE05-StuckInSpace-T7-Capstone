@@ -71,6 +71,10 @@ public class Mission {
         getMenus().helpMap(start, availableExits(start), this.items.getItemDict());
     }
 
+    public void buildLocationMap(String mission){
+        getLocations().buildMap(mission);
+    }
+
     public boolean isExitAvailable(String start, String exit){
         boolean isExit = false;
         String exitRequest = start + "_exit";
