@@ -20,13 +20,12 @@ public class Menu {
         this.missionNames = missionNames;
     }
 
-
     public void mainMenu() {
-        System.out.println("              |   Stuck in Outer Space   |                 ");
-        System.out.println("              |     Make a Selection:    |                 ");
-        System.out.println("------------------------------------------------------------");
-        System.out.println("|     1. Inventory          |--------|     2. Missions     |");
-        System.out.println("|     3. Help               |--------|     4. Quit         |");
+        System.out.println("                                                            ");
+        System.out.println("                 |     Make a Selection:    |               ");
+        System.out.println("-----------------------------------------------------------------------------------------");
+        System.out.println("|     Inventory          |--------|     Missions     |");
+        System.out.println("|       Help             |--------|       Quit       |");
     }
 
     public void inventoryMenu() {
@@ -43,11 +42,11 @@ public class Menu {
     }
 
     public void activeMissionMenu() {
-        System.out.println("              |   Stuck in Outer Space   |                 ");
-        System.out.println("              |     Make a Selection:    |                 ");
-        System.out.println("------------------------------------------------------------");
-        System.out.println("|     1. Move               |--------|     2. Inventory     |");
-        System.out.println("|     3. Help               |--------|     4. Quit         |");
+        System.out.println("--------------------------------------------------------");
+        System.out.println("                  |     Missions:    |                  ");
+        System.out.println("--------------------------------------------------------");
+        System.out.println("|     1. Move          |--------|     2. Inventory     |");
+        System.out.println("|     3. Help          |--------|     4. Quit          |");
     }
 
 

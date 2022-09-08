@@ -18,12 +18,16 @@ public class StuckInOuterSpace {
         Scanner scanner = new Scanner(System.in);
         String input = "not-exit";
         // display Hero and some attributes
-        System.out.println("What is your pilots name?");
+        System.out.println("  ___ _           _     _         ___       _             ___                  \n" +
+                    " / __| |_ _  _ __| |__ (_)_ _    / _ \\ _  _| |_ ___ _ _  / __|_ __ __ _ __ ___ \n" +
+                    " \\__ |  _| || / _| / / | | ' \\  | (_) | || |  _/ -_| '_| \\__ | '_ / _` / _/ -_)\n" +
+                    " |___/\\__|\\_,_\\__|_\\_\\ |_|_||_|  \\___/ \\_,_|\\__\\___|_|   |___| .__\\__,_\\__\\___|\n" +
+                    "                                                             |_|               ");
+        System.out.println("Name your hero: ");
         String name = scanner.nextLine();
         hub.setPlayerName(name);
         hub.showPlayerProfile();
-        System.out.println("Your Hero Name is: " + hub.getPlayerName());
-        System.out.println();
+        Story.gameIntro();
         Story.hub();
 
         //================================== STARTING THE GAME ===========================================//
