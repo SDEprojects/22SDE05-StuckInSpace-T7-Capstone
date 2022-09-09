@@ -9,7 +9,7 @@
       "defense": "0"
     },
     "engine": {
-      "name": "\uD83D\uDE80Engine\uD83D\uDE80",
+      "name": "\uD83D\uDE80 Engine \uD83D\uDE80",
       "description": "An rocket engine, might be able to used on a spacecraft.",
       "location": "engineRoom",
       "store": "Inventory",

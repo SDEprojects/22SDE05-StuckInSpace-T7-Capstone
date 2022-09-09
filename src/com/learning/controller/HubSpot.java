@@ -4,8 +4,10 @@ import com.learning.datamodel.Hero;
 import com.learning.datamodel.Item;
 import com.learning.datamodel.Location;
 import com.learning.datamodel.NPC;
+import com.learning.utility.FileHandler;
 import com.learning.view.Menu;
 import com.learning.view.SaveGame;
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.util.ArrayList;
@@ -87,6 +89,7 @@ public class HubSpot {
 
     // Create list of item by location, TODO should take data from JSON, will change if got time.
     public void initiateItemLocationList() {
+
         item.getItemLocationList().put("start", new ArrayList<String>());
         item.getItemLocationList().put("basement", new ArrayList<String>());
         item.getItemLocationList().put("engineRoom", new ArrayList<String>());
@@ -115,6 +118,31 @@ public class HubSpot {
 //        System.out.println(item.getItemLocationList());
 //        item.setItemLocationList(item.getItemLocationList());
     }
+
+    // TODO in work, using JSON to replace initiateItemLocationList().
+//    public void findNameOfLocation(String location){
+//        JSONArray arrayAll = new FileHandler().readJsonFile("item_dictionary.json");
+//        for (JSONArray a)
+//
+//
+//
+//        for (Object obj : arrayAll) {
+//            JSONObject objAll = (JSONObject) obj;
+//            JSONObject attribute = (JSONObject) objAll.get(firstName);
+//            System.out.println("Array all: " + arrayAll);
+//            System.out.println("Turn Array to Obj all: " + objAll);
+//            System.out.println("First layer name: " + firstName);
+//            System.out.println(attribute);
+//            System.out.println(attribute.get("location"));
+//
+//        }
+//        item.getItemLocationList().put
+//        item.getItemLocationList().put("start", new ArrayList<String>());
+//        item.getItemLocationList().get("start").add("TM");
+//        item.getItemLocationList().get("start").add("knife");
+//        System.out.println(a);
+//        System.out.println(item.getItemLocationList());
+//    }
 
     // This will print a list of items based on hero current location.
     public void lookAction() {
