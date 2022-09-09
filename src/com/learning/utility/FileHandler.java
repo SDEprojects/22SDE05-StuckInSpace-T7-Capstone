@@ -6,6 +6,7 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import java.io.*;
+import java.util.Objects;
 
 public class FileHandler {
 
@@ -16,14 +17,12 @@ public class FileHandler {
         JSONArray dictionary = null;
 
         ClassLoader classLoader = getClass().getClassLoader();
-        try (InputStreamReader reader = new InputStreamReader(classLoader.getResourceAsStream(fileName))) {
+        try (InputStreamReader reader = new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream(fileName)))) {
             Object obj = jsonParser.parse(reader);
             dictionary = (JSONArray) obj;
-        } catch (FileNotFoundException e) {
+        } catch (FileNotFoundException | ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
             e.printStackTrace();
         }
         return dictionary;

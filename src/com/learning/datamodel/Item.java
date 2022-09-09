@@ -8,11 +8,9 @@ import org.json.simple.parser.ParseException;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.util.*;
 import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.ArrayList;
-import java.util.Iterator;
 
 public class Item {
     // Define variable to parse JSON file.
@@ -47,7 +45,7 @@ public class Item {
         JSONParser jsonParser = new JSONParser();
         JSONArray itemList = null;
         ClassLoader classLoader = getClass().getClassLoader();
-        try (FileReader reader = new FileReader(classLoader.getResource("item_dictionary.json").getFile())) {
+        try (InputStreamReader reader = new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream("item_dictionary")))) {
             //Read JSON file
             Object item_obj = jsonParser.parse(reader);
             itemList = (JSONArray) item_obj;
