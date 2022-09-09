@@ -29,10 +29,11 @@ public class Item {
     private String itemDefense;
 
     // Define variables for inventory lists.
-    public ArrayList<String> backpackList = new ArrayList<>();
+    private ArrayList<String> backpackList = new ArrayList<>();
     public ArrayList<String> carryList;
     public ArrayList<String> wearList;
     private Map<String, ArrayList<String>> itemLocationList;
+    private ArrayList<String> itemFound = new ArrayList<>();
 
     // Multiple layers JSON call starts here.
     public Item() {
@@ -65,6 +66,7 @@ public class Item {
         }
         return itemList;
     }
+
     public void parseItemObject(JSONObject item) {
 
         //Get single object within list
@@ -96,18 +98,23 @@ public class Item {
     public String getItemName() {
         return itemName;
     }
+
     public String getItemDescription() {
         return itemDescription;
     }
+
     public String getItemLocation() {
         return itemLocation;
     }
+
     public String getItemStore() {
         return itemStore;
     }
+
     public String getItemPower() {
         return itemPower;
     }
+
     public String getItemDefense() {
         return itemDefense;
     }
@@ -145,16 +152,6 @@ public class Item {
     }
 
     // Setter for item called by the player.
-
-
-    public ArrayList<String> getBackpackList() {
-        return backpackList;
-    }
-
-    public void setBackpackList(ArrayList<String> backpackList) {
-        this.backpackList = backpackList;
-    }
-
     public void setItemCalledOut(String itemCalledOut) {
         this.itemCalledOut = itemCalledOut;
     }
@@ -163,5 +160,21 @@ public class Item {
         return itemCalledOut;
     }
 
+    // Setter and getter for the items found in current area.
+    public ArrayList<String> getItemFound() {
+        return itemFound;
+    }
+    public void setItemFound(ArrayList<String> itemFound) {
+        this.itemFound = itemFound;
+    }
 
+    // Setter and getter for the backpack/ inventory.
+
+    public ArrayList<String> getBackpackList() {
+        return backpackList;
+    }
+
+    public void setBackpackList(ArrayList<String> backpackList) {
+        this.backpackList = backpackList;
+    }
 }

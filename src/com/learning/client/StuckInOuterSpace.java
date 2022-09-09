@@ -30,6 +30,7 @@ public class StuckInOuterSpace {
         String name = scanner.nextLine();
         hub.setPlayerName(name);
         hub.showPlayerProfile();
+        hub.initiateInventory(); // To add the items the Hero came with to the backpack.
         Story.gameIntro();
         System.out.println("Type next to continue");
         String next = scanner.nextLine();
@@ -55,15 +56,15 @@ public class StuckInOuterSpace {
                     // TODO Henry added some functions starts here.
                     if (heroInput.equalsIgnoreCase("inventory")) {
 
-                        if (item.backpackList.size() > 0) {
-                            missions.getInventoryMenu();
+//                        if (item.backpackList.size() > 0) {
+//                            missions.getInventoryMenu();
                             hub.showInventory();
-                            String itemInput = scanner.nextLine();
-                            item.setItemCalledOut(itemInput);
-                            item.readItemFile();
-                            hub.showItemCard();
-                        }
-                        System.out.println("You don't have anything in your backpack yet.");
+//                            String itemInput = scanner.nextLine();
+//                            item.setItemCalledOut(itemInput);
+//                            item.readItemFile();
+//                            hub.showItemCard();
+//                        }
+//                        System.out.println("You don't have anything in your backpack yet.");
                     }
 
                     // TODO Henry added some functions ends here.
@@ -128,7 +129,7 @@ public class StuckInOuterSpace {
                 // if there is an item, give it to the player and add it to their inventory.
 
                 mission.getLookMenu();
-                hub.getLookAround();
+                hub.lookAction();
 
                 mission.getPickMenu();
                 heroInput = scanner.nextLine();
