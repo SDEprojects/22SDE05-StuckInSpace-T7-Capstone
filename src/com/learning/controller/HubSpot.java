@@ -2,14 +2,13 @@ package com.learning.controller;
 
 import com.learning.datamodel.Hero;
 import com.learning.datamodel.Item;
-import com.learning.datamodel.Location;
 import com.learning.datamodel.NPC;
-import com.learning.view.Menu;
 import com.learning.view.SaveGame;
 import org.json.simple.JSONObject;
 
+import java.awt.*;
 import java.util.ArrayList;
-import java.util.Arrays;
+import java.util.List;
 import java.util.Map;
 
 public class HubSpot {
@@ -17,6 +16,9 @@ public class HubSpot {
     private Hero hero;
     private Item item;
     private NPC npcs;
+
+    // TODO: Link this to backpack ds
+    private List<String> playerItems;
     JSONObject heroPosition;
 
     public HubSpot() {
@@ -26,6 +28,7 @@ public class HubSpot {
         this.heroPosition.put("Current_position", "start");
         this.heroPosition.put("Previous_position", "hub");
         this.hero = new Hero();
+        this.playerItems = new ArrayList<>();
     }
 
     public Hero getHero() {
@@ -81,6 +84,22 @@ public class HubSpot {
 
     public void getHeroStatus() {
 
+    }
+
+    public Item getItem() {
+        return item;
+    }
+
+    public void setItem(Item item) {
+        this.item = item;
+    }
+
+    public List<String> getPlayerItems() {
+        return playerItems;
+    }
+
+    public void setPlayerItems(List<String> playerItems) {
+        this.playerItems = playerItems;
     }
 
     // TODO Henry added some functions starts here.
