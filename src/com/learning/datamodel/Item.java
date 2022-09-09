@@ -45,7 +45,7 @@ public class Item {
         JSONParser jsonParser = new JSONParser();
         JSONArray itemList = null;
         ClassLoader classLoader = getClass().getClassLoader();
-        try (InputStreamReader reader = new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream("item_dictionary")))) {
+        try (InputStreamReader reader = new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream("item_dictionary.json")))) {
             //Read JSON file
             Object item_obj = jsonParser.parse(reader);
             itemList = (JSONArray) item_obj;
