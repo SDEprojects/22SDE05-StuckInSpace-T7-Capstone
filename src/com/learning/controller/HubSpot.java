@@ -85,52 +85,81 @@ public class HubSpot {
 
     // TODO Henry added some functions starts here.
 
+    // Create list of item by location, TODO should take data from JSON, will change if got time.
+    public void initiateItemLocationList() {
+        item.getItemLocationList().put("start", new ArrayList<String>());
+        item.getItemLocationList().put("basement", new ArrayList<String>());
+        item.getItemLocationList().put("engineRoom", new ArrayList<String>());
+        item.getItemLocationList().put("controlStation", new ArrayList<String>());
+        item.getItemLocationList().put("messHall", new ArrayList<String>());
+        item.getItemLocationList().put("hallway", new ArrayList<String>());
+        // Items found at start location.
+        item.getItemLocationList().get("start").add("TM");
+        item.getItemLocationList().get("start").add("knife");
+        // Items found at hallway.
+        item.getItemLocationList().get("hallway").add("boots");
+        // Items found at basement.
+        item.getItemLocationList().get("basement").add("toolkit");
+        // Items found at engineRoom.
+        item.getItemLocationList().get("engineRoom").add("engine");
+        item.getItemLocationList().get("engineRoom").add("gloves");
+        // Items found at controlStation.
+        item.getItemLocationList().get("controlStation").add("pistol");
+        item.getItemLocationList().get("controlStation").add("GPS");
+        item.getItemLocationList().get("controlStation").add("keycard");
+        // Items found at messHall.
+        item.getItemLocationList().get("messHall").add("rifle");
+        item.getItemLocationList().get("messHall").add("ACH");
+        item.getItemLocationList().get("messHall").add("IMTV");
+        item.getItemLocationList().get("messHall").add("basement_key");
+//        System.out.println(item.getItemLocationList());
+//        item.setItemLocationList(item.getItemLocationList());
+    }
+
     // This will print a list of items based on hero current location.
     public void lookAction() {
+//        System.out.println(item.getItemLocationList()); // delete me.
         item.setItemFound(item.getItemLocationList().get(getHeroPosition()));
-        System.out.println("ItemFound: " + item.getItemFound());
+//        System.out.println("ItemFound: " + item.getItemFound()); //Delete me. For test.
         // Set a temporary variable to save the item found in place.
         ArrayList<String> itemsHere = item.getItemFound();
         // clear the list of item found based on location.
         item.setItemFound(null);
         // If there are items available in the area, show them to player.
-        if (itemsHere.size() > 0) {
-
+       if (itemsHere == null){
+            System.out.println("\uD83D\uDE12 No item is found at this location");
+        } else {
             for (int i = 0; i < itemsHere.size(); i++) {
                 item.setItemCalledOut(itemsHere.get(i));
                 item.readItemFile();
                 String itemFoundName = item.getItemName();
                 System.out.println("\uD83D\uDE00 You found " + itemFoundName);
             }
-
-        } else {
-            System.out.println("\uD83D\uDE12 No item is found at this location");
         }
     }
 
     // Pick function.
     public void addToInventory() {
-    // TODO Henry needs to fix this.
         // TODO add the item to backpack, remove them from itemFoundMap.
-
-
-
-//        Mission mission = new Mission();
-//        Map itemFoundMap = mission.getItems().getItemLocationList();
-////        System.out.println("itemFound= " + itemFound);
-////        System.out.println("itemFoundMap = " + itemFoundMap);
-//        if (itemFoundMap.size() > 0) {
-//            for (int i = 0; i < item.getItemFound().size(); i++) {
-//                item.backpackList.add(item.getItemFound().get(i));
-//                item.setItemCalledOut(item.getItemFound().get(i));
-//                item.readItemFile();
-//                System.out.println(item.getItemName() + " is added to your backpack \uD83C\uDF92");
-//            }
-//            itemFoundMap.remove(getHeroPosition());
-////            System.out.println("backpack = " + item.backpackList);
-////            System.out.println("itemFound= " + itemFound);
-////            System.out.println("itemFoundMap = " + itemFoundMap);
-//        }
+        item.setItemFound(item.getItemLocationList().get(getHeroPosition()));
+        // Set a temporary variable to save the item found in place.
+        ArrayList<String> itemsHere = item.getItemFound();
+//        System.out.println("itemFound= " + itemsHere);//Delete me. For test.
+//        System.out.println("allItemFoundMap before = " + item.getItemLocationList());//Delete me. For test.
+        System.out.println("backpack before " + item.getBackpackList());//Delete me. For test.
+        if (itemsHere == null) {
+            System.out.println("\uD83D\uDE12 No item is found at this location");
+        } else {
+            for (int i = 0; i < itemsHere.size(); i++) {
+                item.getBackpackList().add(itemsHere.get(i));
+                item.setItemCalledOut(itemsHere.get(i));
+                item.readItemFile();
+                System.out.println(item.getItemName() + " is added to your backpack \uD83C\uDF92");
+            }
+            item.getItemLocationList().remove(getHeroPosition());
+//            System.out.println("allItemFoundMap after = " + item.getItemLocationList());//Delete me. For test.
+            System.out.println("backpack after " + item.getBackpackList());//Delete me. For test.
+        }
     }
 
     // Initiate the backpack based the Hero's attribute. Will run this once when game starts.
@@ -143,23 +172,32 @@ public class HubSpot {
     // Show inventory function.
     public void showInventory() {
         System.out.println(item.getBackpackList());
-//TODO use for loop to print each item with item.getItemName().
-
-//        ArrayList itemInInv = item.backpackList;
-//        for (int i = 0; i < itemInInv.size(); i++) {
-//            System.out.println(itemInInv.get(i));
+        // TODO make it prettier.
+//        ArrayList<String> inv = item.getBackpackList();
+//        for (int i = 0; i < inv.size(); i++){
+//            System.out.println(inv.get(i));
+//            item.setItemCalledOut(inv.get(i).toString());
+//            item.readItemFile();
+//            System.out.println(item.getItemName());
 //        }
     }
 
     // Generate item card function.
-    public void showItemCard() {
-        System.out.println(
-                "\n" + item.getItemName() +
-                        "\n" + item.getItemDescription() +
-                        "\nIt has " + item.getItemPower()
-                        + " \uD83E\uDD4APower  and " + item.getItemDefense()
-                        + " \uD83D\uDEE1Defense ."
-        );
+    public void showItemCard(String input) {
+        item.setItemCalledOut(input);
+        item.readItemFile();
+        if (item.getItemName() != null){
+            System.out.println(
+                    "\n" + item.getItemName() +
+                            "\n" + item.getItemDescription() +
+                            "\nIt has " + item.getItemPower()
+                            + " \uD83E\uDD4APower  and " + item.getItemDefense()
+                            + " \uD83D\uDEE1Defense ."
+            );
+        } else {
+            System.out.println("You don't have this item.");
+        }
+
     }
 
 }
