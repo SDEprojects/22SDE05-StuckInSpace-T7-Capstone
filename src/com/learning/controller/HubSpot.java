@@ -98,7 +98,7 @@ public class HubSpot {
     }
 
     public List<String> getPlayerItems() {
-        return playerItems;
+        return this.item.getBackpackList();
     }
 
     public void setPlayerItems(List<String> playerItems) {

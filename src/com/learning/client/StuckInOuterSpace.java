@@ -129,14 +129,17 @@ public class StuckInOuterSpace {
 
                 mission.getLookMenu();
                 hub.lookAction();
+                // String isEngine = hub.lookAction();
                 // TODO, need to add condition when there is no item to pick.
-                mission.getPickMenu();
+//                mission.getPickMenu();/
                 heroInput = scanner.nextLine();
                 if (heroInput.equalsIgnoreCase("pick")) {
                     hub.addToInventory();
                 }
                 //TODO: KEN - if they found the engine in the engineroom, then we need to unlock then story ending.
-
+                // if(item.equals("engine") && hub.getPlayerLocation().equals("engineRoom"))
+                //          Story.ending()
+                //          when they quit and go back to hub, they should escape with the new engine?
 
                 // TODO Henry added functions ends here.
             } else if (heroInput.equalsIgnoreCase("help")) {
