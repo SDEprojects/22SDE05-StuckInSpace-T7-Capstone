@@ -3,7 +3,7 @@
     "fuel" : {
         "name" : "\uD83D\uDEE2 Fuel \uD83D\uDEE2",
         "description" : "A can of fuel, should be able to used on the spacecraft.",
-        "location" : "engineRoom",
+        "location" : "***TBD***",
         "store" : "Inventory",
         "power" : "0",
         "defense" : "0"
@@ -75,7 +75,7 @@
     "rifle" : {
         "name" : "╾━╤デ╦︻ Rifle ︻╦̵̵̿╤──",
         "description" : "A rifle. Fairly new condition.",
-        "location" : "***TBD***",
+        "location" : "messHall",
         "store" : "Carry",
         "power" : "3",
         "defense" : "1"
@@ -100,7 +100,7 @@
     "IMTV" : {
         "name" : "\uD83E\uDDBA IMTV \uD83E\uDDBA",
         "description" : "Improved Modular Tactical Vest, it's always good to have a body armor on.",
-        "location" : "***TBD***",
+        "location" : "messHall",
         "store" : "Wear",
         "power" : "0",
         "defense" : "1"
@@ -109,7 +109,7 @@
     "ACH" : {
         "name" : "\uD83E\uDE96 ACH \uD83E\uDE96",
         "description" : "It's not just a helmet, it is an Advanced Combat Helmet, made of Kevlar.",
-        "location" : "***TBD***",
+        "location" : "messHall",
         "store" : "Wear",
         "power" : "0",
         "defense" : "5"
@@ -127,7 +127,7 @@
     "boots" : {
         "name" : "\uD83E\uDD7E Boots \uD83E\uDD7E",
         "description" : "A pair of tactical boots, brand new.",
-        "location" : "***TBD***",
+        "location" : "hallway",
         "store" : "Wear",
         "power" : "0",
         "defense" : "1"
