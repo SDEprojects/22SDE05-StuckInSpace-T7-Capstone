@@ -8,7 +8,6 @@ public class FunctionTest {
     public static void main(String[] args) {
         Item item1 = new Item();
         HubSpot hub = new HubSpot();
-        hub.getLookAround();
         hub.addToInventory();
         // Test reading JSON file and retrieve info.
 //        item1.setItemCalledOut("boots");
