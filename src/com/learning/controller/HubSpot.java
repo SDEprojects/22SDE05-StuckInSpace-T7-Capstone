@@ -50,8 +50,8 @@ public class HubSpot {
         this.npcs = npcs;
     }
 
-    public void autoSaveGame() {
-        this.savegame.saveGame();
+    public void loadSavedGame(String playerName, JSONArray playerItems) {
+        getHero().setHeroName(playerName);
     }
 
     public void setPlayerName(String name) {

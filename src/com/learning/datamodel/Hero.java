@@ -18,7 +18,7 @@ public class Hero {
     private long healthMin;
     private long initialHealth;
 
-    private JSONObject currentPosition;
+    //private JSONObject currentPosition;
 
     public Hero(){
         this.heroDict = new FileHandler().readJsonFile("hero_dictionary.json");
