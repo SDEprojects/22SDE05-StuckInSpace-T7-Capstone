@@ -10,6 +10,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.awt.*;
+import java.lang.reflect.Array;
 import java.util.*;
 import java.util.List;
 
@@ -50,8 +51,15 @@ public class HubSpot {
     }
 
     public void loadSavedGame(String playerName, JSONArray playerItems) {
+        ArrayList<String> storeItems = new ArrayList<>();
+
         getHero().setHeroName(playerName);
+        for (Object obj : playerItems) {
+            storeItems.add((String) obj);
+        }
+        setPlayerItems(storeItems);
     }
+
 
     public void setPlayerName(String name) {
         this.hero.setHeroName(name);
@@ -100,8 +108,9 @@ public class HubSpot {
         return this.item.getBackpackList();
     }
 
-    public void setPlayerItems(List<String> playerItems) {
+    public void setPlayerItems(ArrayList<String> playerItems) {
         this.playerItems = playerItems;
+        getItem().setBackpackList(playerItems);
     }
 
     // TODO Henry added some functions starts here.
