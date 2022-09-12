@@ -31,7 +31,7 @@ public class FileHandler {
     }
 
     public void writeJsonFile(JSONObject playerSave){
-
+//TODO need to fix the write.
         // Add saved info to json array
         JSONArray saveList = new JSONArray();
         saveList.add(playerSave);

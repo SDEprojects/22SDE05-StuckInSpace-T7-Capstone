@@ -31,7 +31,7 @@ public class Item {
     private ArrayList<String> backpackList = new ArrayList<>();
 //    private ArrayList<String> carryList; // For the future.
 //    private ArrayList<String> wearList; // For the future.
-    private Map<String, ArrayList<String>> itemLocationList = new HashMap<String, ArrayList<String>>();
+    private Map<String, ArrayList<String>> itemLocationList = new HashMap<>();
     private ArrayList<String> itemFound = new ArrayList<>();
 
     // Multiple layers JSON call starts here.

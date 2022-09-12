@@ -151,24 +151,34 @@ public class HubSpot {
     public void lookAction() {
 //        System.out.println(item.getItemLocationList()); // delete me.
         item.setItemFound(item.getItemLocationList().get(getHeroPosition()));
-//        System.out.println("ItemFound: " + item.getItemFound()); //Delete me. For test.
         // Set a temporary variable to save the item found in place.
         ArrayList<String> itemsHere = item.getItemFound();
-        // clear the list of item found based on location.
-        item.setItemFound(null);
+        // TODO if the hero has the item, don't show.
+
         // If there are items available in the area, show them to player.
        if (itemsHere == null){
             System.out.println("\uD83D\uDE12 No item is found at this location");
         } else {
-            for (int i = 0; i < itemsHere.size(); i++) {
-                item.setItemCalledOut(itemsHere.get(i));
-                item.parseItemObject();
-                String itemFoundName = item.getItemName();
-                System.out.println("\uD83D\uDE00 You found " + itemFoundName);
-            }
+           if (item.getBackpackList().contains(itemsHere.get(0)) == false){ // if the player doesn't have the item.
+                    for (int i = 0; i < itemsHere.size(); i++) {
+                        item.setItemCalledOut(itemsHere.get(i));
+                        item.parseItemObject();
+                        String itemFoundName = item.getItemName();
+                        System.out.println("\uD83D\uDE00 You found " + itemFoundName);
+                    }
+                } else {
+                    System.out.println("\uD83D\uDE12 No item is found at this location");
+                }
         }
     }
-
+    // Check if there are items left at this location.
+    public boolean itemFoundHere(){
+        boolean isFound = true;
+        if (item.getItemFound() == null){
+            isFound = false;
+        }
+        return isFound;
+    }
     // Pick function.
     public void addToInventory() {
         // TODO add the item to backpack, remove them from itemFoundMap.
@@ -212,7 +222,6 @@ public class HubSpot {
 
     }
 
-
     // Generate item card function.
     public void showItemCard(String itemNum) {
         Integer itemNumInput = Integer.parseInt(itemNum);
@@ -233,4 +242,23 @@ public class HubSpot {
 
     }
 
+    // TODO save game file writer is not working.
+    public void autoSaveGame(){
+        JSONObject saveGameData = new JSONObject();
+        JSONArray backpack = new JSONArray();
+        for (String item : this.item.getBackpackList()){
+            backpack.add(item);
+        }
+        saveGameData.put("playerName", this.hero.getHeroName());
+        saveGameData.put("playerInventory", backpack);
+        new FileHandler().writeJsonFile(saveGameData);
+    }
+
+    public SaveGame getSavegame() {
+        return savegame;
+    }
+
+    public void setSavegame(SaveGame savegame) {
+        this.savegame = savegame;
+    }
 }

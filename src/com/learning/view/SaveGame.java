@@ -9,10 +9,10 @@ import java.util.List;
 
 public class SaveGame {
     // TODO The following variables should read from current game status.
-    JSONArray savedGameStatus; //holds saved game data
-    String savePlayerName;
+    private JSONArray savedGameStatus; //holds saved game data
+    private String savePlayerName;
     //String savePlayerLocation;
-    JSONArray savePlayerInventory;
+    private JSONArray savePlayerInventory;
 
     //public static void newGame(){}
 
@@ -53,5 +53,13 @@ public class SaveGame {
 
     public void setSavePlayerInventory(JSONArray savePlayerInventory) {
         this.savePlayerInventory = savePlayerInventory;
+    }
+
+    public JSONArray getSavedGameStatus() {
+        return savedGameStatus;
+    }
+
+    public void setSavedGameStatus(JSONArray savedGameStatus) {
+        this.savedGameStatus = savedGameStatus;
     }
 }
