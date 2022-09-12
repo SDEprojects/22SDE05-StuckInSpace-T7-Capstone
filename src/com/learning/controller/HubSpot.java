@@ -153,7 +153,7 @@ public class HubSpot {
         } else {
             for (int i = 0; i < itemsHere.size(); i++) {
                 item.setItemCalledOut(itemsHere.get(i));
-                item.readItemFile();
+                item.parseItemObject();
                 String itemFoundName = item.getItemName();
                 System.out.println("\uD83D\uDE00 You found " + itemFoundName);
             }
@@ -172,7 +172,7 @@ public class HubSpot {
             for (int i = 0; i < itemsHere.size(); i++) {
                 item.getBackpackList().add(itemsHere.get(i));
                 item.setItemCalledOut(itemsHere.get(i));
-                item.readItemFile();
+                item.parseItemObject();
                 System.out.println(item.getItemName() + " is added to your backpack \uD83C\uDF92");
             }
             item.getItemLocationList().remove(getHeroPosition());
@@ -210,7 +210,7 @@ public class HubSpot {
         Integer itemNumInput = Integer.parseInt(itemNum);
         String it = item.getBackpackList().get(itemNumInput - 1);
         item.setItemCalledOut(it);
-        item.readItemFile();
+        item.parseItemObject();
         if (item.getItemName() != null){
             System.out.println(
                     "\n" + item.getItemName() +
