@@ -182,7 +182,8 @@ public class StuckInOuterSpace {
                         }
 
                     } else{
-                        hub.setHeroPosition(heroInput);
+                        hub.setHeroPosition(heroInput.toLowerCase().replaceAll("\\s", ""));
+                        System.out.println(hub.getHeroPosition());
                     }
                 }
             }
