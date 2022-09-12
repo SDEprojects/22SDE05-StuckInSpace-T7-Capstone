@@ -10,9 +10,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 import java.awt.*;
-import java.util.ArrayList;
+import java.util.*;
 import java.util.List;
-import java.util.Map;
 
 public class HubSpot {
     SaveGame savegame;
@@ -107,62 +106,37 @@ public class HubSpot {
 
     // TODO Henry added some functions starts here.
 
-    // Create list of item by location, TODO should take data from JSON, will change if got time.
-    public void initiateItemLocationList() {
+    // Create list of item by location,
 
-        item.getItemLocationList().put("start", new ArrayList<String>());
-        item.getItemLocationList().put("basement", new ArrayList<String>());
-        item.getItemLocationList().put("engineRoom", new ArrayList<String>());
-        item.getItemLocationList().put("controlStation", new ArrayList<String>());
-        item.getItemLocationList().put("messHall", new ArrayList<String>());
-        item.getItemLocationList().put("hallway", new ArrayList<String>());
-        // Items found at start location.
-        item.getItemLocationList().get("start").add("TM");
-        item.getItemLocationList().get("start").add("knife");
-        // Items found at hallway.
-        item.getItemLocationList().get("hallway").add("boots");
-        // Items found at basement.
-        item.getItemLocationList().get("basement").add("toolkit");
-        // Items found at engineRoom.
-        item.getItemLocationList().get("engineRoom").add("engine");
-        item.getItemLocationList().get("engineRoom").add("gloves");
-        // Items found at controlStation.
-        item.getItemLocationList().get("controlStation").add("pistol");
-        item.getItemLocationList().get("controlStation").add("GPS");
-        item.getItemLocationList().get("controlStation").add("keycard");
-        // Items found at messHall.
-        item.getItemLocationList().get("messHall").add("rifle");
-        item.getItemLocationList().get("messHall").add("ACH");
-        item.getItemLocationList().get("messHall").add("IMTV");
-        item.getItemLocationList().get("messHall").add("basement_key");
-//        System.out.println(item.getItemLocationList());
-//        item.setItemLocationList(item.getItemLocationList());
-    }
+    public void initiateItemLocationList(){
+//        JSONArray itemJSON = new FileHandler().readJsonFile("item_dictionary.json");
+        JSONArray itemJSON = item.getItemDict();
 
-    // TODO in work, using JSON to replace initiateItemLocationList().
-//    public void findNameOfLocation(String location){
-//        JSONArray arrayAll = new FileHandler().readJsonFile("item_dictionary.json");
-//        for (JSONArray a)
-//
-//
-//
-//        for (Object obj : arrayAll) {
-//            JSONObject objAll = (JSONObject) obj;
-//            JSONObject attribute = (JSONObject) objAll.get(firstName);
-//            System.out.println("Array all: " + arrayAll);
-//            System.out.println("Turn Array to Obj all: " + objAll);
-//            System.out.println("First layer name: " + firstName);
-//            System.out.println(attribute);
-//            System.out.println(attribute.get("location"));
-//
-//        }
-//        item.getItemLocationList().put
-//        item.getItemLocationList().put("start", new ArrayList<String>());
-//        item.getItemLocationList().get("start").add("TM");
-//        item.getItemLocationList().get("start").add("knife");
-//        System.out.println(a);
-//        System.out.println(item.getItemLocationList());
-//    }
+        for (Object obj : itemJSON) {
+            JSONObject objAll = (JSONObject) obj; // Turn item JSON into obj.
+            Set allName = objAll.keySet(); // Get all the first layer of names item.json.
+            // turn all first layer of names into a list.
+            List<String> keyList = new ArrayList<>(allName.size()); // keyList if the list of first layer names.
+            for (Object keyItemName : allName){
+                keyList.add(keyItemName.toString());
+            }
+            // Create a list using location as the key.
+            for (String keyItemName : keyList){
+                JSONObject attribute = (JSONObject) objAll.get(keyItemName); // All attributes for each item.
+                String itemLoc = attribute.get("location").toString();
+                item.getItemLocationList().put(itemLoc, new ArrayList<>());
+            }
+
+           // Print each item in their location.
+            for (String keyItemName : keyList) {
+//                System.out.println(keyItemName);
+                JSONObject attribute = (JSONObject) objAll.get(keyItemName); // All attributes for each item.
+                String itemLoc = attribute.get("location").toString();
+                item.getItemLocationList().get(itemLoc).add(keyItemName);
+            }
+//            System.out.println(item.getItemLocationList()); // Delete me, for test.
+        } // This } closes (Object obj : itemJSON) for loop line 146.
+    } // This } closes the findNameOfLocation function.
 
     // This will print a list of items based on hero current location.
     public void lookAction() {
@@ -179,7 +153,7 @@ public class HubSpot {
         } else {
             for (int i = 0; i < itemsHere.size(); i++) {
                 item.setItemCalledOut(itemsHere.get(i));
-                item.readItemFile();
+                item.parseItemObject();
                 String itemFoundName = item.getItemName();
                 System.out.println("\uD83D\uDE00 You found " + itemFoundName);
             }
@@ -192,21 +166,16 @@ public class HubSpot {
         item.setItemFound(item.getItemLocationList().get(getHeroPosition()));
         // Set a temporary variable to save the item found in place.
         ArrayList<String> itemsHere = item.getItemFound();
-//        System.out.println("itemFound= " + itemsHere);//Delete me. For test.
-//        System.out.println("allItemFoundMap before = " + item.getItemLocationList());//Delete me. For test.
-        System.out.println("backpack before " + item.getBackpackList());//Delete me. For test.
         if (itemsHere == null) {
             System.out.println("\uD83D\uDE12 No item is found at this location");
         } else {
             for (int i = 0; i < itemsHere.size(); i++) {
                 item.getBackpackList().add(itemsHere.get(i));
                 item.setItemCalledOut(itemsHere.get(i));
-                item.readItemFile();
+                item.parseItemObject();
                 System.out.println(item.getItemName() + " is added to your backpack \uD83C\uDF92");
             }
             item.getItemLocationList().remove(getHeroPosition());
-//            System.out.println("allItemFoundMap after = " + item.getItemLocationList());//Delete me. For test.
-            System.out.println("backpack after " + item.getBackpackList());//Delete me. For test.
         }
     }
 
@@ -219,21 +188,29 @@ public class HubSpot {
     }
     // Show inventory function.
     public void showInventory() {
-        System.out.println(item.getBackpackList());
-        // TODO make it prettier.
-//        ArrayList<String> inv = item.getBackpackList();
-//        for (int i = 0; i < inv.size(); i++){
-//            System.out.println(inv.get(i));
-//            item.setItemCalledOut(inv.get(i).toString());
-//            item.readItemFile();
-//            System.out.println(item.getItemName());
-//        }
+//        System.out.println(item.getBackpackList()); // Delete me, for test.
+        ArrayList<String> inv = item.getBackpackList();
+        for (int i = 0; i < inv.size(); i++){
+//            System.out.println(inv.get(i)); // Delete me, for test.
+            JSONArray itemJSON = item.getItemDict();
+            for (Object obj : itemJSON) {
+                JSONObject objAll = (JSONObject) obj; // Turn item JSON into obj.
+                JSONObject attribute = (JSONObject) objAll.get(inv.get(i));
+
+                System.out.println((i + 1) + ". " + attribute.get("name"));
+            }
+
+        }
+
     }
 
+
     // Generate item card function.
-    public void showItemCard(String input) {
-        item.setItemCalledOut(input);
-        item.readItemFile();
+    public void showItemCard(String itemNum) {
+        Integer itemNumInput = Integer.parseInt(itemNum);
+        String it = item.getBackpackList().get(itemNumInput - 1);
+        item.setItemCalledOut(it);
+        item.parseItemObject();
         if (item.getItemName() != null){
             System.out.println(
                     "\n" + item.getItemName() +

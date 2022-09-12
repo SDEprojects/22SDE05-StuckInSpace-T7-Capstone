@@ -3,7 +3,7 @@
     "fuel": {
       "name": "\uD83D\uDEE2 Fuel \uD83D\uDEE2",
       "description": "A can of fuel, should be able to used on the spacecraft.",
-      "location": "***TBD***",
+      "location": "TBD",
       "store": "Inventory",
       "power": "0",
       "defense": "0"
@@ -19,7 +19,7 @@
     "bio_suit": {
       "name": "\uD83E\uDD7C Bio Suit \uD83E\uDD7C",
       "description": "A hazmat suit, consists of an impermeable whole-body garment worn as protection against hazardous materials.",
-      "location": "***Required to enter Chap 4***",
+      "location": "TBD",
       "store": "Wear",
       "power": "0",
       "defense": "1"
@@ -91,7 +91,7 @@
     "laser_gun": {
       "name": "-一━═╤══╦̵̵͇̿̿̿̿︻ Laser Gun ︻╦̵̵͇̿̿̿̿══╤═━一-",
       "description": "A laser gun, should be super powerful.",
-      "location": "***TBD***",
+      "location": "TBD",
       "store": "Carry",
       "power": "5",
       "defense": "1"
@@ -128,7 +128,7 @@
       "power": "0",
       "defense": "1"
     },
-    "compass": {
+    "Compass": {
       "name": "\uD83E\uDDED Compass \uD83E\uDDED",
       "description": "Compass, Lensatic, Tritium, Olive Drab, NSN 6605-01-196-6971.",
       "location": "special",
