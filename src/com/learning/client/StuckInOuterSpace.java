@@ -101,7 +101,7 @@ public class StuckInOuterSpace {
                 StuckInOuterSpace.exploreMission(mission, hub);
             } else if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("2")) {
                 mission.getInventoryMenu();
-                System.out.println("Which item would you like to look at? ");
+                System.out.println("Which item would you like to look at? Please enter the number.");
                 hub.showInventory();
                 String itemInput = scanner.nextLine();
                 hub.showItemCard(itemInput);

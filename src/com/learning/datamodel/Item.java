@@ -1,5 +1,6 @@
 package com.learning.datamodel;
 
+import com.learning.utility.FileHandler;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -35,49 +36,20 @@ public class Item {
 
     // Multiple layers JSON call starts here.
     public Item() {
-        this.itemDict = readItemFile();
+        this.itemDict = new FileHandler().readJsonFile("item_dictionary.json");
     }
 
-    // create a function to get data from JSON
+    public void parseItemObject() {
 
-
-    public JSONArray readItemFile() {
-        //JSON parser object to parse read file
-        JSONParser jsonParser = new JSONParser();
-        JSONArray itemList = null;
-        ClassLoader classLoader = getClass().getClassLoader();
-        try (InputStreamReader reader = new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream("item_dictionary.json")))) {
-            //Read JSON file
-            Object item_obj = jsonParser.parse(reader);
-            itemList = (JSONArray) item_obj;
-//            System.out.println(itemList); // **** for dev process only, need to Delete.
-
-            //Iterator over item array
-            itemList.forEach(item -> parseItemObject((JSONObject) item));
-
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
-        return itemList;
-    }
-
-    public void parseItemObject(JSONObject item) {
-
-        //Get single object within list
-        JSONObject itemObject = (JSONObject) item.get(itemCalledOut);
-
+        JSONObject searchItem = (JSONObject) getItemDict().get(0);
+        JSONObject target = (JSONObject) searchItem.get(itemCalledOut);
         //Get item name, description, location, store, power, defense.
-        itemName = (String) itemObject.get("name");
-        itemDescription = (String) itemObject.get("description");
-        itemLocation = (String) itemObject.get("location");
-        itemStore = (String) itemObject.get("store");
-        itemPower = (String) itemObject.get("power");
-        itemDefense = (String) itemObject.get("defense");
-
+        itemName = (String) target.get("name");
+        itemDescription = (String) target.get("description");
+        itemLocation = (String) target.get("location");
+        itemStore = (String) target.get("store");
+        itemPower = (String) target.get("power");
+        itemDefense = (String) target.get("defense");
     }
 
     public JSONArray getItemDict() {
@@ -114,10 +86,10 @@ public class Item {
     public Map<String, ArrayList<String>> getItemLocationList() {
         return itemLocationList;
     }
+
     public void setItemLocationList(Map<String, ArrayList<String>> itemLocationList) {
         this.itemLocationList = itemLocationList;
     }
-
 
 
     // Setter for item called by the player.
@@ -133,6 +105,7 @@ public class Item {
     public ArrayList<String> getItemFound() {
         return itemFound;
     }
+
     public void setItemFound(ArrayList<String> itemFound) {
         this.itemFound = itemFound;
     }
