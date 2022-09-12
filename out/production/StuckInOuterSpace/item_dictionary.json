@@ -3,7 +3,7 @@
     "fuel": {
       "name": "\uD83D\uDEE2 Fuel \uD83D\uDEE2",
       "description": "A can of fuel, should be able to used on the spacecraft.",
-      "location": "***TBD***",
+      "location": "TBD",
       "store": "Inventory",
       "power": "0",
       "defense": "0"
@@ -11,7 +11,7 @@
     "engine": {
       "name": "\uD83D\uDE80 Engine \uD83D\uDE80",
       "description": "An rocket engine, might be able to used on a spacecraft.",
-      "location": "engineRoom",
+      "location": "engineroom",
       "store": "Inventory",
       "power": "0",
       "defense": "0"
@@ -19,7 +19,7 @@
     "bio_suit": {
       "name": "\uD83E\uDD7C Bio Suit \uD83E\uDD7C",
       "description": "A hazmat suit, consists of an impermeable whole-body garment worn as protection against hazardous materials.",
-      "location": "***Required to enter Chap 4***",
+      "location": "TBD",
       "store": "Wear",
       "power": "0",
       "defense": "1"
@@ -35,7 +35,7 @@
     "keycard": {
       "name": "\uD83D\uDCB3 Keycard \uD83D\uDCB3",
       "description": "A key card, it has a symbol look the same with the one on the door of the engine room.",
-      "location": "controlStation",
+      "location": "controlstation",
       "store": "Inventory",
       "power": "0",
       "defense": "0"
@@ -43,7 +43,7 @@
     "basement_key": {
       "name": "\uD83D\uDD11 Metal Key \uD83D\uDD11",
       "description": "An old metal key, covered with dust.",
-      "location": "messHall",
+      "location": "messhall",
       "store": "Inventory",
       "power": "0",
       "defense": "0"
@@ -59,7 +59,7 @@
     "GPS": {
       "name": "\uD83D\uDDFA GPS \uD83D\uDDFA",
       "description": "This thing looks like a GPS, let's see what it does",
-      "location": "controlStation",
+      "location": "controlstation",
       "store": "Inventory",
       "power": "0",
       "defense": "0"
@@ -75,7 +75,7 @@
     "rifle": {
       "name": "╾━╤デ╦︻ Rifle ︻╦̵̵̿╤──",
       "description": "A rifle. Fairly new condition.",
-      "location": "messHall",
+      "location": "messhall",
       "store": "Carry",
       "power": "3",
       "defense": "1"
@@ -83,7 +83,7 @@
     "pistol": {
       "name": "\uD83D\uDD2B Pistol \uD83D\uDD2B",
       "description": "1911A1. Gold color body with walnut grips.",
-      "location": "controlStation",
+      "location": "controlstation",
       "store": "Carry",
       "power": "2",
       "defense": "1"
@@ -91,7 +91,7 @@
     "laser_gun": {
       "name": "-一━═╤══╦̵̵͇̿̿̿̿︻ Laser Gun ︻╦̵̵͇̿̿̿̿══╤═━一-",
       "description": "A laser gun, should be super powerful.",
-      "location": "***TBD***",
+      "location": "special",
       "store": "Carry",
       "power": "5",
       "defense": "1"
@@ -99,7 +99,7 @@
     "IMTV": {
       "name": "\uD83E\uDDBA IMTV \uD83E\uDDBA",
       "description": "Improved Modular Tactical Vest, it's always good to have a body armor on.",
-      "location": "messHall",
+      "location": "messhall",
       "store": "Wear",
       "power": "0",
       "defense": "1"
@@ -107,7 +107,7 @@
     "ACH": {
       "name": "\uD83E\uDE96 ACH \uD83E\uDE96",
       "description": "It's not just a helmet, it is an Advanced Combat Helmet, made of Kevlar.",
-      "location": "messHall",
+      "location": "messhall",
       "store": "Wear",
       "power": "0",
       "defense": "5"
@@ -115,7 +115,7 @@
     "gloves": {
       "name": "\uD83E\uDDE4 Gloves \uD83E\uDDE4",
       "description": "A pair of tactical gloves.",
-      "location": "engineRoom",
+      "location": "engineroom",
       "store": "Wear",
       "power": "0",
       "defense": "1"
@@ -128,7 +128,7 @@
       "power": "0",
       "defense": "1"
     },
-    "compass": {
+    "Compass": {
       "name": "\uD83E\uDDED Compass \uD83E\uDDED",
       "description": "Compass, Lensatic, Tritium, Olive Drab, NSN 6605-01-196-6971.",
       "location": "special",
