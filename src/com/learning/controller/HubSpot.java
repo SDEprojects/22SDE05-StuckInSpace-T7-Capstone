@@ -205,7 +205,6 @@ public class HubSpot {
             for (Object obj : itemJSON) {
                 JSONObject objAll = (JSONObject) obj; // Turn item JSON into obj.
                 JSONObject attribute = (JSONObject) objAll.get(inv.get(i));
-
                 System.out.println((i + 1) + ". " + attribute.get("name"));
             }
 
