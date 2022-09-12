@@ -128,7 +128,7 @@
       "power": "0",
       "defense": "1"
     },
-    "compass": {
+    "Compass": {
       "name": "\uD83E\uDDED Compass \uD83E\uDDED",
       "description": "Compass, Lensatic, Tritium, Olive Drab, NSN 6605-01-196-6971.",
       "location": "special",
