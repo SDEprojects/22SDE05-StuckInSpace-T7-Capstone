@@ -34,23 +34,27 @@ public class StuckInOuterSpace {
                 "             |     1.New Game           |--------|     2.Load Game    |\n" +
                 "--------------------------------------------------------------------------------------------\n");
         String gameInput = scanner.nextLine();
-
-        if (gameInput.equalsIgnoreCase("1") || gameInput.equalsIgnoreCase("new game")) {
-            //START NEW GAME
-            System.out.println("Name your hero: ");
-            String name = scanner.nextLine();
-            hub.setPlayerName(name);
-            hub.showPlayerProfile();
-            hub.initiateInventory(); // To add the items the Hero came with to the backpack.
-            hub.initiateItemLocationList(); // Initiate the item list based on location.
-            Story.gameIntro();
-            System.out.println("Type next to continue");
-            String next = scanner.nextLine();
-        } else if (gameInput.equalsIgnoreCase("2") || gameInput.equalsIgnoreCase("load game")) {
-
-        } else //TODO for invalid input
-            System.out.println("Please make a selection");
-
+        while (true) {
+            if (gameInput.equalsIgnoreCase("1") || gameInput.equalsIgnoreCase("new game")) {
+                //START NEW GAME
+                System.out.println("Name your hero: ");
+                String name = scanner.nextLine();
+                hub.setPlayerName(name);
+                hub.showPlayerProfile();
+                hub.initiateInventory(); // To add the items the Hero came with to the backpack.
+                hub.initiateItemLocationList(); // Initiate the item list based on location.
+                Story.gameIntro();
+                System.out.println("Type next to continue");
+                String next = scanner.nextLine();
+                break;
+            } else {
+                System.out.println("Please put a valid option for your game settings.");
+                System.out.println("-------------------------------------------------------------------------------------------- \n" +
+                        "             |     1.New Game           |--------|     2.Load Game    |\n" +
+                        "--------------------------------------------------------------------------------------------\n");
+                gameInput = scanner.nextLine();
+            }
+        }
 
 
         //================================== STARTING THE GAME ===========================================//
@@ -96,8 +100,8 @@ public class StuckInOuterSpace {
         }
     }
 
-    private static void activateMission (Mission mission, HubSpot hub){
-                    // getters for items, locations, people save them to local variables.
+    private static void activateMission(Mission mission, HubSpot hub) {
+        // getters for items, locations, people save them to local variables.
 
         Scanner scanner = new Scanner(System.in);
         String heroInput = "null";
@@ -124,7 +128,7 @@ public class StuckInOuterSpace {
         }
     }
 
-    private static void exploreMission(Mission mission, HubSpot hub){
+    private static void exploreMission(Mission mission, HubSpot hub) {
         Scanner scanner = new Scanner(System.in);
         String heroInput;
 
@@ -156,32 +160,32 @@ public class StuckInOuterSpace {
                 mission.getMoveHelpMenu(hub.getHeroPosition());
             } else if (!heroInput.equalsIgnoreCase("leave")) {
                 if (mission.isExitAvailable(hub.getHeroPosition(), heroInput)) {
-                    if(hub.getHeroPosition().equalsIgnoreCase("basement") && heroInput.equalsIgnoreCase("engineroom")){
+                    if (hub.getHeroPosition().equalsIgnoreCase("basement") && heroInput.equalsIgnoreCase("engineroom")) {
                         boolean hasKeyCard = false;
-                        for (String item: hub.getPlayerItems()) {
-                            if (item.equalsIgnoreCase("keycard")){
+                        for (String item : hub.getPlayerItems()) {
+                            if (item.equalsIgnoreCase("keycard")) {
                                 hasKeyCard = true;
                                 System.out.println("You had the key card and was able to move into the engine room.");
                                 hub.setHeroPosition(heroInput);
                             }
                         }
-                        if(hasKeyCard == false){
+                        if (hasKeyCard == false) {
                             System.out.println("You need a key card to get into this room, you should look around some more.");
                         }
                     } else if (hub.getHeroPosition().equals("hallway") && heroInput.equalsIgnoreCase("basement")) {
                         boolean hasKeyCard = false;
-                        for (String item: hub.getPlayerItems()) {
-                            if (item.equalsIgnoreCase("basement_key")){
+                        for (String item : hub.getPlayerItems()) {
+                            if (item.equalsIgnoreCase("basement_key")) {
                                 hasKeyCard = true;
                                 System.out.println("You had the basement key and was able to move into the basement.");
                                 hub.setHeroPosition(heroInput);
                             }
                         }
-                        if(hasKeyCard == false){
+                        if (hasKeyCard == false) {
                             System.out.println("You need a basement key to get into this room, you should look around some more.");
                         }
 
-                    } else{
+                    } else {
                         hub.setHeroPosition(heroInput.toLowerCase().replaceAll("\\s", ""));
                         System.out.println(hub.getHeroPosition());
                     }

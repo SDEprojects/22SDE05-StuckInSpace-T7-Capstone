@@ -43,16 +43,16 @@ public class SaveGame {
         return savePlayerName;
     }
 
-    public void setSavePlayerName(String saveCharName) {
-        this.savePlayerName = saveCharName;
+    public void setSavePlayerName(String savePlayerName) {
+        this.savePlayerName = savePlayerName;
     }
 
     public JSONArray getSavePlayerInventory() {
         return savePlayerInventory;
     }
 
-    public void setSavePlayerInventory(JSONArray saveCharInventory) {
-        this.savePlayerInventory = saveCharInventory;
+    public void setSavePlayerInventory(JSONArray savePlayerInventory) {
+        this.savePlayerInventory = savePlayerInventory;
     }
 
     public JSONArray getSavedGameStatus() {
