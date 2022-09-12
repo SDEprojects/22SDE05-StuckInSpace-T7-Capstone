@@ -42,10 +42,16 @@ public class StuckInOuterSpace {
                 hub.setPlayerName(name);
                 hub.showPlayerProfile();
                 hub.initiateInventory(); // To add the items the Hero came with to the backpack.
-                hub.initiateItemLocationList(); // Initiate the item list based on location.
+                hub.initiateItemLocationList();// Initiate the item list based on location.
                 Story.gameIntro();
                 System.out.println("Type next to continue");
                 String next = scanner.nextLine();
+                break;
+            } else if (gameInput.equalsIgnoreCase("2") || gameInput.equalsIgnoreCase("load game")) {
+                hub.loadSavedGame(hub.getSavegame().getSavePlayerName(), hub.getSavegame().getSavePlayerInventory());
+                System.out.println(hub.getPlayerName());
+                System.out.println(hub.getPlayerItems());
+                hub.initiateItemLocationList();
                 break;
             } else {
                 System.out.println("Please put a valid option for your game settings.");
@@ -85,14 +91,12 @@ public class StuckInOuterSpace {
                     if ((missionInput.equalsIgnoreCase("alien outpost")) || missionInput.equalsIgnoreCase("1")) {
                         missions.buildLocationMap("mission_01");
                         StuckInOuterSpace.activateMission(missions, hub);
-                    } else {
-                        break;
-                    }
+                    } 
                 } else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
                     missions.getHelpMenu();
                 } else if (heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4")) {
                     input = heroInput;
-                    //hub.autoSaveGame();
+                    hub.autoSaveGame();
                     // save the game before closing out.
                     // hub.autoSaveGame();
                 }
@@ -112,7 +116,7 @@ public class StuckInOuterSpace {
             mission.getActiveMissionMenu();
             System.out.println("What would you like to do? ");
             heroInput = scanner.nextLine();
-            System.out.println(heroInput);
+//            System.out.println(heroInput);
             if (heroInput.equalsIgnoreCase("explore") || heroInput.equalsIgnoreCase("1")) {
                 StuckInOuterSpace.exploreMission(mission, hub);
             } else if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("2")) {
@@ -143,7 +147,7 @@ public class StuckInOuterSpace {
                 hub.lookAction();
 
                 // Condition when there is no item to pick.
-                if (hub.itemFoundHere()){
+                if (hub.itemFoundHere() && hub.getItem().getBackpackList().contains(hub.getItem().getItemFound().get(0)) == false) {
                     mission.getPickMenu();
                     heroInput = scanner.nextLine();
                     if (heroInput.equalsIgnoreCase("pick")) {
@@ -187,7 +191,7 @@ public class StuckInOuterSpace {
 
                     } else {
                         hub.setHeroPosition(heroInput.toLowerCase().replaceAll("\\s", ""));
-                        System.out.println(hub.getHeroPosition());
+//                        System.out.println(hub.getHeroPosition());
                     }
                 }
             }

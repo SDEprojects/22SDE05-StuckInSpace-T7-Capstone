@@ -159,7 +159,7 @@ public class HubSpot {
        if (itemsHere == null){
             System.out.println("\uD83D\uDE12 No item is found at this location");
         } else {
-                if (item.getBackpackList().contains(itemsHere.get(0)) == false){ // if the player doesn't have the item.
+           if (item.getBackpackList().contains(itemsHere.get(0)) == false){ // if the player doesn't have the item.
                     for (int i = 0; i < itemsHere.size(); i++) {
                         item.setItemCalledOut(itemsHere.get(i));
                         item.parseItemObject();
@@ -242,4 +242,23 @@ public class HubSpot {
 
     }
 
+    // TODO save game file writer is not working.
+    public void autoSaveGame(){
+        JSONObject saveGameData = new JSONObject();
+        JSONArray backpack = new JSONArray();
+        for (String item : this.item.getBackpackList()){
+            backpack.add(item);
+        }
+        saveGameData.put("playerName", this.hero.getHeroName());
+        saveGameData.put("playerInventory", backpack);
+        new FileHandler().writeJsonFile(saveGameData);
+    }
+
+    public SaveGame getSavegame() {
+        return savegame;
+    }
+
+    public void setSavegame(SaveGame savegame) {
+        this.savegame = savegame;
+    }
 }
