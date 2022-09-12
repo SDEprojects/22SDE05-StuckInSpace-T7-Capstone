@@ -57,7 +57,7 @@ public class StuckInOuterSpace {
                 if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("1")) {
                     missions.getInventoryMenu();
                     hub.showInventory();
-                    System.out.println("Which item would you like to look at? ");
+                    System.out.println("Which item would you like to look at? Please enter the number.");
                     String itemInput = scanner.nextLine();
                     hub.showItemCard(itemInput);
 
@@ -123,25 +123,23 @@ public class StuckInOuterSpace {
             heroInput = scanner.nextLine();
             if (heroInput.equalsIgnoreCase("look")) {
 
-                // TODO Henry added some functions starts here.
-                // call to check and see if there are items in this section of our locations.
-                // if there is an item, give it to the player and add it to their inventory.
-
                 mission.getLookMenu();
                 hub.lookAction();
-                // String isEngine = hub.lookAction();
-                // TODO, need to add condition when there is no item to pick.
-//                mission.getPickMenu();/
-                heroInput = scanner.nextLine();
-                if (heroInput.equalsIgnoreCase("pick")) {
-                    hub.addToInventory();
+
+                // Condition when there is no item to pick.
+                if (hub.itemFoundHere()){
+                    mission.getPickMenu();
+                    heroInput = scanner.nextLine();
+                    if (heroInput.equalsIgnoreCase("pick")) {
+                        hub.addToInventory();
+                    }
                 }
+
                 //TODO: KEN - if they found the engine in the engineroom, then we need to unlock then story ending.
                 // if(item.equals("engine") && hub.getPlayerLocation().equals("engineRoom"))
                 //          Story.ending()
                 //          when they quit and go back to hub, they should escape with the new engine?
 
-                // TODO Henry added functions ends here.
             } else if (heroInput.equalsIgnoreCase("help")) {
                 mission.getMoveHelpMenu(hub.getHeroPosition());
             } else if (!heroInput.equalsIgnoreCase("leave")) {

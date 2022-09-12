@@ -138,15 +138,39 @@ public class HubSpot {
         } // This } closes (Object obj : itemJSON) for loop line 146.
     } // This } closes the findNameOfLocation function.
 
+    // TODO Save item location list for save game.
+//    public void saveItemLocationList(){
+//        System.out.println(item.getItemLocationList());
+//        // Use the file handler to write the list to player_save.json.
+//        //{special=[Compass, TBD], basement=[toolkit], hallway=[boots], TBD=[fuel, laser_gun, bio_suit], messHall=[IMTV, ACH, basement_key, rifle], start=[knife, TM], controlStation=[keycard, GPS, pistol], engineRoom=[gloves, engine]}
+//    }
+
+    // TODO Load item location list for load game.
+//    public void loadItemLocationList(){
+//        JSONArray playerSaveArray = this.savegame.get
+//
+//        System.out.println(itemLocArray);
+////            Arrays itemListArray = objAll.get("itemLocList");
+//        JSONObject itemLocObj = (JSONObject) itemLocArray.get(0);
+//            System.out.println(itemLocObj.get("itemLocList"));
+//
+//
+//
+
+
+//        JSONObject allSaved = (JSONObject) itemLocArray.get(0);
+//        JSONObject itemLocList = (JSONObject) allSaved.get("itemLocList");
+//        System.out.println(itemLocList);
+//        item.setItemLocationList(itemLocList);
+//        System.out.println(item.getItemLocationList());
+//    }
+
     // This will print a list of items based on hero current location.
     public void lookAction() {
 //        System.out.println(item.getItemLocationList()); // delete me.
         item.setItemFound(item.getItemLocationList().get(getHeroPosition()));
-//        System.out.println("ItemFound: " + item.getItemFound()); //Delete me. For test.
         // Set a temporary variable to save the item found in place.
         ArrayList<String> itemsHere = item.getItemFound();
-        // clear the list of item found based on location.
-        item.setItemFound(null);
         // If there are items available in the area, show them to player.
        if (itemsHere == null){
             System.out.println("\uD83D\uDE12 No item is found at this location");
@@ -159,7 +183,14 @@ public class HubSpot {
             }
         }
     }
-
+    // Check if there are items left at this location.
+    public boolean itemFoundHere(){
+        boolean isFound = true;
+        if (item.getItemFound() == null){
+            isFound = false;
+        }
+        return isFound;
+    }
     // Pick function.
     public void addToInventory() {
         // TODO add the item to backpack, remove them from itemFoundMap.
@@ -203,7 +234,6 @@ public class HubSpot {
         }
 
     }
-
 
     // Generate item card function.
     public void showItemCard(String itemNum) {
