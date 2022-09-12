@@ -83,7 +83,7 @@ public class Mission {
             JSONObject position = (JSONObject) mission.get("mission_01");
             JSONArray availableExits = (JSONArray) position.get(exitRequest);
             for (Object value: availableExits) {
-                if (exit.equals(value)){
+                if (exit.toLowerCase().replaceAll("\\s", "").equals(value)){
                     isExit = true;
                 }
             }
