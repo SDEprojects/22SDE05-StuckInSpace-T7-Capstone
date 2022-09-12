@@ -3,6 +3,7 @@ package com.learning.client;
 import com.learning.controller.HubSpot;
 import com.learning.controller.Mission;
 import com.learning.datamodel.Item;
+import com.learning.view.SaveGame;
 import com.learning.view.Story;
 
 import java.io.IOException;
@@ -24,21 +25,32 @@ public class StuckInOuterSpace {
                 "         |___/\\__|\\_,_\\__|_\\_\\ |_|_||_|  \\___/ \\_,_|\\__\\___|_|   |___| .__\\__,_\\__\\___|\n" +
                 "                                                             |_|               ");
 
-        // do you want to load a character? y/n
-        // what is your characters name? take the name as input.
+        //================================== LOADING THE GAME/NEW GAME ===========================================//
+
         // call hub to check and see if the save object has that name loaded.
         // if it does have that name. then load all its values to the appropriate classes.
 
-        // the following will be a part of an if else check
-        System.out.println("Name your hero: ");
-        String name = scanner.nextLine();
-        hub.setPlayerName(name);
-        hub.showPlayerProfile();
-        hub.initiateInventory(); // To add the items the Hero came with to the backpack.
-        hub.initiateItemLocationList(); // Initiate the item list based on location.
-        Story.gameIntro();
-        System.out.println("Type next to continue");
-        String next = scanner.nextLine();
+        System.out.println("-------------------------------------------------------------------------------------------- \n" +
+                "             |     1.New Game           |--------|     2.Load Game    |\n" +
+                "--------------------------------------------------------------------------------------------\n");
+        String gameInput = scanner.nextLine();
+
+        if (gameInput.equalsIgnoreCase("1") || gameInput.equalsIgnoreCase("new game")) {
+            //START NEW GAME
+            System.out.println("Name your hero: ");
+            String name = scanner.nextLine();
+            hub.setPlayerName(name);
+            hub.showPlayerProfile();
+            hub.initiateInventory(); // To add the items the Hero came with to the backpack.
+            hub.initiateItemLocationList(); // Initiate the item list based on location.
+            Story.gameIntro();
+            System.out.println("Type next to continue");
+            String next = scanner.nextLine();
+        } else if (gameInput.equalsIgnoreCase("2") || gameInput.equalsIgnoreCase("load game")) {
+
+        } else //TODO for invalid input
+            System.out.println("Please make a selection");
+
 
 
         //================================== STARTING THE GAME ===========================================//
@@ -76,7 +88,7 @@ public class StuckInOuterSpace {
                     missions.getHelpMenu();
                 } else if (heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4")) {
                     input = heroInput;
-                    hub.autoSaveGame();
+                    //hub.autoSaveGame();
                     // save the game before closing out.
                     // hub.autoSaveGame();
                 }
