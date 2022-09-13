@@ -4,13 +4,10 @@ import com.learning.datamodel.Hero;
 import com.learning.datamodel.Item;
 import com.learning.datamodel.NPC;
 import com.learning.utility.FileHandler;
-import com.learning.view.Menu;
 import com.learning.view.SaveGame;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.awt.*;
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.List;
 
@@ -251,6 +248,7 @@ public class HubSpot {
         }
         saveGameData.put("playerName", this.hero.getHeroName());
         saveGameData.put("playerInventory", backpack);
+        System.out.println("Your game has been Saved!");
         new FileHandler().writeJsonFile(saveGameData);
     }
 

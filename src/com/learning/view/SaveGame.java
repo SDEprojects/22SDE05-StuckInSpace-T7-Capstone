@@ -3,10 +3,6 @@ import com.learning.utility.FileHandler;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.io.*;
-import java.util.Arrays;
-import java.util.List;
-
 public class SaveGame {
     // TODO The following variables should read from current game status.
     private JSONArray savedGameStatus; //holds saved game data

@@ -2,8 +2,6 @@ package com.learning.client;
 
 import com.learning.controller.HubSpot;
 import com.learning.controller.Mission;
-import com.learning.datamodel.Item;
-import com.learning.view.SaveGame;
 import com.learning.view.Story;
 
 import java.io.IOException;
@@ -49,9 +47,9 @@ public class StuckInOuterSpace {
                 break;
             } else if (gameInput.equalsIgnoreCase("2") || gameInput.equalsIgnoreCase("load game")) {
                 hub.loadSavedGame(hub.getSavegame().getSavePlayerName(), hub.getSavegame().getSavePlayerInventory());
-                System.out.println(hub.getPlayerName());
-                System.out.println(hub.getPlayerItems());
                 hub.initiateItemLocationList();
+                System.out.println("Welcome back to the game " + hub.getPlayerName());
+                hub.showPlayerProfile();
                 break;
             } else {
                 System.out.println("Please put a valid option for your game settings.");
@@ -147,7 +145,7 @@ public class StuckInOuterSpace {
                 hub.lookAction();
 
                 // Condition when there is no item to pick.
-                if (hub.itemFoundHere() && hub.getItem().getBackpackList().contains(hub.getItem().getItemFound().get(0)) == false) {
+                if (hub.itemFoundHere() && !hub.getPlayerItems().contains(hub.getItem().getItemFound().get(0))) {
                     mission.getPickMenu();
                     heroInput = scanner.nextLine();
                     if (heroInput.equalsIgnoreCase("pick")) {
@@ -191,7 +189,6 @@ public class StuckInOuterSpace {
 
                     } else {
                         hub.setHeroPosition(heroInput.toLowerCase().replaceAll("\\s", ""));
-//                        System.out.println(hub.getHeroPosition());
                     }
                 }
             }
