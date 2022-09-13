@@ -6,8 +6,6 @@ import com.learning.view.Menu;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
-
 public class Mission {
     private Location locations;
     private Item items;
