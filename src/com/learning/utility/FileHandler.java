@@ -20,6 +20,8 @@ public class FileHandler {
         try (InputStreamReader reader = new InputStreamReader(Objects.requireNonNull(classLoader.getResourceAsStream(fileName)))) {
             Object obj = jsonParser.parse(reader);
             dictionary = (JSONArray) obj;
+            JSONObject pages = (JSONObject) dictionary.get(0);
+            String formal = (String) pages.get("name");
         } catch (FileNotFoundException | ParseException e) {
             e.printStackTrace();
         } catch (IOException e) {
@@ -29,7 +31,7 @@ public class FileHandler {
     }
 
     public void writeJsonFile(JSONObject playerSave){
-
+//TODO need to fix the write.
         // Add saved info to json array
         JSONArray saveList = new JSONArray();
         saveList.add(playerSave);

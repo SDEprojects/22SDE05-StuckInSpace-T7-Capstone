@@ -6,8 +6,6 @@ import com.learning.view.Menu;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.ArrayList;
-
 public class Mission {
     private Location locations;
     private Item items;
@@ -83,7 +81,7 @@ public class Mission {
             JSONObject position = (JSONObject) mission.get("mission_01");
             JSONArray availableExits = (JSONArray) position.get(exitRequest);
             for (Object value: availableExits) {
-                if (exit.equals(value)){
+                if (exit.toLowerCase().replaceAll("\\s", "").equals(value)){
                     isExit = true;
                 }
             }
