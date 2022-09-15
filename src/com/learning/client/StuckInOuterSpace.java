@@ -7,6 +7,8 @@ import com.learning.view.Story;
 import java.io.IOException;
 import java.util.Scanner;
 
+import static com.learning.controller.HubSpot.checkInventoryInputType;
+
 public class StuckInOuterSpace {
     public static void main(String[] args) throws IOException {
         /**
@@ -76,10 +78,28 @@ public class StuckInOuterSpace {
                 //------------------------ inventory, missions, help, quit ------------------------------
                 if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("1")) {
                     missions.getInventoryMenu();
+
                     hub.showInventory();
                     System.out.println("Which item would you like to look at? Please enter the number.");
-                    String itemInput = scanner.nextLine();
-                    hub.showItemCard(itemInput);
+
+                    while (true) {
+                        String itemInput = scanner.nextLine();
+                        if (checkInventoryInputType(itemInput)) {
+                            if (Integer.parseInt(itemInput) > hub.getPlayerItems().size()) {
+                                System.out.println("Number you entered is not valid, please enter number that is corresponding to items being displayed. ");
+                            } else {
+                                hub.showItemCard(itemInput);
+                                break;
+                            }
+                            //System.out.println(hub.getPlayerItems().size()-1);
+                            //System.out.println(Integer.parseInt(itemInput));
+
+
+                        } else {
+                            System.out.println("Please enter valid number only");
+                        }
+
+                    }
 
 
                 } else if (heroInput.equalsIgnoreCase("missions") || heroInput.equalsIgnoreCase("2")) {
@@ -89,7 +109,7 @@ public class StuckInOuterSpace {
                     if ((missionInput.equalsIgnoreCase("alien outpost")) || missionInput.equalsIgnoreCase("1")) {
                         missions.buildLocationMap("mission_01");
                         StuckInOuterSpace.activateMission(missions, hub);
-                    } 
+                    }
                 } else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
                     missions.getHelpMenu();
                 } else if (heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4")) {
@@ -121,8 +141,19 @@ public class StuckInOuterSpace {
                 mission.getInventoryMenu();
                 System.out.println("Which item would you like to look at? Please enter the number.");
                 hub.showInventory();
-                String itemInput = scanner.nextLine();
-                hub.showItemCard(itemInput);
+                while (true) {
+                    String itemInput = scanner.nextLine();
+                    if (checkInventoryInputType(itemInput)) {
+                        hub.showItemCard(itemInput);
+                        break;
+
+                    } else {
+                        System.out.println("Please enter valid number only");
+                    }
+                    if (Integer.parseInt(itemInput) > hub.getPlayerItems().size() - 1) {
+                        System.out.println("Number you entered is not valid, please enter number that is corresponding to items being displayed. ");
+                    }
+                }
 
             } else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
                 mission.getHelpMenu();
