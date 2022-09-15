@@ -14,7 +14,7 @@ import java.util.List;
 public class HubSpot {
     SaveGame savegame;
     private Hero hero;
-    private Item item;
+    private static Item item;
     private NPC npcs;
 
     // TODO: Link this to backpack ds
@@ -70,7 +70,6 @@ public class HubSpot {
         getHero().displayHeroProfile();
     }
 
-
     public void setHeroPosition(String position) {
         updatePositions((String) this.heroPosition.get("Current_position"), position);
     }
@@ -83,7 +82,6 @@ public class HubSpot {
         return (String) this.heroPosition.get("Previous_position");
     }
 
-
     private void updatePositions(String oldPosition, String newPosition) {
         this.heroPosition.put("Previous_position", oldPosition);
         this.heroPosition.put("Current_position", newPosition);
@@ -92,7 +90,6 @@ public class HubSpot {
     public void getHeroStatus() {
 
     }
-
     public Item getItem() {
         return item;
     }
@@ -110,10 +107,7 @@ public class HubSpot {
         getItem().setBackpackList(playerItems);
     }
 
-    // TODO Henry added some functions starts here.
-
     // Create list of item by location,
-
     public void initiateItemLocationList(){
 //        JSONArray itemJSON = new FileHandler().readJsonFile("item_dictionary.json");
         JSONArray itemJSON = item.getItemDict();
@@ -216,7 +210,6 @@ public class HubSpot {
             }
 
         }
-
     }
 
     // Generate item card function.
@@ -236,8 +229,16 @@ public class HubSpot {
         } else {
             System.out.println("You don't have this item.");
         }
-
     }
+
+//    public static boolean isInteger(String s) {
+//        try {
+//            Integer.parseInt(s);
+//        } catch (NumberFormatException | NullPointerException e) {
+//            return false;
+//        }
+//        return true;
+//    }
 
     // TODO save game file writer is not working.
     public void autoSaveGame(){

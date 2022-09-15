@@ -19,7 +19,10 @@
       "messhall_description": "Intro to Alien Outpost",
       "hallway_position": "hallway",
       "hallway_exit": ["start", "basement", "controlstation", "messhall"],
-      "hallway_description": "Intro to Alien Outpost"
+      "hallway_description": "Intro to Alien Outpost",
+      "spaceship_position": "spaceship",
+      "spaceship_exit": ["hallway"],
+      "spaceship_description": ""
     }
   }
 ]

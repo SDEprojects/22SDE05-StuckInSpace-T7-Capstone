@@ -48,8 +48,6 @@ public class Menu {
         System.out.println("------------------------------------------------------------");
     };
 
-
-    // TODO Henry added some functions ends here.
     public void missionsMenu() {
         System.out.println("----------------------------------------------------------------------------------------- \n" +
                 "                                 |     Missions:    |               \n" +
@@ -78,16 +76,16 @@ public class Menu {
 
     public void moveMenu(JSONArray exits){
         System.out.println("--------------------------------------------------------------");
-        System.out.printf("| EXITS:  |");
+        System.out.print("| EXITS:  |");
         for (Object value: exits) {
-            System.out.printf("|  ");
-            System.out.printf(value.toString().toUpperCase());
-            System.out.printf("  |");
+            System.out.print("|  ");
+            System.out.print(value.toString().toUpperCase());
+            System.out.print("  |");
         }
         System.out.println();
         System.out.println("--------------------------------------------------------------");
-        System.out.printf("|  LOOK  |");
-        System.out.printf("|  HELP  |");
+        System.out.print("|  LOOK  |");
+        System.out.print("|  HELP  |");
         System.out.println("|  LEAVE |");
         System.out.println("--------------------------------------------------------------");
     }
@@ -99,10 +97,7 @@ public class Menu {
     }
 
     public void helpMap(String position, JSONArray exits, JSONArray items){
-        /**
-         * TODO: takes in current location, exits to current location, and items in the current location
-         *
-         */
+        // Takes in current location, exits to current location, and items in the current location
         System.out.println("==============================================================");
         System.out.println("| You are Here:  " + position.toUpperCase());
         System.out.println("==============================================================");

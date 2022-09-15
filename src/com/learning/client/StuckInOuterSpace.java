@@ -4,14 +4,10 @@ import com.learning.controller.HubSpot;
 import com.learning.controller.Mission;
 import com.learning.view.Story;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 public class StuckInOuterSpace {
-    public static void main(String[] args) throws IOException {
-        /**
-         * Introduction to the game
-         * */
+    public static void main(String[] args) {
         Mission missions = new Mission();
         HubSpot hub = new HubSpot();
         Scanner scanner = new Scanner(System.in);
@@ -43,7 +39,7 @@ public class StuckInOuterSpace {
                 hub.initiateItemLocationList();// Initiate the item list based on location.
                 Story.gameIntro();
                 System.out.println("Type next to continue");
-                String next = scanner.nextLine();
+                // String next = scanner.nextLine();
                 break;
             } else if (gameInput.equalsIgnoreCase("2") || gameInput.equalsIgnoreCase("load game")) {
                 hub.loadSavedGame(hub.getSavegame().getSavePlayerName(), hub.getSavegame().getSavePlayerInventory());
@@ -78,10 +74,15 @@ public class StuckInOuterSpace {
                     missions.getInventoryMenu();
                     hub.showInventory();
                     System.out.println("Which item would you like to look at? Please enter the number.");
-                    String itemInput = scanner.nextLine();
-                    hub.showItemCard(itemInput);
-
-
+//                    while (true) {
+//                        String itemInput = scanner.nextLine();
+//                        if (HubSpot.isInteger(itemInput)) {
+//                            hub.showItemCard(itemInput);
+//                            break;
+//                        } else {
+//                            System.out.println("Please enter number.");
+//                        }
+//                    }
                 } else if (heroInput.equalsIgnoreCase("missions") || heroInput.equalsIgnoreCase("2")) {
                     missions.getMissionsMenu();
                     System.out.println("Which mission would you like to try? ");
@@ -89,7 +90,7 @@ public class StuckInOuterSpace {
                     if ((missionInput.equalsIgnoreCase("alien outpost")) || missionInput.equalsIgnoreCase("1")) {
                         missions.buildLocationMap("mission_01");
                         StuckInOuterSpace.activateMission(missions, hub);
-                    } 
+                    }
                 } else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
                     missions.getHelpMenu();
                 } else if (heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4")) {
@@ -121,9 +122,15 @@ public class StuckInOuterSpace {
                 mission.getInventoryMenu();
                 System.out.println("Which item would you like to look at? Please enter the number.");
                 hub.showInventory();
-                String itemInput = scanner.nextLine();
-                hub.showItemCard(itemInput);
-
+//                while (true) {
+//                    String itemInput = scanner.nextLine();
+//                    if (HubSpot.isInteger(itemInput)) {
+//                        hub.showItemCard(itemInput);
+//                        break;
+//                    } else {
+//                        System.out.println("Please enter number.");
+//                    }
+//                }
             } else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
                 mission.getHelpMenu();
             }
@@ -152,12 +159,10 @@ public class StuckInOuterSpace {
                         hub.addToInventory();
                     }
                 }
-
                 //TODO: KEN - if they found the engine in the engineroom, then we need to unlock then story ending.
                 // if(item.equals("engine") && hub.getPlayerLocation().equals("engineRoom"))
                 //          Story.ending()
                 //          when they quit and go back to hub, they should escape with the new engine?
-
             } else if (heroInput.equalsIgnoreCase("help")) {
                 mission.getMoveHelpMenu(hub.getHeroPosition());
             } else if (!heroInput.equalsIgnoreCase("leave")) {
@@ -171,7 +176,7 @@ public class StuckInOuterSpace {
                                 hub.setHeroPosition(heroInput);
                             }
                         }
-                        if (hasKeyCard == false) {
+                        if (!hasKeyCard) {
                             System.out.println("You need a key card to get into this room, you should look around some more.");
                         }
                     } else if (hub.getHeroPosition().equals("hallway") && heroInput.equalsIgnoreCase("basement")) {
@@ -183,10 +188,13 @@ public class StuckInOuterSpace {
                                 hub.setHeroPosition(heroInput);
                             }
                         }
-                        if (hasKeyCard == false) {
+                        if (!hasKeyCard) {
                             System.out.println("You need a basement key to get into this room, you should look around some more.");
                         }
-
+                    } else if (hub.getPlayerItems().size() > 10 && hub.getHeroPosition().equals("engineroom") && hub.getPlayerItems().contains("engine")) {
+                        System.out.println("You got all required items: " + hub.getPlayerItems());
+                        System.out.println("CONGRATULATIONS! YOU WIN THIS MISSION!");
+                        break;
                     } else {
                         hub.setHeroPosition(heroInput.toLowerCase().replaceAll("\\s", ""));
                     }
@@ -194,6 +202,5 @@ public class StuckInOuterSpace {
             }
         } while (!heroInput.equalsIgnoreCase("leave"));
     }
-
 }
 
