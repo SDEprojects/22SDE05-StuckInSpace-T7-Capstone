@@ -3,7 +3,7 @@
     "mission_01": {
       "name": "Alien Outpost",
       "start_position": "start",
-      "start_exit": ["hallway"],
+      "start_exit": ["hallway", "spaceship"],
       "start_description": "The dust settles...",
       "basement_position": "basement",
       "basement_exit": ["hallway", "engineroom"],
@@ -21,7 +21,7 @@
       "hallway_exit": ["start", "basement", "controlstation", "messhall"],
       "hallway_description": "Intro to Alien Outpost",
       "spaceship_position": "spaceship",
-      "spaceship_exit": ["hallway"],
+      "spaceship_exit": ["start"],
       "spaceship_description": ""
     }
   }

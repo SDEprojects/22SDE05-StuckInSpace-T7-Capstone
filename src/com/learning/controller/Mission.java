@@ -81,8 +81,9 @@ public class Mission {
             JSONObject position = (JSONObject) mission.get("mission_01");
             JSONArray availableExits = (JSONArray) position.get(exitRequest);
             for (Object value: availableExits) {
-                if (exit.toLowerCase().replaceAll("\\s", "").equals(value)){
+                if (exit.toLowerCase().replaceAll("\\s", "").equals(value)) {
                     isExit = true;
+                    break;
                 }
             }
         }
@@ -102,9 +103,9 @@ public class Mission {
     // for look around menu.
     public void getLookMenu(){
         getMenus().itemFoundMenu();
-    };
+    }
     public void getPickMenu(){
         getMenus().pickItemMenu();
-    };
+    }
 
 }

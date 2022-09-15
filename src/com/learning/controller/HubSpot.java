@@ -156,9 +156,9 @@ public class HubSpot {
         if (itemsHere == null) {
             System.out.println("\uD83D\uDE12 No item is found at this location");
         } else {
-            if (item.getBackpackList().contains(itemsHere.get(0)) == false) { // if the player doesn't have the item.
-                for (int i = 0; i < itemsHere.size(); i++) {
-                    item.setItemCalledOut(itemsHere.get(i));
+            if (!item.getBackpackList().contains(itemsHere.get(0))) { // if the player doesn't have the item.
+                for (String s : itemsHere) {
+                    item.setItemCalledOut(s);
                     item.parseItemObject();
                     String itemFoundName = item.getItemName();
                     System.out.println("\uD83D\uDE00 You found " + itemFoundName);
@@ -171,11 +171,7 @@ public class HubSpot {
 
     // Check if there are items left at this location.
     public boolean itemFoundHere() {
-        boolean isFound = true;
-        if (item.getItemFound() == null) {
-            isFound = false;
-        }
-        return isFound;
+        return item.getItemFound() != null;
     }
 
     // Pick function.
@@ -187,9 +183,9 @@ public class HubSpot {
         if (itemsHere == null) {
             System.out.println("\uD83D\uDE12 No item is found at this location");
         } else {
-            for (int i = 0; i < itemsHere.size(); i++) {
-                item.getBackpackList().add(itemsHere.get(i));
-                item.setItemCalledOut(itemsHere.get(i));
+            for (String s : itemsHere) {
+                item.getBackpackList().add(s);
+                item.setItemCalledOut(s);
                 item.parseItemObject();
                 System.out.println(item.getItemName() + " is added to your backpack \uD83C\uDF92");
             }
@@ -224,7 +220,7 @@ public class HubSpot {
 
     // Generate item card function.
     public void showItemCard(String itemNum) {
-        Integer itemNumInput = Integer.parseInt(itemNum);
+        int itemNumInput = Integer.parseInt(itemNum);
         String it = item.getBackpackList().get(itemNumInput - 1);
         item.setItemCalledOut(it);
         item.parseItemObject();
