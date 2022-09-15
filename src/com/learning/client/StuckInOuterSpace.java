@@ -2,6 +2,7 @@ package com.learning.client;
 
 import com.learning.controller.HubSpot;
 import com.learning.controller.Mission;
+import com.learning.view.Menu;
 import com.learning.view.Story;
 
 import java.io.IOException;
@@ -11,10 +12,9 @@ import java.util.SortedMap;
 import static com.learning.controller.HubSpot.checkInventoryInputType;
 
 public class StuckInOuterSpace {
+
     public static void main(String[] args) throws IOException {
-        /**
-         * Introduction to the game
-         * */
+        //Introduction to the game
         Mission missions = new Mission();
         HubSpot hub = new HubSpot();
         Scanner scanner = new Scanner(System.in);
@@ -62,7 +62,6 @@ public class StuckInOuterSpace {
                 gameInput = scanner.nextLine();
             }
         }
-
 
         //================================== STARTING THE GAME ===========================================//
         while (!(input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("4"))) {
@@ -115,6 +114,7 @@ public class StuckInOuterSpace {
             }
         }
     }
+
     private static void activateMission(Mission mission, HubSpot hub) {
         // getters for items, locations, people save them to local variables.
 
@@ -128,6 +128,10 @@ public class StuckInOuterSpace {
             System.out.println("What would you like to do? ");
             heroInput = scanner.nextLine();
 //            System.out.println(heroInput);
+
+            if (exploreMission(mission, hub)) {
+                heroInput = "quit";
+            }
             if (heroInput.equalsIgnoreCase("explore") || heroInput.equalsIgnoreCase("1")) {
                 StuckInOuterSpace.exploreMission(mission, hub);
             } else if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("2")) {
@@ -150,17 +154,21 @@ public class StuckInOuterSpace {
             } else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
                 mission.getHelpMenu();
             }
+
         }
+
     }
-    private static void exploreMission(Mission mission, HubSpot hub) {
+    static boolean isWin;
+    private static boolean exploreMission(Mission mission, HubSpot hub) {
         Scanner scanner = new Scanner(System.in);
         String heroInput;
-
         Story.exploreOutpost();
         do {
+            isWin = false;
             System.out.println("Where would you like to move to? ");
             mission.getMoveMenu(hub.getHeroPosition());
             heroInput = scanner.nextLine();
+
             if (heroInput.equalsIgnoreCase("look")) {
 
                 mission.getLookMenu();
@@ -179,6 +187,25 @@ public class StuckInOuterSpace {
                 //          Story.ending()
                 //          when they quit and go back to hub, they should escape with the new engine?
 
+            } else if (hub.getHeroPosition().equals("start") && heroInput.equalsIgnoreCase("spaceship")) {
+                boolean hasEngine = false;
+                for (String item : hub.getPlayerItems()) {
+                    if (item.equalsIgnoreCase("compass")) {
+                        hasEngine = true;
+                        if (hub.getPlayerItems().size() > 1) {
+                            System.out.println("You had an engine and enough items to get into the spaceship. Congratulations! You win this mission!");
+                            hub.getPlayerItems().subList(2, hub.getPlayerItems().size()).clear();
+                            isWin = true;
+                            break;
+                        } else {
+                            System.out.println("You found the engine, but you need more items to enter the spaceship to win this mission.");
+                        }
+                    }
+                }
+                if (!hasEngine) {
+                    System.out.println("You need to find engine and other items to get into the spaceship and win this mission. You should look around some more.");
+                }
+                break;
             } else if (heroInput.equalsIgnoreCase("help")) {
                 mission.getMoveHelpMenu(hub.getHeroPosition());
             } else if (!heroInput.equalsIgnoreCase("leave")) {
@@ -207,33 +234,13 @@ public class StuckInOuterSpace {
                         if (!hasKeyCard) {
                             System.out.println("You need a basement key to get into this room, you should look around some more.");
                         }
-                    } else if (hub.getHeroPosition().equals("start") &&  heroInput.equalsIgnoreCase("spaceship")) {
-                        boolean hasEngine = false;
-                        for (String item : hub.getPlayerItems()) {
-                            if(item.equalsIgnoreCase("engine")) {
-                                hasEngine = true;
-                                if(hub.getPlayerItems().size() > 10) {
-                                    System.out.println("You had an engine and enough items to get into the spaceship. Congratulations! You win this mission!");
-                                    hub.getPlayerItems().subList(2, hub.getPlayerItems().size()-1).clear();
-                                    Story.hub();
-                                    break;
-                                }
-                                else {
-                                    System.out.println("You found the engine, but you need more items to enter the spaceship to win this mission.");
-                                }
-                            }
-                        }
-                        if(!hasEngine) {
-                            System.out.println("You need to find engine and other items to get into the spaceship and win this mission. You should look around some more.");
-                        }
-                        break;
-                    }
-                    else {
+                    } else {
                         hub.setHeroPosition(heroInput.toLowerCase().replaceAll("\\s", ""));
                     }
                 }
             }
-        } while (!heroInput.equalsIgnoreCase("leave"));
+        } while (!heroInput.equalsIgnoreCase("leave") || isWin);
+        return isWin;
     }
 }
 
