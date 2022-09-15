@@ -214,7 +214,8 @@ public class StuckInOuterSpace {
                                 hasEngine = true;
                                 if(hub.getPlayerItems().size() > 10) {
                                     System.out.println("You had an engine and enough items to get into the spaceship. Congratulations! You win this mission!");
-                                    hub.getPlayerItems().clear();
+                                    hub.getPlayerItems().subList(2, hub.getPlayerItems().size()-1).clear();
+                                    Story.hub();
                                     break;
                                 }
                                 else {
