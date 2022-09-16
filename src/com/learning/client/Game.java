@@ -16,7 +16,7 @@ public class Game {
     JMenu menu;
     JMenuItem m1, m2;
 
-    // comments to fix
+    // fixing merge conflict
 
     // FONTS
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 70);
