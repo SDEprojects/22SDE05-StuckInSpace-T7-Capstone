@@ -47,6 +47,7 @@ public class MissionManager {
                 }
             } while (!isWin);
             heroInput = "quit";
+
         }
 
     }
