@@ -11,7 +11,6 @@ import static com.learning.client.MissionManager.activateMission;
 import static com.learning.controller.HubSpot.checkInventoryInputType;
 
 public class GameManager {
-
     public static void runGame() {
         //================================== LOADING THE GAME/NEW GAME ===========================================//
         Scanner scanner = new Scanner(System.in);
