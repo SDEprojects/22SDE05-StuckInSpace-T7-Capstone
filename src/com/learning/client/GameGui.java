@@ -84,11 +84,4 @@ public class GameGui {
     public void setCon() {
         con.add(mainTextPanel);
     }
-
-    public static void main(String[] args) {
-        GameGui game = new GameGui();
-        game.setWindow();
-        game.setMainTextArea("TEST");
-
-    }
 }
