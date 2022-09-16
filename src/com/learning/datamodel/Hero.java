@@ -1,7 +1,6 @@
 package com.learning.datamodel;
 
 import com.learning.utility.FileHandler;
-
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 

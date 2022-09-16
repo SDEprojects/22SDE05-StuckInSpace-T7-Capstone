@@ -62,6 +62,8 @@ public class Menu {
         System.out.println("------------------------------------------------------------");
     };
 
+
+    // TODO Henry added some functions ends here.
     public void missionsMenu() {
         System.out.println("----------------------------------------------------------------------------------------- \n" +
                 "                                 |     Missions:    |               \n" +
@@ -90,16 +92,16 @@ public class Menu {
 
     public void moveMenu(JSONArray exits){
         System.out.println("--------------------------------------------------------------");
-        System.out.print("| EXITS:  |");
+        System.out.printf("| EXITS:  |");
         for (Object value: exits) {
-            System.out.print("|  ");
-            System.out.print(value.toString().toUpperCase());
-            System.out.print("  |");
+            System.out.printf("|  ");
+            System.out.printf(value.toString().toUpperCase());
+            System.out.printf("  |");
         }
         System.out.println();
         System.out.println("--------------------------------------------------------------");
-        System.out.print("|  LOOK  |");
-        System.out.print("|  HELP  |");
+        System.out.printf("|  LOOK  |");
+        System.out.printf("|  HELP  |");
         System.out.println("|  LEAVE |");
         System.out.println("--------------------------------------------------------------");
     }
@@ -111,17 +113,20 @@ public class Menu {
     }
 
     public void helpMap(String position, JSONArray exits, JSONArray items){
-        // Takes in current location, exits to current location, and items in the current location
+        /**
+         * TODO: takes in current location, exits to current location, and items in the current location
+         *
+         */
         System.out.println("==============================================================");
         System.out.println("| You are Here:  " + position.toUpperCase());
         System.out.println("==============================================================");
         System.out.println("**************************************************************");
         System.out.println("==============================================================");
-        System.out.print("| KNOWN EXITS:  |");
+        System.out.printf("| KNOWN EXITS:  |");
         for (Object value: exits) {
-            System.out.print("|  ");
-            System.out.print(value.toString().toUpperCase());
-            System.out.print("  |");
+            System.out.printf("|  ");
+            System.out.printf(value.toString().toUpperCase());
+            System.out.printf("  |");
         }
         System.out.println();
         System.out.println("==============================================================");

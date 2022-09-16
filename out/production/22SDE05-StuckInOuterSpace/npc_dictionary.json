@@ -1,0 +1,10 @@
+[
+    {
+        "npc" : {
+                "name":"Bruce",
+                "description": "friendly merchant",
+                "location": "TBD",
+                "items": "TBD"
+            }
+    }
+]
