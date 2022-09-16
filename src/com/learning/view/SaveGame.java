@@ -4,6 +4,7 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
 public class SaveGame {
+    // TODO The following variables should read from current game status.
     private JSONArray savedGameStatus; //holds saved game data
     private String savePlayerName;
     //String savePlayerLocation;
