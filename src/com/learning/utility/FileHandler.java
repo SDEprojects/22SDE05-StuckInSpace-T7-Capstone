@@ -22,13 +22,15 @@ public class FileHandler {
             dictionary = (JSONArray) obj;
             JSONObject pages = (JSONObject) dictionary.get(0);
             String formal = (String) pages.get("name");
-        } catch (ParseException | IOException e) {
+        } catch (FileNotFoundException | ParseException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
             e.printStackTrace();
         }
         return dictionary;
     }
 
-    public void writeJsonFile(JSONObject playerSave) {
+    public void writeJsonFile(JSONObject playerSave){
 //TODO need to fix the write.
         // Add saved info to json array
         JSONArray saveList = new JSONArray();
