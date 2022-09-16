@@ -84,9 +84,9 @@ public class MissionManager {
             } else if (hub.getHeroPosition().equals("start") && heroInput.equalsIgnoreCase("spaceship")) {
                 boolean hasEngine = false;
                 for (String item : hub.getPlayerItems()) {
-                    if (item.equalsIgnoreCase("compass")) {
+                    if (item.equalsIgnoreCase("engine")) {
                         hasEngine = true;
-                        if (hub.getPlayerItems().size() > 3) {
+                        if (hub.getPlayerItems().size() > 10) {
                             System.out.println("You had an engine and enough items to get into the spaceship. Congratulations! You win this mission!");
                             hub.getPlayerItems().subList(2, hub.getPlayerItems().size()).clear();
                             isWin = true;
