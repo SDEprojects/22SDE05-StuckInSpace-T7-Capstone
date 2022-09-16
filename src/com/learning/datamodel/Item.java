@@ -9,7 +9,7 @@ import java.util.ArrayList;
 
 public class Item {
     // Define variable to parse JSON file.
-    private JSONArray itemDict;
+    private final JSONArray itemDict;
     // This is the variable when game called out an item.
     private String itemCalledOut = "fuel";
 
