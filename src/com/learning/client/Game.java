@@ -10,8 +10,8 @@ public class Game {
     JFrame window;
     Container con;
     JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel;
-    JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent;
-    Font titleFont = new Font("Times New Roman", Font.PLAIN, 60);
+    JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems;
+    Font titleFont = new Font("Times New Roman", Font.PLAIN, 70);
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
     Font audioFont = new Font("Times New Roman", Font.PLAIN, 15);
     Font playerFont = new Font("Times New Roman", Font.PLAIN, 25);
@@ -29,31 +29,27 @@ public class Game {
     public Game(){
         window = new JFrame();
         // Just for refresh purposes and for background image
-        window.setSize(800,600);
-        /**window.setSize(1279,718);
-        window.setSize(1280,719);**/
+        window.setPreferredSize(new Dimension(1280,719));
+        window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.getContentPane().setBackground(Color.black);
-        // future implementation of background image
-        //window.setContentPane(new JLabel(new ImageIcon("resources/StuckInSpace.jpg")));
+        //window.getContentPane().setBackground(Color.black);
+        window.setContentPane(new JLabel(new ImageIcon("resources/StuckInSpace.jpg")));
         window.setLayout(null);
-        window.pack();
         window.setVisible(true);
+        window.setLocationRelativeTo(null);
         con = window.getContentPane();
 
         titlePanel = new JPanel();
-        titlePanel.setBounds(100,150,600,250);
-        // sizing for image bg
-        //titlePanel.setBounds(340,50,600,100);
+        //titlePanel.setBounds(100,150,600,250);
+        titlePanel.setBounds(340,40,600,100);
         titlePanel.setOpaque(false);
         titleLabel = new JLabel("Stuck In Outer Space");
         titleLabel.setForeground(Color.white);
         titleLabel.setFont(titleFont);
-
+        con.add(titlePanel);
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(300,400,200,100);
-        // sizing for image bg
-        //startButtonPanel.setBounds(560,575,140,50);
+        //startButtonPanel.setBounds(300,400,200,100);
+        startButtonPanel.setBounds(565,570,140,50);
         startButtonPanel.setBorder(null);
         startButtonPanel.setOpaque(false);
 
@@ -66,9 +62,9 @@ public class Game {
 
         titlePanel.add(titleLabel);
         startButtonPanel.add(startButton);
-
-        con.add(titlePanel);
         con.add(startButtonPanel);
+
+        window.pack();
     }
 
     public void createGameScreen(){
@@ -116,13 +112,13 @@ public class Game {
         choiceButtonPanel.setLayout(new GridLayout(4,1));
         con.add(choiceButtonPanel);
 
-        choice1 = new JButton("Choice 1");
+        choice1 = new JButton("Look Around");
         choice1.setBackground(Color.black);
         choice1.setForeground(Color.black);
         choice1.setFont(normalFont);
         choiceButtonPanel.add(choice1);
 
-        choice2 = new JButton("Choice 2");
+        choice2 = new JButton("Pick up Items");
         choice2.setBackground(Color.black);
         choice2.setForeground(Color.black);
         choice2.setFont(normalFont);
@@ -140,18 +136,42 @@ public class Game {
         choice4.setFont(normalFont);
         choiceButtonPanel.add(choice4);
 
+        // Player Status Panel
         playerPanel = new JPanel();
-        playerPanel.setBounds(200,15,600,50);
+        playerPanel.setBounds(400,15,600,50);
         playerPanel.setOpaque(false);
-        playerPanel.setLayout(new GridLayout(1,4));
+        playerPanel.setLayout(new GridLayout(1,6));
         con.add(playerPanel);
 
-        hpLabel = new JLabel("HP:");
+        // HP Status
+        hpLabel = new JLabel("HP: ");
         hpLabel.setFont(playerFont);
         hpLabel.setForeground(Color.white);
+        hpLabelNum = new JLabel();
+        hpLabelNum.setFont(playerFont);
+        hpLabelNum.setForeground(Color.white);
+
+        // Location Status
+        locLabel = new JLabel("Location: ");
+        locLabel.setFont(playerFont);
+        locLabel.setForeground(Color.white);
+        locLabelCurrent = new JLabel();
+        locLabelCurrent.setFont(playerFont);
+        locLabelCurrent.setForeground(Color.white);
+
+        // Inventory Status
+        invLabel = new JLabel("Inventory: ");
+        invLabel.setFont(playerFont);
+        invLabel.setForeground(Color.white);
+        invLabelItems = new JLabel();
+        invLabelItems.setFont(playerFont);
+        invLabelItems.setForeground(Color.white);
+
+        //Player Panel Displayed
         playerPanel.add(hpLabel);
-
-
+        playerPanel.add(hpLabelNum);
+        playerPanel.add(locLabel);
+        playerPanel.add(locLabelCurrent);
     }
 
     public class TitleScreenHandler implements ActionListener{
