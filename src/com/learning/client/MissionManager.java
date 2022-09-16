@@ -17,41 +17,42 @@ public class MissionManager {
         Story.alienOutpost();
 
         while (!(heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4"))) {
-            // player status and health
-            mission.getActiveMissionMenu();
-            System.out.println("What would you like to do? ");
-            heroInput = scanner.nextLine();
+            do{
+                // player status and health
+                mission.getActiveMissionMenu();
+                System.out.println("What would you like to do? ");
+                heroInput = scanner.nextLine();
 
-            if (exploreMission(mission, hub)) {
-                heroInput = "quit";
-            }
-            if (heroInput.equalsIgnoreCase("explore") || heroInput.equalsIgnoreCase("1")) {
-                exploreMission(mission, hub);
-            } else if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("2")) {
-                mission.getInventoryMenu();
-                System.out.println("Which item would you like to look at? Please enter the number.");
-                hub.showInventory();
-                while (true) {
-                    String itemInput = scanner.nextLine();
-                    if (checkInventoryInputType(itemInput)) {
-                        if (Integer.parseInt(itemInput) > hub.getPlayerItems().size()) {
-                            System.out.println("Number you entered is not valid, please enter number that is corresponding to items being displayed. ");
+                if (heroInput.equalsIgnoreCase("explore") || heroInput.equalsIgnoreCase("1")) {
+                    exploreMission(mission, hub);
+                } else if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("2")) {
+                    mission.getInventoryMenu();
+                    System.out.println("Which item would you like to look at? Please enter the number.");
+                    hub.showInventory();
+                    while (true) {
+                        String itemInput = scanner.nextLine();
+                        if (checkInventoryInputType(itemInput)) {
+                            if (Integer.parseInt(itemInput) > hub.getPlayerItems().size() || Integer.parseInt(itemInput) < 1) {
+                                System.out.println("Number you entered is not valid, please enter number that is corresponding to items being displayed. ");
+                            } else {
+                                hub.showItemCard(itemInput);
+                                break;
+                            }
                         } else {
-                            hub.showItemCard(itemInput);
-                            break;
+                            System.out.println("Please enter valid number only");
                         }
-                    } else {
-                        System.out.println("Please enter valid number only");
                     }
+                } else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
+                    mission.getHelpMenu();
                 }
-            } else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
-                mission.getHelpMenu();
-            }
-
+            } while (!isWin);
+            heroInput = "quit";
         }
+
     }
 
     static boolean isWin;
+
     public static boolean exploreMission(Mission mission, HubSpot hub) {
         Scanner scanner = new Scanner(System.in);
         String heroInput;

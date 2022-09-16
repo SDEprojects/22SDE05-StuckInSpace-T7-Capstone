@@ -68,7 +68,7 @@ public class GameManager {
                     while (true) {
                         String itemInput = scanner.nextLine();
                         if (checkInventoryInputType(itemInput)) {
-                            if (Integer.parseInt(itemInput) > hub.getPlayerItems().size()) {
+                            if (Integer.parseInt(itemInput) > hub.getPlayerItems().size() || Integer.parseInt(itemInput) < 1) {
                                 System.out.println("Number you entered is not valid, please enter number that is corresponding to items being displayed. ");
                             } else {
                                 hub.showItemCard(itemInput);
