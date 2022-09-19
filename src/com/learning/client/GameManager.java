@@ -59,7 +59,6 @@ public class GameManager {
                 //------------------------ inventory, missions, help, quit ------------------------------
                 if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("1")) {
                     missions.getInventoryMenu();
-
                     hub.showInventory();
                     System.out.println("Which item would you like to look at? Please enter the number.");
 
