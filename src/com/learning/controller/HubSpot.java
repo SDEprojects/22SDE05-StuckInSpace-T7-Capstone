@@ -266,13 +266,4 @@ public class HubSpot {
         this.savegame = savegame;
     }
 
-    public static boolean checkInventoryInputType(String value) {
-        try {
-            Integer.parseInt(value);
-        } catch (NumberFormatException | NullPointerException e) {
-            return false;
-
-        }
-        return true;
-    }
 }
