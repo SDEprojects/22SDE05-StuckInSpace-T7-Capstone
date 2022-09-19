@@ -117,7 +117,6 @@ public class HubSpot {
     public void initiateItemLocationList(){
 //        JSONArray itemJSON = new FileHandler().readJsonFile("item_dictionary.json");
         JSONArray itemJSON = item.getItemDict();
-
         for (Object obj : itemJSON) {
             JSONObject objAll = (JSONObject) obj; // Turn item JSON into obj.
             Set allName = objAll.keySet(); // Get all the first layer of names item.json.
@@ -250,6 +249,15 @@ public class HubSpot {
         saveGameData.put("playerInventory", backpack);
         System.out.println("Your game has been Saved!");
         new FileHandler().writeJsonFile(saveGameData);
+    }
+
+    public static boolean checkInventoryInputType(String value) {
+        try {
+            Integer.parseInt(value);
+        } catch (NumberFormatException | NullPointerException e) {
+            return false;
+        }
+        return true;
     }
 
     public SaveGame getSavegame() {
