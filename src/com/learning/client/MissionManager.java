@@ -16,8 +16,7 @@ public class MissionManager {
         String heroInput = "null";
         Story.alienOutpost();
 
-        while (!(heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4"))) {
-            do{
+        while (!isWin || !heroInput.equalsIgnoreCase("quit")) {
                 // player status and health
                 mission.getActiveMissionMenu();
                 System.out.println("What would you like to do? ");
@@ -45,11 +44,10 @@ public class MissionManager {
                 } else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
                     mission.getHelpMenu();
                 }
-            } while (!isWin);
-            heroInput = "quit";
-
+                else if (heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4")) {
+                    break;
+                }
         }
-
     }
 
     static boolean isWin;
