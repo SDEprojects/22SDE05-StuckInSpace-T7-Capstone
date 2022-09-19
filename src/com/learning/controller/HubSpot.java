@@ -57,7 +57,6 @@ public class HubSpot {
         setPlayerItems(storeItems);
     }
 
-
     public void setPlayerName(String name) {
         this.hero.setHeroName(name);
     }
@@ -70,7 +69,6 @@ public class HubSpot {
         getHero().displayHeroProfile();
     }
 
-
     public void setHeroPosition(String position) {
         updatePositions((String) this.heroPosition.get("Current_position"), position);
     }
@@ -82,7 +80,6 @@ public class HubSpot {
     public String getHeroPrevPosition() {
         return (String) this.heroPosition.get("Previous_position");
     }
-
 
     private void updatePositions(String oldPosition, String newPosition) {
         this.heroPosition.put("Previous_position", oldPosition);
@@ -114,26 +111,25 @@ public class HubSpot {
 
     // Create list of item by location,
 
-    public void initiateItemLocationList(){
+    public void initiateItemLocationList() {
 //        JSONArray itemJSON = new FileHandler().readJsonFile("item_dictionary.json");
         JSONArray itemJSON = item.getItemDict();
-
         for (Object obj : itemJSON) {
             JSONObject objAll = (JSONObject) obj; // Turn item JSON into obj.
             Set allName = objAll.keySet(); // Get all the first layer of names item.json.
             // turn all first layer of names into a list.
             List<String> keyList = new ArrayList<>(allName.size()); // keyList if the list of first layer names.
-            for (Object keyItemName : allName){
+            for (Object keyItemName : allName) {
                 keyList.add(keyItemName.toString());
             }
             // Create a list using location as the key.
-            for (String keyItemName : keyList){
+            for (String keyItemName : keyList) {
                 JSONObject attribute = (JSONObject) objAll.get(keyItemName); // All attributes for each item.
                 String itemLoc = attribute.get("location").toString();
                 item.getItemLocationList().put(itemLoc, new ArrayList<>());
             }
 
-           // Print each item in their location.
+            // Print each item in their location.
             for (String keyItemName : keyList) {
 //                System.out.println(keyItemName);
                 JSONObject attribute = (JSONObject) objAll.get(keyItemName); // All attributes for each item.
@@ -153,29 +149,31 @@ public class HubSpot {
         // TODO if the hero has the item, don't show.
 
         // If there are items available in the area, show them to player.
-       if (itemsHere == null){
+        if (itemsHere == null) {
             System.out.println("\uD83D\uDE12 No item is found at this location");
         } else {
-           if (item.getBackpackList().contains(itemsHere.get(0)) == false){ // if the player doesn't have the item.
-                    for (int i = 0; i < itemsHere.size(); i++) {
-                        item.setItemCalledOut(itemsHere.get(i));
-                        item.parseItemObject();
-                        String itemFoundName = item.getItemName();
-                        System.out.println("\uD83D\uDE00 You found " + itemFoundName);
-                    }
-                } else {
-                    System.out.println("\uD83D\uDE12 No item is found at this location");
+            if (item.getBackpackList().contains(itemsHere.get(0)) == false) { // if the player doesn't have the item.
+                for (int i = 0; i < itemsHere.size(); i++) {
+                    item.setItemCalledOut(itemsHere.get(i));
+                    item.parseItemObject();
+                    String itemFoundName = item.getItemName();
+                    System.out.println("\uD83D\uDE00 You found " + itemFoundName);
                 }
+            } else {
+                System.out.println("\uD83D\uDE12 No item is found at this location");
+            }
         }
     }
+
     // Check if there are items left at this location.
-    public boolean itemFoundHere(){
+    public boolean itemFoundHere() {
         boolean isFound = true;
-        if (item.getItemFound() == null){
+        if (item.getItemFound() == null) {
             isFound = false;
         }
         return isFound;
     }
+
     // Pick function.
     public void addToInventory() {
         // TODO add the item to backpack, remove them from itemFoundMap.
@@ -196,17 +194,18 @@ public class HubSpot {
     }
 
     // Initiate the backpack based the Hero's attribute. Will run this once when game starts.
-    public void initiateInventory(){
-        for (int i = 0; i < hero.getItems().size(); i++){
+    public void initiateInventory() {
+        for (int i = 0; i < hero.getItems().size(); i++) {
             item.getBackpackList().add(hero.getItems().get(i));
-            }
+        }
         item.setBackpackList(item.getBackpackList());
     }
+
     // Show inventory function.
     public void showInventory() {
 //        System.out.println(item.getBackpackList()); // Delete me, for test.
         ArrayList<String> inv = item.getBackpackList();
-        for (int i = 0; i < inv.size(); i++){
+        for (int i = 0; i < inv.size(); i++) {
 //            System.out.println(inv.get(i)); // Delete me, for test.
             JSONArray itemJSON = item.getItemDict();
             for (Object obj : itemJSON) {
@@ -214,9 +213,7 @@ public class HubSpot {
                 JSONObject attribute = (JSONObject) objAll.get(inv.get(i));
                 System.out.println((i + 1) + ". " + attribute.get("name"));
             }
-
         }
-
     }
 
     // Generate item card function.
@@ -225,7 +222,7 @@ public class HubSpot {
         String it = item.getBackpackList().get(itemNumInput - 1);
         item.setItemCalledOut(it);
         item.parseItemObject();
-        if (item.getItemName() != null){
+        if (item.getItemName() != null) {
             System.out.println(
                     "\n" + item.getItemName() +
                             "\n" + item.getItemDescription() +
@@ -240,16 +237,25 @@ public class HubSpot {
     }
 
     // TODO save game file writer is not working.
-    public void autoSaveGame(){
+    public void autoSaveGame() {
         JSONObject saveGameData = new JSONObject();
         JSONArray backpack = new JSONArray();
-        for (String item : this.item.getBackpackList()){
+        for (String item : this.item.getBackpackList()) {
             backpack.add(item);
         }
         saveGameData.put("playerName", this.hero.getHeroName());
         saveGameData.put("playerInventory", backpack);
         System.out.println("Your game has been Saved!");
         new FileHandler().writeJsonFile(saveGameData);
+    }
+
+    public static boolean checkInventoryInputType(String value) {
+        try {
+            Integer.parseInt(value);
+        } catch (NumberFormatException | NullPointerException e) {
+            return false;
+        }
+        return true;
     }
 
     public SaveGame getSavegame() {
@@ -259,4 +265,5 @@ public class HubSpot {
     public void setSavegame(SaveGame savegame) {
         this.savegame = savegame;
     }
+
 }
