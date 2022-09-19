@@ -44,7 +44,6 @@ public class GameManager {
                 gameInput = scanner.nextLine();
             }
         }
-
         //================================== STARTING THE GAME ===========================================//
         while (!(input.equalsIgnoreCase("quit") || input.equalsIgnoreCase("4"))) {
 
