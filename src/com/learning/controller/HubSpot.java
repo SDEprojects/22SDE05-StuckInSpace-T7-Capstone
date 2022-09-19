@@ -57,7 +57,6 @@ public class HubSpot {
         setPlayerItems(storeItems);
     }
 
-
     public void setPlayerName(String name) {
         this.hero.setHeroName(name);
     }
@@ -70,7 +69,6 @@ public class HubSpot {
         getHero().displayHeroProfile();
     }
 
-
     public void setHeroPosition(String position) {
         updatePositions((String) this.heroPosition.get("Current_position"), position);
     }
@@ -82,7 +80,6 @@ public class HubSpot {
     public String getHeroPrevPosition() {
         return (String) this.heroPosition.get("Previous_position");
     }
-
 
     private void updatePositions(String oldPosition, String newPosition) {
         this.heroPosition.put("Previous_position", oldPosition);
@@ -217,9 +214,7 @@ public class HubSpot {
                 JSONObject attribute = (JSONObject) objAll.get(inv.get(i));
                 System.out.println((i + 1) + ". " + attribute.get("name"));
             }
-
         }
-
     }
 
     // Generate item card function.
