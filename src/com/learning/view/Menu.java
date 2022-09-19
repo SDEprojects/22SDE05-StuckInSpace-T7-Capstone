@@ -20,6 +20,13 @@ public class Menu {
         this.missionNames = missionNames;
     }
 
+    public static String getGameName() {
+        return "Stuck in Outer Space";
+    }
+
+    public static String getStart() {
+        return "START";
+    }
     public static void getMainMessage() {
         System.out.println("          ___ _           _     _         ___       _             ___                  \n"+
                 "         / __| |_ _  _ __| |__ (_)_ _    / _ \\ _  _| |_ ___ _ _  / __|_ __ __ _ __ ___ \n"+

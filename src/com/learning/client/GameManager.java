@@ -7,11 +7,28 @@ import com.learning.view.Story;
 
 import java.util.Scanner;
 
+import static com.learning.client.GameGui.*;
 import static com.learning.client.MissionManager.activateMission;
 import static com.learning.controller.HubSpot.checkInventoryInputType;
 
 public class GameManager {
+    static GameGui gameGui = new GameGui();
+    static String text;
+
     public static void runGame() {
+        gameGui.setWindow();
+        gameGui.setCon();
+        gameGui.setTitlePanel(gameGui.setTitleLabel(Menu.getGameName()));
+        con.add(gameGui.getTitlePanel());
+        gameGui.setStartButtonPanel(gameGui.setStartButton(Menu.getStart()));
+        con.add(gameGui.getStartButtonPanel());
+        MainScreenHandler mainScreenHandler = new MainScreenHandler();
+        startButton.addActionListener(mainScreenHandler);
+        gameGui.setInputField();
+        InputHandler inputHandler = new InputHandler();
+        inputField.addActionListener(inputHandler);
+        gameGui.setMainTextArea(text);
+
         //================================== LOADING THE GAME/NEW GAME ===========================================//
         Scanner scanner = new Scanner(System.in);
         String gameInput = scanner.nextLine();
@@ -20,8 +37,10 @@ public class GameManager {
         scanner = new Scanner(System.in);
         String input = "not-exit";
         while (true) {
-            if (gameInput.equalsIgnoreCase("1") || gameInput.equalsIgnoreCase("new game")) {
+            if (inputField.getText().equalsIgnoreCase("1") || inputField.getText().equalsIgnoreCase("new game")) {
                 //Start the game
+                text = "Name your hero";
+                //mainTextArea.append("Name your hero");
                 System.out.println("Name your hero: ");
                 String name = scanner.nextLine();
                 hub.setPlayerName(name);
