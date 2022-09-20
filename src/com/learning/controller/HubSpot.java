@@ -202,7 +202,7 @@ public class HubSpot {
     }
 
     // Show inventory function.
-    public void showInventory() {
+    public ArrayList<String> showInventory() {
 //        System.out.println(item.getBackpackList()); // Delete me, for test.
         ArrayList<String> inv = item.getBackpackList();
         for (int i = 0; i < inv.size(); i++) {
@@ -214,6 +214,7 @@ public class HubSpot {
                 System.out.println((i + 1) + ". " + attribute.get("name"));
             }
         }
+        return inv;
     }
 
     // Generate item card function.

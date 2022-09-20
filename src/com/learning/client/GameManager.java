@@ -5,64 +5,51 @@ import com.learning.controller.Mission;
 import com.learning.view.Menu;
 import com.learning.view.Story;
 
-import java.util.Objects;
 import java.util.Scanner;
-import java.util.function.ToDoubleBiFunction;
 
 import static com.learning.client.GameGui.*;
 import static com.learning.client.MissionManager.activateMission;
 import static com.learning.controller.HubSpot.checkInventoryInputType;
 
 public class GameManager {
-    static GameGui gameGui = new GameGui();
-    static String text;
-
+    static HubSpot hub = new HubSpot();
     public static void runGame() {
-        gameGui.setWindow();
-        gameGui.setCon();
-        gameGui.setTitlePanel(gameGui.setTitleLabel(Menu.getGameName()));
-        con.add(gameGui.getTitlePanel());
-        gameGui.setStartButtonPanel(gameGui.setStartButton(Menu.getStart()));
-        con.add(gameGui.getStartButtonPanel());
-        MainScreenHandler mainScreenHandler = new MainScreenHandler();
-        startButton.addActionListener(mainScreenHandler);
-        gameGui.setInputField();
-        InputHandler inputHandler = new InputHandler();
-        inputField.addActionListener(inputHandler);
-        gameGui.setMainTextArea("");
-        //text = "Test";
+        GameScreenHandler.getMainScreen();
 
-        // TODO update while loop
-        HubSpot hub = new HubSpot();
-        while (true) {
-            if (inputField.getText().equalsIgnoreCase("1") || inputField.getText().equalsIgnoreCase("new game")) {
-                text = "Hello";
-                InputHandler.reset(inputField);
-                hub.setPlayerName(inputField.getName());
-                text = hub.showPlayerProfile();
-                hub.initiateInventory();
-                hub.initiateItemLocationList();
-                InputHandler.reset(inputField);
-                text = Story.gameIntro();
+        HubScreenHandler hubScreenHandler = new HubScreenHandler();
+        startButton.addActionListener(hubScreenHandler);
+        setHubTitlePanel(setTitleLabel(Menu.getHubName()));
+        setMainTextPanel(setMainTextArea(Story.gameIntro()));
+        setChoiceButtonPanel(setMissionButton(Menu.getMissionsMenuItem()), setInventoryButton(Menu.getInventoryMenuItem()));
 
-                break;
-            } else if (inputField.getText().equalsIgnoreCase("2")) {
-                text = "Hello2";
-            } else if (inputField.getText().compareTo("3") == 0) {
-                text = "Bye3";
-                break;
-            }
-        }
+        MissionScreenHandler missionScreenHandler = new MissionScreenHandler();
+        missionButton.addActionListener(missionScreenHandler);
+        setMissionTitlePanel(setMissionTitleLabel(Menu.getMissionsMenuItem()));
+        setReturnPanel(setReturnButton(Menu.getReturnOption()));
+        returnButton.addActionListener(hubScreenHandler);
+
+        InventoryScreenHandler inventoryScreenHandler = new InventoryScreenHandler();
+        inventoryButton.addActionListener(inventoryScreenHandler);
+        setInventoryTitlePanel(setInventoryTitleLabel(Menu.getInventoryMenuItem()));
+        //setReturnPanel(setReturnButton(Menu.getReturnOption()));
+
+
+
+
+
+
+
 
         //================================== LOADING THE GAME/NEW GAME ===========================================//
         Scanner scanner = new Scanner(System.in);
         String gameInput = scanner.nextLine();
         Mission missions = new Mission();
         //HubSpot hub = new HubSpot();
+
         scanner = new Scanner(System.in);
         String input = "not-exit";
         while (true) {
-            if (inputField.getText().equalsIgnoreCase("1") || inputField.getText().equalsIgnoreCase("new game")) {
+            if (gameInput.equalsIgnoreCase("1") || gameInput.equalsIgnoreCase("new game")) {
                 //System.out.println("Name your hero: ");
                 //String name = scanner.nextLine();
 

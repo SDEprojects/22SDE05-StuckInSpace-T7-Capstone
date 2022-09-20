@@ -196,7 +196,6 @@ public class Game {
         playerPanel.add(locLabelCurrent);
         playerPanel.add(invLabel);
         playerPanel.add(invLabelItems);
-
     }
 
     public void createMissionScreen() {

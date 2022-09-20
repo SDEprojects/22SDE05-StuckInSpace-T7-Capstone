@@ -2,8 +2,6 @@ package com.learning.client;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class GameGui {
     public static final Font titleFont = new Font("Times New Roman", Font.PLAIN, 70);
@@ -13,10 +11,9 @@ public class GameGui {
 
     static JFrame window;
     static Container con;
-    static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel;
-    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems;
-
-    static JButton startButton, choice1, choice2, choice3, choice4, audioButton;
+    static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel;
+    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel;
+    static JButton startButton, missionButton, inventoryButton, returnButton;
     static JTextArea mainTextArea;
     static JMenuBar menuBar;
     static JMenu menu;
@@ -55,22 +52,70 @@ public class GameGui {
         return mainTextPanel;
     }
 
-    public void setMainTextPanel() {
-        mainTextPanel.setBounds(100, 100, 600, 250);
+    public static void setMainTextPanel(JTextArea textArea) {
+        mainTextPanel = new JPanel();
+        mainTextPanel.setBounds(350, 300, 600, 250);
         mainTextPanel.setOpaque(false);
-        mainTextPanel.add(mainTextArea);
+        mainTextPanel.add(textArea);
     }
 
     public JTextArea getMainTextArea() {
         return mainTextArea;
     }
 
-    public void setMainTextArea(String text) {
+    public static JTextArea setMainTextArea(String text) {
+        mainTextArea = new JTextArea();
         mainTextArea.append(text);
-        mainTextArea.setBounds(100, 100, 600, 250);
+        mainTextArea.setBounds(300, 100, 600, 250);
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
+        mainTextArea.setFont(normalFont);
         mainTextArea.setLineWrap(true);
+        return mainTextArea;
+    }
+
+    public JPanel getInventoryTitlePanel() {
+        return inventoryTitlePanel;
+    }
+
+    public static void setInventoryTitlePanel(JLabel label) {
+        inventoryTitlePanel = new JPanel();
+        inventoryTitlePanel.setBounds(500, 70, 300, 100);
+        inventoryTitlePanel.setOpaque(false);
+        inventoryTitlePanel.add(label);
+    }
+
+    public JLabel getInventoryTitleLabel() {
+        return inventoryTitleLabel;
+    }
+
+    public static JLabel setInventoryTitleLabel(String text) {
+        inventoryTitleLabel = new JLabel(text);
+        inventoryTitleLabel.setForeground(Color.white);
+        inventoryTitleLabel.setFont(titleFont);
+        return inventoryTitleLabel;
+    }
+
+    public static JPanel getMissionTitlePanel() {
+        return missionTitlePanel;
+    }
+
+    public static void setMissionTitlePanel(JLabel label) {
+        missionTitlePanel = new JPanel();
+        missionTitlePanel.setBounds(500, 70, 300, 100);
+        missionTitlePanel.setOpaque(false);
+        missionTitlePanel.add(label);
+    }
+
+    public static JLabel getMissionTitleLabel() {
+        return missionTitleLabel;
+    }
+
+    public static JLabel setMissionTitleLabel(String text) {
+        missionTitleLabel = new JLabel(text);
+        missionTitleLabel.setForeground(Color.white);
+        missionTitleLabel.setFont(titleFont);
+        return missionTitleLabel;
     }
 
     public Container getCon() {
@@ -110,8 +155,61 @@ public class GameGui {
         return choiceButtonPanel;
     }
 
-    public void setChoiceButtonPanel(JPanel choiceButtonPanel) {
-        this.choiceButtonPanel = choiceButtonPanel;
+    public static void setChoiceButtonPanel(JButton button1, JButton button2) {
+        choiceButtonPanel = new JPanel();
+        choiceButtonPanel.setBounds(500, 525, 300, 120);
+        choiceButtonPanel.setOpaque(false);
+        choiceButtonPanel.setLayout(new GridLayout(2, 1));
+        choiceButtonPanel.add(button1);
+        choiceButtonPanel.add(button2);
+    }
+
+    public static JButton getMissionButton() {
+        return missionButton;
+    }
+
+    public static JButton setMissionButton(String text) {
+        missionButton = new JButton(text);
+        missionButton.setBackground(Color.black);
+        missionButton.setForeground(Color.white);
+        missionButton.setFont(normalFont);
+        return missionButton;
+    }
+
+    public static JButton getInventoryButton() {
+        return inventoryButton;
+    }
+
+    public static JButton setInventoryButton(String text) {
+        inventoryButton = new JButton(text);
+        inventoryButton.setBackground(Color.black);
+        inventoryButton.setForeground(Color.white);
+        inventoryButton.setFont(normalFont);
+        return inventoryButton;
+    }
+
+    public static JPanel getReturnPanel() {
+        return returnPanel;
+    }
+
+    public static void setReturnPanel(JButton button) {
+        returnPanel = new JPanel();
+        returnPanel.setBounds(50, 50, 120, 50);
+        returnPanel.setBorder(null);
+        returnPanel.setOpaque(false);
+        returnPanel.add(button);
+    }
+
+    public static JButton getReturnButton() {
+        return returnButton;
+    }
+
+    public static JButton setReturnButton(String text) {
+        returnButton = new JButton(text);
+        returnButton.setBackground(Color.black);
+        returnButton.setForeground(Color.white);
+        returnButton.setFont(normalFont);
+        return returnButton;
     }
 
     public JPanel getPlayerPanel() {
@@ -134,7 +232,7 @@ public class GameGui {
         return titleLabel;
     }
 
-    public JLabel setTitleLabel(String text) {
+    public static JLabel setTitleLabel(String text) {
         titleLabel = new JLabel(text);
         titleLabel.setForeground(Color.white);
         titleLabel.setFont(titleFont);
@@ -201,46 +299,6 @@ public class GameGui {
         return startButton;
     }
 
-    public JButton getChoice1() {
-        return choice1;
-    }
-
-    public void setChoice1(JButton choice1) {
-        this.choice1 = choice1;
-    }
-
-    public JButton getChoice2() {
-        return choice2;
-    }
-
-    public void setChoice2(JButton choice2) {
-        this.choice2 = choice2;
-    }
-
-    public JButton getChoice3() {
-        return choice3;
-    }
-
-    public void setChoice3(JButton choice3) {
-        this.choice3 = choice3;
-    }
-
-    public JButton getChoice4() {
-        return choice4;
-    }
-
-    public void setChoice4(JButton choice4) {
-        this.choice4 = choice4;
-    }
-
-    public JButton getAudioButton() {
-        return audioButton;
-    }
-
-    public void setAudioButton(JButton audioButton) {
-        this.audioButton = audioButton;
-    }
-
     public JMenuBar getMenuBar() {
         return menuBar;
     }
@@ -270,9 +328,31 @@ public class GameGui {
     }
 
     public void setInputField() {
-       inputField = new JTextField("Please enter a text ", 200);
-       inputField.setBounds(50, 570, 500, 50);
-       inputField.setForeground(Color.black);
-       inputField.setBackground(Color.white);
+        inputField = new JTextField("Please enter a text ", 200);
+        inputField.setBounds(50, 570, 500, 50);
+        inputField.setForeground(Color.black);
+        inputField.setBackground(Color.white);
+    }
+
+    public JPanel getHubTitlePanel() {
+        return hubTitlePanel;
+    }
+
+    public static void setHubTitlePanel(JLabel label) {
+        hubTitlePanel = new JPanel();
+        hubTitlePanel.setBounds(500, 70, 300, 100);
+        hubTitlePanel.setOpaque(false);
+        hubTitlePanel.add(label);
+    }
+
+    public static JLabel getHubTitleLabel() {
+        return hubTitleLabel;
+    }
+
+    public static JLabel setHubTitleLabel(String text) {
+        hubTitleLabel = new JLabel(text);
+        hubTitleLabel.setForeground(Color.white);
+        hubTitleLabel.setFont(titleFont);
+        return hubTitleLabel;
     }
 }
