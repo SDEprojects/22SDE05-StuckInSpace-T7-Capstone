@@ -9,10 +9,10 @@ public class GameScreenHandler {
     public static void getMainScreen() {
         gameGui.setWindow();
         gameGui.setCon();
-        gameGui.setTitlePanel(gameGui.setTitleLabel(Menu.getGameName()));
+        gameGui.setTitlePanel(GameGui.setTitleLabel(Menu.getGameName()));
         con.add(gameGui.getTitlePanel());
-        gameGui.setStartButtonPanel(gameGui.setStartButton(Menu.getStart()));
+        GameGui.setStartButtonPanel(GameGui.setStartButton(Menu.getStart()));
         con.add(gameGui.getStartButtonPanel());
+        GameManager.hub.initiateInventory();
     }
-
 }

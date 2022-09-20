@@ -1,6 +1,7 @@
 package com.learning.client;
 
 import com.learning.controller.HubSpot;
+import com.learning.view.Menu;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -23,13 +24,16 @@ public class InventoryScreenHandler implements ActionListener {
         window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
         con = window.getContentPane();
         con.add(inventoryTitlePanel);
-        GameManager.hub.initiateInventory();
         StringBuilder result = new StringBuilder();
         for (String i : GameManager.hub.showInventory()) {
             result.append(i).append("\n");
         }
         setMainTextPanel(setMainTextArea(String.valueOf(result)));
         con.add(mainTextPanel);
-        //con.add(returnPanel);
+        con.add(returnPanel);
+
+
+
+
     }
 }

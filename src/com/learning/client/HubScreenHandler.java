@@ -16,9 +16,26 @@ public class HubScreenHandler implements ActionListener {
         createHubScreen();
     }
     private void createHubScreen() {
+        HubScreenHandler hubScreenHandler = new HubScreenHandler();
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
         window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        setHubTitlePanel(setTitleLabel(Menu.getHubName()));
+        setMainTextPanel(setMainTextArea(Story.gameIntro()));
+        setChoiceButtonPanel(setMissionButton(Menu.getMissionsMenuItem()), setInventoryButton(Menu.getInventoryMenuItem()));
+
+        MissionScreenHandler missionScreenHandler = new MissionScreenHandler();
+        missionButton.addActionListener(missionScreenHandler);
+        setMissionTitlePanel(setMissionTitleLabel(Menu.getMissionsMenuItem()));
+        setReturnPanel(setReturnButton(Menu.getReturnOption()));
+        returnButton.addActionListener(hubScreenHandler);
+
+        InventoryScreenHandler inventoryScreenHandler = new InventoryScreenHandler();
+        inventoryButton.addActionListener(inventoryScreenHandler);
+        setInventoryTitlePanel(setInventoryTitleLabel(Menu.getInventoryMenuItem()));
+        setReturnPanel(setReturnButton(Menu.getReturnOption()));
+        returnButton.addActionListener(hubScreenHandler);
+
         con = window.getContentPane();
         con.add(hubTitlePanel);
         con.add(mainTextPanel);

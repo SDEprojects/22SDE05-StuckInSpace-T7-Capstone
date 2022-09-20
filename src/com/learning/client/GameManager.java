@@ -23,23 +23,6 @@ public class GameManager {
 
         HubScreenHandler hubScreenHandler = new HubScreenHandler();
         startButton.addActionListener(hubScreenHandler);
-        setHubTitlePanel(setTitleLabel(Menu.getHubName()));
-        setMainTextPanel(setMainTextArea(Story.gameIntro()));
-        setChoiceButtonPanel(setMissionButton(Menu.getMissionsMenuItem()), setInventoryButton(Menu.getInventoryMenuItem()));
-
-        MissionScreenHandler missionScreenHandler = new MissionScreenHandler();
-        missionButton.addActionListener(missionScreenHandler);
-        setMissionTitlePanel(setMissionTitleLabel(Menu.getMissionsMenuItem()));
-        setReturnPanel(setReturnButton(Menu.getReturnOption()));
-        returnButton.addActionListener(hubScreenHandler);
-
-        InventoryScreenHandler inventoryScreenHandler = new InventoryScreenHandler();
-        inventoryButton.addActionListener(inventoryScreenHandler);
-        setInventoryTitlePanel(setInventoryTitleLabel(Menu.getInventoryMenuItem()));
-
-
-
-
 
 
         //================================== LOADING THE GAME/NEW GAME ===========================================//

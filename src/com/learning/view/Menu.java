@@ -32,6 +32,10 @@ public class Menu {
         return "START";
     }
 
+    public static String getStartMission() {
+        return "Start Mission";
+    }
+
     public static String getMissionsMenuItem() {
         return "Missions";
     }

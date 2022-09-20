@@ -30,7 +30,6 @@ public class GameGui {
         startButtonPanel = new JPanel();
         titleLabel = new JLabel();
         startButton = new JButton();
-        inputField = new JTextField();
     }
 
     public JFrame getWindow() {
@@ -134,7 +133,7 @@ public class GameGui {
 
     public void setTitlePanel(JLabel titleLabel) {
         titlePanel = new JPanel();
-        titlePanel.setBounds(340, 40, 600, 100);
+        titlePanel.setBounds(340, 40, 900, 100);
         titlePanel.setOpaque(false);
         titlePanel.add(titleLabel);
     }
@@ -143,15 +142,15 @@ public class GameGui {
         return startButtonPanel;
     }
 
-    public void setStartButtonPanel(JButton startButton) {
+    public static void setStartButtonPanel(JButton startButton) {
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(565, 570, 140, 50);
+        startButtonPanel.setBounds(565, 570, 200, 50);
         startButtonPanel.setBorder(null);
         startButtonPanel.setOpaque(false);
         startButtonPanel.add(startButton);
     }
 
-    public JPanel getChoiceButtonPanel() {
+    public static JPanel getChoiceButtonPanel() {
         return choiceButtonPanel;
     }
 
@@ -291,7 +290,7 @@ public class GameGui {
         return startButton;
     }
 
-    public JButton setStartButton(String text) {
+    public static JButton setStartButton(String text) {
         startButton = new JButton(text);
         startButton.setBackground(Color.green);
         startButton.setForeground(Color.black);

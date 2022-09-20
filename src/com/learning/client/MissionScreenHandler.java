@@ -1,5 +1,6 @@
 package com.learning.client;
 
+import com.learning.view.Menu;
 import com.learning.view.Story;
 
 import javax.swing.*;
@@ -17,6 +18,8 @@ public class MissionScreenHandler implements ActionListener {
     }
 
     private void createMissionScreen() {
+        CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
+        titlePanel.setVisible(false);
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
         hubTitlePanel.setVisible(false);
@@ -24,8 +27,11 @@ public class MissionScreenHandler implements ActionListener {
         con = window.getContentPane();
         con.add(missionTitlePanel);
         setMainTextPanel(setMainTextArea(Story.getMission1Name()));
-        mainTextArea.append(Story.alienOutpost());
         con.add(mainTextPanel);
         con.add(returnPanel);
+        setStartButtonPanel(setStartButton(Menu.getStartMission()));
+        con.add(startButtonPanel);
+        setReturnPanel(setReturnButton(Menu.getReturnOption()));
+        startButton.addActionListener(currentMissionScreenHandler);
     }
 }
