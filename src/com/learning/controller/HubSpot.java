@@ -200,6 +200,23 @@ public class HubSpot {
         }
         item.setBackpackList(item.getBackpackList());
     }
+    //god mode
+    public  ArrayList<String> godMode() {
+        JSONArray itemJSON = item.getItemDict();
+        ArrayList<String> keyList = null;
+        for (Object obj : itemJSON) {
+            JSONObject objAll = (JSONObject) obj;
+            Set allName = objAll.keySet();
+            keyList = new ArrayList<>(allName.size());
+            for (Object keyItemName : allName) {
+                keyList.add(keyItemName.toString());
+            }
+        }
+        return keyList;
+    }
+
+    //TEST
+
 
     // Show inventory function.
     public void showInventory() {
