@@ -38,6 +38,10 @@ public class GameManager {
         setInventoryTitlePanel(setInventoryTitleLabel(Menu.getInventoryMenuItem()));
 
 
+
+
+
+
         //================================== LOADING THE GAME/NEW GAME ===========================================//
         Scanner scanner = new Scanner(System.in);
         String gameInput = scanner.nextLine();
