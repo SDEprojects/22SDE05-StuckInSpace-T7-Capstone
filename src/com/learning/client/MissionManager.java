@@ -101,6 +101,13 @@ public class MissionManager {
                 break;
             } else if (heroInput.equalsIgnoreCase("help")) {
                 mission.getMoveHelpMenu(hub.getHeroPosition());
+
+                //God mode
+            } else if (heroInput.equalsIgnoreCase("goddess")) {
+                hub.setPlayerItems(hub.godMode());
+                hub.getPlayerItems();
+                System.out.println(hub.getPlayerItems());
+
             } else if (!heroInput.equalsIgnoreCase("leave")) {
                 if (mission.isExitAvailable(hub.getHeroPosition(), heroInput)) {
                     if (hub.getHeroPosition().equalsIgnoreCase("basement") && heroInput.equalsIgnoreCase("engineroom")) {
