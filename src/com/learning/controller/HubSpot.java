@@ -65,8 +65,8 @@ public class HubSpot {
         return this.hero.getHeroName();
     }
 
-    public void showPlayerProfile() {
-        getHero().displayHeroProfile();
+    public String showPlayerProfile() {
+        return getHero().displayHeroProfile();
     }
 
     public void setHeroPosition(String position) {

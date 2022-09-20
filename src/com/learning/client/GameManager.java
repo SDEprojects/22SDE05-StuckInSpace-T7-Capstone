@@ -5,7 +5,9 @@ import com.learning.controller.Mission;
 import com.learning.view.Menu;
 import com.learning.view.Story;
 
+import java.util.Objects;
 import java.util.Scanner;
+import java.util.function.ToDoubleBiFunction;
 
 import static com.learning.client.GameGui.*;
 import static com.learning.client.MissionManager.activateMission;
@@ -27,29 +29,48 @@ public class GameManager {
         gameGui.setInputField();
         InputHandler inputHandler = new InputHandler();
         inputField.addActionListener(inputHandler);
-        gameGui.setMainTextArea(text);
+        gameGui.setMainTextArea("");
+        //text = "Test";
+
+        // TODO update while loop
+        HubSpot hub = new HubSpot();
+        while (true) {
+            if (inputField.getText().equalsIgnoreCase("1") || inputField.getText().equalsIgnoreCase("new game")) {
+                text = "Hello";
+                InputHandler.reset(inputField);
+                hub.setPlayerName(inputField.getName());
+                text = hub.showPlayerProfile();
+                hub.initiateInventory();
+                hub.initiateItemLocationList();
+                InputHandler.reset(inputField);
+                text = Story.gameIntro();
+
+                break;
+            } else if (inputField.getText().equalsIgnoreCase("2")) {
+                text = "Hello2";
+            } else if (inputField.getText().compareTo("3") == 0) {
+                text = "Bye3";
+                break;
+            }
+        }
 
         //================================== LOADING THE GAME/NEW GAME ===========================================//
         Scanner scanner = new Scanner(System.in);
         String gameInput = scanner.nextLine();
         Mission missions = new Mission();
-        HubSpot hub = new HubSpot();
+        //HubSpot hub = new HubSpot();
         scanner = new Scanner(System.in);
         String input = "not-exit";
         while (true) {
             if (inputField.getText().equalsIgnoreCase("1") || inputField.getText().equalsIgnoreCase("new game")) {
-                //Start the game
-                text = "Name your hero";
-                //mainTextArea.append("Name your hero");
-                System.out.println("Name your hero: ");
-                String name = scanner.nextLine();
-                hub.setPlayerName(name);
-                hub.showPlayerProfile();
+                //System.out.println("Name your hero: ");
+                //String name = scanner.nextLine();
+
+                hub.setPlayerName(inputField.getName());
                 hub.initiateInventory(); // To add the items the Hero came with to the backpack.
                 hub.initiateItemLocationList();// Initiate the item list based on location.
-                Story.gameIntro();
-                System.out.println("Type next to continue");
-                String next = scanner.nextLine();
+                //System.out.println("Type next to continue");
+                //String next = scanner.nextLine();
                 break;
             } else if (gameInput.equalsIgnoreCase("2") || gameInput.equalsIgnoreCase("load game")) {
                 hub.loadSavedGame(hub.getSavegame().getSavePlayerName(), hub.getSavegame().getSavePlayerInventory());
