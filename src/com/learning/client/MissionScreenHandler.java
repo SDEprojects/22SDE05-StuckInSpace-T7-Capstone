@@ -24,14 +24,15 @@ public class MissionScreenHandler implements ActionListener {
         choiceButtonPanel.setVisible(false);
         hubTitlePanel.setVisible(false);
         window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        setMainTextPanel(setMainTextArea(Story.getMission1Name()));
+        setStartButtonPanel(setStartButton(Menu.getStartMission()));
+        //setReturnPanel(setReturnButton(Menu.getReturnOption()));
+        startButton.addActionListener(currentMissionScreenHandler);
+
         con = window.getContentPane();
         con.add(missionTitlePanel);
-        setMainTextPanel(setMainTextArea(Story.getMission1Name()));
         con.add(mainTextPanel);
         con.add(returnPanel);
-        setStartButtonPanel(setStartButton(Menu.getStartMission()));
         con.add(startButtonPanel);
-        setReturnPanel(setReturnButton(Menu.getReturnOption()));
-        startButton.addActionListener(currentMissionScreenHandler);
     }
 }

@@ -23,14 +23,16 @@ public class CurrentMissionScreenHandler implements ActionListener {
         choiceButtonPanel.setVisible(false);
         hubTitlePanel.setVisible(false);
         window.setContentPane(new JLabel(new ImageIcon("resources/Spaceship_Cockpit.jpg")));
-        con = window.getContentPane();
-        setMissionTitlePanel(setTitleLabel(Story.getMission1Name()));
-        con.add(missionTitlePanel);
+
+        setMissionTitlePanel(setMissionTitleLabel(Story.getMission1Name()));
         setMainTextPanel(setMainTextArea(Story.alienOutpost()));
+
+        con = window.getContentPane();
+        con.add(missionTitlePanel);
         con.add(mainTextPanel);
-        setReturnPanel(setReturnButton(Menu.getReturnOption()));
-        returnButton.addActionListener(missionScreenHandler);
-        con.add(returnButton);
+
+
+
 
     }
 }

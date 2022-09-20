@@ -101,7 +101,7 @@ public class GameGui {
 
     public static void setMissionTitlePanel(JLabel label) {
         missionTitlePanel = new JPanel();
-        missionTitlePanel.setBounds(500, 70, 300, 100);
+        missionTitlePanel.setBounds(340, 40, 600, 100);
         missionTitlePanel.setOpaque(false);
         missionTitlePanel.add(label);
     }
@@ -133,7 +133,7 @@ public class GameGui {
 
     public void setTitlePanel(JLabel titleLabel) {
         titlePanel = new JPanel();
-        titlePanel.setBounds(340, 40, 900, 100);
+        titlePanel.setBounds(340, 40, 600, 100);
         titlePanel.setOpaque(false);
         titlePanel.add(titleLabel);
     }

@@ -31,9 +31,5 @@ public class InventoryScreenHandler implements ActionListener {
         setMainTextPanel(setMainTextArea(String.valueOf(result)));
         con.add(mainTextPanel);
         con.add(returnPanel);
-
-
-
-
     }
 }
