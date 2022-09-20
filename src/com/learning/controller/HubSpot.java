@@ -8,8 +8,12 @@ import com.learning.view.SaveGame;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 
-import java.util.*;
+import javax.sound.sampled.*;
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 public class HubSpot {
     SaveGame savegame;
@@ -200,6 +204,63 @@ public class HubSpot {
         }
         item.setBackpackList(item.getBackpackList());
     }
+    //god mode
+    public  ArrayList<String> godMode() {
+        JSONArray itemJSON = item.getItemDict();
+        ArrayList<String> keyList = null;
+        for (Object obj : itemJSON) {
+            JSONObject objAll = (JSONObject) obj;
+            Set allName = objAll.keySet();
+            keyList = new ArrayList<>(allName.size());
+            for (Object keyItemName : allName) {
+                keyList.add(keyItemName.toString());
+            }
+        }
+        return keyList;
+    }
+
+    //Audio
+ /*   public static void startMusic(File file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        //Scanner scanner = new Scanner(System.in);
+        //File file = new File("resources/DivKid.wav");
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+        clip.start();
+
+    }*/
+    public static void manageMusic(File file, String input) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        //Scanner scanner = new Scanner(System.in);
+        //File file = new File("resources/DivKid.wav");
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+        switch (input){
+            case ("start music"):
+                clip.start();
+                break;
+            case ("stop music"):
+                clip.stop();
+                //break;
+        }
+
+
+    }
+
+    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+        File file = new File("resources/DivKid.wav");
+        manageMusic(file, "start music");
+    }
+
+
+    public static void stopMusic(File file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+        clip.stop();
+
+    }
+
 
     // Show inventory function.
     public ArrayList<String> showInventory() {
