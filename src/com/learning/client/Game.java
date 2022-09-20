@@ -9,28 +9,39 @@ public class Game {
 
     JFrame window;
     Container con;
-    JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, msnTitlePanel;
-    JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, msnTitleLabel;
-    JTextArea mainTextArea;
+    JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, hubTitlePanel, msnTitlePanel, introPanel,
+    continueBtnPanel, alienTextPanel, alienTitlePanel;
+    JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, msnTitleLabel, alienTitleLabel;
+    JTextArea mainTextArea, introTextArea, alienTextArea;
     JMenuBar menuBar;
-    JMenu menu;
-    JMenuItem m1, m2;
+    JMenu menu, Audio;
+    JMenuItem help, quit, AudioOn, AudioOff;
 
-    // fixing merge conflict
-
-    // FONTS
+    //        //================================== FONTS ===========================================//
     Font titleFont = new Font("Times New Roman", Font.PLAIN, 70);
     Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
     Font audioFont = new Font("Times New Roman", Font.PLAIN, 15);
     Font playerFont = new Font("Times New Roman", Font.PLAIN, 25);
 
-    // BUTTONS
-    JButton startButton, missionBtn, invBtn, audioButton, returnBtn, alienMsnBtn;
+    //        //================================== BUTTONS ===========================================//
+    JButton startButton, missionBtn, invBtn, returnBtn, alienMsnBtn, continueBtn;
 
-
+    //        //================================== SCREEN HANDLERS ===========================================//
     TitleScreenHandler tsHandler = new TitleScreenHandler();
     HubScreenHandler hsHandler = new HubScreenHandler();
     ReturnToHubHandler rthHandler = new ReturnToHubHandler();
+    IntroScreenHandler isHandler = new IntroScreenHandler();
+    AlienScreenHandler aoHandler = new AlienScreenHandler();
+    InventoryHandler invHandler = new InventoryHandler();
+    HangarScreenHandler hangarHandler = new HangarScreenHandler();
+    HallwayScreenHandler hallHandler = new HallwayScreenHandler();
+    MessHallScreenHandler messHandler = new MessHallScreenHandler();
+    CSScreenHandler csHandler = new CSScreenHandler();
+    SpaceShipScreenHandler spHandler = new SpaceShipScreenHandler();
+    BasementScreenHandler bsHandler = new BasementScreenHandler();
+
+
+
 
     public static void main(String[] args) {
         new Game();
@@ -51,12 +62,19 @@ public class Game {
         menuBar = new JMenuBar();
         // create a menu
         menu = new JMenu("Menu");
+        Audio = new JMenu("Audio");
         //create menu items
-        m1 = new JMenuItem("Help");
-        m2 = new JMenu("Leave");
+        help = new JMenuItem("Help");
+        quit = new JMenuItem("Quit");
+        AudioOn = new JMenuItem("Audio On");
+        AudioOff = new JMenuItem("Audio Off");
+
         // add menu items to menu
-        menu.add(m1);
-        menu.add(m2);
+        menu.add(Audio);
+        menu.add(help);
+        menu.add(quit);
+        Audio.add(AudioOn);
+        Audio.add(AudioOff);
         // add menu to menu bar
         menuBar.add(menu);
         // add menu bar to JFrame
@@ -70,13 +88,14 @@ public class Game {
         titleLabel.setFont(titleFont);
         con.add(titlePanel);
 
+        // Start Button Configuration
         startButtonPanel = new JPanel();
         startButtonPanel.setBounds(565, 570, 140, 50);
         startButtonPanel.setBorder(null);
         startButtonPanel.setOpaque(false);
 
-        startButton = new JButton("START");
-        startButton.setBackground(Color.green);
+        startButton = new JButton("New Game");
+        startButton.setBackground(Color.black);
         startButton.setForeground(Color.black);
         startButton.setFont(normalFont);
         startButton.addActionListener(tsHandler);
@@ -89,6 +108,47 @@ public class Game {
         window.pack();
     }
 
+    public void introScreen() {
+        titlePanel.setVisible(false);
+        startButtonPanel.setVisible(false);
+        window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        con = window.getContentPane();
+
+        // main text area configuration
+        introPanel = new JPanel();
+        introPanel.setBounds(350, 50, 600, 300);
+        introPanel.setOpaque(false);
+        //mainTextPanel.setBackground(Color.black);
+        con.add(introPanel);
+
+        introTextArea = new JTextArea("You are an ex-Army, introverted, solo space\n traveler with a very particular set " +
+                "of skills. He is currently on a journey to the deserted planet Surt, to find the ultimate solitude.\n" +
+                "Your skills: 9th degree red belt, sharp shooter,\n superb engineer.\n" +
+                "Items currently in your possession are a compass and laser gun");
+        introTextArea.setBounds(300, 50, 600, 300);
+        introTextArea.setBackground(Color.black);
+        introTextArea.setForeground(Color.white);
+        introTextArea.setFont(normalFont);
+        introTextArea.setLineWrap(true);
+        introPanel.add(introTextArea);
+
+        // Choice Button Configuration
+        continueBtnPanel = new JPanel();
+        continueBtnPanel.setBounds(550, 400, 200, 80);
+        continueBtnPanel.setOpaque(false);
+        //choiceButtonPanel.setBackground(Color.black);
+        continueBtnPanel.setLayout(new GridLayout(1, 1));
+        con.add(continueBtnPanel);
+
+        continueBtn = new JButton("Continue");
+        continueBtn.setBackground(Color.black);
+        continueBtn.setForeground(Color.black);
+        continueBtn.setFont(normalFont);
+        continueBtn.addActionListener(isHandler);
+        continueBtnPanel.add(continueBtn);
+
+
+    }
     public void createHubScreen() {
 
         titlePanel.setVisible(false);
@@ -107,13 +167,13 @@ public class Game {
 
         // main text area configuration
         mainTextPanel = new JPanel();
-        mainTextPanel.setBounds(350, 300, 600, 250);
+        mainTextPanel.setBounds(350, 200, 600, 250);
         mainTextPanel.setOpaque(false);
         //mainTextPanel.setBackground(Color.black);
         con.add(mainTextPanel);
 
-        mainTextArea = new JTextArea("Pokem ipsum dolor sit amet Caterpie Leech Life Skiploom Bouffalant Ho-oh quis " +
-                "nostrud exercitation. Ice Blaziken Shroomish Jellicent Tornadus Gothorita Diglett. Fire Reuniclus. ");
+        mainTextArea = new JTextArea("You are at the hub. Here you may choose the\n mission you would like to play\n " +
+                "or check your inventory.");
         mainTextArea.setBounds(300, 100, 600, 250);
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
@@ -121,25 +181,9 @@ public class Game {
         mainTextArea.setLineWrap(true);
         mainTextPanel.add(mainTextArea);
 
-        // Audio Button Configuration
-        audioButtonPanel = new JPanel();
-        audioButtonPanel.setBounds(20, 18, 120, 25);
-        audioButtonPanel.setOpaque(false);
-        //audioButtonPanel.setBackground(Color.blue);
-        audioButtonPanel.setLayout(new GridLayout(1, 1));
-        con.add(audioButtonPanel);
-
-        audioButton = new JButton("Audio On/Off");
-        audioButton.setBackground(Color.black);
-        audioButton.setForeground(Color.black);
-        audioButton.setFont(audioFont);
-        //audioButton.addMouseListener();
-        audioButtonPanel.add(audioButton);
-
-
         // Choice Button Configuration
         choiceButtonPanel = new JPanel();
-        choiceButtonPanel.setBounds(500, 525, 300, 120);
+        choiceButtonPanel.setBounds(500, 400, 300, 120);
         choiceButtonPanel.setOpaque(false);
         //choiceButtonPanel.setBackground(Color.black);
         choiceButtonPanel.setLayout(new GridLayout(2, 1));
@@ -156,6 +200,7 @@ public class Game {
         invBtn.setBackground(Color.black);
         invBtn.setForeground(Color.black);
         invBtn.setFont(normalFont);
+        invBtn.addActionListener(invHandler);
         choiceButtonPanel.add(invBtn);
 
         // Player Status Panel
@@ -199,6 +244,15 @@ public class Game {
 
     }
 
+    public void inventoryScreen() {
+        hubTitlePanel.setVisible(false);
+        mainTextPanel.setVisible(false);
+        choiceButtonPanel.setVisible(false);
+        window.setContentPane(new JLabel(new ImageIcon("resources/inventory.png")));
+        con = window.getContentPane();
+
+
+    }
     public void createMissionScreen() {
 
         mainTextPanel.setVisible(false);
@@ -221,8 +275,8 @@ public class Game {
         //mainTextPanel.setBackground(Color.black);
         con.add(mainTextPanel);
 
-        mainTextArea = new JTextArea("Pokem ipsum dolor sit amet Caterpie Leech Life Skiploom Bouffalant Ho-oh quis " +
-                "nostrud exercitation. Ice Blaziken Shroomish Jellicent Tornadus Gothorita Diglett. Fire Reuniclus. ");
+        mainTextArea = new JTextArea("You are at the hub. Here you may choose the\n mission you'd like to play, " +
+                "check your inventory, get help, or return to the Hub. ");
         mainTextArea.setBounds(300, 100, 600, 250);
         mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
@@ -242,7 +296,7 @@ public class Game {
         alienMsnBtn.setBackground(Color.black);
         alienMsnBtn.setForeground(Color.black);
         alienMsnBtn.setFont(normalFont);
-        alienMsnBtn.addActionListener(hsHandler);
+        alienMsnBtn.addActionListener(aoHandler);
         choiceButtonPanel.add(alienMsnBtn);
 
         returnBtn = new JButton("Return to Hub");
@@ -253,25 +307,160 @@ public class Game {
         choiceButtonPanel.add(returnBtn);
     }
 
+    public void alienOutpostScreen() {
+        choiceButtonPanel.setVisible(false);
+        msnTitlePanel.setVisible(false);
+        mainTextPanel.setVisible(false);
+
+        alienTitlePanel = new JPanel();
+        alienTitlePanel.setBounds(350, 100, 600, 100);
+        alienTitlePanel.setOpaque(false);
+        alienTitleLabel = new JLabel("ALIEN OUTPOST");
+        alienTitleLabel.setForeground(Color.white);
+        alienTitleLabel.setFont(titleFont);
+        alienTitlePanel.add(alienTitleLabel);
+        con.add(alienTitlePanel);
+
+        // main text area configuration
+        alienTextPanel = new JPanel();
+        alienTextPanel.setBounds(350, 250, 600, 250);
+        alienTextPanel.setOpaque(false);
+        //mainTextPanel.setBackground(Color.black);
+        con.add(alienTextPanel);
+
+        alienTextArea = new JTextArea("You find yourself in a strange field. Everything\n has been cleared out and" +
+                "all that stands before\n you is an unknown tower.");
+        alienTextArea.setBounds(300, 100, 600, 250);
+        alienTextArea.setBackground(Color.black);
+        alienTextArea.setForeground(Color.white);
+        alienTextArea.setFont(normalFont);
+        alienTextArea.setLineWrap(true);
+        alienTextPanel.add(alienTextArea);
+
+        // Choice Button Configuration
+        continueBtnPanel = new JPanel();
+        continueBtnPanel.setBounds(550, 400, 200, 80);
+        continueBtnPanel.setOpaque(false);
+        //choiceButtonPanel.setBackground(Color.black);
+        continueBtnPanel.setLayout(new GridLayout(1, 1));
+        con.add(continueBtnPanel);
+
+        continueBtn = new JButton("Let's explore!");
+        continueBtn.setBackground(Color.black);
+        continueBtn.setForeground(Color.black);
+        continueBtn.setFont(normalFont);
+        continueBtn.addActionListener(hangarHandler);
+        continueBtnPanel.add(continueBtn);
+    }
+
+    public void hangarScreen() {
+        alienTitlePanel.setVisible(false);
+        alienTextPanel.setVisible(false);
+        continueBtnPanel.setVisible(false);
+        window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
+        con = window.getContentPane();
+
+        // Add a button to each of the five areas of the BorderLayout
+        con.add(new JButton("North"), BorderLayout.NORTH);
+        con.add(new JButton("South"), BorderLayout.SOUTH);
+        con.add(new JButton("East"), BorderLayout.EAST);
+        con.add(new JButton("West"), BorderLayout.WEST);
+        con.add(new JButton("Center"), BorderLayout.CENTER);
+
+        window.pack();
+        window.setVisible(true);
+    }
+
+    public void hallwayScreen() {
+
+    }
+
+    public void messHallScreen() {
+
+    }
+
+    public void basementScreen() {
+
+    }
+
+    public void controlScreen() {
+
+    }
+
+    public void spaceshipScreen() {
+
+    }
+
+    //        //================================== ACTION LISTENERS ===========================================//
     public class TitleScreenHandler implements ActionListener {
         public void actionPerformed(ActionEvent event) {
-
+            introScreen();
+        }
+    }
+    public class IntroScreenHandler implements ActionListener {
+        @Override
+        public void actionPerformed(ActionEvent event) {
             createHubScreen();
         }
     }
-
     public class HubScreenHandler implements ActionListener {
-
         @Override
         public void actionPerformed(ActionEvent event) {
             createMissionScreen();
         }
     }
-
     public class ReturnToHubHandler implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent event) {
             createHubScreen();
+        }
+    }
+    public class InventoryHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            inventoryScreen();
+        }
+    }
+    public class AlienScreenHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            alienOutpostScreen();
+        }
+    }
+    public class HangarScreenHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent event) {
+            hangarScreen();
+        }
+    }
+    public class HallwayScreenHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent event) {
+
+        }
+    }
+    public class BasementScreenHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent event) {
+
+        }
+    }
+    public class MessHallScreenHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent event) {
+
+        }
+    }
+    public class CSScreenHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent event) {
+
+        }
+    }
+    public class SpaceShipScreenHandler implements ActionListener{
+        @Override
+        public void actionPerformed(ActionEvent event) {
+
         }
     }
 }
