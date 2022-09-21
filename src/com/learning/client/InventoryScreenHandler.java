@@ -21,7 +21,7 @@ public class InventoryScreenHandler implements ActionListener {
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
         hubTitlePanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon("resources/inventory.png")));
         con = window.getContentPane();
         con.add(inventoryTitlePanel);
         StringBuilder result = new StringBuilder();

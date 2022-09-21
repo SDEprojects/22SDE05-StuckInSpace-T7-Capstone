@@ -11,9 +11,9 @@ public class GameGui {
 
     static JFrame window;
     static Container con;
-    static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel;
+    static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel;
     static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel;
-    static JButton startButton, missionButton, inventoryButton, returnButton;
+    static JButton startButton, missionButton, inventoryButton, returnButton, nextLocationButton;
     static JTextArea mainTextArea;
     static JMenuBar menuBar;
     static JMenu menu;
@@ -215,8 +215,11 @@ public class GameGui {
         return playerPanel;
     }
 
-    public void setPlayerPanel(JPanel playerPanel) {
-        this.playerPanel = playerPanel;
+    public static void setPlayerPanel() {
+        playerPanel = new JPanel();
+        playerPanel.setBounds(400, 5, 800, 50);
+        playerPanel.setOpaque(false);
+        playerPanel.setLayout(new GridLayout(1, 6));
     }
 
     public JPanel getAudioButtonPanel() {
@@ -254,12 +257,36 @@ public class GameGui {
         this.hpLabelNum = hpLabelNum;
     }
 
-    public JLabel getLocLabel() {
+    public static JLabel getLocLabel() {
         return locLabel;
     }
 
-    public void setLocLabel(JLabel locLabel) {
-        this.locLabel = locLabel;
+    public static void setLocLabel(String text) {
+        locLabel = new JLabel("Location: " + text);
+        locLabel.setFont(playerFont);
+        locLabel.setForeground(Color.white);
+    }
+
+    public static JPanel getLocationsButtonPanel() {
+        return locationsButtonPanel;
+    }
+
+    public static void setLocationsButtonPanel() {
+        locationsButtonPanel = new JPanel();
+        locationsButtonPanel.setBounds(500, 525, 300, 120);
+        locationsButtonPanel.setOpaque(false);
+        locationsButtonPanel.setLayout(new GridLayout(2, 1));
+    }
+
+    public static JButton getNextLocationButton() {
+        return nextLocationButton;
+    }
+
+    public static void setNextLocationButton(String text) {
+        nextLocationButton = new JButton (text);
+        nextLocationButton.setBackground(Color.black);
+        nextLocationButton.setForeground(Color.white);
+        nextLocationButton.setFont(normalFont);
     }
 
     public JLabel getLocLabelCurrent() {
