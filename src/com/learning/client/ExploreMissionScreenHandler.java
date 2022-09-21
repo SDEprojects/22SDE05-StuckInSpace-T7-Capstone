@@ -1,7 +1,5 @@
 package com.learning.client;
 
-import com.learning.controller.HubSpot;
-import com.learning.controller.Mission;
 import com.learning.view.Menu;
 
 import javax.swing.*;
@@ -10,16 +8,16 @@ import java.awt.event.ActionListener;
 
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameManager.hub;
+import static com.learning.client.GameManager.mission;
 
 public class ExploreMissionScreenHandler implements ActionListener {
-    Mission mission = new Mission();
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        exploreMission(mission);
+        changeLocation();
     }
 
-    private void exploreMission(Mission mission) {
+    static String changeLocation() {
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
 
@@ -40,7 +38,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
             setNextLocationButton((String) location);
             locationsButtonPanel.add(nextLocationButton);
             con.add(locationsButtonPanel);
-           // nextLocationButton.addActionListener(changeLocationHandler);
+            nextLocationButton.addActionListener(changeLocationHandler);
         }
 
 
@@ -126,16 +124,18 @@ public class ExploreMissionScreenHandler implements ActionListener {
 //                locationsButtonPanel.add(nextLocationButton);
 //                con.add(getLocationsButtonPanel());
 //            }
-        setReturnPanel(setReturnButton(Menu.getReturnOption()));
-        returnButton.addActionListener(currentMissionScreenHandler);
+
 
         con = window.getContentPane();
         con.add(playerPanel);
         con.add(missionTitlePanel);
         con.add(locationsButtonPanel);
-        con.add(returnPanel);
-        //con.add(getLocationsButtonPanel());
 
+        setReturnPanel(setReturnButton(Menu.getReturnOption()));
+        returnButton.addActionListener(currentMissionScreenHandler);
+        con.add(returnPanel);
+        con.add(getLocationsButtonPanel());
+        return nextLocationButton.getText();
     }
 }
 

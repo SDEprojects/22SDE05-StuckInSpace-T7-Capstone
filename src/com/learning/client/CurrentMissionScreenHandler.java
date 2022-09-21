@@ -31,13 +31,12 @@ public class CurrentMissionScreenHandler implements ActionListener {
         setStartButtonPanel(setStartButton(Menu.getExploreOption()));
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
         returnButton.addActionListener(missionScreenHandler);
+        startButton.addActionListener(exploreMissionScreenHandler);
 
         con = window.getContentPane();
         con.add(missionTitlePanel);
         con.add(mainTextPanel);
         con.add(startButtonPanel);
         con.add(returnPanel);
-
-        startButton.addActionListener(exploreMissionScreenHandler);
     }
 }
