@@ -219,6 +219,26 @@ public class HubSpot {
         return keyList;
     }
 
+
+    //Audio
+ /*   public static void startMusic(File file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
+        //Scanner scanner = new Scanner(System.in);
+        //File file = new File("resources/DivKid.wav");
+        AudioInputStream audioStream = AudioSystem.getAudioInputStream(file);
+        Clip clip = AudioSystem.getClip();
+        clip.open(audioStream);
+        clip.start();
+
+    }*/
+
+
+
+
+
+
+
+
+
     //Audio
  /*   public static void startMusic(File file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
         //Scanner scanner = new Scanner(System.in);
