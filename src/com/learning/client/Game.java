@@ -52,7 +52,7 @@ public class Game {
         window.setPreferredSize(new Dimension(1280, 719));
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setContentPane(new JLabel(new ImageIcon("resources/StuckInSpace.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon("StuckInSpace.jpg")));
         window.setLayout(null);
         window.setVisible(true);
         window.setLocationRelativeTo(null);
@@ -111,7 +111,7 @@ public class Game {
     public void introScreen() {
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon("The Hub Image.jpg")));
         con = window.getContentPane();
 
         // main text area configuration
@@ -151,7 +151,7 @@ public class Game {
 
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon("The Hub Image.jpg")));
         con = window.getContentPane();
 
         hubTitlePanel = new JPanel();
@@ -245,7 +245,7 @@ public class Game {
         hubTitlePanel.setVisible(false);
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/inventory.png")));
+        window.setContentPane(new JLabel(new ImageIcon("inventory.png")));
         con = window.getContentPane();
 
 
@@ -354,7 +354,7 @@ public class Game {
         alienTitlePanel.setVisible(false);
         alienTextPanel.setVisible(false);
         continueBtnPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon("hangar2.jpg")));
         con = window.getContentPane();
 
         // Choice Button Configuration
@@ -382,7 +382,7 @@ public class Game {
 
     public void hallwayScreen() {
         hangarBtnPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/hallway.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon("hallway.jpg")));
         con = window.getContentPane();
     }
 
@@ -400,7 +400,7 @@ public class Game {
 
     public void spaceshipScreen() {
         hangarBtnPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/Spaceship_Cockpit.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon("Spaceship_Cockpit.jpg")));
         con = window.getContentPane();
     }
 
