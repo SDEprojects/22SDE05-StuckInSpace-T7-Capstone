@@ -37,7 +37,7 @@ public class GameManager {
             if (gameInput.equalsIgnoreCase("1") || gameInput.equalsIgnoreCase("new game")) {
                 //Start the game
                 //hub.startMusic(file);
-                hub.manageMusic(file, "start music");
+               // hub.manageMusic(file, "start music");
                 System.out.println("Name your hero: ");
                 String name = scanner.nextLine();
                 hub.setPlayerName(name);
@@ -76,7 +76,7 @@ public class GameManager {
                 //============================ ACTIONS ITEMS FROM MENU ===================================//
                 //------------------------ inventory, missions, help, quit ------------------------------
                 if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("1")) {
-                    hub.manageMusic(file, "stop music");
+                    //hub.manageMusic(file, "stop music");
                     missions.getInventoryMenu();
                     hub.showInventory();
 
