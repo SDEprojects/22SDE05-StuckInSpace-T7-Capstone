@@ -10,9 +10,9 @@ public class Game {
     JFrame window;
     Container con;
     JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, hubTitlePanel, msnTitlePanel, introPanel,
-    continueBtnPanel, alienTextPanel, alienTitlePanel;
-    JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, msnTitleLabel, alienTitleLabel;
-    JTextArea mainTextArea, introTextArea, alienTextArea;
+    continueBtnPanel, alienTextPanel, alienTitlePanel, messTitlePanel, messTextPanel;
+    JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, msnTitleLabel, alienTitleLabel, messTitleLabel;
+    JTextArea mainTextArea, introTextArea, alienTextArea, messTextArea;
     JMenuBar menuBar;
     JMenu menu, Audio;
     JMenuItem help, quit, AudioOn, AudioOff;
@@ -320,6 +320,8 @@ public class Game {
         alienTitlePanel.add(alienTitleLabel);
         con.add(alienTitlePanel);
 
+
+
         // main text area configuration
         alienTextPanel = new JPanel();
         alienTextPanel.setBounds(350, 250, 600, 250);
@@ -376,6 +378,53 @@ public class Game {
 
     public void messHallScreen() {
 
+        choiceButtonPanel.setVisible(false);
+        msnTitlePanel.setVisible(false);
+        mainTextPanel.setVisible(false);
+        window.setContentPane(new JLabel(new ImageIcon("resources/mess_hall.jpg")));
+        con = window.getContentPane();
+
+        messTitlePanel = new JPanel();
+        messTitlePanel.setBounds(350, 100, 600, 100);
+        messTitlePanel.setOpaque(false);
+        messTitleLabel = new JLabel("MESS HALL");
+        messTitleLabel.setForeground(Color.white);
+        messTitleLabel.setFont(titleFont);
+        messTitlePanel.add(messTitleLabel);
+        con.add(messTitlePanel);
+
+
+
+        // main text area configuration
+        messTextPanel = new JPanel();
+        messTextPanel.setBounds(350, 250, 600, 250);
+        messTextPanel.setOpaque(false);
+        //mainTextPanel.setBackground(Color.black);
+        con.add(messTextPanel);
+
+        messTextArea = new JTextArea("What would you like to do?");
+        messTextArea.setBounds(300, 100, 600, 250);
+        messTextArea.setBackground(Color.black);
+        messTextArea.setForeground(Color.white);
+        messTextArea.setFont(normalFont);
+        messTextArea.setLineWrap(true);
+        messTextPanel.add(messTextArea);
+
+        // Choice Button Configuration
+        //continueBtnPanel change?
+        continueBtnPanel = new JPanel();
+        continueBtnPanel.setBounds(550, 400, 200, 80);
+        continueBtnPanel.setOpaque(false);
+        //choiceButtonPanel.setBackground(Color.black);
+        continueBtnPanel.setLayout(new GridLayout(1, 1));
+        con.add(continueBtnPanel);
+
+        continueBtn = new JButton("Hallway");
+        continueBtn.setBackground(Color.black);
+        continueBtn.setForeground(Color.black);
+        continueBtn.setFont(normalFont);
+        continueBtn.addActionListener(hangarHandler);
+        continueBtnPanel.add(continueBtn);
     }
 
     public void basementScreen() {
