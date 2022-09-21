@@ -52,7 +52,8 @@ public class Game {
         window.setPreferredSize(new Dimension(1280, 719));
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setContentPane(new JLabel(new ImageIcon("resources/StuckInSpace.jpg")));
+        window.getContentPane().setBackground(Color.black);
+        //window.setContentPane(new JLabel(new ImageIcon("resources/StuckInSpace.jpg")));
         window.setLayout(null);
         window.setVisible(true);
         window.setLocationRelativeTo(null);
@@ -96,7 +97,7 @@ public class Game {
 
         startButton = new JButton("New Game");
         startButton.setBackground(Color.black);
-        startButton.setForeground(Color.black);
+        startButton.setForeground(Color.white);
         startButton.setFont(normalFont);
         startButton.addActionListener(tsHandler);
 
@@ -111,8 +112,8 @@ public class Game {
     public void introScreen() {
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
-        con = window.getContentPane();
+        //window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        //con = window.getContentPane();
 
         // main text area configuration
         introPanel = new JPanel();
@@ -142,7 +143,7 @@ public class Game {
 
         continueBtn = new JButton("Continue");
         continueBtn.setBackground(Color.black);
-        continueBtn.setForeground(Color.black);
+        continueBtn.setForeground(Color.white);
         continueBtn.setFont(normalFont);
         continueBtn.addActionListener(isHandler);
         continueBtnPanel.add(continueBtn);
@@ -151,8 +152,8 @@ public class Game {
 
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
-        con = window.getContentPane();
+        //window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        //con = window.getContentPane();
 
         hubTitlePanel = new JPanel();
         hubTitlePanel.setBounds(500, 70, 300, 100);
@@ -189,14 +190,14 @@ public class Game {
 
         missionBtn = new JButton("Missions");
         missionBtn.setBackground(Color.black);
-        missionBtn.setForeground(Color.black);
+        missionBtn.setForeground(Color.white);
         missionBtn.setFont(normalFont);
         missionBtn.addActionListener(hsHandler);
         choiceButtonPanel.add(missionBtn);
 
         invBtn = new JButton("Inventory");
         invBtn.setBackground(Color.black);
-        invBtn.setForeground(Color.black);
+        invBtn.setForeground(Color.white);
         invBtn.setFont(normalFont);
         invBtn.addActionListener(invHandler);
         choiceButtonPanel.add(invBtn);
@@ -245,8 +246,8 @@ public class Game {
         hubTitlePanel.setVisible(false);
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/inventory.png")));
-        con = window.getContentPane();
+        //window.setContentPane(new JLabel(new ImageIcon("resources/inventory.png")));
+        //con = window.getContentPane();
 
 
     }
@@ -291,14 +292,14 @@ public class Game {
 
         alienMsnBtn = new JButton("Alien Outpost");
         alienMsnBtn.setBackground(Color.black);
-        alienMsnBtn.setForeground(Color.black);
+        alienMsnBtn.setForeground(Color.white);
         alienMsnBtn.setFont(normalFont);
         alienMsnBtn.addActionListener(aoHandler);
         choiceButtonPanel.add(alienMsnBtn);
 
         returnBtn = new JButton("Return to Hub");
         returnBtn.setBackground(Color.black);
-        returnBtn.setForeground(Color.black);
+        returnBtn.setForeground(Color.white);
         returnBtn.setFont(normalFont);
         returnBtn.addActionListener(rthHandler);
         choiceButtonPanel.add(returnBtn);
@@ -344,7 +345,7 @@ public class Game {
 
         continueBtn = new JButton("Let's explore!");
         continueBtn.setBackground(Color.black);
-        continueBtn.setForeground(Color.black);
+        continueBtn.setForeground(Color.white);
         continueBtn.setFont(normalFont);
         continueBtn.addActionListener(hangarHandler);
         continueBtnPanel.add(continueBtn);
@@ -354,8 +355,8 @@ public class Game {
         alienTitlePanel.setVisible(false);
         alienTextPanel.setVisible(false);
         continueBtnPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
-        con = window.getContentPane();
+        //window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
+        //con = window.getContentPane();
 
         // Choice Button Configuration
         hangarBtnPanel = new JPanel();
@@ -367,14 +368,14 @@ public class Game {
 
         messBtn = new JButton("Hallway");
         messBtn.setBackground(Color.black);
-        messBtn.setForeground(Color.black);
+        messBtn.setForeground(Color.white);
         messBtn.setFont(normalFont);
         messBtn.addActionListener(hallHandler);
         hangarBtnPanel.add(messBtn);
 
         shipBtn = new JButton("Space Ship");
         shipBtn.setBackground(Color.black);
-        shipBtn.setForeground(Color.black);
+        shipBtn.setForeground(Color.white);
         shipBtn.setFont(normalFont);
         shipBtn.addActionListener(spHandler);
         hangarBtnPanel.add(shipBtn);
@@ -382,8 +383,8 @@ public class Game {
 
     public void hallwayScreen() {
         hangarBtnPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/hallway.jpg")));
-        con = window.getContentPane();
+        //window.setContentPane(new JLabel(new ImageIcon("resources/hallway.jpg")));
+        //con = window.getContentPane();
     }
 
     public void messHallScreen() {
@@ -400,8 +401,8 @@ public class Game {
 
     public void spaceshipScreen() {
         hangarBtnPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/Spaceship_Cockpit.jpg")));
-        con = window.getContentPane();
+        //window.setContentPane(new JLabel(new ImageIcon("resources/Spaceship_Cockpit.jpg")));
+        //con = window.getContentPane();
     }
 
     //        //================================== ACTION LISTENERS ===========================================//
