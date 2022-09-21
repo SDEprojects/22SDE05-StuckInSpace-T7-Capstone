@@ -152,8 +152,8 @@ public class Game {
 
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
-        //window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
-        //con = window.getContentPane();
+        /**window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        con = window.getContentPane();**/
 
         hubTitlePanel = new JPanel();
         hubTitlePanel.setBounds(500, 70, 300, 100);
