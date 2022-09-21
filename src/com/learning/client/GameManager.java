@@ -7,11 +7,10 @@ import com.learning.view.Story;
 
 import javax.sound.sampled.LineUnavailableException;
 import javax.sound.sampled.UnsupportedAudioFileException;
-import java.io.File;
 import java.io.IOException;
 import java.util.Scanner;
 
-import static com.learning.client.GameGui.*;
+import static com.learning.client.GameGui.startButton;
 import static com.learning.client.MissionManager.activateMission;
 import static com.learning.controller.HubSpot.checkInventoryInputType;
 
@@ -32,7 +31,7 @@ public class GameManager {
 
         scanner = new Scanner(System.in);
         String input = "not-exit";
-        File file = new File("resources/DivKid.wav");
+        //File file = new File("resources/DivKid.wav");
         while (true) {
             if (gameInput.equalsIgnoreCase("1") || gameInput.equalsIgnoreCase("new game")) {
                 //Start the game
@@ -76,7 +75,7 @@ public class GameManager {
                 //============================ ACTIONS ITEMS FROM MENU ===================================//
                 //------------------------ inventory, missions, help, quit ------------------------------
                 if (heroInput.equalsIgnoreCase("inventory") || heroInput.equalsIgnoreCase("1")) {
-                    //hub.manageMusic(file, "stop music");
+                   // hub.manageMusic(file, "stop music");
                     missions.getInventoryMenu();
                     hub.showInventory();
 
@@ -104,7 +103,7 @@ public class GameManager {
                         activateMission(missions, hub);
                     }
                 }else if (heroInput.equalsIgnoreCase("stop music")){
-                    hub.stopMusic(file);
+                   // hub.stopMusic(file);
                 }else if (heroInput.equalsIgnoreCase("help") || heroInput.equalsIgnoreCase("3")) {
                     missions.getHelpMenu();
                 } else if (heroInput.equalsIgnoreCase("quit") || heroInput.equalsIgnoreCase("4")) {
