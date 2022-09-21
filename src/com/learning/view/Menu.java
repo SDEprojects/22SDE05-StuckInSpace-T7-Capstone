@@ -20,6 +20,35 @@ public class Menu {
         this.missionNames = missionNames;
     }
 
+    public static String getGameName() {
+        return "Stuck in Outer Space";
+    }
+
+    public static String getHubName() {
+        return "THE HUB";
+    }
+
+    public static String getStart() {
+        return "START";
+    }
+
+    public static String getStartMission() {
+        return "Start Mission";
+    }
+
+    public static String getMissionsMenuItem() {
+        return "Missions";
+    }
+
+    public static String getInventoryMenuItem() {
+        return "Inventory";
+    }
+
+    public static String getReturnOption() {
+        return "Back";
+    }
+
+
     public static void getMainMessage() {
         System.out.println("          ___ _           _     _         ___       _             ___                  \n"+
                 "         / __| |_ _  _ __| |__ (_)_ _    / _ \\ _  _| |_ ___ _ _  / __|_ __ __ _ __ ___ \n"+
