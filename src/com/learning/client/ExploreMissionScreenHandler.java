@@ -2,6 +2,7 @@ package com.learning.client;
 
 import com.learning.controller.HubSpot;
 import com.learning.controller.Mission;
+import com.learning.view.Menu;
 
 import javax.swing.*;
 import java.awt.event.ActionEvent;
@@ -20,6 +21,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
     private void exploreMission(Mission mission) {
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
+        CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
 
         titlePanel.setVisible(false);
         mainTextPanel.setVisible(false);
@@ -37,8 +39,8 @@ public class ExploreMissionScreenHandler implements ActionListener {
         for (Object location : mission.availableExits(hub.getHeroPosition())) {
             setNextLocationButton((String) location);
             locationsButtonPanel.add(nextLocationButton);
-            con.add(getLocationsButtonPanel());
-            nextLocationButton.addActionListener(changeLocationHandler);
+            con.add(locationsButtonPanel);
+           // nextLocationButton.addActionListener(changeLocationHandler);
         }
 
 
@@ -124,11 +126,16 @@ public class ExploreMissionScreenHandler implements ActionListener {
 //                locationsButtonPanel.add(nextLocationButton);
 //                con.add(getLocationsButtonPanel());
 //            }
+        setReturnPanel(setReturnButton(Menu.getReturnOption()));
+        returnButton.addActionListener(currentMissionScreenHandler);
 
         con = window.getContentPane();
         con.add(playerPanel);
         con.add(missionTitlePanel);
         con.add(locationsButtonPanel);
+        con.add(returnPanel);
+        //con.add(getLocationsButtonPanel());
+
     }
 }
 

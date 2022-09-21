@@ -4,7 +4,7 @@
       "name": "Alien Outpost",
       "start_position": "start",
       "start_exit": [
-        "hallway"
+        "hallway", "spaceship"
       ],
       "start_description": "The dust settles...",
       "basement_position": "basement",
