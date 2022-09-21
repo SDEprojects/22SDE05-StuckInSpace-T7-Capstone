@@ -20,17 +20,17 @@ public class Hero {
 
     //private JSONObject currentPosition;
 
-    public Hero(){
+    public Hero() {
         this.heroDict = new FileHandler().readJsonFile("hero_dictionary.json");
         buildHero("default");
     }
 
-    public void buildHero(String heroName){
+    public void buildHero(String heroName) {
         this.items = new ArrayList<>();
-        for (Object obj : this.heroDict){
+        for (Object obj : this.heroDict) {
             JSONObject hero = (JSONObject) obj;
             JSONObject attributes = (JSONObject) hero.get("hero");
-            if(heroName.isEmpty()){
+            if (heroName.isEmpty()) {
                 setHeroName((String) attributes.get("name"));
             } else {
                 setHeroName((String) attributes.get(heroName));
@@ -103,18 +103,21 @@ public class Hero {
         this.initialHealth = initialHealth;
     }
 
-    public void displayHeroProfile(){
-        /**
-         * TODO: takes in current location, exits to current location, and items in the current location
-         *
-         */
-        System.out.println("==============================================================");
-        System.out.println("| Name:  " + getHeroName().toUpperCase());
-        System.out.println("**************************************************************");
-        System.out.println();
-        System.out.println("| Background:  " + getDescription());
-        System.out.println("| Skills:      " + getSkills());
-        System.out.println("| Items:       " + getItems());
-        System.out.println("==============================================================");
+    public String displayHeroProfile() {
+        String line1 = "==============================================================\n";
+//        String line2 = "| Name:  " + getHeroName().toUpperCase() + "\n";
+//        String line3 = "**************************************************************\n\n";
+//        String line4 = "| Background:  " + getDescription() + "\n";
+//        String line5 = "| Skills:      " + getSkills() + "\n";
+//        String line6 = "| Items:       " + getItems() + "\n";
+//        String line7 = "==============================================================";
+//        line1 = line1.concat(line2);
+//        line1 = line1.concat(line3);
+//        line1 = line1.concat(line4);
+//        line1 = line1.concat(line5);
+//        line1 = line1.concat(line6);
+//        line1 = line1.concat(line7);
+        return line1; // + line2 + line3 + line4 + line5 + line6 + line7;
     }
+
 }
