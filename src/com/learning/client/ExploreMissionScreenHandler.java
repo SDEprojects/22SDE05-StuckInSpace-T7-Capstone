@@ -32,7 +32,6 @@ public class ExploreMissionScreenHandler implements ActionListener {
         playerPanel.add(getLocLabel());
         //setMissionTitlePanel(setMissionTitleLabel("Where would you like to move to? "));
 
-
         setMissionTitlePanel(setMissionTitleLabel("You can go to: "));
         setLocationsButtonPanel();
         for (Object location : mission.availableExits(hub.getHeroPosition())) {
