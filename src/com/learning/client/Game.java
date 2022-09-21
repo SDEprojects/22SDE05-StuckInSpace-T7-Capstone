@@ -10,7 +10,7 @@ public class Game {
     JFrame window;
     Container con;
     JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, hubTitlePanel, msnTitlePanel, introPanel,
-    continueBtnPanel, alienTextPanel, alienTitlePanel;
+    continueBtnPanel, alienTextPanel, alienTitlePanel, hangarBtnPanel;
     JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, msnTitleLabel, alienTitleLabel;
     JTextArea mainTextArea, introTextArea, alienTextArea;
     JMenuBar menuBar;
@@ -24,7 +24,7 @@ public class Game {
     Font playerFont = new Font("Times New Roman", Font.PLAIN, 25);
 
     //        //================================== BUTTONS ===========================================//
-    JButton startButton, missionBtn, invBtn, returnBtn, alienMsnBtn, continueBtn;
+    JButton startButton, missionBtn, invBtn, returnBtn, alienMsnBtn, continueBtn, messBtn, shipBtn;
 
     //        //================================== SCREEN HANDLERS ===========================================//
     TitleScreenHandler tsHandler = new TitleScreenHandler();
@@ -146,8 +146,6 @@ public class Game {
         continueBtn.setFont(normalFont);
         continueBtn.addActionListener(isHandler);
         continueBtnPanel.add(continueBtn);
-
-
     }
     public void createHubScreen() {
 
@@ -359,19 +357,33 @@ public class Game {
         window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
         con = window.getContentPane();
 
-        // Add a button to each of the five areas of the BorderLayout
-        con.add(new JButton("North"), BorderLayout.NORTH);
-        con.add(new JButton("South"), BorderLayout.SOUTH);
-        con.add(new JButton("East"), BorderLayout.EAST);
-        con.add(new JButton("West"), BorderLayout.WEST);
-        con.add(new JButton("Center"), BorderLayout.CENTER);
+        // Choice Button Configuration
+        hangarBtnPanel = new JPanel();
+        hangarBtnPanel.setBounds(500, 400, 300, 120);
+        hangarBtnPanel.setOpaque(false);
+        choiceButtonPanel.setBackground(Color.black);
+        hangarBtnPanel.setLayout(new GridLayout(2, 1));
+        con.add(hangarBtnPanel);
 
-        window.pack();
-        window.setVisible(true);
+        messBtn = new JButton("Hallway");
+        messBtn.setBackground(Color.black);
+        messBtn.setForeground(Color.black);
+        messBtn.setFont(normalFont);
+        messBtn.addActionListener(hallHandler);
+        hangarBtnPanel.add(messBtn);
+
+        shipBtn = new JButton("Space Ship");
+        shipBtn.setBackground(Color.black);
+        shipBtn.setForeground(Color.black);
+        shipBtn.setFont(normalFont);
+        shipBtn.addActionListener(spHandler);
+        hangarBtnPanel.add(shipBtn);
     }
 
     public void hallwayScreen() {
-
+        hangarBtnPanel.setVisible(false);
+        window.setContentPane(new JLabel(new ImageIcon("resources/hallway.jpg")));
+        con = window.getContentPane();
     }
 
     public void messHallScreen() {
@@ -387,7 +399,9 @@ public class Game {
     }
 
     public void spaceshipScreen() {
-
+        hangarBtnPanel.setVisible(false);
+        window.setContentPane(new JLabel(new ImageIcon("resources/Spaceship_Cockpit.jpg")));
+        con = window.getContentPane();
     }
 
     //        //================================== ACTION LISTENERS ===========================================//
@@ -435,7 +449,7 @@ public class Game {
     public class HallwayScreenHandler implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent event) {
-
+            hallwayScreen();
         }
     }
     public class BasementScreenHandler implements ActionListener{
@@ -459,7 +473,7 @@ public class Game {
     public class SpaceShipScreenHandler implements ActionListener{
         @Override
         public void actionPerformed(ActionEvent event) {
-
+            spaceshipScreen();
         }
     }
 }
