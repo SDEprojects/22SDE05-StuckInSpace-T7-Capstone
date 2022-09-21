@@ -12,7 +12,6 @@ import static com.learning.client.GameManager.hub;
 
 public class ExploreMissionScreenHandler implements ActionListener {
     Mission mission = new Mission();
-    ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -20,6 +19,8 @@ public class ExploreMissionScreenHandler implements ActionListener {
     }
 
     private void exploreMission(Mission mission) {
+        ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
+
         titlePanel.setVisible(false);
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
