@@ -46,6 +46,7 @@ public class GameManager {
                 Story.gameIntro();
                 System.out.println("Type next to continue");
 
+
                 //hub.stopMusic(file);
                 String next = scanner.nextLine();
                 break;
