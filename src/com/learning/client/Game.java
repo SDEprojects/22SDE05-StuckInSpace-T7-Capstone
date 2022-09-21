@@ -151,7 +151,8 @@ public class Game {
     public void createHubScreen() {
 
         titlePanel.setVisible(false);
-        startButtonPanel.setVisible(false);
+        continueBtnPanel.setVisible(false);
+        introPanel.setVisible(false);
         /**window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
         con = window.getContentPane();**/
 
