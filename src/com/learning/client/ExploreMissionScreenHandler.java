@@ -3,10 +3,10 @@ package com.learning.client;
 import com.learning.view.Menu;
 
 import javax.swing.*;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameManager.hub;
@@ -29,7 +29,9 @@ public class ExploreMissionScreenHandler implements ActionListener {
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
         hubTitlePanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
+        //window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("hangar2.jpg")))));
+        con=window.getContentPane();
 
         setPlayerPanel();
         setLocLabel(hub.getHeroPosition());
