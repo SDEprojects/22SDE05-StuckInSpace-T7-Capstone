@@ -22,7 +22,6 @@ public class ExploreMissionScreenHandler implements ActionListener {
     }
 
     static void changeLocation() {
-        hub.initiateItemLocationList();
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
 
@@ -135,6 +134,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
     }
 
     public static void getInventoryItemsButtons (String currentLocation) {
+        hub.initiateItemLocationList();
         for (Object item : hub.lookAction(currentLocation)) {
             for (JButton button : allInventoryButtons) {
                 if (item.equals(button.getText())) {

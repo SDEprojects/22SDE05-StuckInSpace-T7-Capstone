@@ -468,7 +468,7 @@ public class GameGui {
     }
 
     public static void setEngineroomButton() {
-        engineroomButton = new JButton("engine");
+        engineroomButton = new JButton("engineroom");
         engineroomButton.setBackground(Color.black);
         engineroomButton.setForeground(Color.white);
         engineroomButton.setFont(normalFont);
