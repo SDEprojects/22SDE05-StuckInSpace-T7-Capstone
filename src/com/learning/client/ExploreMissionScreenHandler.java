@@ -29,8 +29,9 @@ public class ExploreMissionScreenHandler implements ActionListener {
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
         hubTitlePanel.setVisible(false);
-       // window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
+        //window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
         window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("hangar2.jpg")))));
+        con=window.getContentPane();
 
         setPlayerPanel();
         setLocLabel(hub.getHeroPosition());
@@ -59,13 +60,13 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
         getNextLocationsButtons(hub.getHeroPosition());
 
-        getLocationChangeListener(hangarButton);
-        getLocationChangeListener(basementButton);
-        getLocationChangeListener(engineroomButton);
-        getLocationChangeListener(controlstationButton);
-        getLocationChangeListener(messhallButton);
-        getLocationChangeListener(hallwayButton);
-        getLocationChangeListener(spaceshipButton);
+        getListener(hangarButton);
+        getListener(basementButton);
+        getListener(engineroomButton);
+        getListener(controlstationButton);
+        getListener(messhallButton);
+        getListener(hallwayButton);
+        getListener(spaceshipButton);
 
         setInventoryButtonsPanel();
 
@@ -107,24 +108,6 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
         getInventoryItemsButtons(hub.getHeroPosition());
 
-        getItemsListener(fuelButton);
-        getItemsListener(engineButton);
-        getItemsListener(bioSuitButton);
-        getItemsListener(tmButton);
-        getItemsListener(keyCardButton);
-        getItemsListener(basementKeyButton);
-        getItemsListener(toolkitButton);
-        getItemsListener(gpsButton);
-        getItemsListener(knifeButton);
-        getItemsListener(rifleButton);
-        getItemsListener(pistolButton);
-        getItemsListener(laserGunButton);
-        getItemsListener(imtvButton);
-        getItemsListener(achButton);
-        getItemsListener(glovesButton);
-        getItemsListener(bootsButton);
-        getItemsListener(compassButton);
-
         con = window.getContentPane();
         con.add(playerPanel);
         con.add(exploreMissionPanel);
@@ -147,7 +130,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
         }
     }
 
-    public static void getLocationChangeListener(JButton button) {
+    public static void getListener(JButton button) {
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         button.addActionListener(changeLocationHandler);
     }
@@ -163,9 +146,23 @@ public class ExploreMissionScreenHandler implements ActionListener {
         }
     }
 
-    public static void getItemsListener(JButton button) {
-        ItemHandler itemHandler = new ItemHandler();
-        button.addActionListener(itemHandler);
+    public static void main(String[] args) {
+        hub.setHeroPosition("hallway");
+        hub.initiateItemLocationList();
+
+
+        System.out.println(hub.getHeroPosition());
+        System.out.println(hub.lookAction(hub.getHeroPosition()));
+
+
+//        for (Object item : hub.lookAction(hub.getHeroPosition())) {
+//            for (JButton button : allInventoryButtons) {
+//                if (item.equals(button.getText())) {
+//                    inventoryButtonsPanel.add(button);
+//                    System.out.println(inventoryButtonsPanel);
+//                }
+//            }
+//        }
     }
 }
 
