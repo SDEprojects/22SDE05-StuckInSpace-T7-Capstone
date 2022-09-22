@@ -23,23 +23,17 @@ public class ChangeLocationHandler implements ActionListener {
 
         if (e.getSource() == hangarButton) {
             updateLocationInformation(hangarButton);
-        }
-        if (e.getSource() == basementButton) {
+        } else if (e.getSource() == basementButton) {
             updateLocationInformation(basementButton);
-        }
-        if (e.getSource() == engineroomButton) {
+        } else if (e.getSource() == engineroomButton) {
             updateLocationInformation(engineroomButton);
-        }
-        if (e.getSource() == controlstationButton) {
+        } else if (e.getSource() == controlstationButton) {
             updateLocationInformation(controlstationButton);
-        }
-        if (e.getSource() == messhallButton) {
+        } else if (e.getSource() == messhallButton) {
             updateLocationInformation(messhallButton);
-        }
-        if (e.getSource() == hallwayButton) {
+        } else if (e.getSource() == hallwayButton) {
             updateLocationInformation(hallwayButton);
-        }
-        if (e.getSource() == spaceshipButton) {
+        } else if (e.getSource() == spaceshipButton) {
             updateLocationInformation(spaceshipButton);
         }
     }

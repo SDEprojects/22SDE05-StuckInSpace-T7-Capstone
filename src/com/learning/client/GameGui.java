@@ -383,10 +383,6 @@ public class GameGui {
         return hubTitleLabel;
     }
 
-
-
-
-
     public static JButton getHangarButton() {
         return hangarButton;
     }
