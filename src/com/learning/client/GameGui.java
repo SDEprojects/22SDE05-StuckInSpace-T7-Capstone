@@ -13,9 +13,10 @@ public class GameGui {
 
     static JFrame window;
     static Container con;
-    static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel, exploreMissionPanel, exploreInventoryPanel;
+    static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel, exploreMissionPanel, exploreInventoryPanel, inventoryButtonsPanel;
     static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel;
     static JButton startButton, missionButton, inventoryButton, returnButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton;
+    static JButton fuelButton, engineButton, bioSuitButton, tmButton, keyCardButton, basementKeyButton, toolkitButton, gpsButton, knifeButton, rifleButton, pistolButton, laserGunButton, imtvButton, achButton, glovesButton, bootsButton, compassButton;
     static JTextArea mainTextArea;
     static JMenuBar menuBar;
     static JMenu menu;
@@ -281,6 +282,17 @@ public class GameGui {
         locationsButtonPanel.setLayout(new GridLayout(7, 1));
     }
 
+    public static JPanel getInventoryButtonsPanel() {
+        return inventoryButtonsPanel;
+    }
+
+    public static void setInventoryButtonsPanel() {
+        inventoryButtonsPanel = new JPanel();
+        inventoryButtonsPanel.setBounds(200, 200, 300, 800);
+        inventoryButtonsPanel.setOpaque(false);
+        inventoryButtonsPanel.setLayout(new GridLayout(9, 2));
+    }
+
     public static JPanel getExploreMissionPanel() {
         return exploreMissionPanel;
     }
@@ -504,5 +516,192 @@ public class GameGui {
         spaceshipButton.setBackground(Color.black);
         spaceshipButton.setForeground(Color.white);
         spaceshipButton.setFont(normalFont);
+    }
+
+    public static JButton getFuelButton() {
+        return fuelButton;
+    }
+
+    public static void setFuelButton() {
+        fuelButton = new JButton("fuel");
+        fuelButton.setBackground(Color.black);
+        fuelButton.setForeground(Color.white);
+        fuelButton.setFont(normalFont);
+    }
+
+    public static JButton getEngineButton() {
+        return engineButton;
+    }
+
+    public static void setEngineButton() {
+        engineButton = new JButton("engine");
+        engineButton.setBackground(Color.black);
+        engineButton.setForeground(Color.white);
+        engineButton.setFont(normalFont);
+    }
+
+    public static JButton getBioSuitButton() {
+        return bioSuitButton;
+    }
+
+    public static void setBioSuitButton() {
+        bioSuitButton = new JButton("bio_suit");
+        bioSuitButton.setBackground(Color.black);
+        bioSuitButton.setForeground(Color.white);
+        bioSuitButton.setFont(normalFont);
+    }
+
+    public static JButton getTmButton() {
+        return tmButton;
+    }
+
+    public static void setTmButton() {
+        tmButton = new JButton("TM");
+        tmButton.setBackground(Color.black);
+        tmButton.setForeground(Color.white);
+        tmButton.setFont(normalFont);
+    }
+
+    public static JButton getKeyCardButton() {
+        return keyCardButton;
+    }
+
+    public static void setKeyCardButton() {
+        keyCardButton = new JButton("keycard");
+        keyCardButton.setBackground(Color.black);
+        keyCardButton.setForeground(Color.white);
+        keyCardButton.setFont(normalFont);
+    }
+
+    public static JButton getBasementKeyButton() {
+        return basementKeyButton;
+    }
+
+    public static void setBasementKeyButton() {
+        basementKeyButton = new JButton("basement_key");
+        basementKeyButton.setBackground(Color.black);
+        basementKeyButton.setForeground(Color.white);
+        basementKeyButton.setFont(normalFont);
+    }
+
+    public static JButton getToolkitButton() {
+        return toolkitButton;
+    }
+
+    public static void setToolkitButton() {
+        toolkitButton = new JButton("toolkit");
+        toolkitButton.setBackground(Color.black);
+        toolkitButton.setForeground(Color.white);
+        toolkitButton.setFont(normalFont);
+    }
+
+    public static JButton getGpsButton() {
+        return gpsButton;
+    }
+
+    public static void setGpsButton() {
+        gpsButton = new JButton("GPS");
+        gpsButton.setBackground(Color.black);
+        gpsButton.setForeground(Color.white);
+        gpsButton.setFont(normalFont);
+    }
+
+    public static JButton getKnifeButton() {
+        return knifeButton;
+    }
+
+    public static void setKnifeButton() {
+        knifeButton = new JButton("knife");
+        knifeButton.setBackground(Color.black);
+        knifeButton.setForeground(Color.white);
+        knifeButton.setFont(normalFont);
+    }
+
+    public static JButton getRifleButton() {
+        return rifleButton;
+    }
+
+    public static void setRifleButton() {
+        rifleButton = new JButton("rifle");
+        rifleButton.setBackground(Color.black);
+        rifleButton.setForeground(Color.white);
+        rifleButton.setFont(normalFont);
+    }
+
+    public static JButton getPistolButton() {
+        return pistolButton;
+    }
+
+    public static void setPistolButton() {
+        pistolButton = new JButton("pistol");
+        pistolButton.setBackground(Color.black);
+        pistolButton.setForeground(Color.white);
+        pistolButton.setFont(normalFont);
+    }
+
+    public static JButton getLaserGunButton() {
+        return laserGunButton;
+    }
+
+    public static void setLaserGunButton() {
+        laserGunButton = new JButton("laser_gun");
+        laserGunButton.setBackground(Color.black);
+        laserGunButton.setForeground(Color.white);
+        laserGunButton.setFont(normalFont);
+    }
+
+    public static JButton getImtvButton() {
+        return imtvButton;
+    }
+
+    public static void setImtvButton() {
+        imtvButton = new JButton("IMTV");
+        imtvButton.setBackground(Color.black);
+        imtvButton.setForeground(Color.white);
+        imtvButton.setFont(normalFont);
+    }
+
+    public static JButton getAchButton() {
+        return achButton;
+    }
+
+    public static void setAchButton() {
+        achButton = new JButton("ACH");
+        achButton.setBackground(Color.black);
+        achButton.setForeground(Color.white);
+        achButton.setFont(normalFont);
+    }
+
+    public static JButton getGlovesButton() {
+        return glovesButton;
+    }
+
+    public static void setGlovesButton() {
+        glovesButton = new JButton("gloves");
+        glovesButton.setBackground(Color.black);
+        glovesButton.setForeground(Color.white);
+        glovesButton.setFont(normalFont);
+    }
+
+    public static JButton getBootsButton() {
+        return bootsButton;
+    }
+
+    public static void setBootsButton() {
+        bootsButton = new JButton("boots");
+        bootsButton.setBackground(Color.black);
+        bootsButton.setForeground(Color.white);
+        bootsButton.setFont(normalFont);
+    }
+
+    public static JButton getCompassButton() {
+        return compassButton;
+    }
+
+    public static void setCompassButton() {
+        compassButton = new JButton("compass");
+        compassButton.setBackground(Color.black);
+        compassButton.setForeground(Color.white);
+        compassButton.setFont(normalFont);
     }
 }

@@ -14,6 +14,7 @@ import static com.learning.client.GameManager.mission;
 
 public class ExploreMissionScreenHandler implements ActionListener {
     static ArrayList<JButton> allLocationsButtons = new ArrayList<>();
+    static ArrayList<JButton> allInventoryButtons = new ArrayList<>();
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -65,6 +66,31 @@ public class ExploreMissionScreenHandler implements ActionListener {
         getListener(messhallButton);
         getListener(hallwayButton);
         getListener(spaceshipButton);
+
+        setInventoryButtonsPanel();
+        setFuelButton();
+        setEngineButton();
+        setBioSuitButton();
+        setTmButton();
+        setKeyCardButton();
+        setBasementKeyButton();
+        setToolkitButton();
+        setGpsButton();
+        setKnifeButton();
+        setRifleButton();
+        setPistolButton();
+        setLaserGunButton();
+        setImtvButton();
+        setAchButton();
+        setGlovesButton();
+        setBootsButton();
+        setCompassButton();
+
+        allInventoryButtons.add(fuelButton);
+        allInventoryButtons.add(engineButton);
+        allInventoryButtons.add(bioSuitButton);
+
+
 
         con = window.getContentPane();
         con.add(playerPanel);
