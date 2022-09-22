@@ -6,6 +6,7 @@ import java.awt.*;
 public class GameGui {
     public static final Font titleFont = new Font("Times New Roman", Font.PLAIN, 70);
     public static final Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
+
     public static final Font audioFont = new Font("Times New Roman", Font.PLAIN, 15);
     public static final Font playerFont = new Font("Times New Roman", Font.PLAIN, 25);
 
@@ -13,7 +14,7 @@ public class GameGui {
     static Container con;
     static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel;
     static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel;
-    static JButton startButton, missionButton, inventoryButton, returnButton, nextLocationButton;
+    static JButton startButton, missionButton, inventoryButton, returnButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton;
     static JTextArea mainTextArea;
     static JMenuBar menuBar;
     static JMenu menu;
@@ -273,9 +274,9 @@ public class GameGui {
 
     public static void setLocationsButtonPanel() {
         locationsButtonPanel = new JPanel();
-        locationsButtonPanel.setBounds(500, 525, 300, 120);
+        locationsButtonPanel.setBounds(500, 200, 300, 120);
         locationsButtonPanel.setOpaque(false);
-        locationsButtonPanel.setLayout(new GridLayout(2, 1));
+        locationsButtonPanel.setLayout(new GridLayout(7, 1));
     }
 
     public static JButton getNextLocationButton() {
@@ -283,7 +284,7 @@ public class GameGui {
     }
 
     public static void setNextLocationButton(String text) {
-        nextLocationButton = new JButton (text);
+        nextLocationButton = new JButton(text);
         nextLocationButton.setBackground(Color.black);
         nextLocationButton.setForeground(Color.white);
         nextLocationButton.setFont(normalFont);
@@ -380,5 +381,86 @@ public class GameGui {
         hubTitleLabel.setForeground(Color.white);
         hubTitleLabel.setFont(titleFont);
         return hubTitleLabel;
+    }
+
+
+
+
+
+    public static JButton getHangarButton() {
+        return hangarButton;
+    }
+
+    public static void setHangarButton() {
+        hangarButton = new JButton("start");
+        hangarButton.setBackground(Color.black);
+        hangarButton.setForeground(Color.white);
+        hangarButton.setFont(playerFont);
+    }
+
+    public static JButton getBasementButton() {
+        return basementButton;
+    }
+
+    public static void setBasementButton() {
+        basementButton = new JButton("basement");
+        basementButton.setBackground(Color.black);
+        basementButton.setForeground(Color.white);
+        basementButton.setFont(playerFont);
+    }
+
+    public static JButton getEngineroomButton() {
+        return engineroomButton;
+    }
+
+    public static void setEngineroomButton() {
+        engineroomButton = new JButton("engine");
+        engineroomButton.setBackground(Color.black);
+        engineroomButton.setForeground(Color.white);
+        engineroomButton.setFont(playerFont);
+    }
+
+    public static JButton getControlstationButton() {
+        return controlstationButton;
+    }
+
+    public static void setControlstationButton() {
+        controlstationButton = new JButton("controlstation");
+        controlstationButton.setBackground(Color.black);
+        controlstationButton.setForeground(Color.white);
+        controlstationButton.setFont(playerFont);
+    }
+
+    public static JButton getMesshallButton() {
+        return messhallButton;
+    }
+
+    public static void setMesshallButton() {
+        messhallButton = new JButton("messhall");
+        messhallButton.setBackground(Color.black);
+        messhallButton.setForeground(Color.white);
+        messhallButton.setFont(playerFont);
+    }
+
+    public static JButton getHallwayButton() {
+        return hallwayButton;
+    }
+
+    public static void setHallwayButton() {
+        hallwayButton = new JButton("hallway");
+        hallwayButton.setBackground(Color.black);
+        hallwayButton.setForeground(Color.white);
+        hallwayButton.setFont(playerFont);
+    }
+
+    public static JButton getSpaceshipButton() {
+        return spaceshipButton;
+    }
+
+    public static void setSpaceshipButton() {
+        spaceshipButton = new JButton("spaceship");
+        spaceshipButton.setBackground(Color.black);
+        spaceshipButton.setForeground(Color.white);
+        spaceshipButton.setFont(playerFont);
     }
 }

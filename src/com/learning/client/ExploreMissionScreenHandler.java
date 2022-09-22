@@ -8,12 +8,14 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ComponentListener;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameManager.hub;
 import static com.learning.client.GameManager.mission;
 
 public class ExploreMissionScreenHandler implements ActionListener {
+    static ArrayList<JButton> allLocationsButtons = new ArrayList<>();
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -38,12 +40,49 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
         setMissionTitlePanel(setMissionTitleLabel("You can go to: "));
         setLocationsButtonPanel();
+
+        setHangarButton();
+        setBasementButton();
+        setEngineroomButton();
+        setControlstationButton();
+        setMesshallButton();
+        setHallwayButton();
+        setSpaceshipButton();
+
+        allLocationsButtons.add(hangarButton);
+        allLocationsButtons.add(basementButton);
+        allLocationsButtons.add(engineroomButton);
+        allLocationsButtons.add(controlstationButton);
+        allLocationsButtons.add(messhallButton);
+        allLocationsButtons.add(hallwayButton);
+        allLocationsButtons.add(spaceshipButton);
+
+
         for (Object location : mission.availableExits(hub.getHeroPosition())) {
-            setNextLocationButton((String) location);
-            locationsButtonPanel.add(nextLocationButton);
-            con.add(locationsButtonPanel);
-            nextLocationButton.addActionListener(changeLocationHandler);
+            for (JButton button : allLocationsButtons) {
+                if (location.equals(button.getText())) {
+                    locationsButtonPanel.add(button);
+                }
+            }
         }
+
+        hangarButton.addActionListener(changeLocationHandler);
+        basementButton.addActionListener(changeLocationHandler);
+        engineroomButton.addActionListener(changeLocationHandler);
+        controlstationButton.addActionListener(changeLocationHandler);
+        messhallButton.addActionListener(changeLocationHandler);
+        hallwayButton.addActionListener(changeLocationHandler);
+        spaceshipButton.addActionListener(changeLocationHandler);
+
+
+
+
+//        for (Object location : mission.availableExits(hub.getHeroPosition())) {
+//            setNextLocationButton((String) location);
+//            locationsButtonPanel.add(nextLocationButton);
+//            con.add(locationsButtonPanel);
+//            nextLocationButton.addActionListener(changeLocationHandler);
+//        }
         con = window.getContentPane();
         con.add(playerPanel);
         con.add(missionTitlePanel);
@@ -51,23 +90,45 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
         returnButton.addActionListener(currentMissionScreenHandler);
-        con.add(returnPanel);
+        //con.add(returnPanel);
         con.add(getLocationsButtonPanel());
     }
 
     public static void main(String[] args) {
-        String nextLocation = "";
-        //System.out.println(hub.getHeroPosition());
-        hub.setHeroPosition("hallway");
+        setHangarButton();
+        setBasementButton();
+        setEngineroomButton();
+        setControlstationButton();
+        setMesshallButton();
+        setHallwayButton();
+        setSpaceshipButton();
+
+        ArrayList<JButton> allLocationsButtons = new ArrayList<>();
+        allLocationsButtons.add(hangarButton);
+        allLocationsButtons.add(basementButton);
+        allLocationsButtons.add(engineroomButton);
+        allLocationsButtons.add(controlstationButton);
+        allLocationsButtons.add(messhallButton);
+        allLocationsButtons.add(hallwayButton);
+        allLocationsButtons.add(spaceshipButton);
 
         for (Object location : mission.availableExits(hub.getHeroPosition())) {
-            //System.out.println((String) location);
-            setNextLocationButton((String) location);
-            //locationsButtonPanel.add(nextLocationButton);
-            //con.add(locationsButtonPanel);
-            nextLocation = nextLocationButton.getText();
-            System.out.println(nextLocation);
+            System.out.println(location);
+            for (JButton button : allLocationsButtons) {
+                if (location == button.getText()) {
+                    locationsButtonPanel.add(button);
+                }
+            }
         }
+
+        System.out.println("==========");
+        for (JButton button : allLocationsButtons) {
+            System.out.println(button.getText());
+        }
+        System.out.println("==========");
+
+
+        //System.out.println(locationsButtonPanel);
     }
 }
 
