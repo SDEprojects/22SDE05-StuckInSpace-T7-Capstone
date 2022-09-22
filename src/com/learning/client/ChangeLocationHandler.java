@@ -21,42 +21,42 @@ public class ChangeLocationHandler implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        if (e.getSource() == hallwayButton) {
-            playerPanel.remove(locLabel);
-            hub.setHeroPosition(hallwayButton.getText());
-            setPlayerPanel();
-            setLocLabel(hub.getHeroPosition());
-            playerPanel.add(getLocLabel());
-
-            setLocationsButtonPanel();
-            for (Object location : mission.availableExits(hub.getHeroPosition())) {
-                for (JButton button : allLocationsButtons) {
-                    if (location.equals(button.getText())) {
-                        locationsButtonPanel.add(button);
-                    }
-                }
-            }
-            con = window.getContentPane();
-            con.add(playerPanel);
-            con.add(locationsButtonPanel);
-
-
-
-
-//
-//
-//
-//
-//            if (Objects.equals(nextLocationButton.getText(), "spaceship")) {
-//                playerPanel.remove(locLabel);
-//                hub.setHeroPosition(nextLocationButton.getText());
-//                setPlayerPanel();
-//                setLocLabel(hub.getHeroPosition());
-//                playerPanel.add(getLocLabel());
-//                con = window.getContentPane();
-//                con.add(playerPanel);
-//                nextLocationButton.setText("The button clicked");
-//            }
+        if (e.getSource() == hangarButton) {
+            updateLocationInformation(hangarButton);
         }
+        if (e.getSource() == basementButton) {
+            updateLocationInformation(basementButton);
+        }
+        if (e.getSource() == engineroomButton) {
+            updateLocationInformation(engineroomButton);
+        }
+        if (e.getSource() == controlstationButton) {
+            updateLocationInformation(controlstationButton);
+        }
+        if (e.getSource() == messhallButton) {
+            updateLocationInformation(messhallButton);
+        }
+        if (e.getSource() == hallwayButton) {
+            updateLocationInformation(hallwayButton);
+        }
+        if (e.getSource() == spaceshipButton) {
+            updateLocationInformation(spaceshipButton);
+        }
+    }
+
+    public static void updateLocationInformation(JButton button) {
+        playerPanel.remove(locLabel);
+        hub.setHeroPosition(button.getText());
+        setPlayerPanel();
+
+        setLocLabel(hub.getHeroPosition());
+        playerPanel.add(getLocLabel());
+
+        setLocationsButtonPanel();
+        ExploreMissionScreenHandler.getNextLocationsButtons(hub.getHeroPosition());
+
+        con = window.getContentPane();
+        con.add(playerPanel);
+        con.add(locationsButtonPanel);
     }
 }

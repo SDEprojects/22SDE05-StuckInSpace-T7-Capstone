@@ -395,7 +395,7 @@ public class GameGui {
         hangarButton = new JButton("start");
         hangarButton.setBackground(Color.black);
         hangarButton.setForeground(Color.white);
-        hangarButton.setFont(playerFont);
+        hangarButton.setFont(normalFont);
     }
 
     public static JButton getBasementButton() {
@@ -406,7 +406,7 @@ public class GameGui {
         basementButton = new JButton("basement");
         basementButton.setBackground(Color.black);
         basementButton.setForeground(Color.white);
-        basementButton.setFont(playerFont);
+        basementButton.setFont(normalFont);
     }
 
     public static JButton getEngineroomButton() {
@@ -417,7 +417,7 @@ public class GameGui {
         engineroomButton = new JButton("engine");
         engineroomButton.setBackground(Color.black);
         engineroomButton.setForeground(Color.white);
-        engineroomButton.setFont(playerFont);
+        engineroomButton.setFont(normalFont);
     }
 
     public static JButton getControlstationButton() {
@@ -428,7 +428,7 @@ public class GameGui {
         controlstationButton = new JButton("controlstation");
         controlstationButton.setBackground(Color.black);
         controlstationButton.setForeground(Color.white);
-        controlstationButton.setFont(playerFont);
+        controlstationButton.setFont(normalFont);
     }
 
     public static JButton getMesshallButton() {
@@ -439,7 +439,7 @@ public class GameGui {
         messhallButton = new JButton("messhall");
         messhallButton.setBackground(Color.black);
         messhallButton.setForeground(Color.white);
-        messhallButton.setFont(playerFont);
+        messhallButton.setFont(normalFont);
     }
 
     public static JButton getHallwayButton() {
@@ -450,7 +450,7 @@ public class GameGui {
         hallwayButton = new JButton("hallway");
         hallwayButton.setBackground(Color.black);
         hallwayButton.setForeground(Color.white);
-        hallwayButton.setFont(playerFont);
+        hallwayButton.setFont(normalFont);
     }
 
     public static JButton getSpaceshipButton() {
@@ -461,6 +461,6 @@ public class GameGui {
         spaceshipButton = new JButton("spaceship");
         spaceshipButton.setBackground(Color.black);
         spaceshipButton.setForeground(Color.white);
-        spaceshipButton.setFont(playerFont);
+        spaceshipButton.setFont(normalFont);
     }
 }
