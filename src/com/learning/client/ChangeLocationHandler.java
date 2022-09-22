@@ -29,11 +29,12 @@ public class ChangeLocationHandler implements ActionListener {
         } else if (e.getSource() == spaceshipButton) {
             updateLocationInformation(spaceshipButton);
         }
-        hallwayButton.setVisible(false);
+        //hallwayButton.setVisible(false);
     }
 
     public static void updateLocationInformation(JButton button) {
         playerPanel.remove(locLabel);
+        locationsButtonPanel.setVisible(false);
         hub.setHeroPosition(button.getText());
 
         setLocLabel(hub.getHeroPosition());
