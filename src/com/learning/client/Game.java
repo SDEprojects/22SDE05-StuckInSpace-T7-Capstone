@@ -52,8 +52,7 @@ public class Game {
         window.setPreferredSize(new Dimension(1280, 719));
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.getContentPane().setBackground(Color.black);
-        //window.setContentPane(new JLabel(new ImageIcon("resources/StuckInSpace.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("StuckInSpace.jpg"))));
         window.setLayout(null);
         window.setVisible(true);
         window.setLocationRelativeTo(null);
@@ -87,11 +86,11 @@ public class Game {
         titleLabel = new JLabel("Stuck In Outer Space");
         titleLabel.setForeground(Color.white);
         titleLabel.setFont(titleFont);
-        con.add(titlePanel);
+        titlePanel.add(titleLabel);
 
         // Start Button Configuration
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(565, 570, 140, 50);
+        startButtonPanel.setBounds(565, 570, 200, 50);
         startButtonPanel.setBorder(null);
         startButtonPanel.setOpaque(false);
 
@@ -100,11 +99,12 @@ public class Game {
         startButton.setForeground(Color.white);
         startButton.setFont(normalFont);
         startButton.addActionListener(tsHandler);
-
-
-        titlePanel.add(titleLabel);
+        startButton.setFocusPainted(false);
         startButtonPanel.add(startButton);
+
+
         con.add(startButtonPanel);
+        con.add(titlePanel);
 
         window.pack();
     }
@@ -112,15 +112,13 @@ public class Game {
     public void introScreen() {
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
-        //window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
-        //con = window.getContentPane();
+        window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        con = window.getContentPane();
 
         // main text area configuration
         introPanel = new JPanel();
         introPanel.setBounds(350, 50, 600, 300);
         introPanel.setOpaque(false);
-        //mainTextPanel.setBackground(Color.black);
-        con.add(introPanel);
 
         introTextArea = new JTextArea("You are an ex-Army, introverted, solo space\n traveler with a very particular set " +
                 "of skills. He is currently on a journey to the deserted planet Surt, to find the ultimate solitude.\n" +
@@ -137,9 +135,7 @@ public class Game {
         continueBtnPanel = new JPanel();
         continueBtnPanel.setBounds(550, 400, 200, 80);
         continueBtnPanel.setOpaque(false);
-        //choiceButtonPanel.setBackground(Color.black);
         continueBtnPanel.setLayout(new GridLayout(1, 1));
-        con.add(continueBtnPanel);
 
         continueBtn = new JButton("Continue");
         continueBtn.setBackground(Color.black);
@@ -147,15 +143,20 @@ public class Game {
         continueBtn.setFont(normalFont);
         continueBtn.addActionListener(isHandler);
         continueBtnPanel.add(continueBtn);
+
+        // Containers //
+        con.add(introPanel);
+        con.add(continueBtnPanel);
     }
     public void createHubScreen() {
 
         titlePanel.setVisible(false);
         continueBtnPanel.setVisible(false);
         introPanel.setVisible(false);
-        /**window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
-        con = window.getContentPane();**/
+        window.setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("The Hub Image.jpg"))));
+        con = window.getContentPane();
 
+        // Title for page //
         hubTitlePanel = new JPanel();
         hubTitlePanel.setBounds(500, 70, 300, 100);
         hubTitlePanel.setOpaque(false);
@@ -163,14 +164,12 @@ public class Game {
         hubTitleLabel.setForeground(Color.white);
         hubTitleLabel.setFont(titleFont);
         hubTitlePanel.add(hubTitleLabel);
-        con.add(hubTitlePanel);
 
-        // main text area configuration
+        // main text area configuration //
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(350, 200, 600, 250);
         mainTextPanel.setOpaque(false);
-        //mainTextPanel.setBackground(Color.black);
-        con.add(mainTextPanel);
+
 
         mainTextArea = new JTextArea("You are at the hub. Here you may choose the\n mission you would like to play\n " +
                 "or check your inventory.");
@@ -181,13 +180,11 @@ public class Game {
         mainTextArea.setLineWrap(true);
         mainTextPanel.add(mainTextArea);
 
-        // Choice Button Configuration
+        // Choice Button Configuration //
         choiceButtonPanel = new JPanel();
         choiceButtonPanel.setBounds(500, 400, 300, 120);
         choiceButtonPanel.setOpaque(false);
-        //choiceButtonPanel.setBackground(Color.black);
         choiceButtonPanel.setLayout(new GridLayout(2, 1));
-        con.add(choiceButtonPanel);
 
         missionBtn = new JButton("Missions");
         missionBtn.setBackground(Color.black);
@@ -203,52 +200,18 @@ public class Game {
         invBtn.addActionListener(invHandler);
         choiceButtonPanel.add(invBtn);
 
-        // Player Status Panel
-        playerPanel = new JPanel();
-        playerPanel.setBounds(400, 5, 800, 50);
-        playerPanel.setOpaque(false);
-        playerPanel.setLayout(new GridLayout(1, 6));
-        con.add(playerPanel);
-
-        // HP Status
-        hpLabel = new JLabel("HP: ");
-        hpLabel.setFont(playerFont);
-        hpLabel.setForeground(Color.white);
-        hpLabelNum = new JLabel();
-        hpLabelNum.setFont(playerFont);
-        hpLabelNum.setForeground(Color.white);
-
-        // Location Status
-        locLabel = new JLabel("Location: ");
-        locLabel.setFont(playerFont);
-        locLabel.setForeground(Color.white);
-        locLabelCurrent = new JLabel();
-        locLabelCurrent.setFont(playerFont);
-        locLabelCurrent.setForeground(Color.white);
-
-        // Inventory Status
-        invLabel = new JLabel("Inventory: ");
-        invLabel.setFont(playerFont);
-        invLabel.setForeground(Color.white);
-        invLabelItems = new JLabel();
-        invLabelItems.setFont(playerFont);
-        invLabelItems.setForeground(Color.white);
-
-        //Player Panel Displayed
-        playerPanel.add(hpLabel);
-        playerPanel.add(hpLabelNum);
-        playerPanel.add(locLabel);
-        playerPanel.add(locLabelCurrent);
-        playerPanel.add(invLabel);
-        playerPanel.add(invLabelItems);
+        // Containers //
+        con.add(hubTitlePanel);
+        con.add(mainTextPanel);
+        con.add(choiceButtonPanel);
     }
 
     public void inventoryScreen() {
         hubTitlePanel.setVisible(false);
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
-        //window.setContentPane(new JLabel(new ImageIcon("resources/inventory.png")));
-        //con = window.getContentPane();
+        window.setContentPane(new JLabel(new ImageIcon("resources/inventory.png")));
+        con = window.getContentPane();
 
 
     }
@@ -261,18 +224,16 @@ public class Game {
         msnTitlePanel = new JPanel();
         msnTitlePanel.setBounds(500, 70, 300, 100);
         msnTitlePanel.setOpaque(false);
+
         msnTitleLabel = new JLabel("Missions");
         msnTitleLabel.setForeground(Color.white);
         msnTitleLabel.setFont(titleFont);
         msnTitlePanel.add(msnTitleLabel);
-        con.add(msnTitlePanel);
 
         // main text area configuration
         mainTextPanel = new JPanel();
         mainTextPanel.setBounds(350, 250, 600, 250);
         mainTextPanel.setOpaque(false);
-        //mainTextPanel.setBackground(Color.black);
-        con.add(mainTextPanel);
 
         mainTextArea = new JTextArea("You are at the hub. Here you may choose the\n mission you'd like to play, " +
                 "check your inventory, get help, or return to the Hub. ");
@@ -287,9 +248,7 @@ public class Game {
         choiceButtonPanel = new JPanel();
         choiceButtonPanel.setBounds(500, 425, 300, 120);
         choiceButtonPanel.setOpaque(false);
-        //choiceButtonPanel.setBackground(Color.black);
         choiceButtonPanel.setLayout(new GridLayout(2, 1));
-        con.add(choiceButtonPanel);
 
         alienMsnBtn = new JButton("Alien Outpost");
         alienMsnBtn.setBackground(Color.black);
@@ -304,6 +263,11 @@ public class Game {
         returnBtn.setFont(normalFont);
         returnBtn.addActionListener(rthHandler);
         choiceButtonPanel.add(returnBtn);
+
+        // Containers //
+        con.add(msnTitlePanel);
+        con.add(mainTextPanel);
+        con.add(choiceButtonPanel);
     }
 
     public void alienOutpostScreen() {
@@ -318,14 +282,11 @@ public class Game {
         alienTitleLabel.setForeground(Color.white);
         alienTitleLabel.setFont(titleFont);
         alienTitlePanel.add(alienTitleLabel);
-        con.add(alienTitlePanel);
 
         // main text area configuration
         alienTextPanel = new JPanel();
         alienTextPanel.setBounds(350, 250, 600, 250);
         alienTextPanel.setOpaque(false);
-        //mainTextPanel.setBackground(Color.black);
-        con.add(alienTextPanel);
 
         alienTextArea = new JTextArea("You find yourself in a strange field. Everything\n has been cleared out and" +
                 "all that stands before\n you is an unknown tower.");
@@ -342,7 +303,6 @@ public class Game {
         continueBtnPanel.setOpaque(false);
         //choiceButtonPanel.setBackground(Color.black);
         continueBtnPanel.setLayout(new GridLayout(1, 1));
-        con.add(continueBtnPanel);
 
         continueBtn = new JButton("Let's explore!");
         continueBtn.setBackground(Color.black);
@@ -350,14 +310,59 @@ public class Game {
         continueBtn.setFont(normalFont);
         continueBtn.addActionListener(hangarHandler);
         continueBtnPanel.add(continueBtn);
+
+        // Player Status Panel //
+        playerPanel = new JPanel();
+        playerPanel.setBounds(400, 5, 800, 50);
+        playerPanel.setOpaque(false);
+        playerPanel.setLayout(new GridLayout(1, 6));
+
+        // HP Status //
+        hpLabel = new JLabel("HP: ");
+        hpLabel.setFont(playerFont);
+        hpLabel.setForeground(Color.white);
+        hpLabelNum = new JLabel();
+        hpLabelNum.setFont(playerFont);
+        hpLabelNum.setForeground(Color.white);
+
+        // Location Status //
+        locLabel = new JLabel("Location: ");
+        locLabel.setFont(playerFont);
+        locLabel.setForeground(Color.white);
+        locLabelCurrent = new JLabel();
+        locLabelCurrent.setFont(playerFont);
+        locLabelCurrent.setForeground(Color.white);
+
+        // Inventory Status //
+        invLabel = new JLabel("Inventory: ");
+        invLabel.setFont(playerFont);
+        invLabel.setForeground(Color.white);
+        invLabelItems = new JLabel();
+        invLabelItems.setFont(playerFont);
+        invLabelItems.setForeground(Color.white);
+
+        // Player Panel Displayed //
+        playerPanel.add(hpLabel);
+        playerPanel.add(hpLabelNum);
+        playerPanel.add(locLabel);
+        playerPanel.add(locLabelCurrent);
+        playerPanel.add(invLabel);
+        playerPanel.add(invLabelItems);
+
+        // Containers //
+        con.add(alienTitlePanel);
+        con.add(alienTextPanel);
+        con.add(continueBtnPanel);
+        con.add(playerPanel);
+
     }
 
     public void hangarScreen() {
         alienTitlePanel.setVisible(false);
         alienTextPanel.setVisible(false);
         continueBtnPanel.setVisible(false);
-        //window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
-        //con = window.getContentPane();
+        window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
+        con = window.getContentPane();
 
         // Choice Button Configuration
         hangarBtnPanel = new JPanel();
@@ -384,8 +389,8 @@ public class Game {
 
     public void hallwayScreen() {
         hangarBtnPanel.setVisible(false);
-        //window.setContentPane(new JLabel(new ImageIcon("resources/hallway.jpg")));
-        //con = window.getContentPane();
+        window.setContentPane(new JLabel(new ImageIcon("resources/hallway.jpg")));
+        con = window.getContentPane();
     }
 
     public void messHallScreen() {
@@ -402,8 +407,8 @@ public class Game {
 
     public void spaceshipScreen() {
         hangarBtnPanel.setVisible(false);
-        //window.setContentPane(new JLabel(new ImageIcon("resources/Spaceship_Cockpit.jpg")));
-        //con = window.getContentPane();
+        window.setContentPane(new JLabel(new ImageIcon("resources/Spaceship_Cockpit.jpg")));
+        con = window.getContentPane();
     }
 
     //        //================================== ACTION LISTENERS ===========================================//
