@@ -22,7 +22,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
     }
 
     static void changeLocation() {
-
+        hub.initiateItemLocationList();
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
 
@@ -105,19 +105,18 @@ public class ExploreMissionScreenHandler implements ActionListener {
         allInventoryButtons.add(bootsButton);
         allInventoryButtons.add(compassButton);
 
-        //getInventoryItemsButtons(hub.getHeroPosition());
+        getInventoryItemsButtons(hub.getHeroPosition());
 
         con = window.getContentPane();
         con.add(playerPanel);
         con.add(exploreMissionPanel);
         con.add(exploreInventoryPanel);
         con.add(locationsButtonPanel);
-        //con.add(inventoryButtonsPanel);
+        con.add(inventoryButtonsPanel);
 
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
         returnButton.addActionListener(currentMissionScreenHandler);
         //con.add(returnPanel);
-        con.add(getLocationsButtonPanel());
     }
 
     public static void getNextLocationsButtons (String currentLocation) {
@@ -136,7 +135,32 @@ public class ExploreMissionScreenHandler implements ActionListener {
     }
 
     public static void getInventoryItemsButtons (String currentLocation) {
+        for (Object item : hub.lookAction(currentLocation)) {
+            for (JButton button : allInventoryButtons) {
+                if (item.equals(button.getText())) {
+                    inventoryButtonsPanel.add(button);
+                }
+            }
+        }
+    }
 
+    public static void main(String[] args) {
+        hub.setHeroPosition("hallway");
+        hub.initiateItemLocationList();
+
+
+        System.out.println(hub.getHeroPosition());
+        System.out.println(hub.lookAction(hub.getHeroPosition()));
+
+
+//        for (Object item : hub.lookAction(hub.getHeroPosition())) {
+//            for (JButton button : allInventoryButtons) {
+//                if (item.equals(button.getText())) {
+//                    inventoryButtonsPanel.add(button);
+//                    System.out.println(inventoryButtonsPanel);
+//                }
+//            }
+//        }
     }
 }
 

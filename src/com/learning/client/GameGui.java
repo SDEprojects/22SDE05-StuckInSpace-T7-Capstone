@@ -288,7 +288,7 @@ public class GameGui {
 
     public static void setInventoryButtonsPanel() {
         inventoryButtonsPanel = new JPanel();
-        inventoryButtonsPanel.setBounds(200, 200, 300, 800);
+        inventoryButtonsPanel.setBounds(600, 200, 300, 800);
         inventoryButtonsPanel.setOpaque(false);
         inventoryButtonsPanel.setLayout(new GridLayout(9, 2));
     }
