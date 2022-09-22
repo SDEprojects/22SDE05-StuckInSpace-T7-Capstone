@@ -1,5 +1,6 @@
 package com.learning.client;
 
+import com.learning.controller.HubSpot;
 import com.learning.view.Menu;
 
 import javax.swing.*;
@@ -60,13 +61,13 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
         getNextLocationsButtons(hub.getHeroPosition());
 
-        getListener(hangarButton);
-        getListener(basementButton);
-        getListener(engineroomButton);
-        getListener(controlstationButton);
-        getListener(messhallButton);
-        getListener(hallwayButton);
-        getListener(spaceshipButton);
+        getLocationListener(hangarButton);
+        getLocationListener(basementButton);
+        getLocationListener(engineroomButton);
+        getLocationListener(controlstationButton);
+        getLocationListener(messhallButton);
+        getLocationListener(hallwayButton);
+        getLocationListener(spaceshipButton);
 
         setInventoryButtonsPanel();
 
@@ -108,6 +109,24 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
         getInventoryItemsButtons(hub.getHeroPosition());
 
+        getItemListener(fuelButton);
+        getItemListener(engineButton);
+        getItemListener(bioSuitButton);
+        getItemListener(tmButton);
+        getItemListener(keyCardButton);
+        getItemListener(basementKeyButton);
+        getItemListener(toolkitButton);
+        getItemListener(gpsButton);
+        getItemListener(knifeButton);
+        getItemListener(rifleButton);
+        getItemListener(pistolButton);
+        getItemListener(laserGunButton);
+        getItemListener(imtvButton);
+        getItemListener(achButton);
+        getItemListener(glovesButton);
+        getItemListener(bootsButton);
+        getItemListener(compassButton);
+
         con = window.getContentPane();
         con.add(playerPanel);
         con.add(exploreMissionPanel);
@@ -130,7 +149,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
         }
     }
 
-    public static void getListener(JButton button) {
+    public static void getLocationListener(JButton button) {
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         button.addActionListener(changeLocationHandler);
     }
@@ -146,23 +165,9 @@ public class ExploreMissionScreenHandler implements ActionListener {
         }
     }
 
-    public static void main(String[] args) {
-        hub.setHeroPosition("hallway");
-        hub.initiateItemLocationList();
-
-
-        System.out.println(hub.getHeroPosition());
-        System.out.println(hub.lookAction(hub.getHeroPosition()));
-
-
-//        for (Object item : hub.lookAction(hub.getHeroPosition())) {
-//            for (JButton button : allInventoryButtons) {
-//                if (item.equals(button.getText())) {
-//                    inventoryButtonsPanel.add(button);
-//                    System.out.println(inventoryButtonsPanel);
-//                }
-//            }
-//        }
+    public static void getItemListener(JButton button) {
+        ItemHandler itemHandler = new ItemHandler();
+        button.addActionListener(itemHandler);
     }
 }
 

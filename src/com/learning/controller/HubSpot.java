@@ -197,6 +197,13 @@ public class HubSpot {
         }
     }
 
+    public static void addItemToInventory(String text) {
+        ArrayList<String> inventory = new ArrayList<>();
+        inventory.add(text);
+    }
+
+
+
     // Initiate the backpack based the Hero's attribute. Will run this once when game starts.
     public void initiateInventory() {
         for (int i = 0; i < hero.getItems().size(); i++) {
@@ -267,10 +274,10 @@ public class HubSpot {
 
     }
 
-    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        File file = new File("resources/DivKid.wav");
-        manageMusic(file, "start music");
-    }
+//    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+//        File file = new File("resources/DivKid.wav");
+//        manageMusic(file, "start music");
+//    }
 
 
     public static void stopMusic(File file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {
