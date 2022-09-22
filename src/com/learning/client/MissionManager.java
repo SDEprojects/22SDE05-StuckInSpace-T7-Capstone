@@ -65,7 +65,8 @@ public class MissionManager {
             if (heroInput.equalsIgnoreCase("look")) {
 
                 mission.getLookMenu();
-                hub.lookAction();
+                hub.lookAction(hub.getHeroPosition());
+                System.out.println(hub.lookAction(hub.getHeroPosition()));
 
                 // Condition when there is no item to pick.
                 if (hub.itemFoundHere() && !hub.getPlayerItems().contains(hub.getItem().getItemFound().get(0))) {
