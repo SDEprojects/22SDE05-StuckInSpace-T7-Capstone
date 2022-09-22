@@ -29,7 +29,7 @@ public class Story {
         //System.out.println("\n" +
          //       "        ▄▀█ █░░ █ █▀▀ █▄░█   █▀█ █░█ ▀█▀ █▀█ █▀█ █▀ ▀█▀\n" +
          //       "        █▀█ █▄▄ █ ██▄ █░▀█   █▄█ █▄█ ░█░ █▀▀ █▄█ ▄█ ░█░\n");
-        return "\n\nYou find yourself in a strange field. \nEverything has been cleared out and all that \n " +
+        return "You find yourself in a strange field. \nEverything has been cleared out and all that \n " +
                 "stands before you is an unknown tower";
     }
 
