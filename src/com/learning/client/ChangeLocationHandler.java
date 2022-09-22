@@ -1,7 +1,12 @@
 package com.learning.client;
 
-import java.awt.event.ActionEvent;
+import com.learning.view.Menu;
+import com.learning.view.Story;
+
+import javax.swing.*;
+import java.awt.event.*;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameManager.hub;
@@ -13,23 +18,17 @@ public class ChangeLocationHandler implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        changeLocation(ExploreMissionScreenHandler.changeLocation());
-    }
-
-    private void changeLocation(String nextLocation) {
-        setPlayerPanel();
-        hub.setHeroPosition(nextLocation);
-        setLocLabel(hub.getHeroPosition());
-        playerPanel.add(getLocLabel());
-
-        setLocationsButtonPanel();
-        for (Object location : mission.availableExits(hub.getHeroPosition())) {
-            setNextLocationButton((String) location);
-            locationsButtonPanel.add(nextLocationButton);
-            con.add(locationsButtonPanel);
+        if (e.getSource() == nextLocationButton) {
+            if (Objects.equals(nextLocationButton.getText(), "spaceship")) {
+                playerPanel.remove(locLabel);
+                hub.setHeroPosition(nextLocationButton.getText());
+                setPlayerPanel();
+                setLocLabel(hub.getHeroPosition());
+                playerPanel.add(getLocLabel());
+                con = window.getContentPane();
+                con.add(playerPanel);
+                nextLocationButton.setText("The button clicked");
+            }
         }
-        con = window.getContentPane();
-        con.add(playerPanel);
-        con.add(locationsButtonPanel);
     }
 }
