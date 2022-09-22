@@ -19,7 +19,7 @@ public class HubScreenHandler implements ActionListener {
         HubScreenHandler hubScreenHandler = new HubScreenHandler();
         titlePanel.setVisible(false);
         startButtonPanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("The Hub Image.jpg"))));
         setHubTitlePanel(setTitleLabel(Menu.getHubName()));
         setMainTextPanel(setMainTextArea(Story.gameIntro()));
         setChoiceButtonPanel(setMissionButton(Menu.getMissionsMenuItem()), setInventoryButton(Menu.getInventoryMenuItem()));

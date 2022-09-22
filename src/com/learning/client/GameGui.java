@@ -147,7 +147,7 @@ public class GameGui {
 
     public static void setStartButtonPanel(JButton startButton) {
         startButtonPanel = new JPanel();
-        startButtonPanel.setBounds(565, 570, 200, 50);
+        startButtonPanel.setBounds(540, 570, 200, 50);
         startButtonPanel.setBorder(null);
         startButtonPanel.setOpaque(false);
         startButtonPanel.add(startButton);
