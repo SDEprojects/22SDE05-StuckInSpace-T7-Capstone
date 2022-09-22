@@ -68,6 +68,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
         getListener(spaceshipButton);
 
         setInventoryButtonsPanel();
+
         setFuelButton();
         setEngineButton();
         setBioSuitButton();
@@ -89,14 +90,29 @@ public class ExploreMissionScreenHandler implements ActionListener {
         allInventoryButtons.add(fuelButton);
         allInventoryButtons.add(engineButton);
         allInventoryButtons.add(bioSuitButton);
+        allInventoryButtons.add(tmButton);
+        allInventoryButtons.add(keyCardButton);
+        allInventoryButtons.add(basementKeyButton);
+        allInventoryButtons.add(toolkitButton);
+        allInventoryButtons.add(gpsButton);
+        allInventoryButtons.add(knifeButton);
+        allInventoryButtons.add(rifleButton);
+        allInventoryButtons.add(pistolButton);
+        allInventoryButtons.add(laserGunButton);
+        allInventoryButtons.add(imtvButton);
+        allInventoryButtons.add(achButton);
+        allInventoryButtons.add(glovesButton);
+        allInventoryButtons.add(bootsButton);
+        allInventoryButtons.add(compassButton);
 
-
+        //getInventoryItemsButtons(hub.getHeroPosition());
 
         con = window.getContentPane();
         con.add(playerPanel);
         con.add(exploreMissionPanel);
         con.add(exploreInventoryPanel);
         con.add(locationsButtonPanel);
+        //con.add(inventoryButtonsPanel);
 
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
         returnButton.addActionListener(currentMissionScreenHandler);
@@ -117,6 +133,10 @@ public class ExploreMissionScreenHandler implements ActionListener {
     public static void getListener(JButton button) {
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         button.addActionListener(changeLocationHandler);
+    }
+
+    public static void getInventoryItemsButtons (String currentLocation) {
+
     }
 }
 
