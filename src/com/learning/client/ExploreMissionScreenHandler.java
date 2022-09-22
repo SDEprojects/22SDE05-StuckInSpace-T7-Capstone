@@ -3,6 +3,7 @@ package com.learning.client;
 import com.learning.view.Menu;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -13,6 +14,7 @@ import static com.learning.client.GameManager.mission;
 
 public class ExploreMissionScreenHandler implements ActionListener {
     static ArrayList<JButton> allLocationsButtons = new ArrayList<>();
+    static ArrayList<JButton> allInventoryButtons = new ArrayList<>();
 
     @Override
     public void actionPerformed(ActionEvent e) {
@@ -20,7 +22,6 @@ public class ExploreMissionScreenHandler implements ActionListener {
     }
 
     static void changeLocation() {
-
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
 
@@ -34,9 +35,11 @@ public class ExploreMissionScreenHandler implements ActionListener {
         setLocLabel(hub.getHeroPosition());
         playerPanel.add(getLocLabel());
 
-        setMissionTitlePanel(setMissionTitleLabel("You can go to: "));
-        setLocationsButtonPanel();
+        setExploreMissionPanel(setExploreMissionLabel("You can go to: "));
 
+        setExploreInventoryPanel(setExploreInventoryLabel("Available items (click to get item): "));
+
+        setLocationsButtonPanel();
         setHangarButton();
         setBasementButton();
         setEngineroomButton();
@@ -63,15 +66,56 @@ public class ExploreMissionScreenHandler implements ActionListener {
         getListener(hallwayButton);
         getListener(spaceshipButton);
 
+        setInventoryButtonsPanel();
+
+        setFuelButton();
+        setEngineButton();
+        setBioSuitButton();
+        setTmButton();
+        setKeyCardButton();
+        setBasementKeyButton();
+        setToolkitButton();
+        setGpsButton();
+        setKnifeButton();
+        setRifleButton();
+        setPistolButton();
+        setLaserGunButton();
+        setImtvButton();
+        setAchButton();
+        setGlovesButton();
+        setBootsButton();
+        setCompassButton();
+
+        allInventoryButtons.add(fuelButton);
+        allInventoryButtons.add(engineButton);
+        allInventoryButtons.add(bioSuitButton);
+        allInventoryButtons.add(tmButton);
+        allInventoryButtons.add(keyCardButton);
+        allInventoryButtons.add(basementKeyButton);
+        allInventoryButtons.add(toolkitButton);
+        allInventoryButtons.add(gpsButton);
+        allInventoryButtons.add(knifeButton);
+        allInventoryButtons.add(rifleButton);
+        allInventoryButtons.add(pistolButton);
+        allInventoryButtons.add(laserGunButton);
+        allInventoryButtons.add(imtvButton);
+        allInventoryButtons.add(achButton);
+        allInventoryButtons.add(glovesButton);
+        allInventoryButtons.add(bootsButton);
+        allInventoryButtons.add(compassButton);
+
+        getInventoryItemsButtons(hub.getHeroPosition());
+
         con = window.getContentPane();
         con.add(playerPanel);
-        con.add(missionTitlePanel);
+        con.add(exploreMissionPanel);
+        con.add(exploreInventoryPanel);
         con.add(locationsButtonPanel);
+        con.add(inventoryButtonsPanel);
 
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
         returnButton.addActionListener(currentMissionScreenHandler);
         //con.add(returnPanel);
-        con.add(getLocationsButtonPanel());
     }
 
     public static void getNextLocationsButtons (String currentLocation) {
@@ -87,6 +131,36 @@ public class ExploreMissionScreenHandler implements ActionListener {
     public static void getListener(JButton button) {
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         button.addActionListener(changeLocationHandler);
+    }
+
+    public static void getInventoryItemsButtons (String currentLocation) {
+        hub.initiateItemLocationList();
+        for (Object item : hub.lookAction(currentLocation)) {
+            for (JButton button : allInventoryButtons) {
+                if (item.equals(button.getText())) {
+                    inventoryButtonsPanel.add(button);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        hub.setHeroPosition("hallway");
+        hub.initiateItemLocationList();
+
+
+        System.out.println(hub.getHeroPosition());
+        System.out.println(hub.lookAction(hub.getHeroPosition()));
+
+
+//        for (Object item : hub.lookAction(hub.getHeroPosition())) {
+//            for (JButton button : allInventoryButtons) {
+//                if (item.equals(button.getText())) {
+//                    inventoryButtonsPanel.add(button);
+//                    System.out.println(inventoryButtonsPanel);
+//                }
+//            }
+//        }
     }
 }
 
