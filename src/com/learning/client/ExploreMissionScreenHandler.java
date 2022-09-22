@@ -3,11 +3,8 @@ package com.learning.client;
 import com.learning.view.Menu;
 
 import javax.swing.*;
-import javax.swing.event.AncestorListener;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.ComponentListener;
-import java.awt.event.MouseListener;
 import java.util.ArrayList;
 
 import static com.learning.client.GameGui.*;
@@ -58,13 +55,13 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
         getNextLocationsButtons(hub.getHeroPosition());
 
-        hangarButton.addActionListener(changeLocationHandler);
-        basementButton.addActionListener(changeLocationHandler);
-        engineroomButton.addActionListener(changeLocationHandler);
-        controlstationButton.addActionListener(changeLocationHandler);
-        messhallButton.addActionListener(changeLocationHandler);
-        hallwayButton.addActionListener(changeLocationHandler);
-        spaceshipButton.addActionListener(changeLocationHandler);
+        getListener(hangarButton);
+        getListener(basementButton);
+        getListener(engineroomButton);
+        getListener(controlstationButton);
+        getListener(messhallButton);
+        getListener(hallwayButton);
+        getListener(spaceshipButton);
 
         con = window.getContentPane();
         con.add(playerPanel);
@@ -77,18 +74,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
         con.add(getLocationsButtonPanel());
     }
 
-    public static JPanel removeLocationsButtons () {
-        locationsButtonPanel.remove(hangarButton);
-        locationsButtonPanel.remove(basementButton);
-        locationsButtonPanel.remove(engineroomButton);
-        locationsButtonPanel.remove(controlstationButton);
-        locationsButtonPanel.remove(messhallButton);
-        locationsButtonPanel.remove(hallwayButton);
-        locationsButtonPanel.remove(spaceshipButton);
-        return locationsButtonPanel;
-    }
-
-    public static JPanel getNextLocationsButtons (String currentLocation) {
+    public static void getNextLocationsButtons (String currentLocation) {
         for (Object location : mission.availableExits(currentLocation)) {
             for (JButton button : allLocationsButtons) {
                 if (location.equals(button.getText())) {
@@ -96,7 +82,11 @@ public class ExploreMissionScreenHandler implements ActionListener {
                 }
             }
         }
-        return locationsButtonPanel;
+    }
+
+    public static void getListener(JButton button) {
+        ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
+        button.addActionListener(changeLocationHandler);
     }
 }
 

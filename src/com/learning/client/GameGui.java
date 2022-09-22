@@ -274,7 +274,7 @@ public class GameGui {
 
     public static void setLocationsButtonPanel() {
         locationsButtonPanel = new JPanel();
-        locationsButtonPanel.setBounds(500, 200, 300, 120);
+        locationsButtonPanel.setBounds(500, 200, 300, 500);
         locationsButtonPanel.setOpaque(false);
         locationsButtonPanel.setLayout(new GridLayout(7, 1));
     }
