@@ -3,6 +3,7 @@ package com.learning.client;
 import com.learning.view.Menu;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
@@ -34,9 +35,11 @@ public class ExploreMissionScreenHandler implements ActionListener {
         setLocLabel(hub.getHeroPosition());
         playerPanel.add(getLocLabel());
 
-        setMissionTitlePanel(setMissionTitleLabel("You can go to: "));
-        setLocationsButtonPanel();
+        setExploreMissionPanel(setExploreMissionLabel("You can go to: "));
 
+        setExploreInventoryPanel(setExploreInventoryLabel("Available items (click to get item): "));
+
+        setLocationsButtonPanel();
         setHangarButton();
         setBasementButton();
         setEngineroomButton();
@@ -65,7 +68,8 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
         con = window.getContentPane();
         con.add(playerPanel);
-        con.add(missionTitlePanel);
+        con.add(exploreMissionPanel);
+        con.add(exploreInventoryPanel);
         con.add(locationsButtonPanel);
 
         setReturnPanel(setReturnButton(Menu.getReturnOption()));

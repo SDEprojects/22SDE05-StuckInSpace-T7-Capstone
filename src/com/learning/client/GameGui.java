@@ -9,11 +9,12 @@ public class GameGui {
 
     public static final Font audioFont = new Font("Times New Roman", Font.PLAIN, 15);
     public static final Font playerFont = new Font("Times New Roman", Font.PLAIN, 25);
+    public static final Font missionFont = new Font("Times New Roman", Font.PLAIN, 40);
 
     static JFrame window;
     static Container con;
-    static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel;
-    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel;
+    static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel, exploreMissionPanel, exploreInventoryPanel;
+    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel;
     static JButton startButton, missionButton, inventoryButton, returnButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton;
     static JTextArea mainTextArea;
     static JMenuBar menuBar;
@@ -218,7 +219,7 @@ public class GameGui {
 
     public static void setPlayerPanel() {
         playerPanel = new JPanel();
-        playerPanel.setBounds(400, 5, 800, 50);
+        playerPanel.setBounds(100, 5, 800, 50);
         playerPanel.setOpaque(false);
         playerPanel.setLayout(new GridLayout(1, 6));
     }
@@ -263,8 +264,9 @@ public class GameGui {
     }
 
     public static void setLocLabel(String text) {
-        locLabel = new JLabel("Location: " + text);
+        locLabel = new JLabel("Current location: " + text);
         locLabel.setFont(playerFont);
+        locLabel.setFont(missionFont);
         locLabel.setForeground(Color.white);
     }
 
@@ -274,9 +276,53 @@ public class GameGui {
 
     public static void setLocationsButtonPanel() {
         locationsButtonPanel = new JPanel();
-        locationsButtonPanel.setBounds(500, 200, 300, 500);
+        locationsButtonPanel.setBounds(200, 200, 300, 500);
         locationsButtonPanel.setOpaque(false);
         locationsButtonPanel.setLayout(new GridLayout(7, 1));
+    }
+
+    public static JPanel getExploreMissionPanel() {
+        return exploreMissionPanel;
+    }
+
+    public static void setExploreMissionPanel(JLabel label) {
+        exploreMissionPanel = new JPanel();
+        exploreMissionPanel.setBounds(100, 100, 500, 500);
+        exploreMissionPanel.setOpaque(false);
+        exploreMissionPanel.add(label);
+    }
+
+    public static JPanel getExploreInventoryPanel() {
+        return exploreInventoryPanel;
+    }
+
+    public static void setExploreInventoryPanel(JLabel label) {
+        exploreInventoryPanel = new JPanel();
+        exploreInventoryPanel.setBounds(600, 100, 600, 500);
+        exploreInventoryPanel.setOpaque(false);
+        exploreInventoryPanel.add(label);
+    }
+
+    public static JLabel getExploreMissionLabel() {
+        return exploreMissionLabel;
+    }
+
+    public static JLabel setExploreMissionLabel(String text) {
+        exploreMissionLabel = new JLabel(text);
+        exploreMissionLabel.setFont(missionFont);
+        exploreMissionLabel.setForeground(Color.white);
+        return exploreMissionLabel;
+    }
+
+    public static JLabel getExploreInventoryLabel() {
+        return exploreInventoryLabel;
+    }
+
+    public static JLabel setExploreInventoryLabel(String text) {
+        exploreInventoryLabel = new JLabel(text);
+        exploreInventoryLabel.setFont(missionFont);
+        exploreInventoryLabel.setForeground(Color.white);
+        return exploreInventoryLabel;
     }
 
     public static JButton getNextLocationButton() {
