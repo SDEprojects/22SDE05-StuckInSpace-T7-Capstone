@@ -26,7 +26,7 @@ public class MissionScreenHandler implements ActionListener {
         window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
         setMainTextPanel(setMainTextArea(Story.getMission1Name()));
         setStartButtonPanel(setStartButton(Menu.getStartMission()));
-        //setReturnPanel(setReturnButton(Menu.getReturnOption()));
+        setReturnPanel(setReturnButton(Menu.getReturnOption()));
         startButton.addActionListener(currentMissionScreenHandler);
 
         con = window.getContentPane();

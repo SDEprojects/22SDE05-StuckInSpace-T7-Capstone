@@ -88,7 +88,7 @@ public class Mission {
         }
         return isExit;
     }
-    private JSONArray availableExits(String start){
+    public JSONArray availableExits(String start){
         JSONArray exits = null;
         String exitRequest = start + "_exit";
         for (Object obj : this.locations.getLocDict()) {

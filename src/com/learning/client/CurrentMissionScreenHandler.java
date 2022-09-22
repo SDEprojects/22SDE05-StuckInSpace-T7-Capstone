@@ -18,6 +18,8 @@ public class CurrentMissionScreenHandler implements ActionListener {
 
     private void activateMission() {
         MissionScreenHandler missionScreenHandler = new MissionScreenHandler();
+        ExploreMissionScreenHandler exploreMissionScreenHandler = new ExploreMissionScreenHandler();
+
         titlePanel.setVisible(false);
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
@@ -26,13 +28,15 @@ public class CurrentMissionScreenHandler implements ActionListener {
 
         setMissionTitlePanel(setMissionTitleLabel(Story.getMission1Name()));
         setMainTextPanel(setMainTextArea(Story.alienOutpost()));
+        setStartButtonPanel(setStartButton(Menu.getExploreOption()));
+        setReturnPanel(setReturnButton(Menu.getReturnOption()));
+        returnButton.addActionListener(missionScreenHandler);
+        startButton.addActionListener(exploreMissionScreenHandler);
 
         con = window.getContentPane();
         con.add(missionTitlePanel);
         con.add(mainTextPanel);
-
-
-
-
+        con.add(startButtonPanel);
+        con.add(returnPanel);
     }
 }
