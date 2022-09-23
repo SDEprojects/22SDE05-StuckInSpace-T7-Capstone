@@ -36,6 +36,8 @@ public class ExploreMissionScreenHandler implements ActionListener {
         setPlayerPanel();
         setLocLabel(hub.getHeroPosition());
         playerPanel.add(getLocLabel());
+        setInventoryLabel(String.valueOf(hub.getPlayerItems().size()));
+        playerPanel.add(inventoryLabel);
 
         setExploreMissionPanel(setExploreMissionLabel("You can go to: "));
 

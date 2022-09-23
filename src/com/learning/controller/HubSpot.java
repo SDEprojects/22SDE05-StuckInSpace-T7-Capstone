@@ -197,7 +197,7 @@ public class HubSpot {
         }
     }
 
-    public static void addItemToInventory(String text) {
+    public void addItemToInventory(String text) {
         ArrayList<String> inventory = new ArrayList<>();
         inventory.add(text);
     }
