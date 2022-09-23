@@ -92,6 +92,7 @@ public class GameManager {
                                 hub.showItemCard(itemInput);
                                 break;
                             }
+
                         } else {
                             System.out.println("Please enter valid number only");
                         }
