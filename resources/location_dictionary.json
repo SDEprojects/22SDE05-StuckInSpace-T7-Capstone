@@ -2,8 +2,8 @@
   {
     "mission_01": {
       "name": "Alien Outpost",
-      "start_position": "start",
-      "start_exit": [
+      "start_position": "hangar",
+      "hangar_exit": [
         "hallway", "spaceship"
       ],
       "start_description": "The dust settles...",
@@ -30,7 +30,7 @@
       "messhall_description": "Intro to Alien Outpost",
       "hallway_position": "hallway",
       "hallway_exit": [
-        "start",
+        "hangar",
         "basement",
         "controlstation",
         "messhall"
@@ -38,14 +38,14 @@
       "hallway_description": "Intro to Alien Outpost",
       "spaceship_position": "spaceship",
       "spaceship_exit": [
-        "start"
+        "hangar"
       ],
       "spaceship_description": ""
     },
     "mission_02": {
       "name": "Space Telescope",
-      "start_position": "start",
-      "start_exit": [
+      "start_position": "hangar",
+      "hangar_exit": [
         "hallway",
         "spaceship"
       ],
@@ -73,7 +73,7 @@
       "messhall_description": "Intro to Alien Outpost",
       "hallway_position": "hallway",
       "hallway_exit": [
-        "start",
+        "hangar",
         "basement",
         "controlstation",
         "messhall"
@@ -81,7 +81,7 @@
       "hallway_description": "Intro to Space Telescope",
       "spaceship_position": "spaceship",
       "spaceship_exit": [
-        "start"
+        "hangar"
       ],
       "spaceship_description": ""
     }
