@@ -49,9 +49,17 @@ public class ChangeLocationHandler implements ActionListener {
         setLocationsButtonPanel();
         ExploreMissionScreenHandler.getNextLocationsButtons(hub.getHeroPosition());
         if (Objects.equals(button.getText(), "hallway")) {
-            window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("hallway.jpg")))));
+            window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("hallway.png")))));
         } else if (Objects.equals(button.getText(), "messhall")) {
-            window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("mess_hall.jpg")))));
+            window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("mess hall.jpg")))));
+        } else if (Objects.equals(button.getText(), "basement")) {
+            window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("basement.jpg")))));
+        } else if (Objects.equals(button.getText(), "controlstation")) {
+            window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("control_station.jpg")))));
+        } else if (Objects.equals(button.getText(), "engineroom")) {
+            window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("engineroom.jpg")))));
+        } else if (Objects.equals(button.getText(), "spaceship")) {
+            window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("spaceship.jpg")))));
         } else {
             window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("hangar2.jpg")))));
         }
