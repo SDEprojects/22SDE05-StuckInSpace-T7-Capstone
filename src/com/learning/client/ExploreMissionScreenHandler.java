@@ -1,6 +1,5 @@
 package com.learning.client;
 
-import com.learning.controller.HubSpot;
 import com.learning.view.Menu;
 
 import javax.swing.*;
@@ -169,6 +168,8 @@ public class ExploreMissionScreenHandler implements ActionListener {
         ItemHandler itemHandler = new ItemHandler();
         button.addActionListener(itemHandler);
     }
+    //Deny access to engineroom
+    //public static void accessEngineroom(ActionEvent e, ){}
 }
 
 
