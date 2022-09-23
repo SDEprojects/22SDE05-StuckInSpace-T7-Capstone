@@ -458,7 +458,7 @@ public class GameGui {
     }
 
     public static void setHangarButton() {
-        hangarButton = new JButton("start");
+        hangarButton = new JButton("hangar");
         hangarButton.setBackground(Color.black);
         hangarButton.setForeground(Color.white);
         hangarButton.setFont(normalFont);
