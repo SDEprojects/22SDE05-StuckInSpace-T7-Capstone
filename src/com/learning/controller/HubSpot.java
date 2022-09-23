@@ -29,7 +29,7 @@ public class HubSpot {
         this.savegame = new SaveGame();
         this.heroPosition = new JSONObject();
         this.item = new Item();
-        this.heroPosition.put("Current_position", "start");
+        this.heroPosition.put("Current_position", "hangar");
         this.heroPosition.put("Previous_position", "hub");
         this.hero = new Hero();
         this.playerItems = new ArrayList<>();
