@@ -6,11 +6,11 @@ import java.util.Objects;
 
 public class GameGui {
     public static final Font titleFont = new Font("Times New Roman", Font.PLAIN, 70);
-    public static final Font normalFont = new Font("Times New Roman", Font.PLAIN, 30);
+    public static final Font normalFont = new Font("Times New Roman", Font.PLAIN, 25);
 
     public static final Font audioFont = new Font("Times New Roman", Font.PLAIN, 15);
     public static final Font playerFont = new Font("Times New Roman", Font.PLAIN, 25);
-    public static final Font missionFont = new Font("Times New Roman", Font.PLAIN, 40);
+    public static final Font missionFont = new Font("Times New Roman", Font.PLAIN, 30);
 
     static JFrame window;
     static Container con;
@@ -223,7 +223,7 @@ public class GameGui {
         playerPanel = new JPanel();
         playerPanel.setBounds(100, 5, 800, 50);
         playerPanel.setOpaque(false);
-        playerPanel.setLayout(new GridLayout(1, 6));
+        playerPanel.setLayout(new GridLayout(1, 2));
     }
 
     public JPanel getAudioButtonPanel() {
@@ -268,7 +268,6 @@ public class GameGui {
     public static void setLocLabel(String text) {
         locLabel = new JLabel("Current location: " + text);
         locLabel.setFont(playerFont);
-        locLabel.setFont(missionFont);
         locLabel.setForeground(Color.white);
     }
 
@@ -279,7 +278,6 @@ public class GameGui {
     public static void setInventoryLabel(String text) {
         inventoryLabel = new JLabel("Inventory: " + text);
         inventoryLabel.setFont(playerFont);
-        inventoryLabel.setFont(missionFont);
         inventoryLabel.setForeground(Color.white);
     }
 
