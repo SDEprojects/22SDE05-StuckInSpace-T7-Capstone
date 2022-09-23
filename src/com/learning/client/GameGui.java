@@ -2,6 +2,7 @@ package com.learning.client;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Objects;
 
 public class GameGui {
     public static final Font titleFont = new Font("Times New Roman", Font.PLAIN, 70);
@@ -14,7 +15,7 @@ public class GameGui {
     static JFrame window;
     static Container con;
     static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel, exploreMissionPanel, exploreInventoryPanel, inventoryButtonsPanel;
-    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel;
+    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel, inventoryLabel;
     static JButton startButton, missionButton, inventoryButton, returnButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton;
     static JButton fuelButton, engineButton, bioSuitButton, tmButton, keyCardButton, basementKeyButton, toolkitButton, gpsButton, knifeButton, rifleButton, pistolButton, laserGunButton, imtvButton, achButton, glovesButton, bootsButton, compassButton;
     static JTextArea mainTextArea;
@@ -43,7 +44,7 @@ public class GameGui {
         window.setPreferredSize(new Dimension(1280, 719));
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        window.setContentPane(new JLabel(new ImageIcon("resources/StuckInSpace.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("StuckInSpace.jpg")))));
         window.setLayout(null);
         window.setVisible(true);
         window.setLocationRelativeTo(null);
@@ -269,6 +270,17 @@ public class GameGui {
         locLabel.setFont(playerFont);
         locLabel.setFont(missionFont);
         locLabel.setForeground(Color.white);
+    }
+
+    public static JLabel getInventoryLabel() {
+        return inventoryLabel;
+    }
+
+    public static void setInventoryLabel(String text) {
+        inventoryLabel = new JLabel("Inventory: " + text);
+        inventoryLabel.setFont(playerFont);
+        inventoryLabel.setFont(missionFont);
+        inventoryLabel.setForeground(Color.white);
     }
 
     public static JPanel getLocationsButtonPanel() {
