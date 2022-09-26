@@ -60,6 +60,8 @@ public class GameGui {
         mainTextPanel.setBounds(350, 300, 600, 250);
         mainTextPanel.setOpaque(false);
         mainTextPanel.add(textArea);
+
+
     }
 
     public JTextArea getMainTextArea() {
@@ -70,7 +72,8 @@ public class GameGui {
         mainTextArea = new JTextArea();
         mainTextArea.append(text);
         mainTextArea.setBounds(300, 100, 600, 250);
-        mainTextArea.setBackground(Color.black);
+        mainTextArea.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        //mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
         mainTextArea.setFont(normalFont);
         mainTextArea.setLineWrap(true);
@@ -222,8 +225,9 @@ public class GameGui {
     public static void setPlayerPanel() {
         playerPanel = new JPanel();
         playerPanel.setBounds(100, 5, 800, 50);
-        playerPanel.setOpaque(false);
+        playerPanel.setOpaque(true);
         playerPanel.setLayout(new GridLayout(1, 2));
+        playerPanel.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
     }
 
     public JPanel getAudioButtonPanel() {
@@ -632,7 +636,7 @@ public class GameGui {
     public static void setKnifeButton() {
         ImageIcon knifeIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("knife_icon.png"));
         knifeButton = new JButton("knife", knifeIcon);
-        knifeButton.setBackground(Color.black);
+        knifeButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         knifeButton.setForeground(Color.white);
         knifeButton.setFont(normalFont);
     }
