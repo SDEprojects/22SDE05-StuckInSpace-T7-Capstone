@@ -60,6 +60,8 @@ public class GameGui {
         mainTextPanel.setBounds(350, 300, 600, 250);
         mainTextPanel.setOpaque(false);
         mainTextPanel.add(textArea);
+
+
     }
 
     public JTextArea getMainTextArea() {
@@ -70,7 +72,8 @@ public class GameGui {
         mainTextArea = new JTextArea();
         mainTextArea.append(text);
         mainTextArea.setBounds(300, 100, 600, 250);
-        mainTextArea.setBackground(Color.black);
+        mainTextArea.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        //mainTextArea.setBackground(Color.black);
         mainTextArea.setForeground(Color.white);
         mainTextArea.setFont(normalFont);
         mainTextArea.setLineWrap(true);
@@ -224,6 +227,7 @@ public class GameGui {
         playerPanel.setBounds(100, 5, 800, 50);
         playerPanel.setOpaque(false);
         playerPanel.setLayout(new GridLayout(1, 2));
+        playerPanel.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
     }
 
     public JPanel getAudioButtonPanel() {
@@ -535,7 +539,10 @@ public class GameGui {
     public static void setFuelButton() { //window.setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("The Hub Image.jpg"))));
         ImageIcon fuelIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("fuel.png"));//"C:\\StudentWork\\22SDE05-StuckInSpace-T7-Capstone\\resources\\fuel.png");
         fuelButton = new JButton("fuel",fuelIcon);
-        fuelButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        fuelButton.setContentAreaFilled(false);
+        fuelButton.setOpaque(false);
+        fuelButton.setBorderPainted(false);
+        //fuelButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         fuelButton.setForeground(Color.white);
         fuelButton.setFont(normalFont);
     }
@@ -547,7 +554,10 @@ public class GameGui {
     public static void setEngineButton() {
         ImageIcon engineIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("engine.png"));
         engineButton = new JButton("engine", engineIcon);
-        engineButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        engineButton.setContentAreaFilled(false);
+        engineButton.setOpaque(false);
+        engineButton.setBorderPainted(false);
+        //engineButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         engineButton.setForeground(Color.white);
         engineButton.setFont(normalFont);
     }
@@ -559,7 +569,10 @@ public class GameGui {
     public static void setBioSuitButton() {
         ImageIcon bioSuitIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("hazmat.png"));
         bioSuitButton = new JButton("bio_suit",bioSuitIcon);
-        bioSuitButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        bioSuitButton.setContentAreaFilled(false);
+        bioSuitButton.setOpaque(false);
+        bioSuitButton.setBorderPainted(false);
+        //bioSuitButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         bioSuitButton.setForeground(Color.white);
         bioSuitButton.setFont(normalFont);
     }
@@ -571,7 +584,10 @@ public class GameGui {
     public static void setTmButton() {
         ImageIcon tMIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("manual.png"));
         tmButton = new JButton("TM", tMIcon);
-        tmButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        //tmButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        tmButton.setContentAreaFilled(false);
+        tmButton.setOpaque(false);
+        tmButton.setBorderPainted(false);
         tmButton.setForeground(Color.white);
         tmButton.setFont(normalFont);
     }
@@ -583,7 +599,10 @@ public class GameGui {
     public static void setKeyCardButton() {
         ImageIcon keyCardIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("key-card.png"));
         keyCardButton = new JButton("keycard", keyCardIcon);
-        keyCardButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        keyCardButton.setContentAreaFilled(false);
+        keyCardButton.setOpaque(false);
+        keyCardButton.setBorderPainted(false);
+        //keyCardButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         keyCardButton.setForeground(Color.white);
         keyCardButton.setFont(normalFont);
     }
@@ -595,7 +614,10 @@ public class GameGui {
     public static void setBasementKeyButton() {
         ImageIcon keyIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("key.png"));
         basementKeyButton = new JButton("basement_key", keyIcon);
-        basementKeyButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        basementKeyButton.setContentAreaFilled(false);
+        basementKeyButton.setOpaque(false);
+        basementKeyButton.setBorderPainted(false);
+        //basementKeyButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         basementKeyButton.setForeground(Color.white);
         basementKeyButton.setFont(normalFont);
     }
@@ -607,7 +629,10 @@ public class GameGui {
     public static void setToolkitButton() {
         ImageIcon toolIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("tools.png"));
         toolkitButton = new JButton("toolkit", toolIcon);
-        toolkitButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        toolkitButton.setContentAreaFilled(false);
+        toolkitButton.setOpaque(false);
+        toolkitButton.setBorderPainted(false);
+        //toolkitButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         toolkitButton.setForeground(Color.white);
         toolkitButton.setFont(normalFont);
     }
@@ -619,7 +644,10 @@ public class GameGui {
     public static void setGpsButton() {
         ImageIcon gpsIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("map.png"));
         gpsButton = new JButton("GPS", gpsIcon);
-        gpsButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        gpsButton.setContentAreaFilled(false);
+        gpsButton.setOpaque(false);
+        gpsButton.setBorderPainted(false);
+        //gpsButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         gpsButton.setForeground(Color.white);
         gpsButton.setFont(normalFont);
     }
@@ -631,7 +659,10 @@ public class GameGui {
     public static void setKnifeButton() {
         ImageIcon knifeIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("knife_icon.png"));
         knifeButton = new JButton("knife", knifeIcon);
-        knifeButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        knifeButton.setContentAreaFilled(false);
+        knifeButton.setOpaque(false);
+        knifeButton.setBorderPainted(false);
+        //knifeButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         knifeButton.setForeground(Color.white);
         knifeButton.setFont(normalFont);
     }
@@ -643,7 +674,10 @@ public class GameGui {
     public static void setRifleButton() {
         ImageIcon rifleIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("rifle.png"));
         rifleButton = new JButton("rifle", rifleIcon);
-        rifleButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        rifleButton.setContentAreaFilled(false);
+        rifleButton.setOpaque(false);
+        rifleButton.setBorderPainted(false);
+        //rifleButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         rifleButton.setForeground(Color.white);
         rifleButton.setFont(normalFont);
     }
@@ -655,7 +689,10 @@ public class GameGui {
     public static void setPistolButton() {
         ImageIcon pistolImage = new ImageIcon(GameGui.class.getClassLoader().getResource("space-gun.png"));
         pistolButton = new JButton("pistol", pistolImage);
-        pistolButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        pistolButton.setContentAreaFilled(false);
+        pistolButton.setOpaque(false);
+        pistolButton.setBorderPainted(false);
+        //pistolButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         pistolButton.setForeground(Color.white);
         pistolButton.setFont(normalFont);
     }
@@ -667,7 +704,10 @@ public class GameGui {
     public static void setLaserGunButton() {
         ImageIcon laserGunIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("laser-gun.png"));
         laserGunButton = new JButton("laser_gun", laserGunIcon);
-        laserGunButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        laserGunButton.setContentAreaFilled(false);
+        laserGunButton.setOpaque(false);
+        laserGunButton.setBorderPainted(false);
+        //laserGunButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         laserGunButton.setForeground(Color.white);
         laserGunButton.setFont(normalFont);
     }
@@ -679,7 +719,10 @@ public class GameGui {
     public static void setImtvButton() {
         ImageIcon imtvicon = new ImageIcon(GameGui.class.getClassLoader().getResource("armor.png"));
         imtvButton = new JButton("IMTV", imtvicon);
-        imtvButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        imtvButton.setContentAreaFilled(false);
+        imtvButton.setOpaque(false);
+        imtvButton.setBorderPainted(false);
+        //imtvButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         imtvButton.setForeground(Color.white);
         imtvButton.setFont(normalFont);
     }
@@ -691,7 +734,10 @@ public class GameGui {
     public static void setAchButton() {
         ImageIcon achIcon = new ImageIcon("C:\\StudentWork\\22SDE05-StuckInSpace-T7-Capstone\\resources\\astronaut-helmet.png");
         achButton = new JButton("ACH", achIcon);
-        achButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        achButton.setContentAreaFilled(false);
+        achButton.setOpaque(false);
+        achButton.setBorderPainted(false);
+        //achButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         achButton.setForeground(Color.white);
         achButton.setFont(normalFont);
     }
@@ -703,7 +749,10 @@ public class GameGui {
     public static void setGlovesButton() {
         ImageIcon glovesIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("gloves.png"));
         glovesButton = new JButton("gloves", glovesIcon);
-        glovesButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        glovesButton.setContentAreaFilled(false);
+        glovesButton.setOpaque(false);
+        glovesButton.setBorderPainted(false);
+        //glovesButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         glovesButton.setForeground(Color.white);
         glovesButton.setFont(normalFont);
     }
@@ -715,7 +764,10 @@ public class GameGui {
     public static void setBootsButton() {
         ImageIcon bootsIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("space_boots.png"));
         bootsButton = new JButton("boots", bootsIcon);
-        bootsButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
+        bootsButton.setContentAreaFilled(false);
+        bootsButton.setOpaque(false);
+        bootsButton.setBorderPainted(false);
+        //bootsButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         bootsButton.setForeground(Color.white);
         bootsButton.setFont(normalFont);
     }
