@@ -143,6 +143,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
     public static void getNextLocationsButtons(String currentLocation) {
         for (Object location : mission.availableExits(currentLocation)) {
             for (JButton button : allLocationsButtons) {
+
                 if (location.equals(button.getText())) {
                     locationsButtonPanel.add(button);
                 }
@@ -172,6 +173,10 @@ public class ExploreMissionScreenHandler implements ActionListener {
     }
     //Deny access to engineroom
     //public static void accessEngineroom(ActionEvent e, ){}
+    //Deny access to ship
+    /*public static boolean checkWinCondition(){
+    if ()
+    }*/
 }
 
 
