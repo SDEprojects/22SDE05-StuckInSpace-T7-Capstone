@@ -24,14 +24,11 @@ public class ExploreMissionScreenHandler implements ActionListener {
     static void changeLocation() {
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
-        InventoryItemsHandler inventoryItemsHandler = new InventoryItemsHandler();
 
         titlePanel.setVisible(false);
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
         hubTitlePanel.setVisible(false);
-
-
         //window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
         window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("hangar2.jpg")))));
         con = window.getContentPane();
@@ -41,10 +38,6 @@ public class ExploreMissionScreenHandler implements ActionListener {
         playerPanel.add(getLocLabel());
         setInventoryLabel(String.valueOf(hub.getPlayerItems().size()));
         playerPanel.add(inventoryLabel);
-
-//        setShowInventoryButton("Inventory");
-//        playerPanel.add(showInventoryButton);
-//        showInventoryButton.addActionListener(inventoryItemsHandler);
 
         setExploreMissionPanel(setExploreMissionLabel("You can go to: "));
 
@@ -150,6 +143,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
     public static void getNextLocationsButtons(String currentLocation) {
         for (Object location : mission.availableExits(currentLocation)) {
             for (JButton button : allLocationsButtons) {
+
                 if (location.equals(button.getText())) {
                     locationsButtonPanel.add(button);
                 }
@@ -179,8 +173,10 @@ public class ExploreMissionScreenHandler implements ActionListener {
     }
     //Deny access to engineroom
     //public static void accessEngineroom(ActionEvent e, ){}
-
-
+    //Deny access to ship
+    /*public static boolean checkWinCondition(){
+    if ()
+    }*/
 }
 
 
