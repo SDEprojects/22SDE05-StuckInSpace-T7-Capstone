@@ -31,7 +31,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
         hubTitlePanel.setVisible(false);
         //window.setContentPane(new JLabel(new ImageIcon("resources/hangar2.jpg")));
         window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("hangar2.jpg")))));
-        con=window.getContentPane();
+        con = window.getContentPane();
 
         setPlayerPanel();
         setLocLabel(hub.getHeroPosition());
@@ -140,7 +140,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
         //con.add(returnPanel);
     }
 
-    public static void getNextLocationsButtons (String currentLocation) {
+    public static void getNextLocationsButtons(String currentLocation) {
         for (Object location : mission.availableExits(currentLocation)) {
             for (JButton button : allLocationsButtons) {
                 if (location.equals(button.getText())) {
@@ -155,7 +155,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
         button.addActionListener(changeLocationHandler);
     }
 
-    public static void getInventoryItemsButtons (String currentLocation) {
+    public static void getInventoryItemsButtons(String currentLocation) {
         hub.initiateItemLocationList();
         for (Object item : hub.lookAction(currentLocation)) {
             for (JButton button : allInventoryButtons) {

@@ -18,7 +18,7 @@ import java.util.Set;
 public class HubSpot {
     SaveGame savegame;
     private Hero hero;
-    private Item item;
+    public Item item;
     private NPC npcs;
 
     // TODO: Link this to backpack ds
