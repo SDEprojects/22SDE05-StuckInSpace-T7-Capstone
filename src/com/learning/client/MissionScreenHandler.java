@@ -8,7 +8,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import static com.learning.client.GameGui.*;
-import static com.learning.client.GameGui.mainTextPanel;
 
 public class MissionScreenHandler implements ActionListener {
 
@@ -23,10 +22,11 @@ public class MissionScreenHandler implements ActionListener {
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
         hubTitlePanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon("resources/The Hub Image.jpg")));
+        window.setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("alien base.png"))));
+        con = window.getContentPane();
         setMainTextPanel(setMainTextArea(Story.getMission1Name()));
         setStartButtonPanel(setStartButton(Menu.getStartMission()));
-        //setReturnPanel(setReturnButton(Menu.getReturnOption()));
+        setReturnPanel(setReturnButton(Menu.getReturnOption()));
         startButton.addActionListener(currentMissionScreenHandler);
 
         con = window.getContentPane();

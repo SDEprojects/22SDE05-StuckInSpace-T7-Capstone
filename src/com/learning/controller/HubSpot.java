@@ -18,7 +18,7 @@ import java.util.Set;
 public class HubSpot {
     SaveGame savegame;
     private Hero hero;
-    private Item item;
+    public Item item;
     private NPC npcs;
 
     // TODO: Link this to backpack ds
@@ -29,7 +29,7 @@ public class HubSpot {
         this.savegame = new SaveGame();
         this.heroPosition = new JSONObject();
         this.item = new Item();
-        this.heroPosition.put("Current_position", "start");
+        this.heroPosition.put("Current_position", "hangar");
         this.heroPosition.put("Previous_position", "hub");
         this.hero = new Hero();
         this.playerItems = new ArrayList<>();
@@ -145,28 +145,28 @@ public class HubSpot {
     } // This } closes the findNameOfLocation function.
 
     // This will print a list of items based on hero current location.
-    public void lookAction() {
+    public ArrayList<String> lookAction(String currentPosition) {
 //        System.out.println(item.getItemLocationList()); // delete me.
-        item.setItemFound(item.getItemLocationList().get(getHeroPosition()));
+        item.setItemFound(item.getItemLocationList().get(currentPosition));
         // Set a temporary variable to save the item found in place.
         ArrayList<String> itemsHere = item.getItemFound();
-        // TODO if the hero has the item, don't show.
 
         // If there are items available in the area, show them to player.
-        if (itemsHere == null) {
-            System.out.println("\uD83D\uDE12 No item is found at this location");
-        } else {
-            if (item.getBackpackList().contains(itemsHere.get(0)) == false) { // if the player doesn't have the item.
-                for (int i = 0; i < itemsHere.size(); i++) {
-                    item.setItemCalledOut(itemsHere.get(i));
-                    item.parseItemObject();
-                    String itemFoundName = item.getItemName();
-                    System.out.println("\uD83D\uDE00 You found " + itemFoundName);
-                }
-            } else {
-                System.out.println("\uD83D\uDE12 No item is found at this location");
-            }
-        }
+//        if (itemsHere == null) {
+//            System.out.println("\uD83D\uDE12 No item is found at this location");
+//        } else {
+//            if (item.getBackpackList().contains(itemsHere.get(0)) == false) { // if the player doesn't have the item.
+//                for (int i = 0; i < itemsHere.size(); i++) {
+//                    item.setItemCalledOut(itemsHere.get(i));
+//                    item.parseItemObject();
+//                    String itemFoundName = item.getItemName();
+//                    System.out.println("\uD83D\uDE00 You found " + itemFoundName);
+//                }
+//            } else {
+//                System.out.println("\uD83D\uDE12 No item is found at this location");
+//            }
+//        }
+        return itemsHere;
     }
 
     // Check if there are items left at this location.
@@ -196,6 +196,13 @@ public class HubSpot {
             item.getItemLocationList().remove(getHeroPosition());
         }
     }
+
+    public void addItemToInventory(String text) {
+        ArrayList<String> inventory = new ArrayList<>();
+        inventory.add(text);
+    }
+
+
 
     // Initiate the backpack based the Hero's attribute. Will run this once when game starts.
     public void initiateInventory() {
@@ -267,10 +274,10 @@ public class HubSpot {
 
     }
 
-    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
-        File file = new File("resources/DivKid.wav");
-        manageMusic(file, "start music");
-    }
+//    public static void main(String[] args) throws UnsupportedAudioFileException, LineUnavailableException, IOException {
+//        File file = new File("resources/DivKid.wav");
+//        manageMusic(file, "start music");
+//    }
 
 
     public static void stopMusic(File file) throws UnsupportedAudioFileException, IOException, LineUnavailableException {

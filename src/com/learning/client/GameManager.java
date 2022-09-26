@@ -17,6 +17,7 @@ import static com.learning.controller.HubSpot.checkInventoryInputType;
 public class GameManager {
 
     static HubSpot hub = new HubSpot();
+    static Mission mission = new Mission();
     public static void runGame() throws UnsupportedAudioFileException, LineUnavailableException, IOException {
         GameScreenHandler.getMainScreen();
 
@@ -91,6 +92,7 @@ public class GameManager {
                                 hub.showItemCard(itemInput);
                                 break;
                             }
+
                         } else {
                             System.out.println("Please enter valid number only");
                         }

@@ -48,6 +48,11 @@ public class Menu {
         return "Back";
     }
 
+    public static String getExploreOption() {
+        return "Let's explore";
+    }
+
+
 
     public static void getMainMessage() {
         System.out.println("          ___ _           _     _         ___       _             ___                  \n"+
