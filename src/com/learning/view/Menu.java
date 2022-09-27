@@ -60,6 +60,9 @@ public class Menu {
     public static String gameOverMessage() {
         return "Game over";
     }
+    public static String winGameMessage() {
+        return "You win the game!";
+    }
 
 
 

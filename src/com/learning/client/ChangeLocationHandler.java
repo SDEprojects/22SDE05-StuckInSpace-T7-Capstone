@@ -3,6 +3,7 @@ package com.learning.client;
 import com.learning.view.Menu;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
@@ -10,6 +11,7 @@ import java.util.Objects;
 import static com.learning.client.ExploreMissionScreenHandler.checkWinCondition;
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameManager.hub;
+import static com.learning.client.TimeHandler.timer;
 
 
 public class ChangeLocationHandler implements ActionListener {
@@ -37,8 +39,23 @@ public class ChangeLocationHandler implements ActionListener {
             updateAvailableItemsInformation(hallwayButton);
         } else if (e.getSource() == spaceshipButton) {
             if(checkWinCondition()) {
-                updateLocationInformation(spaceshipButton);
-                updateAvailableItemsInformation(spaceshipButton);
+                //updateLocationInformation(spaceshipButton);
+                //updateAvailableItemsInformation(spaceshipButton);
+                timer.stop();
+                try {
+                    Thread.sleep(2);
+                } catch (InterruptedException ex) {
+                    throw new RuntimeException(ex);
+                }
+                window.setVisible(false);
+                window.setLayout(new FlowLayout());
+                window.setVisible(true);
+                window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("spaceship.jpg")))));
+                con = window.getContentPane();
+                setTitlePanel(setTitleLabel(Menu.winGameMessage()));
+                window.add(getTitlePanel());
+                con.add(mainTextPanel);
+                window.pack();
             }else {
                 //setPopUpWindow();
                 //popUpWindow;

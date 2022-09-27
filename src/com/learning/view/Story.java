@@ -5,7 +5,7 @@ public class Story {
     private String heroName;
 
     public static String gameIntro() {
-        String line1 = "You are a space traveler and you have crash landed on an unknown planet. \nIn order to leave and continue on your journey, \nyou need to collect fuel and engine \nto repair your craft.";
+        String line1 = "You are a space traveler and you have crash landed on \nan unknown planet. \n\nIn order to leave and continue on your journey, \nyou need to collect fuel and engine to repair your craft.";
         //String line2 = "-----------------------------------------------------------------------------------------\n";
         //String line3 = "     ||||        Read and use the menu to navigate through the game        ||||    \n";
         //String line4 = "----------------------------------------------------------------------------------------- \n";
@@ -29,8 +29,7 @@ public class Story {
         //System.out.println("\n" +
          //       "        ▄▀█ █░░ █ █▀▀ █▄░█   █▀█ █░█ ▀█▀ █▀█ █▀█ █▀ ▀█▀\n" +
          //       "        █▀█ █▄▄ █ ██▄ █░▀█   █▄█ █▄█ ░█░ █▀▀ █▄█ ▄█ ░█░\n");
-        return "You find yourself in a strange field. \nEverything has been cleared out and all that \n " +
-                "stands before you is an unknown tower";
+        return "You find yourself in a strange field. \n\nEverything has been cleared out and all that \nstands before you is an unknown tower. \n\nCollect minimum 10 items including engine and return \nto the spaceship before time is up.";
     }
 
 
