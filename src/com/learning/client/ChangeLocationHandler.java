@@ -5,6 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+import static com.learning.client.ExploreMissionScreenHandler.checkWinCondition;
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameManager.hub;
 
@@ -33,8 +34,13 @@ public class ChangeLocationHandler implements ActionListener {
             updateLocationInformation(hallwayButton);
             updateAvailableItemsInformation(hallwayButton);
         } else if (e.getSource() == spaceshipButton) {
-            updateLocationInformation(spaceshipButton);
-            updateAvailableItemsInformation(spaceshipButton);
+            if(checkWinCondition()) {
+                updateLocationInformation(spaceshipButton);
+                updateAvailableItemsInformation(spaceshipButton);
+            }else {
+
+            }
+
         }
     }
 

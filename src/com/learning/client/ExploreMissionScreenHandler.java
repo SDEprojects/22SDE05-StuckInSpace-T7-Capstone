@@ -11,6 +11,7 @@ import java.util.Objects;
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameManager.hub;
 import static com.learning.client.GameManager.mission;
+import static com.learning.client.ItemHandler.inventory;
 
 public class ExploreMissionScreenHandler implements ActionListener {
     static ArrayList<JButton> allLocationsButtons = new ArrayList<>();
@@ -171,12 +172,19 @@ public class ExploreMissionScreenHandler implements ActionListener {
         ItemHandler itemHandler = new ItemHandler();
         button.addActionListener(itemHandler);
     }
+
     //Deny access to engineroom
     //public static void accessEngineroom(ActionEvent e, ){}
+
     //Deny access to ship
-    /*public static boolean checkWinCondition(){
-    if ()
-    }*/
+    public static boolean checkWinCondition() {
+        return inventory.contains("engine") && (inventory.size() >= 10);
+    }
+
+    //Pop-up window
+    public static void newWindow() {
+
+    }
 }
 
 
