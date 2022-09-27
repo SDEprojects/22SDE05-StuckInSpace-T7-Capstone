@@ -145,8 +145,8 @@ public class ExploreMissionScreenHandler implements ActionListener {
         //con.add(returnPanel);
 
         setCountTimeLabel();
-        countTimeLabel.setText("1:30");
-        TimeHandler.second = 30;
+        countTimeLabel.setText("1:00");
+        TimeHandler.second = 00;
         TimeHandler.minute = 1;
         TimeHandler.setTimer();
         TimeHandler.timer.start();
