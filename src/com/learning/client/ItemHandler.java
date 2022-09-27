@@ -30,7 +30,6 @@ public class ItemHandler implements ActionListener {
             hub.addItemToInventory(bioSuitButton.getText());
             updateInventoryCount(bioSuitButton, hub.getHeroPosition());
 
-
         } else if (e.getSource() == tmButton) {
             tmButton.setVisible(false);
             hub.addItemToInventory(tmButton.getText());
