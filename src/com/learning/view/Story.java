@@ -5,7 +5,7 @@ public class Story {
     private String heroName;
 
     public static String gameIntro() {
-        String line1 = "You are a space traveler and you have crash landed on \nan unknown planet. \n\nIn order to leave and continue on your journey, \nyou need to collect fuel and engine to repair your craft.";
+        String line1 = "You are a space traveler and you have crash landed on \nan unknown planet. \n\n";
         //String line2 = "-----------------------------------------------------------------------------------------\n";
         //String line3 = "     ||||        Read and use the menu to navigate through the game        ||||    \n";
         //String line4 = "----------------------------------------------------------------------------------------- \n";
