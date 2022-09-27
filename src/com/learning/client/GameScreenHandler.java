@@ -12,8 +12,8 @@ public class GameScreenHandler {
     public static void getMainScreen() {
         gameGui.setWindow();
         gameGui.setCon();
-        gameGui.setTitlePanel(GameGui.setTitleLabel(Menu.getGameName()));
-        con.add(gameGui.getTitlePanel());
+        GameGui.setTitlePanel(GameGui.setTitleLabel(Menu.getGameName()));
+        con.add(GameGui.getTitlePanel());
         GameGui.setStartButtonPanel(GameGui.setStartButton(Menu.getStart()));
         con.add(gameGui.getStartButtonPanel());
         GameManager.hub.initiateInventory();

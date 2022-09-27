@@ -145,15 +145,15 @@ public class ExploreMissionScreenHandler implements ActionListener {
         //con.add(returnPanel);
 
         setCountTimeLabel();
-        countTimeLabel.setText("00:30");
-        TimeHandler.second = 30;
+        countTimeLabel.setText("00:10");
+        TimeHandler.second = 10;
         TimeHandler.minute = 0;
         TimeHandler.setTimer();
         TimeHandler.timer.start();
         playerPanel.add(countTimeLabel);
         if (TimeHandler.second == 0 && TimeHandler.minute == 0) {
-            Thread.sleep(2);
-            //window.getContentPane().removeAll();
+
+
         }
     }
 

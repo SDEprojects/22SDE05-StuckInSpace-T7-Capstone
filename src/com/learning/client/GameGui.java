@@ -40,7 +40,7 @@ public class GameGui {
         return window;
     }
 
-    public void setWindow() {
+    public static void setWindow() {
         window.setPreferredSize(new Dimension(1280, 719));
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -134,11 +134,11 @@ public class GameGui {
         con = window.getContentPane();
     }
 
-    public JPanel getTitlePanel() {
+    public static JPanel getTitlePanel() {
         return titlePanel;
     }
 
-    public void setTitlePanel(JLabel titleLabel) {
+    public static void setTitlePanel(JLabel titleLabel) {
         titlePanel = new JPanel();
         titlePanel.setBounds(340, 40, 600, 100);
         titlePanel.setOpaque(false);
