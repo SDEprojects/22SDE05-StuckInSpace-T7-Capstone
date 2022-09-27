@@ -800,12 +800,11 @@ public class GameGui {
         return countTimeLabel;
     }
 
-    public static JLabel setCountTimeLabel() {
-        countTimeLabel = new JLabel();
+    public static void setCountTimeLabel() {
+        countTimeLabel = new JLabel("");
         countTimeLabel.setFont(normalFont);
         countTimeLabel.setBackground(Color.black);
         countTimeLabel.setForeground(Color.white);
         countTimeLabel.setBounds(300, 200, 200, 100);
-        return countTimeLabel;
     }
 }
