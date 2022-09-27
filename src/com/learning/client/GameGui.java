@@ -15,8 +15,8 @@ public class GameGui {
     static JFrame window;
     static Container con;
     static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel, exploreMissionPanel, exploreInventoryPanel, inventoryButtonsPanel;
-    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel, inventoryLabel;
-    static JButton startButton, missionButton, inventoryButton, returnButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton;
+    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel, inventoryLabel, countTimeLabel;
+    static JButton startButton, missionButton, inventoryButton, returnButton, showInventoryButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton;
     static JButton fuelButton, engineButton, bioSuitButton, tmButton, keyCardButton, basementKeyButton, toolkitButton, gpsButton, knifeButton, rifleButton, pistolButton, laserGunButton, imtvButton, achButton, glovesButton, bootsButton, compassButton;
     static JTextArea mainTextArea;
     static JMenuBar menuBar;
@@ -782,5 +782,28 @@ public class GameGui {
         compassButton.setBackground(Color.black);
         compassButton.setForeground(Color.white);
         compassButton.setFont(normalFont);
+    }
+
+    public static JButton getShowInventoryButton() {
+        return inventoryButton;
+    }
+
+    public static JButton setShowInventoryButton (String text) {
+        showInventoryButton = new JButton(text);
+        showInventoryButton.setBackground(Color.black);
+        showInventoryButton.setForeground(Color.white);
+        showInventoryButton.setFont(normalFont);
+        return showInventoryButton;
+    }
+
+    public static JLabel getCountTimeLabel() {
+        return countTimeLabel;
+    }
+
+    public static void setCountTimeLabel() {
+        countTimeLabel = new JLabel("");
+        countTimeLabel.setFont(normalFont);
+        countTimeLabel.setBackground(Color.black);
+        countTimeLabel.setForeground(Color.white);
     }
 }
