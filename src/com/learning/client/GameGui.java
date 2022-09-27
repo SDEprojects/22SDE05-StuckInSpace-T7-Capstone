@@ -874,7 +874,7 @@ public class GameGui {
         countTimeLabel = new JLabel("");
         countTimeLabel.setFont(normalFont);
         countTimeLabel.setBackground(Color.black);
-        countTimeLabel.setForeground(Color.white);
+        countTimeLabel.setForeground(Color.red);
     }
 
     public static void playMusic(int i) {
