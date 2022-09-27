@@ -1,10 +1,13 @@
 package com.learning.client;
 
+import com.learning.view.Menu;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+import static com.learning.client.ExploreMissionScreenHandler.checkWinCondition;
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameManager.hub;
 
@@ -33,8 +36,15 @@ public class ChangeLocationHandler implements ActionListener {
             updateLocationInformation(hallwayButton);
             updateAvailableItemsInformation(hallwayButton);
         } else if (e.getSource() == spaceshipButton) {
-            updateLocationInformation(spaceshipButton);
-            updateAvailableItemsInformation(spaceshipButton);
+            if(checkWinCondition()) {
+                updateLocationInformation(spaceshipButton);
+                updateAvailableItemsInformation(spaceshipButton);
+            }else {
+                //setPopUpWindow();
+                //popUpWindow;
+                JOptionPane.showMessageDialog(null, Menu.getPopUpInfo(),"Access Denied",JOptionPane.PLAIN_MESSAGE);
+            }
+
         }
     }
 
@@ -80,4 +90,5 @@ public class ChangeLocationHandler implements ActionListener {
         con = window.getContentPane();
         con.add(inventoryButtonsPanel);
     }
+
 }

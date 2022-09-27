@@ -23,6 +23,9 @@ public class Menu {
     public static String getGameName() {
         return "Stuck in Outer Space";
     }
+    public static String getPopUpInfo(){
+        return "You need to collect a minimum of 10 items, including engine";
+    }
 
     public static String getHubName() {
         return "THE HUB";
@@ -30,6 +33,9 @@ public class Menu {
 
     public static String getStart() {
         return "START";
+    }
+    public static String getOk(){
+        return "OK";
     }
 
     public static String getStartMission() {
