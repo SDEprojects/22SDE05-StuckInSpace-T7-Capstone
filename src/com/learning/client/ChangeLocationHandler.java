@@ -67,7 +67,10 @@ public class ChangeLocationHandler implements ActionListener {
                 window.setVisible(true);
                 window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("spaceship.jpg")))));
                 con = window.getContentPane();
-                setTitlePanel(setTitleLabel(Menu.winGameMessage()));
+                setTitleLabel(Menu.winGameMessage());
+                titleLabel.removeAll();
+                setTitlePanel(getTitleLabel());
+
                 window.add(getTitlePanel());
                 con.add(mainTextPanel);
                 window.pack();

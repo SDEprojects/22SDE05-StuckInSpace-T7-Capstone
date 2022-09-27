@@ -55,7 +55,7 @@ public class GameGui {
         window.setLayout(null);
         window.setVisible(true);
         window.setLocationRelativeTo(null);
-        playMusic(0);
+        //playMusic(0);
         window.pack();
     }
     public static JFrame getPopUpWindow(){
@@ -169,7 +169,7 @@ public class GameGui {
 
     public static void setTitlePanel(JLabel titleLabel) {
         titlePanel = new JPanel();
-        titlePanel.setBounds(340, 40, 600, 100);
+        titlePanel.setBounds(50, 40, 1200, 100);
         titlePanel.setOpaque(false);
         titlePanel.add(titleLabel);
     }
@@ -297,7 +297,7 @@ public class GameGui {
         this.audioButtonPanel = audioButtonPanel;
     }
 
-    public JLabel getTitleLabel() {
+    public static JLabel getTitleLabel() {
         return titleLabel;
     }
 

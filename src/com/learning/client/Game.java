@@ -40,12 +40,9 @@ public class Game {
     SpaceShipScreenHandler spHandler = new SpaceShipScreenHandler();
     BasementScreenHandler bsHandler = new BasementScreenHandler();
 
-
-
-
-    public static void main(String[] args) {
-        new Game();
-    }
+//    public static void main(String[] args) {
+//        new Game();
+//    }
 
     public Game() {
         window = new JFrame();

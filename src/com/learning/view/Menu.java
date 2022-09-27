@@ -71,7 +71,7 @@ public class Menu {
     }
 
     public static String gameOverMessage() {
-        return "Game over";
+        return "Time is up. Game over!";
     }
 
     public static String winGameMessage() {
