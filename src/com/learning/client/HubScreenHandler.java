@@ -34,7 +34,7 @@ public class HubScreenHandler implements ActionListener {
         inventoryButton.addActionListener(inventoryScreenHandler);
         setInventoryTitlePanel(setInventoryTitleLabel(Menu.getInventoryMenuItem()));
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
-        returnButton.addActionListener(hubScreenHandler);
+        //returnButton.addActionListener(hubScreenHandler);
 
         con = window.getContentPane();
         con.add(hubTitlePanel);

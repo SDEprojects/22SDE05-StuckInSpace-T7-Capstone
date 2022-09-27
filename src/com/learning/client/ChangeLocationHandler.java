@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Objects;
 
+import static com.learning.client.ExploreMissionScreenHandler.checkItemCondition;
 import static com.learning.client.ExploreMissionScreenHandler.checkWinCondition;
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameManager.hub;
@@ -23,11 +24,19 @@ public class ChangeLocationHandler implements ActionListener {
             updateLocationInformation(hangarButton);
             updateAvailableItemsInformation(hangarButton);
         } else if (e.getSource() == basementButton) {
-            updateLocationInformation(basementButton);
-            updateAvailableItemsInformation(basementButton);
+            if (checkItemCondition("basement_key")) {
+                updateLocationInformation(basementButton);
+                updateAvailableItemsInformation(basementButton);
+            } else {
+                JOptionPane.showMessageDialog(null, Menu.getBasementKeyMessage(), "Access Denied", JOptionPane.PLAIN_MESSAGE);
+            }
         } else if (e.getSource() == engineroomButton) {
-            updateLocationInformation(engineroomButton);
-            updateAvailableItemsInformation(engineroomButton);
+            if (checkItemCondition("keycard")) {
+                updateLocationInformation(engineroomButton);
+                updateAvailableItemsInformation(engineroomButton);
+            } else {
+                JOptionPane.showMessageDialog(null, Menu.getKeyCardMessage(), "Access Denied", JOptionPane.PLAIN_MESSAGE);
+            }
         } else if (e.getSource() == controlstationButton) {
             updateLocationInformation(controlstationButton);
             updateAvailableItemsInformation(controlstationButton);
@@ -38,7 +47,7 @@ public class ChangeLocationHandler implements ActionListener {
             updateLocationInformation(hallwayButton);
             updateAvailableItemsInformation(hallwayButton);
         } else if (e.getSource() == spaceshipButton) {
-            if(checkWinCondition()) {
+            if (checkWinCondition()) {
                 //updateLocationInformation(spaceshipButton);
                 //updateAvailableItemsInformation(spaceshipButton);
                 timer.stop();
@@ -56,10 +65,10 @@ public class ChangeLocationHandler implements ActionListener {
                 window.add(getTitlePanel());
                 con.add(mainTextPanel);
                 window.pack();
-            }else {
+            } else {
                 //setPopUpWindow();
                 //popUpWindow;
-                JOptionPane.showMessageDialog(null, Menu.getPopUpInfo(),"Access Denied",JOptionPane.PLAIN_MESSAGE);
+                JOptionPane.showMessageDialog(null, Menu.getPopUpInfo(), "Access Denied", JOptionPane.PLAIN_MESSAGE);
             }
 
         }
