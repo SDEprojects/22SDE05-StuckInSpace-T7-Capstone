@@ -805,6 +805,5 @@ public class GameGui {
         countTimeLabel.setFont(normalFont);
         countTimeLabel.setBackground(Color.black);
         countTimeLabel.setForeground(Color.white);
-        countTimeLabel.setBounds(300, 200, 200, 100);
     }
 }

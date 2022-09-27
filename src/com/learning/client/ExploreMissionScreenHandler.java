@@ -19,10 +19,14 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        changeLocation();
+        try {
+            changeLocation();
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
-    public static void changeLocation() {
+    public static void changeLocation() throws InterruptedException {
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
 
@@ -141,12 +145,16 @@ public class ExploreMissionScreenHandler implements ActionListener {
         //con.add(returnPanel);
 
         setCountTimeLabel();
-        countTimeLabel.setText("04:00");
-        TimeHandler.second = 0;
+        countTimeLabel.setText("00:10");
+        TimeHandler.second = 10;
         TimeHandler.minute = 0;
         TimeHandler.setTimer();
         TimeHandler.timer.start();
         playerPanel.add(countTimeLabel);
+        if (TimeHandler.second == 0 && TimeHandler.minute == 0) {
+            Thread.sleep(2);
+            //window.getContentPane().removeAll();
+        }
     }
 
     public static void getNextLocationsButtons(String currentLocation) {

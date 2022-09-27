@@ -6,7 +6,7 @@ import java.lang.Object;
 import java.text.DecimalFormat;
 import javax.swing.*;
 
-import static com.learning.client.GameGui.countTimeLabel;
+import static com.learning.client.GameGui.*;
 
 public class TimeHandler {
     static Timer timer;
