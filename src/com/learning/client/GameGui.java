@@ -55,8 +55,10 @@ public class GameGui {
         window.setLayout(null);
         window.setVisible(true);
         window.setLocationRelativeTo(null);
-        playMusic(0);
+
         window.pack();
+        //playMusic(0);
+
     }
     public static JFrame getPopUpWindow(){
         return popUpWindow;
@@ -874,7 +876,7 @@ public class GameGui {
         countTimeLabel = new JLabel("");
         countTimeLabel.setFont(normalFont);
         countTimeLabel.setBackground(Color.black);
-        countTimeLabel.setForeground(Color.white);
+        countTimeLabel.setForeground(Color.red);
     }
 
     public static void playMusic(int i) {
