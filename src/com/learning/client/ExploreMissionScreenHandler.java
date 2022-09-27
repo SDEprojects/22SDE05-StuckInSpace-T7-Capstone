@@ -185,15 +185,13 @@ public class ExploreMissionScreenHandler implements ActionListener {
         button.addActionListener(itemHandler);
     }
 
-    //Deny access to engineroom
-    //public static void accessEngineroom(ActionEvent e, ){}
-
-    //Deny access to ship
     public static boolean checkWinCondition() {
         return inventory.contains("engine") && (inventory.size() >= 10);
     }
 
-
+    public static boolean checkItemCondition(String itemName) {
+        return inventory.contains(itemName);
+    }
 }
 
 
