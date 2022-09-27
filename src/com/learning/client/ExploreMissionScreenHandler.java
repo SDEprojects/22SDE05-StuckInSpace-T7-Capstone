@@ -5,6 +5,7 @@ import com.learning.view.Menu;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -19,10 +20,14 @@ public class ExploreMissionScreenHandler implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        changeLocation();
+        try {
+            changeLocation();
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
-    static void changeLocation() {
+    public static void changeLocation() throws InterruptedException {
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
 
@@ -139,6 +144,18 @@ public class ExploreMissionScreenHandler implements ActionListener {
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
         returnButton.addActionListener(currentMissionScreenHandler);
         //con.add(returnPanel);
+
+        setCountTimeLabel();
+        countTimeLabel.setText("00:30");
+        TimeHandler.second = 30;
+        TimeHandler.minute = 0;
+        TimeHandler.setTimer();
+        TimeHandler.timer.start();
+        playerPanel.add(countTimeLabel);
+        if (TimeHandler.second == 0 && TimeHandler.minute == 0) {
+            Thread.sleep(2);
+            //window.getContentPane().removeAll();
+        }
     }
 
     public static void getNextLocationsButtons(String currentLocation) {
