@@ -151,10 +151,6 @@ public class ExploreMissionScreenHandler implements ActionListener {
         TimeHandler.setTimer();
         TimeHandler.timer.start();
         playerPanel.add(countTimeLabel);
-        if (TimeHandler.second == 0 && TimeHandler.minute == 0) {
-
-
-        }
     }
 
     public static void getNextLocationsButtons(String currentLocation) {

@@ -51,8 +51,6 @@ public class TimeHandler {
                         con.add(startButtonPanel);
                         window.pack();
                         startButton.addActionListener(hubScreenHandler);
-
-
                     } catch (InterruptedException ex) {
                         throw new RuntimeException(ex);
                     }
