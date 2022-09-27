@@ -27,6 +27,7 @@ public class InventoryScreenHandler implements ActionListener {
         }
         setMainTextPanel(setMainTextArea(String.valueOf(result)));
         con.add(mainTextPanel);
+        returnButton.addActionListener(hubScreenHandler);
         con.add(returnPanel);
     }
 }

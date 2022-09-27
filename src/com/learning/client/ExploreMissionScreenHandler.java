@@ -145,8 +145,8 @@ public class ExploreMissionScreenHandler implements ActionListener {
         //con.add(returnPanel);
 
         setCountTimeLabel();
-        countTimeLabel.setText("1:30");
-        TimeHandler.second = 30;
+        countTimeLabel.setText("1:00");
+        TimeHandler.second = 00;
         TimeHandler.minute = 1;
         TimeHandler.setTimer();
         TimeHandler.timer.start();
@@ -185,15 +185,13 @@ public class ExploreMissionScreenHandler implements ActionListener {
         button.addActionListener(itemHandler);
     }
 
-    //Deny access to engineroom
-    //public static void accessEngineroom(ActionEvent e, ){}
-
-    //Deny access to ship
     public static boolean checkWinCondition() {
         return inventory.contains("engine") && (inventory.size() >= 10);
     }
 
-
+    public static boolean checkItemCondition(String itemName) {
+        return inventory.contains(itemName);
+    }
 }
 
 
