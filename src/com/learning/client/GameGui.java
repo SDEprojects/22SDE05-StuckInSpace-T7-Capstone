@@ -12,11 +12,11 @@ public class GameGui {
     public static final Font playerFont = new Font("Times New Roman", Font.PLAIN, 25);
     public static final Font missionFont = new Font("Times New Roman", Font.PLAIN, 30);
 
-    static JFrame window;
-    static Container con;
-    static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel, exploreMissionPanel, exploreInventoryPanel, inventoryButtonsPanel;
-    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel, inventoryLabel, countTimeLabel;
-    static JButton startButton, missionButton, inventoryButton, returnButton, showInventoryButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton;
+    static JFrame window, popUpWindow;
+    static Container con, con2;
+    static JPanel popUpPanel, popUpButtonPanel, titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel, exploreMissionPanel, exploreInventoryPanel, inventoryButtonsPanel;
+    static JLabel popUpLabel, titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel, inventoryLabel, countTimeLabel;
+    static JButton startButton, missionButton, inventoryButton, returnButton, showInventoryButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton, popUpButton;
     static JButton fuelButton, engineButton, bioSuitButton, tmButton, keyCardButton, basementKeyButton, toolkitButton, gpsButton, knifeButton, rifleButton, pistolButton, laserGunButton, imtvButton, achButton, glovesButton, bootsButton, compassButton;
     static JTextArea mainTextArea;
     static JMenuBar menuBar;
@@ -27,6 +27,7 @@ public class GameGui {
 
     public GameGui() {
         window = new JFrame();
+        popUpWindow = new JFrame();
         mainTextPanel = new JPanel();
         mainTextArea = new JTextArea();
         con = new Container();
@@ -34,6 +35,8 @@ public class GameGui {
         startButtonPanel = new JPanel();
         titleLabel = new JLabel();
         startButton = new JButton();
+        popUpButton = new JButton();
+        popUpButtonPanel = new JPanel();
     }
 
     public JFrame getWindow() {
@@ -49,6 +52,19 @@ public class GameGui {
         window.setVisible(true);
         window.setLocationRelativeTo(null);
         window.pack();
+    }
+    public static JFrame getPopUpWindow(){
+        return popUpWindow;
+    }
+    public static void setPopUpWindow(){
+        popUpWindow.setPreferredSize(new Dimension(1280, 719));
+        popUpWindow.setResizable(false);
+        popUpWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        popUpWindow.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("StuckInSpace.jpg")))));
+        popUpWindow.setLayout(null);
+        popUpWindow.setVisible(true);
+        popUpWindow.setLocationRelativeTo(null);
+        popUpWindow.pack();
     }
 
     public JPanel getMainTextPanel() {
@@ -133,6 +149,14 @@ public class GameGui {
         con.add(mainTextArea);
         con = window.getContentPane();
     }
+    public Container getCon2(){
+        return con;
+    }
+    public void setCon2(){
+        con2 = new Container();
+        con2.add(mainTextArea);
+        con = popUpWindow.getContentPane();
+    }
 
     public JPanel getTitlePanel() {
         return titlePanel;
@@ -144,6 +168,16 @@ public class GameGui {
         titlePanel.setOpaque(false);
         titlePanel.add(titleLabel);
     }
+    public JPanel getPopUpPanel(){
+        return popUpPanel;
+    }
+    public void setPopUpPanel(JLabel popUpLabel) {
+        popUpPanel = new JPanel();
+        popUpPanel.setBounds(340, 40, 600, 100);
+        popUpPanel.setOpaque(false);
+        popUpPanel.add(popUpLabel);
+    }
+
 
     public JPanel getStartButtonPanel() {
         return startButtonPanel;
@@ -155,6 +189,16 @@ public class GameGui {
         startButtonPanel.setBorder(null);
         startButtonPanel.setOpaque(false);
         startButtonPanel.add(startButton);
+    }
+    public JPanel getPopUpButtonPanel() {
+        return popUpButtonPanel;
+    }
+    public static void setPopUpButtonPanel(JButton popUpButton){
+        popUpButtonPanel = new JPanel();
+        popUpButtonPanel.setBounds(540, 570, 200, 50);
+        popUpButtonPanel.setBorder(null);
+        popUpButtonPanel.setOpaque(false);
+        popUpButtonPanel.add(popUpButton);
     }
 
     public static JPanel getChoiceButtonPanel() {
@@ -180,6 +224,16 @@ public class GameGui {
         missionButton.setForeground(Color.white);
         missionButton.setFont(normalFont);
         return missionButton;
+    }
+    public static JButton getPopUpButton(){
+        return popUpButton;
+    }
+    public static JButton setPopUpButton(String text){
+        popUpButton = new JButton(text);
+        popUpButton.setBackground(Color.black);
+        popUpButton.setForeground(Color.white);
+        popUpButton.setFont(normalFont);
+        return popUpButton;
     }
 
     public static JButton getInventoryButton() {
@@ -248,6 +302,16 @@ public class GameGui {
         titleLabel.setFont(titleFont);
         return titleLabel;
     }
+    public JLabel getPopUpLabel(){
+        return popUpLabel;
+    }
+    public static JLabel setPopUpLabel(String text) {
+        popUpLabel = new JLabel(text);
+        popUpLabel.setForeground(Color.white);
+        popUpLabel.setFont(titleFont);
+        return popUpLabel;
+    }
+
 
     public JLabel getHpLabel() {
         return hpLabel;
