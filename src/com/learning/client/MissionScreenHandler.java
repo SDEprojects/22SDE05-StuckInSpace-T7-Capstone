@@ -19,6 +19,7 @@ public class MissionScreenHandler implements ActionListener {
 
     private void createMissionScreen() {
         CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
+        HubScreenHandler hubScreenHandler = new HubScreenHandler();
         titlePanel.setVisible(false);
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
@@ -29,10 +30,10 @@ public class MissionScreenHandler implements ActionListener {
         setStartButtonPanel(setStartButton(Menu.getStartMission()));
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
         startButton.addActionListener(currentMissionScreenHandler);
-
         con = window.getContentPane();
         con.add(missionTitlePanel);
         con.add(mainTextPanel);
+        returnButton.addActionListener(hubScreenHandler);
         con.add(returnPanel);
         con.add(startButtonPanel);
     }
