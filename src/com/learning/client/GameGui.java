@@ -15,7 +15,7 @@ public class GameGui {
     static JFrame window;
     static Container con;
     static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel, exploreMissionPanel, exploreInventoryPanel, inventoryButtonsPanel;
-    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel, inventoryLabel;
+    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel, inventoryLabel, countTimeLabel;
     static JButton startButton, missionButton, inventoryButton, returnButton, showInventoryButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton;
     static JButton fuelButton, engineButton, bioSuitButton, tmButton, keyCardButton, basementKeyButton, toolkitButton, gpsButton, knifeButton, rifleButton, pistolButton, laserGunButton, imtvButton, achButton, glovesButton, bootsButton, compassButton;
     static JTextArea mainTextArea;
@@ -794,5 +794,18 @@ public class GameGui {
         showInventoryButton.setForeground(Color.white);
         showInventoryButton.setFont(normalFont);
         return showInventoryButton;
+    }
+
+    public static JLabel getCountTimeLabel() {
+        return countTimeLabel;
+    }
+
+    public static JLabel setCountTimeLabel() {
+        countTimeLabel = new JLabel();
+        countTimeLabel.setFont(normalFont);
+        countTimeLabel.setBackground(Color.black);
+        countTimeLabel.setForeground(Color.white);
+        countTimeLabel.setBounds(300, 200, 200, 100);
+        return countTimeLabel;
     }
 }

@@ -31,6 +31,9 @@ public class CurrentMissionScreenHandler implements ActionListener {
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
         returnButton.addActionListener(missionScreenHandler);
         startButton.addActionListener(exploreMissionScreenHandler);
+        TimeHandler timeHandler = new TimeHandler();
+        //startButton.addActionListener(timeHandler.);
+
 
         con = window.getContentPane();
         con.add(missionTitlePanel);
