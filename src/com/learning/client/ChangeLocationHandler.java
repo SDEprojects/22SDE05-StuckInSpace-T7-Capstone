@@ -22,21 +22,27 @@ public class ChangeLocationHandler implements ActionListener {
         if (e.getSource() == hangarButton) {
             updateLocationInformation(hangarButton);
             updateAvailableItemsInformation(hangarButton);
+            GameGui.playSE(4);
         } else if (e.getSource() == basementButton) {
             updateLocationInformation(basementButton);
             updateAvailableItemsInformation(basementButton);
+            GameGui.playSE(4);
         } else if (e.getSource() == engineroomButton) {
             updateLocationInformation(engineroomButton);
             updateAvailableItemsInformation(engineroomButton);
+            GameGui.playSE(4);
         } else if (e.getSource() == controlstationButton) {
             updateLocationInformation(controlstationButton);
             updateAvailableItemsInformation(controlstationButton);
+            GameGui.playSE(4);
         } else if (e.getSource() == messhallButton) {
             updateLocationInformation(messhallButton);
             updateAvailableItemsInformation(messhallButton);
+            GameGui.playSE(4);
         } else if (e.getSource() == hallwayButton) {
             updateLocationInformation(hallwayButton);
             updateAvailableItemsInformation(hallwayButton);
+            GameGui.playSE(4);
         } else if (e.getSource() == spaceshipButton) {
             if(checkWinCondition()) {
                 //updateLocationInformation(spaceshipButton);
@@ -60,6 +66,7 @@ public class ChangeLocationHandler implements ActionListener {
                 //setPopUpWindow();
                 //popUpWindow;
                 JOptionPane.showMessageDialog(null, Menu.getPopUpInfo(),"Access Denied",JOptionPane.PLAIN_MESSAGE);
+                GameGui.playSE(2);
             }
 
         }

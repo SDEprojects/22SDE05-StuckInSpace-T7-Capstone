@@ -1,5 +1,7 @@
 package com.learning.client;
 
+import com.learning.controller.Sound;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
@@ -23,6 +25,8 @@ public class GameGui {
     static JMenu menu, Audio;
     static JMenuItem menuItem, help, quit, AudioOn, AudioOff;
     static JTextField inputField;
+
+    static Sound sound = new Sound();
 
 
     public GameGui() {
@@ -51,6 +55,7 @@ public class GameGui {
         window.setLayout(null);
         window.setVisible(true);
         window.setLocationRelativeTo(null);
+        playMusic(0);
         window.pack();
     }
     public static JFrame getPopUpWindow(){
@@ -654,6 +659,7 @@ public class GameGui {
         tmButton.setBorderPainted(false);
         tmButton.setForeground(Color.white);
         tmButton.setFont(normalFont);
+        playSE(1);
     }
 
     public static JButton getKeyCardButton() {
@@ -869,5 +875,20 @@ public class GameGui {
         countTimeLabel.setFont(normalFont);
         countTimeLabel.setBackground(Color.black);
         countTimeLabel.setForeground(Color.white);
+    }
+
+    public static void playMusic(int i) {
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public static void stopMusic() {
+        sound.stop();
+    }
+
+    public static void playSE(int i) {
+        sound.setFile(i);
+        sound.play();
     }
 }

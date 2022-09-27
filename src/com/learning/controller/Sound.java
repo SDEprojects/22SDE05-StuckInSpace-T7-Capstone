@@ -11,7 +11,12 @@ public class Sound {
     URL soundURL[] = new URL[5];
 
     public Sound() {
-        soundURL[0] = getClass().getResource("resources/Infinity_Music.wav");
+        soundURL[0] = getClass().getClassLoader().getResource("Infinity_Clip.wav");
+        soundURL[1] = getClass().getClassLoader().getResource("Item_PU.wav");
+        soundURL[2] = getClass().getClassLoader().getResource("alien_cackle.wav");
+        soundURL[3] = getClass().getClassLoader().getResource("item_pickup.wav");
+        soundURL[4] = getClass().getClassLoader().getResource("deepscan.wav");
+
     }
 
     public void setFile(int i) {
