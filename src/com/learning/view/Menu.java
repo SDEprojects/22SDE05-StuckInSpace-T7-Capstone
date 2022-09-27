@@ -51,6 +51,9 @@ public class Menu {
     public static String getExploreOption() {
         return "Let's explore";
     }
+    public static String gameOverMessage() {
+        return "Game over";
+    }
 
 
 

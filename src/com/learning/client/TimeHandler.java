@@ -22,6 +22,7 @@ public class TimeHandler {
 
     public static void setTimer() {
         HubScreenHandler hubScreenHandler = new HubScreenHandler();
+        GameScreenHandler gameScreenHandler = new GameScreenHandler();
         timer = new Timer(1000, new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -45,12 +46,13 @@ public class TimeHandler {
                         window.setVisible(true);
                         window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("StuckInSpace.jpg")))));
                         con = window.getContentPane();
-                        setTitlePanel(setTitleLabel("Game over"));
+                        setTitlePanel(setTitleLabel(Menu.gameOverMessage()));
                         window.add(getTitlePanel());
-                        setStartButtonPanel(setStartButton("Restart"));
-                        con.add(startButtonPanel);
+                        con.add(mainTextPanel);
+//                        setStartButtonPanel(setStartButton("Restart"));
+//                        con.add(startButtonPanel);
                         window.pack();
-                        startButton.addActionListener(hubScreenHandler);
+//                        startButton.addActionListener(hubScreenHandler);
                     } catch (InterruptedException ex) {
                         throw new RuntimeException(ex);
                     }
