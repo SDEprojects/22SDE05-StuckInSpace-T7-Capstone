@@ -1,5 +1,7 @@
 package com.learning.client;
 
+import com.learning.view.Menu;
+
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -38,7 +40,9 @@ public class ChangeLocationHandler implements ActionListener {
                 updateLocationInformation(spaceshipButton);
                 updateAvailableItemsInformation(spaceshipButton);
             }else {
-
+                //setPopUpWindow();
+                //popUpWindow;
+                JOptionPane.showMessageDialog(null, Menu.getPopUpInfo(),"Access Denied",JOptionPane.PLAIN_MESSAGE);
             }
 
         }
@@ -86,4 +90,5 @@ public class ChangeLocationHandler implements ActionListener {
         con = window.getContentPane();
         con.add(inventoryButtonsPanel);
     }
+
 }

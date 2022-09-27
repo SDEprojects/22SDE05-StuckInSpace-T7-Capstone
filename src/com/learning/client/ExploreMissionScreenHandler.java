@@ -5,7 +5,6 @@ import com.learning.view.Menu;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.sql.Time;
 import java.util.ArrayList;
 import java.util.Objects;
 
@@ -198,10 +197,7 @@ public class ExploreMissionScreenHandler implements ActionListener {
         return inventory.contains("engine") && (inventory.size() >= 10);
     }
 
-    //Pop-up window
-    public static void newWindow() {
 
-    }
 }
 
 
