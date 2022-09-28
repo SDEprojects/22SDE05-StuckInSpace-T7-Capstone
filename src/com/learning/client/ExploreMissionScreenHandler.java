@@ -11,17 +11,22 @@ import java.util.Objects;
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameManager.hub;
 import static com.learning.client.GameManager.mission;
+import static com.learning.client.ItemHandler.inventory;
 
 public class ExploreMissionScreenHandler implements ActionListener {
-    static ArrayList<JButton> allLocationsButtons = new ArrayList<>();
+    public static ArrayList<JButton> allLocationsButtons = new ArrayList<>();
     static ArrayList<JButton> allInventoryButtons = new ArrayList<>();
 
     @Override
     public void actionPerformed(ActionEvent e) {
-        changeLocation();
+        try {
+            changeLocation();
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
+        }
     }
 
-    static void changeLocation() {
+    public static void changeLocation() throws InterruptedException {
         ChangeLocationHandler changeLocationHandler = new ChangeLocationHandler();
         CurrentMissionScreenHandler currentMissionScreenHandler = new CurrentMissionScreenHandler();
 
@@ -138,6 +143,14 @@ public class ExploreMissionScreenHandler implements ActionListener {
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
         returnButton.addActionListener(currentMissionScreenHandler);
         //con.add(returnPanel);
+
+        setCountTimeLabel();
+        countTimeLabel.setText("1:00");
+        TimeHandler.second = 0;
+        TimeHandler.minute = 1;
+        TimeHandler.setTimer();
+        TimeHandler.timer.start();
+        playerPanel.add(countTimeLabel);
     }
 
     public static void getNextLocationsButtons(String currentLocation) {
@@ -167,16 +180,32 @@ public class ExploreMissionScreenHandler implements ActionListener {
         }
     }
 
+    public static ArrayList<String> getArrayInventoryItemsButtons(String currentLocation) {
+        ArrayList <String> arrayList = new ArrayList<>();
+        hub.initiateItemLocationList();
+        for (Object item : hub.lookAction(currentLocation)) {
+            for (JButton button : allInventoryButtons) {
+                if (item.equals(button.getText())) {
+                    inventoryButtonsPanel.add(button);
+                    arrayList.add(button.getText());
+                }
+            }
+        }
+        return arrayList;
+    }
+
     public static void getItemListener(JButton button) {
         ItemHandler itemHandler = new ItemHandler();
         button.addActionListener(itemHandler);
     }
-    //Deny access to engineroom
-    //public static void accessEngineroom(ActionEvent e, ){}
-    //Deny access to ship
-    /*public static boolean checkWinCondition(){
-    if ()
-    }*/
+
+    public static boolean checkWinCondition() {
+        return inventory.contains("engine") && (inventory.size() >= 10);
+    }
+
+    public static boolean checkItemCondition(String itemName) {
+        return inventory.contains(itemName);
+    }
 }
 
 

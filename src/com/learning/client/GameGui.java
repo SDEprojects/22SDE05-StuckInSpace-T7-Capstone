@@ -1,5 +1,7 @@
 package com.learning.client;
 
+import com.learning.controller.Sound;
+
 import javax.swing.*;
 import java.awt.*;
 import java.util.Objects;
@@ -12,21 +14,24 @@ public class GameGui {
     public static final Font playerFont = new Font("Times New Roman", Font.PLAIN, 25);
     public static final Font missionFont = new Font("Times New Roman", Font.PLAIN, 30);
 
-    static JFrame window;
-    static Container con;
-    static JPanel titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel, exploreMissionPanel, exploreInventoryPanel, inventoryButtonsPanel;
-    static JLabel titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel, inventoryLabel;
-    static JButton startButton, missionButton, inventoryButton, returnButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton;
+    static JFrame window, popUpWindow;
+    static Container con, con2;
+    static JPanel popUpPanel, popUpButtonPanel, titlePanel, startButtonPanel, mainTextPanel, choiceButtonPanel, playerPanel, audioButtonPanel, hubTitlePanel, inventoryTitlePanel, missionTitlePanel, returnPanel, locationsButtonPanel, exploreMissionPanel, exploreInventoryPanel, inventoryButtonsPanel;
+    static JLabel popUpLabel, titleLabel, hpLabel, hpLabelNum, locLabel, locLabelCurrent, invLabel, invLabelItems, hubTitleLabel, inventoryTitleLabel, missionTitleLabel, exploreMissionLabel, exploreInventoryLabel, inventoryLabel, countTimeLabel;
+    static JButton startButton, missionButton, inventoryButton, returnButton, showInventoryButton, nextLocationButton, hangarButton, basementButton, engineroomButton, controlstationButton, messhallButton, hallwayButton, spaceshipButton, popUpButton;
     static JButton fuelButton, engineButton, bioSuitButton, tmButton, keyCardButton, basementKeyButton, toolkitButton, gpsButton, knifeButton, rifleButton, pistolButton, laserGunButton, imtvButton, achButton, glovesButton, bootsButton, compassButton;
     static JTextArea mainTextArea;
     static JMenuBar menuBar;
-    static JMenu menu, Audio;
-    static JMenuItem menuItem, help, quit, AudioOn, AudioOff;
+    static JMenu menu;
+    static JMenuItem AudioMute;
     static JTextField inputField;
+
+    static Sound sound = new Sound();
 
 
     public GameGui() {
         window = new JFrame();
+        popUpWindow = new JFrame();
         mainTextPanel = new JPanel();
         mainTextArea = new JTextArea();
         con = new Container();
@@ -34,21 +39,44 @@ public class GameGui {
         startButtonPanel = new JPanel();
         titleLabel = new JLabel();
         startButton = new JButton();
+        popUpButton = new JButton();
+        popUpButtonPanel = new JPanel();
+        menuBar = new JMenuBar();
+        menu = new JMenu("Audio");
+        AudioMute = new JMenuItem("Audio On/Off");
     }
 
     public JFrame getWindow() {
         return window;
     }
 
-    public void setWindow() {
+    public static void setWindow() {
         window.setPreferredSize(new Dimension(1280, 719));
         window.setResizable(false);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("StuckInSpace.jpg")))));
         window.setLayout(null);
-        window.setVisible(true);
         window.setLocationRelativeTo(null);
+        menuBar.add(menu);
+        menu.add(AudioMute);
+        AudioMute.addActionListener(e -> sound.volumeMute());
+        window.setJMenuBar(menuBar);
+        playMusic(0);
+        window.setVisible(true);
         window.pack();
+    }
+    public static JFrame getPopUpWindow(){
+        return popUpWindow;
+    }
+    public static void setPopUpWindow(){
+        popUpWindow.setPreferredSize(new Dimension(1280, 719));
+        popUpWindow.setResizable(false);
+        popUpWindow.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        popUpWindow.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("StuckInSpace.jpg")))));
+        popUpWindow.setLayout(null);
+        popUpWindow.setVisible(true);
+        popUpWindow.setLocationRelativeTo(null);
+        popUpWindow.pack();
     }
 
     public JPanel getMainTextPanel() {
@@ -133,17 +161,35 @@ public class GameGui {
         con.add(mainTextArea);
         con = window.getContentPane();
     }
+    public Container getCon2(){
+        return con;
+    }
+    public void setCon2(){
+        con2 = new Container();
+        con2.add(mainTextArea);
+        con = popUpWindow.getContentPane();
+    }
 
-    public JPanel getTitlePanel() {
+    public static JPanel getTitlePanel() {
         return titlePanel;
     }
 
-    public void setTitlePanel(JLabel titleLabel) {
+    public static void setTitlePanel(JLabel titleLabel) {
         titlePanel = new JPanel();
-        titlePanel.setBounds(340, 40, 600, 100);
+        titlePanel.setBounds(50, 40, 1200, 100);
         titlePanel.setOpaque(false);
         titlePanel.add(titleLabel);
     }
+    public JPanel getPopUpPanel(){
+        return popUpPanel;
+    }
+    public void setPopUpPanel(JLabel popUpLabel) {
+        popUpPanel = new JPanel();
+        popUpPanel.setBounds(340, 40, 600, 100);
+        popUpPanel.setOpaque(false);
+        popUpPanel.add(popUpLabel);
+    }
+
 
     public JPanel getStartButtonPanel() {
         return startButtonPanel;
@@ -155,6 +201,16 @@ public class GameGui {
         startButtonPanel.setBorder(null);
         startButtonPanel.setOpaque(false);
         startButtonPanel.add(startButton);
+    }
+    public JPanel getPopUpButtonPanel() {
+        return popUpButtonPanel;
+    }
+    public static void setPopUpButtonPanel(JButton popUpButton){
+        popUpButtonPanel = new JPanel();
+        popUpButtonPanel.setBounds(540, 570, 200, 50);
+        popUpButtonPanel.setBorder(null);
+        popUpButtonPanel.setOpaque(false);
+        popUpButtonPanel.add(popUpButton);
     }
 
     public static JPanel getChoiceButtonPanel() {
@@ -180,6 +236,16 @@ public class GameGui {
         missionButton.setForeground(Color.white);
         missionButton.setFont(normalFont);
         return missionButton;
+    }
+    public static JButton getPopUpButton(){
+        return popUpButton;
+    }
+    public static JButton setPopUpButton(String text){
+        popUpButton = new JButton(text);
+        popUpButton.setBackground(Color.black);
+        popUpButton.setForeground(Color.white);
+        popUpButton.setFont(normalFont);
+        return popUpButton;
     }
 
     public static JButton getInventoryButton() {
@@ -238,7 +304,7 @@ public class GameGui {
         this.audioButtonPanel = audioButtonPanel;
     }
 
-    public JLabel getTitleLabel() {
+    public static JLabel getTitleLabel() {
         return titleLabel;
     }
 
@@ -248,6 +314,16 @@ public class GameGui {
         titleLabel.setFont(titleFont);
         return titleLabel;
     }
+    public JLabel getPopUpLabel(){
+        return popUpLabel;
+    }
+    public static JLabel setPopUpLabel(String text) {
+        popUpLabel = new JLabel(text);
+        popUpLabel.setForeground(Color.white);
+        popUpLabel.setFont(titleFont);
+        return popUpLabel;
+    }
+
 
     public JLabel getHpLabel() {
         return hpLabel;
@@ -394,32 +470,10 @@ public class GameGui {
         startButton = new JButton(text);
         startButton.setBackground(Color.green);
         startButton.setForeground(Color.black);
+        startButton.setOpaque(true);
+        startButton.setBorderPainted(false);
         startButton.setFont(normalFont);
         return startButton;
-    }
-
-    public JMenuBar getMenuBar() {
-        return menuBar;
-    }
-
-    public void setMenuBar() {
-        menuBar = new JMenuBar();
-    }
-
-    public JMenu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(String text) {
-        menu.add(text);
-    }
-
-    public JMenuItem getMenuItem() {
-        return menuItem;
-    }
-
-    public void setMenuItem() {
-        menuItem = new JMenuItem();
     }
 
     public static JTextField getInputField() {
@@ -536,8 +590,8 @@ public class GameGui {
         return fuelButton;
     }
 
-    public static void setFuelButton() { //window.setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("The Hub Image.jpg"))));
-        ImageIcon fuelIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("fuel.png"));//"C:\\StudentWork\\22SDE05-StuckInSpace-T7-Capstone\\resources\\fuel.png");
+    public static void setFuelButton() {
+        ImageIcon fuelIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("fuel.png")));
         fuelButton = new JButton("fuel",fuelIcon);
         fuelButton.setContentAreaFilled(false);
         fuelButton.setOpaque(false);
@@ -552,7 +606,7 @@ public class GameGui {
     }
 
     public static void setEngineButton() {
-        ImageIcon engineIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("engine.png"));
+        ImageIcon engineIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("engine.png")));
         engineButton = new JButton("engine", engineIcon);
         engineButton.setContentAreaFilled(false);
         engineButton.setOpaque(false);
@@ -567,7 +621,7 @@ public class GameGui {
     }
 
     public static void setBioSuitButton() {
-        ImageIcon bioSuitIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("hazmat.png"));
+        ImageIcon bioSuitIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("hazmat.png")));
         bioSuitButton = new JButton("bio_suit",bioSuitIcon);
         bioSuitButton.setContentAreaFilled(false);
         bioSuitButton.setOpaque(false);
@@ -582,7 +636,7 @@ public class GameGui {
     }
 
     public static void setTmButton() {
-        ImageIcon tMIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("manual.png"));
+        ImageIcon tMIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("manual.png")));
         tmButton = new JButton("TM", tMIcon);
         //tmButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         tmButton.setContentAreaFilled(false);
@@ -590,6 +644,7 @@ public class GameGui {
         tmButton.setBorderPainted(false);
         tmButton.setForeground(Color.white);
         tmButton.setFont(normalFont);
+        playSE(1);
     }
 
     public static JButton getKeyCardButton() {
@@ -597,7 +652,7 @@ public class GameGui {
     }
 
     public static void setKeyCardButton() {
-        ImageIcon keyCardIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("key-card.png"));
+        ImageIcon keyCardIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("key-card.png")));
         keyCardButton = new JButton("keycard", keyCardIcon);
         keyCardButton.setContentAreaFilled(false);
         keyCardButton.setOpaque(false);
@@ -612,7 +667,7 @@ public class GameGui {
     }
 
     public static void setBasementKeyButton() {
-        ImageIcon keyIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("key.png"));
+        ImageIcon keyIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("key.png")));
         basementKeyButton = new JButton("basement_key", keyIcon);
         basementKeyButton.setContentAreaFilled(false);
         basementKeyButton.setOpaque(false);
@@ -627,7 +682,7 @@ public class GameGui {
     }
 
     public static void setToolkitButton() {
-        ImageIcon toolIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("tools.png"));
+        ImageIcon toolIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("tools.png")));
         toolkitButton = new JButton("toolkit", toolIcon);
         toolkitButton.setContentAreaFilled(false);
         toolkitButton.setOpaque(false);
@@ -642,7 +697,7 @@ public class GameGui {
     }
 
     public static void setGpsButton() {
-        ImageIcon gpsIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("map.png"));
+        ImageIcon gpsIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("map.png")));
         gpsButton = new JButton("GPS", gpsIcon);
         gpsButton.setContentAreaFilled(false);
         gpsButton.setOpaque(false);
@@ -657,7 +712,7 @@ public class GameGui {
     }
 
     public static void setKnifeButton() {
-        ImageIcon knifeIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("knife_icon.png"));
+        ImageIcon knifeIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("knife_icon.png")));
         knifeButton = new JButton("knife", knifeIcon);
         knifeButton.setContentAreaFilled(false);
         knifeButton.setOpaque(false);
@@ -672,7 +727,7 @@ public class GameGui {
     }
 
     public static void setRifleButton() {
-        ImageIcon rifleIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("rifle.png"));
+        ImageIcon rifleIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("rifle.png")));
         rifleButton = new JButton("rifle", rifleIcon);
         rifleButton.setContentAreaFilled(false);
         rifleButton.setOpaque(false);
@@ -687,7 +742,7 @@ public class GameGui {
     }
 
     public static void setPistolButton() {
-        ImageIcon pistolImage = new ImageIcon(GameGui.class.getClassLoader().getResource("space-gun.png"));
+        ImageIcon pistolImage = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("space-gun.png")));
         pistolButton = new JButton("pistol", pistolImage);
         pistolButton.setContentAreaFilled(false);
         pistolButton.setOpaque(false);
@@ -702,7 +757,7 @@ public class GameGui {
     }
 
     public static void setLaserGunButton() {
-        ImageIcon laserGunIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("laser-gun.png"));
+        ImageIcon laserGunIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("laser-gun.png")));
         laserGunButton = new JButton("laser_gun", laserGunIcon);
         laserGunButton.setContentAreaFilled(false);
         laserGunButton.setOpaque(false);
@@ -717,7 +772,7 @@ public class GameGui {
     }
 
     public static void setImtvButton() {
-        ImageIcon imtvicon = new ImageIcon(GameGui.class.getClassLoader().getResource("armor.png"));
+        ImageIcon imtvicon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("armor.png")));
         imtvButton = new JButton("IMTV", imtvicon);
         imtvButton.setContentAreaFilled(false);
         imtvButton.setOpaque(false);
@@ -732,7 +787,7 @@ public class GameGui {
     }
 
     public static void setAchButton() {
-        ImageIcon achIcon = new ImageIcon("C:\\StudentWork\\22SDE05-StuckInSpace-T7-Capstone\\resources\\astronaut-helmet.png");
+        ImageIcon achIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("astronaut-helmet.png")));
         achButton = new JButton("ACH", achIcon);
         achButton.setContentAreaFilled(false);
         achButton.setOpaque(false);
@@ -747,7 +802,7 @@ public class GameGui {
     }
 
     public static void setGlovesButton() {
-        ImageIcon glovesIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("gloves.png"));
+        ImageIcon glovesIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("gloves.png")));
         glovesButton = new JButton("gloves", glovesIcon);
         glovesButton.setContentAreaFilled(false);
         glovesButton.setOpaque(false);
@@ -762,7 +817,7 @@ public class GameGui {
     }
 
     public static void setBootsButton() {
-        ImageIcon bootsIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("space_boots.png"));
+        ImageIcon bootsIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("space_boots.png")));
         bootsButton = new JButton("boots", bootsIcon);
         bootsButton.setContentAreaFilled(false);
         bootsButton.setOpaque(false);
@@ -777,10 +832,48 @@ public class GameGui {
     }
 
     public static void setCompassButton() {
-        ImageIcon compassIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("compass.png"));
+        ImageIcon compassIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("compass.png")));
         compassButton = new JButton("compass", compassIcon);
         compassButton.setBackground(Color.black);
         compassButton.setForeground(Color.white);
         compassButton.setFont(normalFont);
+    }
+
+    public static JButton getShowInventoryButton() {
+        return inventoryButton;
+    }
+
+    public static JButton setShowInventoryButton (String text) {
+        showInventoryButton = new JButton(text);
+        showInventoryButton.setBackground(Color.black);
+        showInventoryButton.setForeground(Color.white);
+        showInventoryButton.setFont(normalFont);
+        return showInventoryButton;
+    }
+
+    public static JLabel getCountTimeLabel() {
+        return countTimeLabel;
+    }
+
+    public static void setCountTimeLabel() {
+        countTimeLabel = new JLabel("");
+        countTimeLabel.setFont(normalFont);
+        countTimeLabel.setBackground(Color.black);
+        countTimeLabel.setForeground(Color.red);
+    }
+
+    public static void playMusic(int i) {
+        sound.setFile(i);
+        sound.play();
+        sound.loop();
+    }
+
+    public static void stopMusic() {
+        sound.stop();
+    }
+
+    public static void playSE(int i) {
+        sound.setFile(i);
+        sound.play();
     }
 }

@@ -197,12 +197,11 @@ public class HubSpot {
         }
     }
 
-    public void addItemToInventory(String text) {
+    public ArrayList<String> addItemToInventory(String text) {
         ArrayList<String> inventory = new ArrayList<>();
         inventory.add(text);
+        return inventory;
     }
-
-
 
     // Initiate the backpack based the Hero's attribute. Will run this once when game starts.
     public void initiateInventory() {

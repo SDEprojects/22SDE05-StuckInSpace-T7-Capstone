@@ -29,13 +29,14 @@ public class CurrentMissionScreenHandler implements ActionListener {
         setMainTextPanel(setMainTextArea(Story.alienOutpost()));
         setStartButtonPanel(setStartButton(Menu.getExploreOption()));
         setReturnPanel(setReturnButton(Menu.getReturnOption()));
-        returnButton.addActionListener(missionScreenHandler);
+
         startButton.addActionListener(exploreMissionScreenHandler);
 
         con = window.getContentPane();
         con.add(missionTitlePanel);
         con.add(mainTextPanel);
         con.add(startButtonPanel);
+        returnButton.addActionListener(missionScreenHandler);
         con.add(returnPanel);
     }
 }
