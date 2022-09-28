@@ -8,10 +8,17 @@ import static com.learning.client.GameManager.hub;
 import static org.junit.jupiter.api.Assertions.*;
 
 class ExploreMissionScreenHandlerTest {
-    public static ArrayList<String> inventoryTest = hub.item.getBackpackList();
     @Test
     void checkItemCondition() {
+        ArrayList<String> inventoryTest = hub.item.getBackpackList();
         inventoryTest.add("TM");
         assertEquals(inventoryTest.contains("TM"), ExploreMissionScreenHandler.checkItemCondition("TM"));
+    }
+
+    @Test
+    void checkItemCondition2() {
+        ArrayList<String> inventoryTest = hub.item.getBackpackList();
+        inventoryTest.add("TM");
+        assertNotEquals(inventoryTest.contains("TM"), ExploreMissionScreenHandler.checkItemCondition("tm"));
     }
 }

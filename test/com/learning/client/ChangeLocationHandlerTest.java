@@ -15,15 +15,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ChangeLocationHandlerTest {
 
-    HubSpot testHub = new HubSpot();
+
 
     @Test
     void updateAvailableItemsInformation() {
+        HubSpot testHub = new HubSpot();
         ArrayList<Object> expected = new ArrayList<>();
         expected.add("knife");
         expected.add("TM");
         //setInventoryButtonsPanel();
-        ArrayList<String> actual = new ArrayList<>();
+        ArrayList<String> actual;
         testHub.setHeroPosition("hangar");
         actual = ExploreMissionScreenHandler.getArrayInventoryItemsButtons(testHub.getHeroPosition());
         assertEquals(expected, actual);
