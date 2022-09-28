@@ -8,7 +8,6 @@ import java.io.IOException;
 
 public class GameClient {
 
-
     public static void main(String[] args) throws IOException, UnsupportedAudioFileException, LineUnavailableException {
         Menu.getMainMessage();
         Menu.getFirstMenu();
