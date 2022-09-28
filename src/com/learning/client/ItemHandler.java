@@ -130,7 +130,7 @@ public class ItemHandler implements ActionListener {
         return items;
     }
 
-    static ArrayList<String> inventory = hub.item.getBackpackList();
+    public static ArrayList<String> inventory = hub.item.getBackpackList();
 
     public static void updateInventoryCount(JButton button, String currentLocation) {
         hub.item.setItemFound(getInventoryButtonsList(currentLocation));

@@ -1,5 +1,6 @@
 package com.learning.client;
 
+import com.learning.controller.HubSpot;
 import org.junit.jupiter.api.Test;
 
 import javax.swing.*;
@@ -14,18 +15,17 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ChangeLocationHandlerTest {
 
+    HubSpot testHub = new HubSpot();
+
     @Test
     void updateAvailableItemsInformation() {
-        JFrame jFrame = new JFrame();
-        JPanel jPanel = new JPanel();
-        Container container;
-        hub.setHeroPosition("hangar");
-        ArrayList arrayList = new ArrayList<>();
-        arrayList.add("knife");
-        arrayList.add("TM");
-        //hub.setHeroPosition(button.getText());
-        ExploreMissionScreenHandler.getInventoryItemsButtons(hub.getHeroPosition());
-        container = jFrame.getContentPane();
-        container.add(jPanel);
+        ArrayList<Object> expected = new ArrayList<>();
+        expected.add("knife");
+        expected.add("TM");
+        //setInventoryButtonsPanel();
+        ArrayList<String> actual = new ArrayList<>();
+        testHub.setHeroPosition("hangar");
+        actual = ExploreMissionScreenHandler.getArrayInventoryItemsButtons(testHub.getHeroPosition());
+        assertEquals(expected, actual);
     }
 }

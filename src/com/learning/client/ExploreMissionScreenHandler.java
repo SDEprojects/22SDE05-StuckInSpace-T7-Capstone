@@ -14,7 +14,7 @@ import static com.learning.client.GameManager.mission;
 import static com.learning.client.ItemHandler.inventory;
 
 public class ExploreMissionScreenHandler implements ActionListener {
-    static ArrayList<JButton> allLocationsButtons = new ArrayList<>();
+    public static ArrayList<JButton> allLocationsButtons = new ArrayList<>();
     static ArrayList<JButton> allInventoryButtons = new ArrayList<>();
 
     @Override
@@ -178,6 +178,20 @@ public class ExploreMissionScreenHandler implements ActionListener {
                 }
             }
         }
+    }
+
+    public static ArrayList<String> getArrayInventoryItemsButtons(String currentLocation) {
+        ArrayList <String> arrayList = new ArrayList<>();
+        hub.initiateItemLocationList();
+        for (Object item : hub.lookAction(currentLocation)) {
+            for (JButton button : allInventoryButtons) {
+                if (item.equals(button.getText())) {
+                    inventoryButtonsPanel.add(button);
+                    arrayList.add(button.getText());
+                }
+            }
+        }
+        return arrayList;
     }
 
     public static void getItemListener(JButton button) {
