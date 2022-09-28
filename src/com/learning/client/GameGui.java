@@ -4,8 +4,6 @@ import com.learning.controller.Sound;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class GameGui {
@@ -61,12 +59,7 @@ public class GameGui {
         window.setLocationRelativeTo(null);
         menuBar.add(menu);
         menu.add(AudioMute);
-        AudioMute.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
-                sound.volumeMute();
-            }
-        });
+        AudioMute.addActionListener(e -> sound.volumeMute());
         window.setJMenuBar(menuBar);
         playMusic(0);
         window.setVisible(true);
