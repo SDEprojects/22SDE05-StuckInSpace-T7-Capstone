@@ -31,6 +31,7 @@ public class ChangeLocationHandler implements ActionListener {
                 GameGui.playSE(4);
             } else {
                 JOptionPane.showMessageDialog(null, Menu.getBasementKeyMessage(), "Access Denied", JOptionPane.PLAIN_MESSAGE);
+                GameGui.playSE(2);
             }
         } else if (e.getSource() == engineroomButton) {
             if (checkItemCondition("keycard")) {
@@ -39,6 +40,7 @@ public class ChangeLocationHandler implements ActionListener {
                 GameGui.playSE(4);
             } else {
                 JOptionPane.showMessageDialog(null, Menu.getKeyCardMessage(), "Access Denied", JOptionPane.PLAIN_MESSAGE);
+                GameGui.playSE(2);
             }
         } else if (e.getSource() == controlstationButton) {
             updateLocationInformation(controlstationButton);
