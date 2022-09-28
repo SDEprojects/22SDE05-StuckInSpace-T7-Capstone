@@ -8,6 +8,8 @@ class MenuTest {
 
     @Test
     void getGameName() {
-
+        String expectedName = "Stuck in Outer Space";
+        String actualName = Menu.getGameName();
+        assertEquals(expectedName, actualName);
     }
 }

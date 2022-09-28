@@ -126,5 +126,4 @@ public class ChangeLocationHandler implements ActionListener {
         con = window.getContentPane();
         con.add(inventoryButtonsPanel);
     }
-
 }
