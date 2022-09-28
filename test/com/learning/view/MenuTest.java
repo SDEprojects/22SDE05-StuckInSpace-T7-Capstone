@@ -12,4 +12,11 @@ class MenuTest {
         String actualName = Menu.getGameName();
         assertEquals(expectedName, actualName);
     }
+
+    @Test
+    void getGameName2() {
+        String expectedName = "Stuck in Outer Space2";
+        String actualName = Menu.getGameName();
+        assertNotEquals(expectedName, actualName);
+    }
 }

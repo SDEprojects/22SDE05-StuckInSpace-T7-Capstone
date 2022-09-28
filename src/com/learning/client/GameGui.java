@@ -588,8 +588,8 @@ public class GameGui {
         return fuelButton;
     }
 
-    public static void setFuelButton() { //window.setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("The Hub Image.jpg"))));
-        ImageIcon fuelIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("fuel.png"));//"C:\\StudentWork\\22SDE05-StuckInSpace-T7-Capstone\\resources\\fuel.png");
+    public static void setFuelButton() {
+        ImageIcon fuelIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("fuel.png")));
         fuelButton = new JButton("fuel",fuelIcon);
         fuelButton.setContentAreaFilled(false);
         fuelButton.setOpaque(false);
@@ -604,7 +604,7 @@ public class GameGui {
     }
 
     public static void setEngineButton() {
-        ImageIcon engineIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("engine.png"));
+        ImageIcon engineIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("engine.png")));
         engineButton = new JButton("engine", engineIcon);
         engineButton.setContentAreaFilled(false);
         engineButton.setOpaque(false);
@@ -619,7 +619,7 @@ public class GameGui {
     }
 
     public static void setBioSuitButton() {
-        ImageIcon bioSuitIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("hazmat.png"));
+        ImageIcon bioSuitIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("hazmat.png")));
         bioSuitButton = new JButton("bio_suit",bioSuitIcon);
         bioSuitButton.setContentAreaFilled(false);
         bioSuitButton.setOpaque(false);
@@ -634,7 +634,7 @@ public class GameGui {
     }
 
     public static void setTmButton() {
-        ImageIcon tMIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("manual.png"));
+        ImageIcon tMIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("manual.png")));
         tmButton = new JButton("TM", tMIcon);
         //tmButton.setBackground(new Color(0.0f,0.0f,0.0f,0.5f));
         tmButton.setContentAreaFilled(false);
@@ -650,7 +650,7 @@ public class GameGui {
     }
 
     public static void setKeyCardButton() {
-        ImageIcon keyCardIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("key-card.png"));
+        ImageIcon keyCardIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("key-card.png")));
         keyCardButton = new JButton("keycard", keyCardIcon);
         keyCardButton.setContentAreaFilled(false);
         keyCardButton.setOpaque(false);
@@ -665,7 +665,7 @@ public class GameGui {
     }
 
     public static void setBasementKeyButton() {
-        ImageIcon keyIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("key.png"));
+        ImageIcon keyIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("key.png")));
         basementKeyButton = new JButton("basement_key", keyIcon);
         basementKeyButton.setContentAreaFilled(false);
         basementKeyButton.setOpaque(false);
@@ -680,7 +680,7 @@ public class GameGui {
     }
 
     public static void setToolkitButton() {
-        ImageIcon toolIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("tools.png"));
+        ImageIcon toolIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("tools.png")));
         toolkitButton = new JButton("toolkit", toolIcon);
         toolkitButton.setContentAreaFilled(false);
         toolkitButton.setOpaque(false);
@@ -695,7 +695,7 @@ public class GameGui {
     }
 
     public static void setGpsButton() {
-        ImageIcon gpsIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("map.png"));
+        ImageIcon gpsIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("map.png")));
         gpsButton = new JButton("GPS", gpsIcon);
         gpsButton.setContentAreaFilled(false);
         gpsButton.setOpaque(false);
@@ -710,7 +710,7 @@ public class GameGui {
     }
 
     public static void setKnifeButton() {
-        ImageIcon knifeIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("knife_icon.png"));
+        ImageIcon knifeIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("knife_icon.png")));
         knifeButton = new JButton("knife", knifeIcon);
         knifeButton.setContentAreaFilled(false);
         knifeButton.setOpaque(false);
@@ -725,7 +725,7 @@ public class GameGui {
     }
 
     public static void setRifleButton() {
-        ImageIcon rifleIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("rifle.png"));
+        ImageIcon rifleIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("rifle.png")));
         rifleButton = new JButton("rifle", rifleIcon);
         rifleButton.setContentAreaFilled(false);
         rifleButton.setOpaque(false);
@@ -740,7 +740,7 @@ public class GameGui {
     }
 
     public static void setPistolButton() {
-        ImageIcon pistolImage = new ImageIcon(GameGui.class.getClassLoader().getResource("space-gun.png"));
+        ImageIcon pistolImage = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("space-gun.png")));
         pistolButton = new JButton("pistol", pistolImage);
         pistolButton.setContentAreaFilled(false);
         pistolButton.setOpaque(false);
@@ -755,7 +755,7 @@ public class GameGui {
     }
 
     public static void setLaserGunButton() {
-        ImageIcon laserGunIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("laser-gun.png"));
+        ImageIcon laserGunIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("laser-gun.png")));
         laserGunButton = new JButton("laser_gun", laserGunIcon);
         laserGunButton.setContentAreaFilled(false);
         laserGunButton.setOpaque(false);
@@ -770,7 +770,7 @@ public class GameGui {
     }
 
     public static void setImtvButton() {
-        ImageIcon imtvicon = new ImageIcon(GameGui.class.getClassLoader().getResource("armor.png"));
+        ImageIcon imtvicon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("armor.png")));
         imtvButton = new JButton("IMTV", imtvicon);
         imtvButton.setContentAreaFilled(false);
         imtvButton.setOpaque(false);
@@ -785,7 +785,7 @@ public class GameGui {
     }
 
     public static void setAchButton() {
-        ImageIcon achIcon = new ImageIcon("C:\\StudentWork\\22SDE05-StuckInSpace-T7-Capstone\\resources\\astronaut-helmet.png");
+        ImageIcon achIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("astronaut-helmet.png")));
         achButton = new JButton("ACH", achIcon);
         achButton.setContentAreaFilled(false);
         achButton.setOpaque(false);
@@ -800,7 +800,7 @@ public class GameGui {
     }
 
     public static void setGlovesButton() {
-        ImageIcon glovesIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("gloves.png"));
+        ImageIcon glovesIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("gloves.png")));
         glovesButton = new JButton("gloves", glovesIcon);
         glovesButton.setContentAreaFilled(false);
         glovesButton.setOpaque(false);
@@ -815,7 +815,7 @@ public class GameGui {
     }
 
     public static void setBootsButton() {
-        ImageIcon bootsIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("space_boots.png"));
+        ImageIcon bootsIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("space_boots.png")));
         bootsButton = new JButton("boots", bootsIcon);
         bootsButton.setContentAreaFilled(false);
         bootsButton.setOpaque(false);
@@ -830,7 +830,7 @@ public class GameGui {
     }
 
     public static void setCompassButton() {
-        ImageIcon compassIcon = new ImageIcon(GameGui.class.getClassLoader().getResource("compass.png"));
+        ImageIcon compassIcon = new ImageIcon(Objects.requireNonNull(GameGui.class.getClassLoader().getResource("compass.png")));
         compassButton = new JButton("compass", compassIcon);
         compassButton.setBackground(Color.black);
         compassButton.setForeground(Color.white);

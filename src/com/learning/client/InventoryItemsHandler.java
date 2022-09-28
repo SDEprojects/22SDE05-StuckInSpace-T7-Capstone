@@ -3,6 +3,7 @@ package com.learning.client;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Objects;
 
 import static com.learning.client.GameGui.*;
 import static com.learning.client.GameGui.returnPanel;
@@ -20,7 +21,7 @@ public class InventoryItemsHandler implements ActionListener {
         mainTextPanel.setVisible(false);
         choiceButtonPanel.setVisible(false);
         hubTitlePanel.setVisible(false);
-        window.setContentPane(new JLabel(new ImageIcon(getClass().getClassLoader().getResource("inventory.png"))));
+        window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(getClass().getClassLoader().getResource("inventory.png")))));
         con = window.getContentPane();
         con.add(inventoryTitlePanel);
         StringBuilder result = new StringBuilder();
