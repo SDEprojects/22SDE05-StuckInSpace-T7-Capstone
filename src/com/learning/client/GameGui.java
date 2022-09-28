@@ -53,9 +53,10 @@ public class GameGui {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("StuckInSpace.jpg")))));
         window.setLayout(null);
-        window.setVisible(true);
+        //window.setVisible(true);
         window.setLocationRelativeTo(null);
         playMusic(0);
+        window.setVisible(true);
         window.pack();
     }
     public static JFrame getPopUpWindow(){
