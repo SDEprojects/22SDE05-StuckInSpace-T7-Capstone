@@ -470,6 +470,8 @@ public class GameGui {
         startButton = new JButton(text);
         startButton.setBackground(Color.green);
         startButton.setForeground(Color.black);
+        startButton.setOpaque(true);
+        startButton.setBorderPainted(false);
         startButton.setFont(normalFont);
         return startButton;
     }
