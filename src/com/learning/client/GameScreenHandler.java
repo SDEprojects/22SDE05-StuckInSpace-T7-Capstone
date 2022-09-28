@@ -11,6 +11,7 @@ public class GameScreenHandler implements ActionListener {
     static GameGui gameGui = new GameGui();
     public static void getMainScreen() {
         GameGui.setWindow();
+        //GameGui.playMusic(0);
         gameGui.setCon();
         GameGui.setTitlePanel(GameGui.setTitleLabel(Menu.getGameName()));
         con.add(GameGui.getTitlePanel());
