@@ -15,18 +15,16 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class ChangeLocationHandlerTest {
 
-
-
-    @Test
-    void updateAvailableItemsInformation() {
-        HubSpot testHub = new HubSpot();
-        ArrayList<Object> expected = new ArrayList<>();
-        expected.add("knife");
-        expected.add("TM");
-        //setInventoryButtonsPanel();
-        ArrayList<String> actual;
-        testHub.setHeroPosition("hangar");
-        actual = ExploreMissionScreenHandler.getArrayInventoryItemsButtons(testHub.getHeroPosition());
-        assertEquals(expected, actual);
-    }
+//    @Test
+//    void updateAvailableItemsInformation() {
+//        HubSpot testHub = new HubSpot();
+//        ArrayList<Object> expected = new ArrayList<>();
+//        expected.add("knife");
+//        expected.add("TM");
+//        //setInventoryButtonsPanel();
+//        ArrayList<String> actual;
+//        testHub.setHeroPosition("hangar");
+//        actual = ExploreMissionScreenHandler.getArrayInventoryItemsButtons(testHub.getHeroPosition());
+//        assertEquals(expected, actual);
+//    }
 }
