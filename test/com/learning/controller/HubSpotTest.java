@@ -79,6 +79,7 @@ class HubSpotTest {
         expectedArrayList.add("Compass");
         expectedArrayList.add("TBD");
 
+
         assertEquals(expectedArrayList.size(),actualArrayList.size());
 
     }
