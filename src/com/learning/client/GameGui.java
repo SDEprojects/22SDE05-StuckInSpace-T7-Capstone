@@ -44,7 +44,7 @@ public class GameGui {
         popUpButton = new JButton();
         popUpButtonPanel = new JPanel();
         menuBar = new JMenuBar();
-        menu = new JMenu("Options");
+        menu = new JMenu("Audio");
         AudioMute = new JMenuItem("Audio On/Off");
     }
 
@@ -58,7 +58,6 @@ public class GameGui {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("StuckInSpace.jpg")))));
         window.setLayout(null);
-        //window.setVisible(true);
         window.setLocationRelativeTo(null);
         menuBar.add(menu);
         menu.add(AudioMute);
@@ -480,30 +479,6 @@ public class GameGui {
         startButton.setForeground(Color.black);
         startButton.setFont(normalFont);
         return startButton;
-    }
-
-    public JMenuBar getMenuBar() {
-        return menuBar;
-    }
-
-    public void setMenuBar() {
-        menuBar = new JMenuBar();
-    }
-
-    public JMenu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(String text) {
-        menu.add(text);
-    }
-
-    public JMenuItem getMenuItem() {
-        return menuItem;
-    }
-
-    public void setMenuItem() {
-        menuItem = new JMenuItem();
     }
 
     public static JTextField getInputField() {
