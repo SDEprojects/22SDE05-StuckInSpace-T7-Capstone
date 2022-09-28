@@ -55,7 +55,7 @@ public class GameGui {
         window.setLayout(null);
         window.setVisible(true);
         window.setLocationRelativeTo(null);
-        //playMusic(0);
+        playMusic(0);
         window.pack();
     }
     public static JFrame getPopUpWindow(){
