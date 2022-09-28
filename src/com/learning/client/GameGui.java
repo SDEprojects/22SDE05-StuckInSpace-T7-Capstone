@@ -4,6 +4,8 @@ import com.learning.controller.Sound;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Objects;
 
 public class GameGui {
@@ -22,8 +24,8 @@ public class GameGui {
     static JButton fuelButton, engineButton, bioSuitButton, tmButton, keyCardButton, basementKeyButton, toolkitButton, gpsButton, knifeButton, rifleButton, pistolButton, laserGunButton, imtvButton, achButton, glovesButton, bootsButton, compassButton;
     static JTextArea mainTextArea;
     static JMenuBar menuBar;
-    static JMenu menu, Audio;
-    static JMenuItem menuItem, help, quit, AudioOn, AudioOff;
+    static JMenu menu;
+    static JMenuItem AudioMute;
     static JTextField inputField;
 
     static Sound sound = new Sound();
@@ -41,6 +43,9 @@ public class GameGui {
         startButton = new JButton();
         popUpButton = new JButton();
         popUpButtonPanel = new JPanel();
+        menuBar = new JMenuBar();
+        menu = new JMenu("Audio");
+        AudioMute = new JMenuItem("Audio On/Off");
     }
 
     public JFrame getWindow() {
@@ -53,8 +58,16 @@ public class GameGui {
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.setContentPane(new JLabel(new ImageIcon(Objects.requireNonNull(ExploreMissionScreenHandler.class.getClassLoader().getResource("StuckInSpace.jpg")))));
         window.setLayout(null);
-        //window.setVisible(true);
         window.setLocationRelativeTo(null);
+        menuBar.add(menu);
+        menu.add(AudioMute);
+        AudioMute.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                sound.volumeMute();
+            }
+        });
+        window.setJMenuBar(menuBar);
         playMusic(0);
         window.setVisible(true);
         window.pack();
@@ -466,30 +479,6 @@ public class GameGui {
         startButton.setForeground(Color.black);
         startButton.setFont(normalFont);
         return startButton;
-    }
-
-    public JMenuBar getMenuBar() {
-        return menuBar;
-    }
-
-    public void setMenuBar() {
-        menuBar = new JMenuBar();
-    }
-
-    public JMenu getMenu() {
-        return menu;
-    }
-
-    public void setMenu(String text) {
-        menu.add(text);
-    }
-
-    public JMenuItem getMenuItem() {
-        return menuItem;
-    }
-
-    public void setMenuItem() {
-        menuItem = new JMenuItem();
     }
 
     public static JTextField getInputField() {

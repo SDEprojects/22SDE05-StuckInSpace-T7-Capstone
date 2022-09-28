@@ -59,10 +59,10 @@ public class Game {
         menuBar = new JMenuBar();
         // create a menu
         menu = new JMenu("Menu");
-        Audio = new JMenu("Audio");
+        //Audio = new JMenu("Audio");
         //create menu items
-        help = new JMenuItem("Help");
-        quit = new JMenuItem("Quit");
+        //help = new JMenuItem("Help");
+        //quit = new JMenuItem("Quit");
         AudioOn = new JMenuItem("Audio On");
         AudioOff = new JMenuItem("Audio Off");
 

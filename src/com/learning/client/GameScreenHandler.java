@@ -1,11 +1,9 @@
 package com.learning.client;
 
-import com.learning.controller.Mission;
 import com.learning.view.Menu;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.Timer;
 
 import static com.learning.client.GameGui.con;
 
