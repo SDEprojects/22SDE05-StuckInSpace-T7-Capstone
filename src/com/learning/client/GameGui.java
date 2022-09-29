@@ -9,8 +9,6 @@ import java.util.Objects;
 public class GameGui {
     public static final Font titleFont = new Font("Times New Roman", Font.PLAIN, 70);
     public static final Font normalFont = new Font("Times New Roman", Font.PLAIN, 25);
-
-    public static final Font audioFont = new Font("Times New Roman", Font.PLAIN, 15);
     public static final Font playerFont = new Font("Times New Roman", Font.PLAIN, 25);
     public static final Font missionFont = new Font("Times New Roman", Font.PLAIN, 30);
 
@@ -232,20 +230,10 @@ public class GameGui {
 
     public static JButton setMissionButton(String text) {
         missionButton = new JButton(text);
-        missionButton.setBackground(Color.black);
-        missionButton.setForeground(Color.white);
+        missionButton.setBackground(Color.green);
+        missionButton.setForeground(Color.black);
         missionButton.setFont(normalFont);
         return missionButton;
-    }
-    public static JButton getPopUpButton(){
-        return popUpButton;
-    }
-    public static JButton setPopUpButton(String text){
-        popUpButton = new JButton(text);
-        popUpButton.setBackground(Color.black);
-        popUpButton.setForeground(Color.white);
-        popUpButton.setFont(normalFont);
-        return popUpButton;
     }
 
     public static JButton getInventoryButton() {
