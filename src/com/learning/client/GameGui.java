@@ -230,8 +230,8 @@ public class GameGui {
 
     public static JButton setMissionButton(String text) {
         missionButton = new JButton(text);
-        missionButton.setBackground(Color.green);
-        missionButton.setForeground(Color.black);
+        missionButton.setBackground(Color.black);
+        missionButton.setForeground(Color.white);
         missionButton.setFont(normalFont);
         return missionButton;
     }
