@@ -14,7 +14,7 @@ public class PopUpScreenHandler {
         //gameGui.setTitlePanel(GameGui.setTitleLabel(Menu.getGameName()));
         con2.add(gameGui.getPopUpPanel());
         //con.add(gameGui.getTitlePanel());
-        GameGui.setPopUpButtonPanel(GameGui.setPopUpButton(Menu.getOk()));
+        //GameGui.setPopUpButtonPanel(GameGui.setPopUpButton(Menu.getOk()));
         //GameGui.setStartButtonPanel(GameGui.setStartButton(Menu.getStart()));
         con2.add(gameGui.getPopUpButtonPanel());
         //con.add(gameGui.getStartButtonPanel());
